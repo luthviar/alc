@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use App\Department;
+use App\Training;
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller
@@ -14,7 +16,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        //
+        $module = Module::all();
+        return view('test.view-module')->with('module',$module);
     }
 
     /**
@@ -24,7 +27,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('test.create-module');
     }
 
     /**
@@ -35,7 +38,18 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'nama' => 'required',
+            'desc' => 'required',
+        ]);
+
+        $module = new Module;
+        $module->short_name = $request->short_name;
+        $module->nama = $request->nama;
+        $module->description = $request->desc;
+        $module->save();
+
+        return redirect('module');
     }
 
     /**
@@ -44,9 +58,12 @@ class ModuleController extends Controller
      * @param  \App\Module  $module
      * @return \Illuminate\Http\Response
      */
-    public function show(Module $module)
+    public function show($module)
     {
-        //
+        $modul = Module::find($module);
+        $department = Department::all();
+        $training = Training::where('id_module',$module)->get();
+        return view('test.detail-module')->with('modul',$modul)->with('department',$department)->with('training',$training);
     }
 
     /**

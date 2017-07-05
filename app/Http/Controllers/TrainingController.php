@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Module;
+use App\Department;
+use App\JobFamily;
 use App\Training;
 use Illuminate\Http\Request;
 
@@ -24,7 +27,10 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        //
+       $module = Module::all();
+       $jobs = JobFamily::all();
+       $department = Department::all();
+       return view('test.create-training')->with('JobFamily', $jobs)->with('module', $module)->with('department',$department);
     }
 
     /**
@@ -35,7 +41,25 @@ class TrainingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'module' => 'required',
+            'title' => 'required',
+        ]);
+        $job_family;
+        if ($request->department) {
+            $department = Department::where('id_department',$request->department)->first();
+            $job_family = $department->id_job_family;
+        }
+
+        $training = new Training;
+        $training->title = $request->title;
+        $training->description = $request->desc;
+        $training->id_module = $request->module;
+        $training->enroll_key = $request->enroll_key;
+        $training->id_department = $request->department;
+        $training->id_job_family = $job_family;
+        $training->save();
+        return redirect('module');
     }
 
     /**
@@ -44,9 +68,10 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show(Training $training)
+    public function show($training)
     {
-        //
+        $training = Training::find($training);
+        return view('test.detail-training')->with('training',$training);
     }
 
     /**

@@ -14,7 +14,8 @@ class JobFamilyController extends Controller
      */
     public function index()
     {
-        //
+        $jobFamily = JobFamily::all();
+        return view('test.view-job-family')->with('jobFamily', $jobFamily);
     }
 
     /**
@@ -24,7 +25,7 @@ class JobFamilyController extends Controller
      */
     public function create()
     {
-        //
+        return view('test.create-job-family');
     }
 
     /**
@@ -35,7 +36,15 @@ class JobFamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'name' => 'required'
+        ]);
+
+        $jobFamily = new JobFamily;
+        $jobFamily->name = $request->name;
+        $jobFamily->save();
+
+        return redirect('job-family');
     }
 
     /**

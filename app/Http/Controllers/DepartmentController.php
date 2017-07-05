@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\JobFamily;
 use App\Department;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $department = Department::all();
+        return view('test.view-department')->with('department',$department);
     }
 
     /**
@@ -24,7 +26,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $jobFamily = JobFamily::all();
+        return view('test.create-department')->with('jobFamily', $jobFamily);
     }
 
     /**
@@ -35,7 +38,19 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'id_department' => 'required',
+            'nama_department' => 'required',
+            'job_family' => 'required',
+        ]);
+
+        $department = new Department;
+        $department->id_department = $request->id_department;
+        $department->nama_departmen = $request->nama_department;
+        $department->id_job_family = $request->job_family;
+        $department->save();
+
+        return redirect('department');
     }
 
     /**

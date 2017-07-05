@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('module', 'ModuleController');
+
+Route::resource('training', 'TrainingController');
+
+Route::resource('job-family', 'JobFamilyController');
+
+Route::resource('department', 'DepartmentController');
