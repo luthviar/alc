@@ -26,3 +26,26 @@ Route::resource('training', 'TrainingController');
 Route::resource('job-family', 'JobFamilyController');
 
 Route::resource('department', 'DepartmentController');
+
+Route::get('homeNotLogin', function () {
+    return view('homebefore');
+});
+
+
+Route::get('HomeLogin', function () {
+    return view('homeLoggedIn');
+});
+
+Route::get('Trainning', function () {
+    return view('IModul');
+});
+
+
+Route::get('ForumNotLogin', function () {
+    return view('forumUmumNotLogin');
+});
+
+
+Route::get('Pre-Test', function () {
+    return view('PreTest');
+});
