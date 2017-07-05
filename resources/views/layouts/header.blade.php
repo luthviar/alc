@@ -44,6 +44,7 @@
 								@endforeach
 								</div>
 							</div>
+							<li><a href="products.html">Forum</a></li>
 							@endif
 						</ul>
 					</nav>

@@ -45,6 +45,12 @@ Route::get('ForumNotLogin', function () {
     return view('forumUmumNotLogin');
 });
 
+Route::get('Modul', function () {
+    return view('TModul');
+});
+
+
+
 
 Route::get('Pre-Test', function () {
     return view('PreTest');
