@@ -24,7 +24,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('test.create-berita');
     }
 
     /**
@@ -35,7 +35,23 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'id_user' => 'required',
+            'can_reply' => 'required',
+        ]);
+
+        $berita = new Berita;
+        $berita->id_user = $request->id_user;
+        $berita->title = $request->title;
+        $berita->content = $request->content;
+        $berita->can_reply = $request->can_reply;
+        $berita->image = $request->image;
+        $berita->save();
+
+        return redirect('/');
+        return redirect('module');
     }
 
     /**

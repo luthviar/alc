@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('module', 'ModuleController');
 
@@ -26,6 +24,8 @@ Route::resource('training', 'TrainingController');
 Route::resource('job-family', 'JobFamilyController');
 
 Route::resource('department', 'DepartmentController');
+
+Route::resource('berita', 'BeritaController');
 
 Route::get('homeNotLogin', function () {
     return view('homebefore');
