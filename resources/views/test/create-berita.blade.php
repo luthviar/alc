@@ -14,7 +14,7 @@
                 <h2>Create Berita</h2>
 
 
-                <form class="" action="/berita" method="post">
+                <form class="" action="{{ action('BeritaController@store') }}" method="post">
                   <input type="hidden" name="id_user" value="{{Auth::user()->id}}"><br>
                   Title : <br>
                   <input type="text" name="title" ><br>
