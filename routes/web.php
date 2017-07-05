@@ -27,14 +27,8 @@ Route::resource('department', 'DepartmentController');
 
 Route::resource('berita', 'BeritaController');
 
-Route::get('homeNotLogin', function () {
-    return view('homebefore');
-});
+Route::resource('slider', 'ContentSliderController');
 
-
-Route::get('HomeLogin', function () {
-    return view('homeLoggedIn');
-});
 
 Route::get('Trainning', function () {
     return view('IModul');

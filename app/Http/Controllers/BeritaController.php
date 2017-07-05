@@ -51,7 +51,6 @@ class BeritaController extends Controller
         $berita->save();
 
         return redirect('/');
-        return redirect('module');
     }
 
     /**
