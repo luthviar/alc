@@ -8,7 +8,7 @@
             @include('layouts.header')
         
             <!-- Slider -->
-            <section class="promo">
+            <section class="promo" style="border: 1px solid green;">
                 <ul class="slider">
 
                     <li style="background: url(Elegantic/images/ALS.jpg) no-repeat 50% 50%;">
