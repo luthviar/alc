@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Module;
 use App\Berita;
 use DB;
+use App\ContentSlider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $module = Module::all();
-        $berita = DB::table('beritas')->take(6)->get();
-        return view('home')->with('module',$module)->with('berita',$berita);
+        $berita = DB::table('beritas')->orderBy('id', 'desc')->take(6)->get();
+        $slider = ContentSlider::where('is_activ',1)->get();
+        return view('home')->with('module',$module)->with('berita',$berita)->with('slider',$slider);
     }
 }

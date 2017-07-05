@@ -14,14 +14,14 @@
                 <h2>Create Berita</h2>
 
 
-                <form class="" action="{{ URL::action('BeritaController@store') }}" method="post">
-                  <input type="hidden" name="id_user" value="{{Auth::user()->id}}"><br>
+                <form class="" action="{{ URL::action('ContentSliderController@store') }}" method="post">
+                  
                   Title : <br>
                   <input type="text" name="title" ><br>
                   Content : <br>
                   <input type="text" name="content" ><br>
-                  Can Reply : <br>
-                  <select name="can_reply">
+                  Is Active : <br>
+                  <select name="is_active">
                       <option value="1">Yes</option>
                       <option value="0">No</option>
                   </select><br>

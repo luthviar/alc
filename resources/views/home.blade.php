@@ -8,45 +8,19 @@
             @include('layouts.header')
         
             <!-- Slider -->
-            <section class="promo">
+            <section class="promo" style="border: 1px solid green;">
                 <ul class="slider">
-
-                    <li style="background: url(Elegantic/images/ALS.jpg) no-repeat 50% 50%;">
+                    @foreach ($slider as $slide)
+                    <li style="background: url({{$slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 50% 50%;">
                         <div class="slide-holder">
                             <div class="slide-info">
-                                <h1>collection for real gentlemen</h1>
-                                <p>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                <a class="btn white big" href="#">Read More</a>
+                                <h1>{{$slide->title}}</h1>
+                                <p>{{ str_limit($slide->content, $limit = 150, $end = '...') }}</p>
+                                <a class="btn darkgreen"  href="#">Read More</a>
                             </div>
                         </div>
                     </li>
-                    <li style="background: url(Elegantic/images/slide-02.jpg) no-repeat 50% 50%;">
-                        <div class="slide-holder">
-                            <div class="slide-info">
-                                <h1>collection for real gentlemen</h1>
-                                <p>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                <a class="btn white big" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background: url(Elegantic/images/slide-03.jpg) no-repeat 50% 50%;">
-                        <div class="slide-holder">
-                            <div class="slide-info">
-                                <h1>collection for real gentlemen</h1>
-                                <p>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                <a class="btn white big" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background: url(Elegantic/images/slide-04.jpg) no-repeat 50% 50%;">
-                        <div class="slide-holder">
-                            <div class="slide-info">
-                                <h1>collection for real gentlemen</h1>
-                                <p>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                                <a class="btn white big" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </section>
             

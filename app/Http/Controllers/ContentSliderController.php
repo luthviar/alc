@@ -24,7 +24,7 @@ class ContentSliderController extends Controller
      */
     public function create()
     {
-        //
+        return view('test.create-slider');
     }
 
     /**
@@ -35,7 +35,20 @@ class ContentSliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'is_active' => 'required',
+        ]);
+
+        $slider = new ContentSlider;
+        $slider->is_activ = $request->is_active;
+        $slider->title = $request->title;
+        $slider->content = $request->content;
+        $slider->image = $request->image;
+        $slider->save();
+
+        return redirect('/');
     }
 
     /**
