@@ -49,3 +49,8 @@ Route::get('Modul', function () {
 Route::get('Pre-Test', function () {
     return view('PreTest');
 });
+
+
+Route::get('Tests', function () {
+    return view('Quiz');
+});
