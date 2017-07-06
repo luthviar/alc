@@ -79,8 +79,9 @@ class TrainingController extends Controller
      */
     public function show($training)
     {
+        $module = Module::all();
         $training = Training::find($training);
-        return view('test.detail-training')->with('training',$training);
+        return view('test.detail-training')->with('training',$training)->with('module',$module);
     }
 
     /**

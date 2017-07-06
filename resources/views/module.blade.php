@@ -16,12 +16,11 @@
                         </h2>
                         <h1 class="brand-name">{{ $modul['nama'] }}</h1>
                         <hr class="tagline-divider">
-                        <h2>
-                            <small>
-                                <strong>{{ $modul['description'] }}
-                                    </strong>
-                            </small>
-                        </h2>
+                        <p align="justify">
+                            
+                                {{ $modul['description'] }}
+                                    
+                        </p>   
 
 
                     </div>
@@ -29,6 +28,9 @@
 		                    <hr class="style3">
 		            </div>
 		            <div class="row">
+
+                    <h2>Daftar Training Modul {{$modul->nama}}</h2>
+                    <br>
                     @if($modul->id == 3)
 						<ul>
 						@foreach($department as $dep)
