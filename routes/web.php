@@ -40,7 +40,7 @@ Route::get('ForumNotLogin', function () {
 });
 
 Route::get('Modul', function () {
-    return view('TModul');
+    return view('module');
 });
 
 

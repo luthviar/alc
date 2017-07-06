@@ -58,12 +58,13 @@ class ModuleController extends Controller
      * @param  \App\Module  $module
      * @return \Illuminate\Http\Response
      */
-    public function show($module)
+    public function show($id)
     {
-        $modul = Module::find($module);
+        $module = Module::all();
+        $modul = Module::find($id);
         $department = Department::all();
-        $training = Training::where('id_module',$module)->get();
-        return view('test.detail-module')->with('modul',$modul)->with('department',$department)->with('training',$training);
+        $training = Training::where('id_module',$id)->get();
+        return view('module')->with('module',$module)->with('modul',$modul)->with('department',$department)->with('training',$training);
     }
 
     /**

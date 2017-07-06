@@ -8,10 +8,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
 	<title>ALC | Aerofood Learning Center</title>
-	<link rel="stylesheet" href="Elegantic/css/fancySelect.css" />
-	<link rel="stylesheet" href="Elegantic/css/uniform.css" />
-	<link rel="stylesheet" href="Elegantic/css/all.css" />
-	<link media="screen" rel="stylesheet" type="text/css" href="Elegantic/css/screen.css" />
+	<link rel="stylesheet" href="{{ URL::asset('Elegantic/css/fancySelect.css')}}" />
+	<link rel="stylesheet" href="{{ URL::asset('Elegantic/css/uniform.css')}}" />
+	<link rel="stylesheet" href="{{ URL::asset('Elegantic/css/all.css')}}" />
+	<link media="screen" rel="stylesheet" type="text/css" href="{{ URL::asset('Elegantic/css/screen.css')}}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

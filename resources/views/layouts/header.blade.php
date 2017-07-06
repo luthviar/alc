@@ -1,5 +1,5 @@
 <header id="header">
-				<span class ="Logo"><a href="homeNotLogin"><img src="Elegantic/images/ALS.jpg" width="170px" height="100" ></a></span>
+				<span class ="Logo"><a href="homeNotLogin"><img src="{{URL::asset('Elegantic/images/ALS.jpg')}}" width="170px" height="100" ></a></span>
 				<ul class="nav navbar-nav navbar-right">
 						@if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
