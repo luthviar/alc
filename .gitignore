@@ -3,8 +3,11 @@
 /public/storage
 /storage/*.key
 /.idea
+/vendor
 /.vagrant
 Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+
+	

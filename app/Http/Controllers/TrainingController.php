@@ -45,20 +45,29 @@ class TrainingController extends Controller
             'module' => 'required',
             'title' => 'required',
         ]);
-        $job_family;
-        if ($request->department) {
+        
+        if ($request->module == 3) {
             $department = Department::where('id_department',$request->department)->first();
             $job_family = $department->id_job_family;
+            $training = new Training;
+            $training->title = $request->title;
+            $training->description = $request->desc;
+            $training->id_module = $request->module;
+            $training->enroll_key = $request->enroll_key;
+            $training->id_department = $request->department;
+            $training->id_job_family = $job_family;
+            $training->save();
+        }else{
+            $training = new Training;
+            $training->title = $request->title;
+            $training->description = $request->desc;
+            $training->id_module = $request->module;
+            $training->enroll_key = $request->enroll_key;
+            $training->id_department = $request->department;
+            $training->save();
         }
 
-        $training = new Training;
-        $training->title = $request->title;
-        $training->description = $request->desc;
-        $training->id_module = $request->module;
-        $training->enroll_key = $request->enroll_key;
-        $training->id_department = $request->department;
-        $training->id_job_family = $job_family;
-        $training->save();
+        
         return redirect('module');
     }
 
