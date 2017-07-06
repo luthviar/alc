@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.head')
 
 @section('content')
+
 <div class="container">
     <div class="row">
       @include('test.admin-nav')

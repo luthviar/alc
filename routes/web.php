@@ -35,22 +35,26 @@ Route::get('Trainning', function () {
 });
 
 
-Route::get('ForumNotLogin', function () {
-    return view('forumUmumNotLogin');
-});
-
 Route::get('Modul', function () {
     return view('module');
 });
 
-
-
-
 Route::get('Pre-Test', function () {
     return view('PreTest');
+});
+
+Route::get('Personnel', function () {
+    return view('personnelList');
 });
 
 
 Route::get('Tests', function () {
     return view('Quiz');
 });
+
+Route::get('ct', function () {
+    return view('create-training');
+});
+
+
+
