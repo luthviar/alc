@@ -83,7 +83,7 @@
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   
                       <input type="submit"  value="submit">
-                    </div>
+                    </div> <colgroup></colgroup>
                   </div>
                   </form>   
                 </div>
