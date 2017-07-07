@@ -1,4 +1,3 @@
-
 <body>
   <h2 class="quizHeader">Pre-Test Induction Quiz</h2>
   <div class = "timerC">Quiz End in  <span id="time"></span></div>

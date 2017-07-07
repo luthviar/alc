@@ -1,162 +1,209 @@
 @include('layouts.head')
 <body>
-  <h2 class="quizHeader">Pre-Test Induction Quiz</h2>
-  <div class = "timerC">Quiz End in  <span id="time"></span></div>
-	<br><br><br>
+
+  <!-- Header -->
+  <div id="wrapper">
+    <div class="wrapper-holder">
+      @include('layouts.header')
+      
+    <section id="main">
+      <div class="container">
+        <div class="row">
+        <h2>Training</h2>
+          <div class="btn-group btn-breadcrumb">
+            <a href="#" class="btn btn-default">Introduction</i></a>
+            <a href="#" class="btn btn-success">Pre-Test</a>
+            <a href="#" class="btn btn-default">Modul</a>
+            <a href="#" class="btn btn-default">Post-Test</a>
+          </div>
+        </div>
+     
+      </div>
+      <br>
+      
+      <div class="block-advice">
+          <div class = "text-center">
+          <h2 class="brand-before">
+              <small>Induction Training</small>
+            </h2>
+            <h1 class="brand-name">{{$type->nama}}</h1>
+            <hr class="tagline-divider">
+            <h2>
+              <small>
+                <strong>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                  </strong>
+              </small>
+            </h2><br>
+              <h6>
+                Quiz Duration = {{$test->time}} Minutes<br><br>
+                Total Question = {{$test->jumlah_soal}} Question<br><br>
+                
+              </h6>
+              <!-- Button modal fullscreen -->
+              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen">
+                Mulai Test
+              </button>
+
+              <!-- Modal fullscreen -->
+              <div class="modal modal-fullscreen fade" id="modal-fullscreen" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                  <form class="" action="{{ URL::action('JawabanTraineeController@store') }}" method="post">
+                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}"><br>
+                    <input type="hidden" name="id_test" value="{{$test->id}}"><br>
+                    <div class="modal-header">
+                      
+                      <h4 class="modal-title" id="myModalLabel">Aerofood Learning Center</h4>
+                      <div class = "timerC">Quiz End in  <span id="time"></span></div>
+                    </div>
+                    <div class="modal-body">
+                      <table class="quizTable">
+                      @foreach($questions as $question)
+                      <tr>
+                        <td>
+                          <div class="questionDiv" align="left">
+                            <p class="question">{{$question->pertanyaan}}</p>
+                              @foreach($question->opsi as $opsi)
+                              <div class="row" style="margin-left: 5%;">
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="{{$question->id}}" id="optionsRadios1" value="{{$opsi->id}}">
+                                    {{$opsi->isi_opsi}}
+                                  </label>
+                                </div>
+                              </div>    
+                              @endforeach
+                          </div>
+                        </td>
+                      </tr>
+                      @endforeach
+                  </table>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  
+                      <input type="submit"  value="submit">
+                    </div>
+                  </div>
+                  </form>   
+                </div>
+              </div>
+
+          </div>
+        </div>
+    </section>
+
+        
+
+  </div>
   
+  <!-- Modul -->
+  @include('layouts.footer')
+  </div>
 
-    <table class="quizTable">
-    <tr>
-      <td>
-        <div class="questionDiv">
-            <p class="question">1. Quiz question #1</p>
-
-            <ul>
-            <input class="answer" type="radio" name="q1" value="1">
-            <label id="correctString1">correct answer 1</label>
-            <br>
-            <input class="answer" type="radio" name="q1" value="0">
-            <label>wrong answer</label>
-            <br>
-            <input class="answer" type="radio" name="q1" value="0">
-            <label>wrong answer</label>
-            <br>
-            <input class="answer" type="radio" name="q1" value="0">
-            <label>wrong answer</label>
-            </ul>
-        </div>
-      </td>
-      <tr>
-      </tr>
-      <td>
-        <div class="questionDiv">
-            <p class="question">2. Quiz question #2</p>
-
-            <ul>
-            <input class="answer" type="radio" name="q2" value="0">
-            <label>True</label>
-            <br>
-            <input class="answer" type="radio" name="q2" value="1">
-            <label id="correctString2">False</label>
-            </ul>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="questionDiv">
-            <p class="question">3. Quiz question #3</p>
-
-            <ul>
-            <input class="answer" type="radio" name="q3" value="0">
-            <label>wrong answer</label>
-            <br>
-            <input class="answer" type="radio" name="q3" value="1">
-            <label id="correctString3">correct answer 3</label>
-            <br>
-            <input class="answer" type="radio" name="q3" value="0">
-            <label>wrong answer</label>
-            <br>
-            <input class="answer" type="radio" name="q3" value="0">
-            <label>wrong answer</label>
-            </ul>
-        </div>
-      </td>
-      <tr>
-      </tr>
-      <td>
-        <div class="questionDiv">
-            <p class="question">4. Quiz question #4</p>
-
-            <ul>
-            <input class="answer" type="radio" name="q4" value="0">
-            <label>wrong answer</label>
-            <br>
-            <input class="answer" type="radio" name="q4" value="1">
-            <label id="correctString4">correct answer 4</label>
-            <br>
-            <input class="answer" type="radio" name="q4" value="0">
-            <label>wrong answer</label>
-            <br>
-            <input class="answer" type="radio" name="q4" value="0">
-            <label>wrong answer</label>
-            </ul>
-        </div>
-      </td>
-    </tr>
-    </table>
-<br/>
-    <div class="quizBottomStuff">
-    <div style="width: 100%;">
-        <div class="submitter">
-              <input class="quizSubmit" id="submitButton" onClick="submitQuiz()"
-              type="submit" value="Submit" />
-        </div>
-	<br><br>
-<!--FOR TESTING SHARE BUTTON-->
-
-    </div>
-
-
-    </div>
-    </div>
-    </div>
-	
-
-
+  @include('layouts.script')
 </body>
-<script>
-	function startTimer(duration, display) {
-    var start = Date.now(),
-        diff,
-        minutes,
-        seconds;
-    function timer() {
-        // get the number of seconds that have elapsed since 
-        // startTimer() was called
-        diff = duration - (((Date.now() - start) / 1000) | 0);
+</html>
 
-        // does the same job as parseInt truncates the float
-        minutes = (diff / 60) | 0;
-        seconds = (diff % 60) | 0;
+<style type="text/css">
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = minutes + ":" + seconds; 
 
-        if (diff <= 0) {
-            // add one second so that the count down starts at the full duration
-            // example 05:00 not 04:59
-            start = Date.now() + 1000;
-        }
-    };
-    // we don't want to wait a full second before the timer starts
-    timer();
-    setInterval(timer, 1000);
+
+
+/* .modal-fullscreen */
+
+.modal-fullscreen {
+  background: white;
+}
+.modal-fullscreen .modal-content {
+  background: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.modal-backdrop.modal-backdrop-fullscreen {
+  background: #ffffff;
+}
+.modal-backdrop.modal-backdrop-fullscreen.in {
+  opacity: .97;
+  filter: alpha(opacity=97);
 }
 
-//minute
-window.onload = function () {
-    var fiveMinutes = 60 * 50,
-        display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
-};
+/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
+
+.modal-fullscreen .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .modal-fullscreen .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-fullscreen .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+     width: 1170px;
+  }
+}
+
+/* centering styles for jsbin */
+html,
+body {
+  width:100%;
+  height:100%;
+}
+html {
+  display:table;
+}
+body {
+  display:table-cell;
+  vertical-align:middle;
+}
+body > .btn {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
+<script type="text/javascript">
+  // .modal-backdrop classes
+
+$(".modal-transparent").on('show.bs.modal', function () {
+  setTimeout( function() {
+    $(".modal-backdrop").addClass("modal-backdrop-transparent");
+  }, 0);
+});
+$(".modal-transparent").on('hidden.bs.modal', function () {
+  $(".modal-backdrop").addClass("modal-backdrop-transparent");
+});
+
+$(".modal-fullscreen").on('show.bs.modal', function () {
+  setTimeout( function() {
+    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+  }, 0);
+});
+$(".modal-fullscreen").on('hidden.bs.modal', function () {
+  $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+});
+  
+
+
 </script>
 
-<style>
-		/* css here */
 
-	{
-		border: 1px dotted black;
-		
-	}
 
-	body{
-		background-color : #6AD66C;
-	}
+<!-- Quiz style -->
+<style type="text/css">
 p.question {
-  font-family: 	Arial, sans-serif;
+  font-family:  Arial, sans-serif;
   font-size:19px;
   color: #2E2E2E;
   margin-bottom:0px;
@@ -176,15 +223,15 @@ h2.quizHeader {
 }
 
 div.quizBottomStuff {
-	width: 583px;
+  width: 583px;
 
 }
 
 div.questionDiv {
-	width : auto;
-	border : 1px solid green;
-	padding : 2%;
-	display: block !important;
+  width : auto;
+  border : 1px solid green;
+  padding : 2%;
+  display: block !important;
 }
 
 h2.quizScore{
@@ -213,6 +260,7 @@ label {
 
 input.answer[type="radio"] {
   margin-bottom: 10px;
+  opacity: 1;
 }
 
 input.quizSubmit[type="submit"] {
@@ -266,37 +314,37 @@ td {
 }
 
 ul {
-	*border: 1px solid green;
-	margin-bottom: 5px;
-	margin-top: 10px;
+  *border: 1px solid green;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .submitter {
-	  width:85px;
-	  float:left;
+    width:85px;
+    float:left;
 }
 
 .hide {
-	  display:none;
+    display:none;
 }
 
 .shareButton {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 9px;
-	text-align:center;
-	*border: 1px solid green;
-	float:right;
-	*width: 30px;
-	*height: 15px;
-	margin: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  text-align:center;
+  *border: 1px solid green;
+  float:right;
+  *width: 30px;
+  *height: 15px;
+  margin: 4px;
 }
 
 div.timerC{
-	float : right;
-	color : white;
-	background-color : green;
-	padding : 1%;
-	border-radius : 10px;
+  float : right;
+  color : white;
+  background-color : green;
+  padding : 1%;
+  border-radius : 10px;
 }
 
 
@@ -304,4 +352,44 @@ div.timerC{
 SFS dark red = #9f2026; */
 
 </style>
+
+<!-- Quiz script-->
+<script>
+  function startTimer(duration, display) {
+    var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+    function timer() {
+        // get the number of seconds that have elapsed since 
+        // startTimer() was called
+        diff = duration - (((Date.now() - start) / 1000) | 0);
+
+        // does the same job as parseInt truncates the float
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds; 
+
+        if (diff <= 0) {
+            // add one second so that the count down starts at the full duration
+            // example 05:00 not 04:59
+            start = Date.now() + 1000;
+        }
+    };
+    // we don't want to wait a full second before the timer starts
+    timer();
+    setInterval(timer, 1000);
+}
+
+//minute
+window.onload = function () {
+    var fiveMinutes = 60 * {{$test->time}},
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+</script>
 

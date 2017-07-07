@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Module;
 use App\SectionTraining;
+use App\SectionTrainingType;
+use App\Test;
+use App\Question;
+use App\OpsiJawaban;
 use Illuminate\Http\Request;
 
 class SectionTrainingController extends Controller
@@ -44,9 +50,24 @@ class SectionTrainingController extends Controller
      * @param  \App\SectionTraining  $sectionTraining
      * @return \Illuminate\Http\Response
      */
-    public function show(SectionTraining $sectionTraining)
+    public function show($id)
     {
-        //
+        $module  = Module::all();
+        $section = SectionTraining::find($id);
+        $type = SectionTrainingType::find($section->id_type);
+        if ($type->id == 1) {
+            $test = Test::where('id_section_training',$section->id)->first();
+            $questions = Question::where('id_test',$test->id)->get();
+            foreach ($questions as $key => $value) {
+                $opsi = OpsiJawaban::where('id_question',$value->id)->get();
+                $value['opsi'] = $opsi;
+
+            }
+            return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions);
+        }else{
+
+        }
+        
     }
 
     /**
