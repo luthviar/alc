@@ -44,7 +44,7 @@ Route::get('Pre-Test', function () {
 });
 
 Route::get('Personnel', function () {
-    return view('personnelList');
+    return view('Admin.personnelList');
 });
 
 
@@ -52,8 +52,21 @@ Route::get('Tests', function () {
     return view('Quiz');
 });
 
+
+Route::get('AdminHome', function () {
+    return view('Admin.Dashboard');
+});
+
+Route::get('/CreateDepartement', function () {
+    return view('Admin.CreateDept');
+});
+
 Route::get('ct', function () {
     return view('create-training');
+});
+
+Route::get('Materi', function () {
+    return view('Materi');
 });
 
 
