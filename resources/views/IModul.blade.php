@@ -36,7 +36,7 @@
 		<section id="main">
 			<div class="container">
 				<div class="row">
-				<h2>Introduction</h2>
+				
 					<div class="btn-group btn-breadcrumb">
 						<a href="#" class="btn btn-success">Introduction</i></a>
 						<a href="#" class="btn btn-default">Pre-Test</a>
@@ -51,20 +51,38 @@
 			<div class="block-advice">
 					<div class = "text-center">
 					<h2 class="brand-before">
-							<small>Welcome to</small>
+							<small>Procurement Training</small>
 						</h2>
-						<h1 class="brand-name">Induction Trainning</h1>
-						<hr class="tagline-divider">
-						<h2>
-							<small>
-								<strong>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-									</strong>
-							</small>
-						</h2><br>
-							<h6>
-								<strong>Quiz Duration = 30 min<br></strong>
-								<button class="button" ><a href="Pre-Test">Next</a></button>
-							</h6>
+						<h1 class="brand-name">Hasil Test</h1>
+							
+						<div class="row">
+							<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+									    <h3 class="panel-title"><strong>Pre-Test Score</strong></h3>
+									</div>
+									<div class="panel-body" style="font-size: 100px;">
+									    50
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+									    <h3 class="panel-title"><strong>Post-Test Score</strong></h3>
+									</div>
+									<div class="panel-body" style="font-size: 100px;">
+									    50
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<br>
+						<h6>
+							<a class="btn darkgreen" href="Pre-Test">Next</a>
+						</h6>
+						
 					</div>
 				</div>
 		</section>

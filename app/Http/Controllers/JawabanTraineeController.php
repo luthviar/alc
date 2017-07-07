@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Module;
 use App\JawabanTrainee;
 use App\Test;
 use App\Question;
 use App\OpsiJawaban;
 use App\UserTest;
 use App\SectionTraining;
+use App\Training;
 use Illuminate\Http\Request;
 
 class JawabanTraineeController extends Controller
@@ -71,6 +73,12 @@ class JawabanTraineeController extends Controller
             $user_test->id_pre_test = $request->id_test;
             $user_test->pre_test_score = $skor;
             $user_test->save();
+
+            //sent to view
+            $module = Module::all();
+            $training = Training::find($section->id_training);
+            $modul_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
+            return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_pre_test',$skor);
         }elseif ($section->id_type ==3) {
             # code...
         }
