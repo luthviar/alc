@@ -29,6 +29,9 @@ Route::resource('berita', 'BeritaController');
 
 Route::resource('slider', 'ContentSliderController');
 
+Route::resource('section-training', 'SectionTrainingController');
+
+Route::resource('jawaban', 'JawabanTraineeController');
 
 Route::get('Trainning', function () {
     return view('IModul');
