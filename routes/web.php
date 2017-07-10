@@ -37,7 +37,7 @@ Route::resource('section-training', 'SectionTrainingController');
 
 Route::resource('jawaban', 'JawabanTraineeController');
 
-<<<<<<< HEAD
+
 Route::get('Trainning', function () {
     return view('IModul');
 });
