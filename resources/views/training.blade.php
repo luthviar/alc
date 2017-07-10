@@ -34,7 +34,7 @@
 									</strong>	
 								</h4><br>
 								<h6>
-									<a class="btn darkgreen" href="Pre-Test">Next</a>
+									<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
 								</h6>
 							</div>
 						</div>

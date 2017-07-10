@@ -37,6 +37,8 @@ Route::resource('section-training', 'SectionTrainingController');
 
 Route::resource('jawaban', 'JawabanTraineeController');
 
+Route::resource('content-learning', 'ContentLearningController');
+
 Route::get('Trainning', function () {
     return view('IModul');
 });

@@ -6,6 +6,7 @@ use App\Module;
 use App\Department;
 use App\JobFamily;
 use App\Training;
+use App\SectionTraining;
 use Illuminate\Http\Request;
 
 class TrainingController extends Controller
@@ -77,11 +78,12 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show($training)
+    public function show($id)
     {
         $module = Module::all();
-        $training = Training::find($training);
-        return view('training')->with('training',$training)->with('module',$module);
+        $training = Training::find($id);
+        $section = SectionTraining::where('id_training',$id)->where('id_type','1')->first();
+        return view('training')->with('training',$training)->with('module',$module)->with('next_section',$section);
     }
 
     /**

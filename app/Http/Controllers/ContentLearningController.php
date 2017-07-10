@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Module;
 use App\ContentLearning;
+use App\SectionTraining;
+use App\Training;
 use Illuminate\Http\Request;
 
 class ContentLearningController extends Controller
@@ -44,9 +47,13 @@ class ContentLearningController extends Controller
      * @param  \App\ContentLearning  $contentLearning
      * @return \Illuminate\Http\Response
      */
-    public function show(ContentLearning $contentLearning)
+    public function show($id_section)
     {
-        //
+        $module = Module::all();
+        $content = ContentLearning::where('id_section',$id_section)->get();
+        $section = SectionTraining::find($id_section);
+        $training = Training::find($section->id_training);
+        return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training);
     }
 
     /**
