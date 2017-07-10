@@ -11,7 +11,11 @@
 |
 */
 
+//DocumentViewer Library
+Route::any('ViewerJS/{all?}', function(){
 
+    return View::make('ViewerJS.index');
+});
 
 Auth::routes();
 
