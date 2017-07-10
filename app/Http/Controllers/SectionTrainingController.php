@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Auth;
 use App\Module;
 use App\SectionTraining;
 use App\SectionTrainingType;
+use App\ContentLearning;
 use App\Test;
+use App\Training;
 use App\Question;
 use App\OpsiJawaban;
+use App\UserTest;
 use Illuminate\Http\Request;
 
 class SectionTrainingController extends Controller
@@ -55,17 +59,47 @@ class SectionTrainingController extends Controller
         $module  = Module::all();
         $section = SectionTraining::find($id);
         $type = SectionTrainingType::find($section->id_type);
-        if ($type->id == 1) {
-            $test = Test::where('id_section_training',$section->id)->first();
-            $questions = Question::where('id_test',$test->id)->get();
-            foreach ($questions as $key => $value) {
-                $opsi = OpsiJawaban::where('id_question',$value->id)->get();
-                $value['opsi'] = $opsi;
+        //check user jika pernah masuk training ini
+        $user = Auth::user()->id;
+        $check_user = UserTest::where('id_user',$user)->where('id_training',$section->id_training)->first();
+        if(empty($check_user) or  empty($check_user->id_post_test) or $type->id ==2){
+            if ($type->id == 1) {
+                $test = Test::where('id_section_training',$section->id)->first();
+                $questions = Question::where('id_test',$test->id)->get();
+                foreach ($questions as $key => $value) {
+                    $opsi = OpsiJawaban::where('id_question',$value->id)->get();
+                    $value['opsi'] = $opsi;
 
+                }
+                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$id+1)->first();
+                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('next_section',$next_section);
+            }elseif($type->id == 2){
+                $module = Module::all();
+                $content = ContentLearning::where('id_section',$id)->get();
+                $section = SectionTraining::find($id);
+                $training = Training::find($section->id_training);
+                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$id+1)->first();
+                if (empty($check_user->id_post_test)) {
+                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section);
+                }else{
+                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section)->with('logout',true);
+                }
+                
+            }else{
+                $test = Test::where('id_section_training',$section->id)->first();
+                $questions = Question::where('id_test',$test->id)->get();
+                foreach ($questions as $key => $value) {
+                    $opsi = OpsiJawaban::where('id_question',$value->id)->get();
+                    $value['opsi'] = $opsi;
+                }
+                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions);
             }
-            return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions);
         }else{
-
+            $module = Module::all();
+            $training = Training::find($section->id_training);
+            $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
+            return view('test-result')->with('module',$module)->with('training',$training)->with('skor_post_test',$check_user->post_test_score)->with('skor_pre_test',$check_user->pre_test_score)->with('next_section', $next_section);
+        
         }
         
     }

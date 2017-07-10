@@ -12,9 +12,18 @@
         <h2>Training</h2>
           <div class="btn-group btn-breadcrumb">
             <a href="#" class="btn btn-default">Introduction</i></a>
+            @if($type->id==1)
             <a href="#" class="btn btn-success">Pre-Test</a>
+            @elseif($type->id==3)
+            <a href="#" class="btn btn-default">Pre-Test</a>
+            @endif
             <a href="#" class="btn btn-default">Modul</a>
+            @if($type->id==1)
             <a href="#" class="btn btn-default">Post-Test</a>
+            @elseif($type->id==3)
+            <a href="#" class="btn btn-success">Post-Test</a>
+            @endif
+            
           </div>
         </div>
      
@@ -40,7 +49,7 @@
                 
               </h6>
               <!-- Button modal fullscreen -->
-              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen">
+              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
                 Mulai Test
               </button>
 
@@ -48,7 +57,7 @@
               <div class="modal modal-fullscreen fade" id="modal-fullscreen" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                  <form class="" action="{{ URL::action('JawabanTraineeController@store') }}" method="post">
+                  <form class="" action="{{ URL::action('JawabanTraineeController@store') }}" method="post" id="myquiz">
                     <input type="hidden" name="id_user" value="{{Auth::user()->id}}"><br>
                     <input type="hidden" name="id_test" value="{{$test->id}}"><br>
                     <div class="modal-header">
@@ -355,6 +364,7 @@ SFS dark red = #9f2026; */
 
 <!-- Quiz script-->
 <script>
+
   function startTimer(duration, display) {
     var start = Date.now(),
         diff,
@@ -379,6 +389,9 @@ SFS dark red = #9f2026; */
             // example 05:00 not 04:59
             start = Date.now() + 1000;
         }
+        if (minutes < 1 && seconds < 1) {
+          document.getElementById('myquiz').submit();
+        }
     };
     // we don't want to wait a full second before the timer starts
     timer();
@@ -386,8 +399,8 @@ SFS dark red = #9f2026; */
 }
 
 //minute
-window.onload = function () {
-    var fiveMinutes = 60 * {{$test->time}},
+ function start_timer() {
+    var fiveMinutes = 60 * 1,
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };

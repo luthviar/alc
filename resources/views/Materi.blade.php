@@ -68,7 +68,7 @@
 						    </div>
 						    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 						      <div class="panel-body">
-						      <iframe id="viewer" src = "{{URL::to('/')}}/ViewerJS/index.html#../KAKP.pdf" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe>
+						      <iframe id="viewer" src = "{{URL::to('/ViewerJS/index.html#../KAKP.pdf')}}" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe>
 						        
 						      </div>
 						    </div>

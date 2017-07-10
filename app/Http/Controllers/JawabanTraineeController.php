@@ -57,11 +57,12 @@ class JawabanTraineeController extends Controller
             $jawaban->id_question = $value->id;
             $jawaban->isi_jawaban = $request->$value['id'];
             $opsi = OpsiJawaban::find($jawaban->isi_jawaban);
-            if ($opsi->is_true == 1) {
+            if (empty($opsi) or $opsi->is_true == 0) {
+                $jawaban->skor = 0;
+            }else{
                 $jawaban->skor = 1;
                 $benar += 1;
-            }else{
-                $jawaban->skor = 0;
+                
             }
             $jawaban->save();
         }
@@ -78,9 +79,19 @@ class JawabanTraineeController extends Controller
             $module = Module::all();
             $training = Training::find($section->id_training);
             $modul_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
-            return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_pre_test',$skor);
+            $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$section->id +1)->first();
+            return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_pre_test',$skor)->with('next_section',$next_section);
         }elseif ($section->id_type ==3) {
-            # code...
+            $user_test = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
+            $user_test->id_post_test = $request->id_test;
+            $user_test->post_test_score = $skor;
+            $user_test->save();
+
+            //sent to view
+            $module = Module::all();
+            $training = Training::find($section->id_training);
+            $modul_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
+            return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_post_test',$skor)->with('skor_pre_test',$user_test->pre_test_score);
         }
         
 

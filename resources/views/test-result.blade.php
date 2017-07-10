@@ -54,7 +54,12 @@
 						
 						<br>
 						<h6>
-							<a class="btn darkgreen" href="Pre-Test">Next</a>
+						@if(empty($next_section))
+							<a class="btn darkgreen" href="/">Next</a>
+						@else
+							<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
+							
+						@endif
 						</h6>
 						
 					</div>
