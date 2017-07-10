@@ -53,10 +53,13 @@
 						
 						<br>
 						<h6>
-							@if($logout)
-							<a class="btn btn-warning" href="/">Back</a>
-							@endif
+							@if(empty($logout))
 							<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
+							@else
+							<a class="btn btn-warning" href="/">Back</a>
+							<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
+							@endif
+							
 						</h6>
 						
 						

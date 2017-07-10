@@ -39,18 +39,6 @@ Route::resource('jawaban', 'JawabanTraineeController');
 
 Route::resource('content-learning', 'ContentLearningController');
 
-Route::get('Trainning', function () {
-    return view('IModul');
-});
-
-
-Route::get('Modul', function () {
-    return view('module');
-});
-
-Route::get('Pre-Test', function () {
-    return view('PreTest');
-});
 
 Route::get('UserList', function () {
     return view('Admin.UserList');
