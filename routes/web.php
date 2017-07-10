@@ -37,6 +37,7 @@ Route::resource('section-training', 'SectionTrainingController');
 
 Route::resource('jawaban', 'JawabanTraineeController');
 
+<<<<<<< HEAD
 Route::get('Trainning', function () {
     return view('IModul');
 });
@@ -49,6 +50,10 @@ Route::get('Modul', function () {
 Route::get('Pre-Test', function () {
     return view('PreTest');
 });
+
+Route::resource('content-learning', 'ContentLearningController');
+
+
 
 Route::get('UserList', function () {
     return view('Admin.UserList');

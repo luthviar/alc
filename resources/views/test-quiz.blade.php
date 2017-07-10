@@ -1,4 +1,6 @@
 @include('layouts.head')
+
+
 <body>
 
   <!-- Header -->
@@ -400,9 +402,24 @@ SFS dark red = #9f2026; */
 
 //minute
  function start_timer() {
-    var fiveMinutes = 60 * 1,
+    var fiveMinutes = 60 * {{$test->time}},
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };
+
+</script>
+
+<script type="text/javascript">
+ 
+   $(window).on('beforeunload', function(){
+      return 'Are you sure you want to leave?';
+    });
+
+    $(window).on('unload', function(){
+
+             document.getElementById('myquiz').submit();
+
+    });
+   
 </script>
 
