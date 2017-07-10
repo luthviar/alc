@@ -37,8 +37,6 @@ Route::resource('section-training', 'SectionTrainingController');
 
 Route::resource('jawaban', 'JawabanTraineeController');
 
-Route::resource('content-learning', 'ContentLearningController');
-
 Route::get('Trainning', function () {
     return view('IModul');
 });
@@ -89,6 +87,11 @@ Route::get('EditUser', function () {
 
 Route::get('CreateTrainning', function () {
     return view('Admin.CreateTrainning');
+});
+
+
+Route::get('EditProfileForm', function () {
+    return view('Admin.EditProfileForm');
 });
 
 
