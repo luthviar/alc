@@ -26,9 +26,6 @@
 						Admin Name
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li class="dropdown-header">SETTINGS</li>
-							<li class=""><a href="#">Request</a></li>
-							<li class="divider"></li>
 							<li><a href="#">Logout</a></li>
 						</ul>
 					</li>
@@ -41,11 +38,12 @@
 			<ul class="nav nav-pills nav-stacked">
 						
 			  <li><a href="AdminHome#dashboard">Dashboard</a></li>
+			  <li><a href="CreateTrainning">CreateTrainning</a></li>
 			  <li><a href="CreateDepartement">Create Departement</a></li>
-			  <li><a href="#links">Add New User</a></li>
-			  <li><a href="Personnel">Personel List</a></li>
-			  <li><a href="#widgets">Employee List</a></li>
-			  <li><a href="#plugins">Trainning List</a></li>
+			  <li><a href="AddUser">Add New User</a></li>
+			  <li><a href="UserList">User List</a></li>
+			  <li><a href="#users">Create Quiz</a></li>
+			  <li><a href="#tools">Trainning List</a></li>
 			  <li><a href="#users">users</a></li>
 			  <li><a href="#tools">tools</a></li>
 			  <li><a href="#settings">settings</a></li>

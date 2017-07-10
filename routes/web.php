@@ -50,8 +50,13 @@ Route::get('Pre-Test', function () {
     return view('PreTest');
 });
 
-Route::get('Personnel', function () {
-    return view('Admin.personnelList');
+Route::get('UserList', function () {
+    return view('Admin.UserList');
+});
+
+
+Route::get('Employee', function () {
+    return view('Admin.EmployeeList');
 });
 
 
@@ -74,6 +79,14 @@ Route::get('ct', function () {
 
 Route::get('Materi', function () {
     return view('Materi');
+});
+
+Route::get('AddUser', function () {
+    return view('Admin.AddUser');
+});
+
+Route::get('CreateTrainning', function () {
+    return view('Admin.CreateTrainning');
 });
 
 
