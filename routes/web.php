@@ -63,16 +63,16 @@ Route::get('/CreateDepartement', function () {
     return view('Admin.CreateDept');
 });
 
-Route::get('ct', function () {
-    return view('create-training');
-});
-
 Route::get('Materi', function () {
     return view('Materi');
 });
 
 Route::get('AddUser', function () {
     return view('Admin.AddUser');
+});
+
+Route::get('EditUser', function () {
+    return view('Admin.EditUser');
 });
 
 Route::get('CreateTrainning', function () {

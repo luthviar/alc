@@ -15,7 +15,7 @@
                             <label for="username" class="col-md-4 control-label">ID Department</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                                <input id="username" placeholder="ID Departement" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -32,7 +32,7 @@
                             <label for="username" class="col-md-4 control-label">Department Name</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                                <input id="username" placeholder="Departement Name" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -53,6 +53,14 @@
 									<option value="">IT</option>
 									<option value="">IT</option>
 								</select><br>
+                            </div>
+                        </div>
+						
+						 <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                   Create Departement
+                                </button>
                             </div>
                         </div>
 						
