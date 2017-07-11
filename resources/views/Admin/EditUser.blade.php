@@ -29,23 +29,23 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Username:</td>
+                        <td>Username</td>
                         <td>12315912</td>
                       </tr>
 					  <tr>
-                        <td>Department:</td>
+                        <td>Department</td>
                         <td>Programming</td>
                       </tr>
 					  <tr>
-                        <td>Positition:</td>
+                        <td>Positition</td>
                         <td>Staff</td>
                       </tr>
 					  <tr>
-                        <td>Office:</td>
+                        <td>Office</td>
                         <td>ISTS</td>
                       </tr>
                       <tr>
-                        <td>Hire date:</td>
+                        <td>Hire date</td>
                         <td>06/23/2013</td>
                       </tr>
                       <tr>

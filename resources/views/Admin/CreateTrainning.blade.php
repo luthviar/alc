@@ -42,7 +42,7 @@
                             <label for="username" class="col-md-4 control-label">Trainning Description</label>
 
                             <div class="col-md-6">
-                                <textarea rows="4" col="50" id="password" type="password" class="form-control" name="password" required>
+                                <textarea rows="4" col="50" id="password" type="password" class="form-control" name="password" required style="resize: none;">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
