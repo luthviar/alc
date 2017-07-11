@@ -1,6 +1,8 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
+
+<!--Edit User Prfoile-->
 <link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
 <script type="text/javascript" src="js/EditProfile.js"></script>
 
@@ -83,7 +85,7 @@
                  <div class="panel-footer">
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="EditProfileForm" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                     </div>

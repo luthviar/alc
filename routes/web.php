@@ -37,7 +37,22 @@ Route::resource('section-training', 'SectionTrainingController');
 
 Route::resource('jawaban', 'JawabanTraineeController');
 
+
+Route::get('Trainning', function () {
+    return view('IModul');
+});
+
+
+Route::get('Modul', function () {
+    return view('module');
+});
+
+Route::get('Pre-Test', function () {
+    return view('PreTest');
+});
+
 Route::resource('content-learning', 'ContentLearningController');
+
 
 
 Route::get('UserList', function () {
@@ -77,6 +92,11 @@ Route::get('EditUser', function () {
 
 Route::get('CreateTrainning', function () {
     return view('Admin.CreateTrainning');
+});
+
+
+Route::get('EditProfileForm', function () {
+    return view('Admin.EditProfileForm');
 });
 
 
