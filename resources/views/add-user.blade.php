@@ -14,7 +14,7 @@
                         <h3>Data Diri</h3>
                     </div>
                 </div>
-                    <form id="myform" class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('PersonnelController@store') }}">
                         {{ csrf_field() }}
 
                     <div class="form-group">
@@ -80,7 +80,7 @@
                         <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
 
                         <div class="col-md-6">
-                            <input id="phone_number" type="text" class="form-control" name="password" required>
+                            <input id="phone_number" type="text" class="form-control" name="no_hp" required>
                         </div>
                     </div>
 						
@@ -88,7 +88,7 @@
                         <label for="datePicker" class="col-md-4 control-label">Birth Date</label>
                         <div class="col-md-6 date">
                             <div class="input-group input-append date" id="datePicker">
-                                <input type="text" class="form-control" name="date" />
+                                <input type="text" class="form-control" name="tanggal_lahir" />
                                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
 
                         <div class="col-md-6">
-                            <textarea rows="4" col="50" id="password" type="password" class="form-control" name="alamat" required style="resize: none;"></textarea>
+                            <textarea rows="4" col="50" id="alamat" type="text" class="form-control" name="alamat" required style="resize: none;"></textarea>
                         </div>
                     </div>
 
@@ -131,8 +131,9 @@
                         <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
                         <div class="col-md-6">
                             <select name="level_position" class="selectpicker">
-                                <option value="1">Staff</option>
-                                <option value="0">Senior Manager</option>
+                                @foreach($level as $pos)
+                                <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
+                                @endforeach
                             </select><br>
                         </div>
                     </div>
@@ -140,8 +141,10 @@
                         <label for="department" class="col-md-4 control-label">Department</label>                                     
                         <div class="col-md-6">
                             <select name="department" class="selectpicker">
-                                <option value="1">IT</option>
-                                <option value="0">HC</option>
+                                <option value="">..</option>
+                                @foreach($department as $deps)
+                                <option value="{{$deps->id_department}}">{{$deps->nama_departmen}}</option>
+                                @endforeach
                             </select><br>
                         </div>
                     </div>
@@ -149,8 +152,10 @@
                         <label for="unit" class="col-md-4 control-label">Unit</label>                                     
                         <div class="col-md-6">
                             <select name="unit" class="selectpicker">
-                                <option value="1">ACS Cengkareng</option>
-                                <option value="0">ACS Surabaya</option>
+                                <option value="">..</option>
+                                @foreach($unit as $unt)
+                                <option value="{{$unt->id_unit}}">{{$unt->nama_unit}}</option>
+                                @endforeach
                             </select><br>
                         </div>
                     </div>
@@ -158,8 +163,10 @@
                         <label for="section" class="col-md-4 control-label">Section</label>                                     
                         <div class="col-md-6">
                             <select name="section" class="selectpicker">
-                                <option value="1">ACS Cengkareng</option>
-                                <option value="0">ACS Surabaya</option>
+                                <option value="">..</option>
+                                @foreach($section as $sect)
+                                <option value="{{$sect->id_section}}">{{$sect->nama_section}}</option>
+                                @endforeach
                             </select><br>
                         </div>
                     </div>
@@ -167,8 +174,10 @@
                         <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                         <div class="col-md-6">
                             <select name="divisi" class="selectpicker">
-                                <option value="1">ACS Cengkareng</option>
-                                <option value="0">ACS Surabaya</option>
+                                <option value="">..</option>
+                                @foreach($divisi as $div)
+                                <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
+                                @endforeach
                             </select><br>
                         </div>
                     </div>
@@ -194,7 +203,7 @@
 $(document).ready(function() {
     $('#datePicker')
         .datepicker({
-            format: 'mm/dd/yyyy'
+            format: 'yyyy-mm-dd'
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
@@ -222,7 +231,7 @@ $(document).ready(function() {
                         message: 'The date is required'
                     },
                     date: {
-                        format: 'MM/DD/YYYY',
+                        format: 'YYYY-MM-DD',
                         message: 'The date is not a valid'
                     }
                 }
@@ -231,50 +240,6 @@ $(document).ready(function() {
     });
 
 
-     $('#myform')
-            .bootstrapValidator({
-                message: 'This value is not valid',
-                feedbackIcons: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-                    username: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The gender is required'
-                            }
-                        }
-                    },
-                    'username': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Please specify at least one browser you use daily for development'
-                            }
-                        }
-                    },
-                    'editors[]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'The editor names are required'
-                            }
-                        }
-                    }
-                }
-            })
-            .on('error.field.bv', function(e, data) {
-                console.log('error.field.bv -->', data);
-            })
-            .on('status.field.bv', function(e, data) {
-                console.log('status.field.bv -->', data);
-
-                var $form = $(e.target);
-                // I don't want to add has-success class to valid field container
-                data.element.parents('.form-group').removeClass('has-success');
-
-                // I want to enable the submit button all the time
-                $form.data('bootstrapValidator').disableSubmitButtons(false);
-            });
+    
 });
 </script>

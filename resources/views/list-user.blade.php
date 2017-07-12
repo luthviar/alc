@@ -10,7 +10,7 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <div class = "PageContainer">
     <div class="quick-press">
-		<h3>Employee List</h3>
+		<h3>User List</h3>
 		<div class = "main-table">
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
@@ -22,13 +22,16 @@
 				</tr>
 			  </thead>
 			  <tbody>
+			  	@foreach($personnels as $personnel)
 				<tr>
-				  <td>12141241</td>
-				  <td>Mark,IT Dept</td>
-				  <td>Staff</td>
-				  <td><a href="#">View</a><a href="#">Edit</a></td>
+				  <td>{{$personnel->fname}} {{$personnel->lname}}</td>
+				  <td>{{$personnel->position}}</td>
+				  <td>{{$personnel->divisi}}</td>
+				  <td><span><a class="btn btn-info" href="#">View</a></span><span><a class="btn btn-default" href="#">Edit</a></span></td>
 				</tr>
+				@endforeach
 				
+			  </tbody>
 			  </tbody>
 			</table>
 		</div>
