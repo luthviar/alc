@@ -39,36 +39,22 @@
 					  <tr>
                         <td>Department:</td>
                         <td>Finance</td>
-
-                        <td>Username</td>
-                        <td>12315912</td>
                       </tr>
-					  <tr>
-                        <td>Department</td>
-                        <td>Programming</td>
-
-                      </tr>
+					  
 					  <tr>
                         <td>Positition</td>
                         <td>Staff</td>
                       </tr>
+					  
 					  <tr>
-
-                        <td>Pre-Test:</td>
+						<td>Pre-Test:</td>
                         <td><a href='EditPreTest'>Detail Pre-Test</a></td>
                       </tr>
                       <tr>
 						<td>Materi:</td>
                         <td><a href='EditMateri'>Detail Materi</a></td>
-
-                        <td>Office</td>
-                        <td>ISTS</td>
                       </tr>
-                      <tr>
-                        <td>Hire date</td>
-                        <td>06/23/2013</td>
-
-                      </tr>
+                     
 					  <tr>
 						<td>Post-Test:</td>
                         <td><a href='EditPostTest'>Detail Post-Test</a></td>

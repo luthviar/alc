@@ -53,6 +53,10 @@ Route::get('Pre-Test', function () {
     return view('PreTest');
 });
 
+Route::get('EditPreTest', function () {
+    return view('Admin.EditPreTest');
+});
+
 Route::resource('content-learning', 'ContentLearningController');
 
 
