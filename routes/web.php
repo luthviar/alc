@@ -56,7 +56,7 @@ Route::resource('content-learning', 'ContentLearningController');
 
 
 Route::get('UserList', function () {
-    return view('Admin.UserList');
+    return view('Admin(new).UserList');
 });
 
 
@@ -99,5 +99,17 @@ Route::get('EditProfileForm', function () {
     return view('Admin.EditProfileForm');
 });
 
+Route::get('CreateNews', function () {
+    return view('Admin.CreateNews');
+});
+
+Route::get('ListTrainning', function () {
+    return view('Admin.ListTrainning');
+});
+
+
+Route::get('lol', function () {
+    return view('Admin(New).admintemplate');
+});
 
 

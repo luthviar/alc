@@ -38,11 +38,12 @@
 			<ul class="nav nav-pills nav-stacked">
 						
 			  <li><a href="AdminHome#dashboard">Dashboard</a></li>
+			  <li><a href="CreateNews">Create News</a></li>
 			  <li><a href="CreateTrainning">CreateTrainning</a></li>
-			  <li><a href="CreateDepartement">Create Departement</a></li>
+			  <li><a href="ListTrainning">Trainning List</a></li>
 			  <li><a href="AddUser">Add New User</a></li>
 			  <li><a href="UserList">User List</a></li>
-			  <li><a href="#users">Create Quiz</a></li>
+			  <li><a href="CreateDepartement">Create Departement</a></li>
 			  <li><a href="#tools">Trainning List</a></li>
 			  <li><a href="#users">users</a></li>
 			  <li><a href="#tools">tools</a></li>
