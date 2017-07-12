@@ -27,42 +27,42 @@
 				  <td>Procurement</td>
 				  <td>Functional</td>
 				  <td>62</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="TrainningInfo">Detail</td>
 				  <td>2017/10/12</td> 
 				</tr>
 				<tr>
 				  <td>Procurement</td>
 				  <td>Functional</td>
 				  <td>62</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="TrainningInfo">Detail</td>
 				  <td>2017/10/12</td> 
 				</tr>
 				<tr>
 				  <td>Procurement</td>
 				  <td>Functional</td>
 				  <td>62</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="TrainningInfo">Detail</td>
 				  <td>2017/10/12</td> 
 				</tr>
 				<tr>
 				  <td>Procurement</td>
 				  <td>Functional</td>
 				  <td>62</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="TrainningInfo">Detail</td>
 				  <td>2017/10/12</td> 
 				</tr>
 				<tr>
 				  <td>Procurement</td>
 				  <td>Functional</td>
 				  <td>62</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="TrainningInfo">Detail</td>
 				  <td>2017/10/12</td> 
 				</tr>
 				<tr>
 				  <td>Procurement</td>
 				  <td>Functional</td>
 				  <td>62</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="TrainningInfo">Detail</td>
 				  <td>2017/10/12</td> 
 				</tr>
 			  </tbody>

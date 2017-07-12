@@ -28,7 +28,7 @@
 				  <td>12141241</td>
 				  <td>Musqiouto Mark,IT Dept</td>
 				  <td>Employee(new)</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -36,7 +36,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -44,7 +44,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -52,7 +52,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -60,7 +60,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -68,7 +68,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -76,7 +76,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -84,7 +84,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -92,7 +92,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -100,7 +100,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -108,7 +108,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -116,7 +116,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -124,7 +124,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -132,7 +132,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>
@@ -140,7 +140,7 @@
 				  <td>12141241</td>
 				  <td>Mark,IT Dept</td>
 				  <td>Employee</td>
-				  <td><a href="EditUser">Edit</td>
+				  <td><a href="UserInfo">Edit</td>
 				  <td>2017/10/12</td>
 				  <td>Jakarta</td> 
 				</tr>

@@ -8,12 +8,9 @@
 
       <div class="row">
         <div class="panel panel-default">
-                <div class="panel-heading">Edit User</div>
-                <div class="panel-body">
-   
-              <h3 class="panel-title">Sheena Shrestha</h3>
-            </div>
-            <div class="panel-body">
+                <div class="panel-heading">Trainning Info</div>
+            
+			<div class="panel-body">
               <div class="row">
                 <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>
@@ -31,59 +28,48 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Username:</td>
-                        <td>12315912</td>
+                        <td>Trainning Name:</td>
+                        <td>Procuremenet</td>
+                      </tr>
+					  <tr>
+                        <td>Modul:</td>
+                        <td>Functional Module</td>
                       </tr>
 					  <tr>
                         <td>Department:</td>
-                        <td>Programming</td>
+                        <td>Finance</td>
                       </tr>
 					  <tr>
                         <td>Positition:</td>
                         <td>Staff</td>
                       </tr>
 					  <tr>
-                        <td>Office:</td>
-                        <td>ISTS</td>
+                        <td>Pre-Test:</td>
+                        <td><a href='EditPreTest'>Detail Pre-Test</a></td>
                       </tr>
                       <tr>
-                        <td>Hire date:</td>
-                        <td>06/23/2013</td>
+						<td>Materi:</td>
+                        <td><a href='EditMateri'>Detail Materi</a></td>
                       </tr>
-                      <tr>
-                        <td>Date of Birth</td>
-                        <td>01/24/1988</td>
+					  <tr>
+						<td>Post-Test:</td>
+                        <td><a href='EditPostTest'>Detail Post-Test</a></td>
                       </tr>
-                   
                          <tr>
-                             <tr>
-                        <td>Gender</td>
-                        <td>Female</td>
-                      </tr>
-                        <tr>
-                        <td>Home Address</td>
-                        <td>Kathmandu,Nepal</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
-                      </tr>
-                        <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                        </td>
-                           
+                          <td>Description</td>
+						  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+						  </td>                           
                       </tr>
                      
                     </tbody>
                   </table>
                   
-                  <a href="#" class="btn btn-primary">Grade History</a>
+                  <a href="#" class="btn btn-primary">Participant List</a>
                   <a href="#" class="btn btn-primary">User Activity</a>
                 </div>
               </div>
             </div>
                  <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
                             <a href="EditProfileForm" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>

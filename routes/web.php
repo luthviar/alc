@@ -86,18 +86,29 @@ Route::get('AddUser', function () {
     return view('Admin.AddUser');
 });
 
-Route::get('EditUser', function () {
-    return view('Admin.EditUser');
+Route::get('UserInfo', function () {
+    return view('Admin.UserInfo');
 });
+
+Route::get('TrainningInfo', function () {
+    return view('Admin.TrainningInfo');
+});
+
 
 Route::get('CreateTrainning', function () {
     return view('Admin.CreateTrainning');
 });
 
 
-Route::get('EditProfileForm', function () {
-    return view('Admin.EditProfileForm');
+Route::get('EditProfile', function () {
+    return view('Admin.EditProfile');
 });
+
+Route::get('UserList', function () {
+    return view('Admin.UserList');
+});
+
+
 
 Route::get('CreateNews', function () {
     return view('Admin.CreateNews');
