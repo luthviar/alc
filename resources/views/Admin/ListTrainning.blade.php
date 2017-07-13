@@ -8,6 +8,8 @@
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+<!-- Trainning List -->
 <div class = "PageContainer">
     <div class="quick-press">
 		<h3>Trainning List</h3>

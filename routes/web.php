@@ -56,6 +56,10 @@ Route::get('Pre-Test', function () {
     return view('PreTest');
 });
 
+Route::get('EditPreTest', function () {
+    return view('Admin.EditPreTest');
+});
+
 Route::resource('content-learning', 'ContentLearningController');
 
 
@@ -126,6 +130,11 @@ Route::get('ListTrainning', function () {
 
 Route::get('lol', function () {
     return view('Admin(New).admintemplate');
+});
+
+
+Route::get('QuestionList', function () {
+    return view('Admin.QuestionList');
 });
 
 
