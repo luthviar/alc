@@ -130,3 +130,8 @@ Route::get('lol', function () {
 });
 
 
+Route::get('QuestionList', function () {
+    return view('Admin.QuestionList');
+});
+
+
