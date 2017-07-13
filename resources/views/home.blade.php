@@ -16,7 +16,7 @@
                             <div class="slide-info">
                                 <h1>{{$slide->title}}</h1>
                                 <p>{{ str_limit($slide->content, $limit = 150, $end = '...') }}</p>
-                                <a class="btn darkgreen"  href="#">Read More</a>
+                                <a class="btn darkgreen"  href="/slider/{{$slide->id}}">Read More</a>
                             </div>
                         </div>
                     </li>
@@ -72,9 +72,9 @@
                             <div class="card h-100">
                                 <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%;"></a>
                                 <div class="card-block">
-                                    <h4 class="card-title"><a href="#">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
+                                    <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
                                     <p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p>
-                                    <p class="text-right" ><a href="#">Read more </a></p><br>
+                                    <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p><br>
                                 </div>
                             </div>
                         </div>

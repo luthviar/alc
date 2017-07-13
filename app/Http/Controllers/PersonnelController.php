@@ -134,7 +134,7 @@ class PersonnelController extends Controller
         }
 
 
-        return redirect('/');
+        return redirect('personnel');
     }
 
     /**
@@ -143,9 +143,26 @@ class PersonnelController extends Controller
      * @param  \App\Personnel  $personnel
      * @return \Illuminate\Http\Response
      */
-    public function show(Personnel $personnel)
+    public function show($id_personnel)
     {
-        //
+        $personnel = Personnel::find($id_personnel);
+        $user = User::find($personnel->id_user);
+        $personnel['user'] = $user;
+        $employee = Employee::where('id_personnel',$id_personnel)->first();
+        $personnel['employee'] = $employee;
+        if (empty($employee)) {
+            $personnel['struktur'] = null;
+        }else{
+            $struktur = StrukturOrganisasi::find($employee->struktur);
+            $personnel['struktur'] = $struktur;
+            $personnel['level'] = LevelPosition::find($employee->level_position);
+            $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
+            $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
+            $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
+            $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+        }
+        return view('view-user')->with('personnel',$personnel);
+
     }
 
     /**
@@ -154,9 +171,30 @@ class PersonnelController extends Controller
      * @param  \App\Personnel  $personnel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personnel $personnel)
+    public function edit($id_personnel)
     {
-        //
+        $personnel = Personnel::find($id_personnel);
+        $user = User::find($personnel->id_user);
+        $personnel['user'] = $user;
+        $employee = Employee::where('id_personnel',$id_personnel)->first();
+        $personnel['employee'] = $employee;
+        if (empty($employee)) {
+            $personnel['struktur'] = null;
+        }else{
+            $struktur = StrukturOrganisasi::find($employee->struktur);
+            $personnel['struktur'] = $struktur;
+            $personnel['level'] = LevelPosition::find($employee->level_position);
+            $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
+            $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
+            $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
+            $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+        }
+        $department = Department::all();
+        $section = Section::all();
+        $unit = Unit::all();
+        $divisi = Divisi::all();
+        $level = LevelPosition::all();
+        return view('edit-user')->with('personnel',$personnel)->with('department',$department)->with('section',$section)->with('unit',$unit)->with('divisi',$divisi)->with('level',$level);
     }
 
     /**
@@ -166,10 +204,80 @@ class PersonnelController extends Controller
      * @param  \App\Personnel  $personnel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Personnel $personnel)
+    public function update(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'username' => 'required',
+            'is_admin' => 'required',
+        ]);
+
+        $personnel = Personnel::find($request->id_personnel);
+        $user = User::find($personnel->id_user);
+        $user->username = $request->username;
+        $user->is_admin = $request->is_admin;
+        $user->save();
+
+        $personnel->fname = $request->fname;
+        $personnel->lname = $request->lname;
+        $personnel->jenis_kelamin = $request->jenis_kelamin;
+        $personnel->email = $request->email;
+        $personnel->alamat = $request->alamat;
+        $personnel->no_hp = $request->no_hp;
+        $personnel->tanggal_lahir = $request->tanggal_lahir;
+        $personnel->save();
+        
+        if (empty($request->divisi) and empty($request->department) and empty($request->unit) and empty($request->section)) {
+            if (empty($request->nik) and empty($request->level_position)) {
+                # code...
+            }else{
+                if (empty($employee)) {
+                    $id_employee = DB::table('employees')-> insertGetId(array(
+                        'id_personnel' => $id_personnel,
+                        'nip' => $request->nik,
+                        'level_position' => $request->level_position,
+                    ));   
+                }else{
+                    $employee = Employee::where('id_personnel',$personnel->id)->first();
+                    $employee->nip = $request->nik;
+                    $employee->level_position = $request->level_position;
+                    $employee->save();
+                }
+            }
+        }else{
+            $id_struktur = null;
+            $struktur = StrukturOrganisasi::where('id_divisi',$request->divisi)->where('id_department',$request->department)->where('id_unit',$request->unit)->where('id_section',$request->section)->first();
+            if (empty($struktur)) {
+                $id = DB::table('struktur_organisasis')-> insertGetId(array(
+                    'id_divisi' => $request->divisi,
+                    'id_department' => $request->department,
+                    'id_unit' => $request->unit,
+                    'id_section' => $request->section,
+                ));
+                $id_struktur = $id;
+            }else{
+                $id_struktur = $struktur->id;
+            }
+            $employee = Employee::where('id_personnel',$personnel->id)->first();
+            if (empty($employee)) {
+                $id_employee = DB::table('employees')-> insertGetId(array(
+                    'id_personnel' => $id_personnel,
+                    'nip' => $request->nik,
+                    'struktur' => $id_struktur,
+                    'level_position' => $request->level_position,
+                ));
+            }else{
+                $employee->nip = $request->nik;
+                $employee->struktur = $id_struktur;
+                $employee->level_position = $request->level_position;
+                $employee->save();
+            }
+        }
+
+
+        return redirect('personnel');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
