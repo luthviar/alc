@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Berita;
+use App\Personnel;
+use App\NewsReplie;
+use App\Module;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -59,9 +62,23 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show($id_berita)
     {
-        //
+        $berita = Berita::find($id_berita);
+        $berita['user'] = Personnel::where('id_user',$berita->id_user)->first();
+        $replies = null;
+        if ($berita->can_reply == 1) {
+            $replies = NewsReplie::where('id_news',$id_berita)->get();
+            if (empty($replies)) {
+                # code...
+            }else{
+                foreach ($replies as $key => $value) {
+                    $value['user'] = Personnel::where('id_user',$value->id_user)->first();
+                }
+            }
+        }
+        $module = Module::all();
+        return view('view-news')->with('module',$module)->with('news',$berita)->with('replies',$replies);
     }
 
     /**

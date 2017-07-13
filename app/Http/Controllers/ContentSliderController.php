@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ContentSlider;
+use App\Module;
 use Illuminate\Http\Request;
 
 class ContentSliderController extends Controller
@@ -57,9 +58,11 @@ class ContentSliderController extends Controller
      * @param  \App\ContentSlider  $contentSlider
      * @return \Illuminate\Http\Response
      */
-    public function show(ContentSlider $contentSlider)
+    public function show($id_contentSlider)
     {
-        //
+        $slider = ContentSlider::find($id_contentSlider);
+        $module = Module::all();
+        return view('view-slider')->with('slider', $slider)->with('module',$module);
     }
 
     /**

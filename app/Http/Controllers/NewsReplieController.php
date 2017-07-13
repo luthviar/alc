@@ -35,7 +35,17 @@ class NewsReplieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reply = new NewsReplie;
+        $reply->id_news = $request->id_news;
+        $reply->id_user = $request->id_user;
+        $reply->title = $request->title;
+        $reply->content = $request->content;
+        $reply->save();
+
+
+        return redirect()->action(
+            'BeritaController@show', ['id' => $request->id_news]
+        );
     }
 
     /**

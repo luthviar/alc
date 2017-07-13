@@ -39,6 +39,9 @@ Route::resource('jawaban', 'JawabanTraineeController');
 
 Route::resource('personnel', 'PersonnelController');
 
+Route::post('personnel/submit', 'PersonnelController@update');
+
+Route::resource('news-reply', 'NewsReplieController');
 
 Route::get('Trainning', function () {
     return view('IModul');

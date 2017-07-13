@@ -27,7 +27,8 @@
 				  <td>{{$personnel->fname}} {{$personnel->lname}}</td>
 				  <td>{{$personnel->position}}</td>
 				  <td>{{$personnel->divisi}}</td>
-				  <td><span><a class="btn btn-info" href="#">View</a></span><span><a class="btn btn-default" href="#">Edit</a></span></td>
+				  <td><span><a class="btn btn-info" href="/personnel/{{$personnel->id}}">view</a></span>
+				  <span><a class="btn btn-default" href="/personnel/{{$personnel->id}}/edit">edit</a></span></td>
 				</tr>
 				@endforeach
 				
