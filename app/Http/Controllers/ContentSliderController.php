@@ -15,7 +15,9 @@ class ContentSliderController extends Controller
      */
     public function index()
     {
-        //
+        $slider = ContentSlider::all();
+        $module = Module::all();
+        return view('list-slider')->with('sliders',$slider)->with('module',$module);
     }
 
     /**
@@ -25,7 +27,7 @@ class ContentSliderController extends Controller
      */
     public function create()
     {
-        return view('test.create-slider');
+        return view('add-slider');
     }
 
     /**
@@ -39,17 +41,20 @@ class ContentSliderController extends Controller
         $this -> validate($request, [
             'title' => 'required',
             'content' => 'required',
-            'is_active' => 'required',
         ]);
 
+        $file = $request->file('image');
+        $destinationPath = 'uploads';
+        $movea = $file->move($destinationPath,$file->getClientOriginalName());
+        $url = "uploads/{$file->getClientOriginalName()}";
         $slider = new ContentSlider;
-        $slider->is_activ = $request->is_active;
+        $slider->is_activ = 0;
         $slider->title = $request->title;
         $slider->content = $request->content;
-        $slider->image = $request->image;
+        $slider->image = $url;
         $slider->save();
 
-        return redirect('/');
+        return redirect('slider');
     }
 
     /**
@@ -71,9 +76,10 @@ class ContentSliderController extends Controller
      * @param  \App\ContentSlider  $contentSlider
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContentSlider $contentSlider)
+    public function edit($id)
     {
-        //
+        $slider = ContentSlider::find($id);
+        return view('edit-slider')->with('slider',$slider);
     }
 
     /**
@@ -83,9 +89,35 @@ class ContentSliderController extends Controller
      * @param  \App\ContentSlider  $contentSlider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContentSlider $contentSlider)
+    public function update(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        $file = $request->file('image');
+        if (empty($file)) {
+            $slider = ContentSlider::find($request->id_slider);
+            $slider->is_activ = $request->is_activ;
+            $slider->title = $request->title;
+            $slider->content = $request->content;
+            $slider->save();    
+        }else{
+            $destinationPath = 'uploads';
+            $movea = $file->move($destinationPath,$file->getClientOriginalName());
+            $url = "uploads/{$file->getClientOriginalName()}";
+            
+            $slider = ContentSlider::find($request->id_slider);
+            $slider->is_activ = $request->is_activ;
+            $slider->title = $request->title;
+            $slider->content = $request->content;
+            $slider->image = $url;
+            $slider->save();    
+        }
+        
+
+        return redirect('slider');
     }
 
     /**
@@ -97,5 +129,21 @@ class ContentSliderController extends Controller
     public function destroy(ContentSlider $contentSlider)
     {
         //
+    }
+
+    public function active($id){
+        $slider = ContentSlider::find($id);
+        $slider->is_activ = 1;
+        $slider->save();
+
+        return redirect('slider');
+    }
+
+    public function nonactive($id){
+        $slider = ContentSlider::find($id);
+        $slider->is_activ = 0;
+        $slider->save();
+
+        return redirect('slider');
     }
 }

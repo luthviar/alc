@@ -17,7 +17,13 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        $news = Berita::all();
+        foreach ($news as $key => $value) {
+            if ($value->can_reply == 1) {
+                $value['replies'] = NewsReplie::where('id_news',$value->id);
+            }
+        }
+        return view('list-news')->with('news',$news);
     }
 
     /**
@@ -27,7 +33,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('test.create-berita');
+        return view('add-news');
     }
 
     /**
@@ -44,16 +50,19 @@ class BeritaController extends Controller
             'id_user' => 'required',
             'can_reply' => 'required',
         ]);
-
+        $file = $request->file('image');
+        $destinationPath = 'uploads';
+        $movea = $file->move($destinationPath,$file->getClientOriginalName());
+        $url = "uploads/{$file->getClientOriginalName()}";
         $berita = new Berita;
         $berita->id_user = $request->id_user;
         $berita->title = $request->title;
         $berita->content = $request->content;
         $berita->can_reply = $request->can_reply;
-        $berita->image = $request->image;
+        $berita->image = $url;
         $berita->save();
 
-        return redirect('/');
+        return redirect('berita');
     }
 
     /**
@@ -87,9 +96,10 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit($id_berita)
     {
-        //
+        $berita = Berita::find($id_berita);
+        return view('edit-news')->with('news',$berita);
     }
 
     /**
@@ -99,9 +109,37 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request)
     {
-        //
+        $this -> validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        $file = $request->file('image');
+        if (empty($file)) {
+            $berita = Berita::find($request->id_news);
+            $berita->id_user = $request->id_user;
+            $berita->title = $request->title;
+            $berita->content = $request->content;
+            $berita->can_reply = $request->can_reply;    
+            $berita->save();
+        }else{
+            $destinationPath = 'uploads';
+            $movea = $file->move($destinationPath,$file->getClientOriginalName());
+            $url = "uploads/{$file->getClientOriginalName()}";
+            
+            $berita = Berita::find($request->id_news);
+            $berita->id_user = $request->id_user;
+            $berita->title = $request->title;
+            $berita->content = $request->content;
+            $berita->can_reply = $request->can_reply;
+            $berita->image = $url;    
+            $berita->save();    
+        }
+        
+
+        return redirect('berita');
     }
 
     /**
@@ -113,5 +151,21 @@ class BeritaController extends Controller
     public function destroy(Berita $berita)
     {
         //
+    }
+
+    public function active($id){
+        $berita = Berita::find($id);
+        $berita->can_reply = 1;
+        $berita->save();
+
+        return redirect('berita');
+    }
+
+    public function nonactive($id){
+        $berita = Berita::find($id);
+        $berita->can_reply = 0;
+        $berita->save();
+
+        return redirect('berita');
     }
 }

@@ -260,7 +260,7 @@ class PersonnelController extends Controller
             $employee = Employee::where('id_personnel',$personnel->id)->first();
             if (empty($employee)) {
                 $id_employee = DB::table('employees')-> insertGetId(array(
-                    'id_personnel' => $id_personnel,
+                    'id_personnel' => $request->id_personnel,
                     'nip' => $request->nik,
                     'struktur' => $id_struktur,
                     'level_position' => $request->level_position,

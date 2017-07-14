@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\ScoreSummary;
+use App\Personnel;
+use App\Employee;
+use App\Module;
+use App\User;
 use Illuminate\Http\Request;
 
 class ScoreSummaryController extends Controller
@@ -14,7 +18,18 @@ class ScoreSummaryController extends Controller
      */
     public function index()
     {
-        //
+        $employee = Employee::all();
+        foreach ($employee as $key => $value) {
+            //get personnel information
+            $value['personnel'] = Personnel::find($value->id_personnel);
+
+            //get score summary of employee
+            $value['score'] = ScoreSummary::where('id_user',$value['personnel']->id_user)->orderBy('id', 'desc')->first();
+            
+            
+
+        }
+        return view('list-score-summary')->with('employee',$employee);
     }
 
     /**
@@ -33,9 +48,22 @@ class ScoreSummaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        
+
+        $file = $request->file('score');
+        $destinationPath = 'ViewerJS/raports';
+        $movea = $file->move($destinationPath,$file->getClientOriginalName());
+        $url = "ViewerJS/#..home.html/{$file->getClientOriginalName()}";
+
+        $score = new ScoreSummary;
+        $score->id_user = $id;
+        $score->file_name = $file->getClientOriginalName();
+        $score->url_file_pdf = $url;
+        $score->save();
+
+        return redirect('raport');
     }
 
     /**
@@ -44,9 +72,11 @@ class ScoreSummaryController extends Controller
      * @param  \App\ScoreSummary  $scoreSummary
      * @return \Illuminate\Http\Response
      */
-    public function show(ScoreSummary $scoreSummary)
+    public function show($id_user)
     {
-        //
+        $raport = ScoreSummary::where('id_user',$id_user)->orderBy('id','desc')->first();
+        $module = Module::all();
+        return view('view-raport')->with('module',$module)->with('raport',$raport);
     }
 
     /**
@@ -79,6 +109,11 @@ class ScoreSummaryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(ScoreSummary $scoreSummary)
+    {
+        //
+    }
+
+    public function add_raport($id_user)
     {
         //
     }

@@ -39,9 +39,25 @@ Route::resource('jawaban', 'JawabanTraineeController');
 
 Route::resource('personnel', 'PersonnelController');
 
+Route::resource('raport', 'ScoreSummaryController');
+
 Route::post('personnel/submit', 'PersonnelController@update');
 
+Route::post('slider/submit', 'ContentSliderController@update');
+
+Route::post('berita/submit', 'BeritaController@update');
+
+Route::post('raport/submit/{id}', 'ScoreSummaryController@store');
+
 Route::resource('news-reply', 'NewsReplieController');
+
+Route::get('/slider/{id}/active', 'ContentSliderController@active');
+
+Route::get('/slider/{id}/nonactive', 'ContentSliderController@nonactive');
+
+Route::get('/berita/{id}/active', 'BeritaController@active');
+
+Route::get('/berita/{id}/nonactive', 'BeritaController@nonactive');
 
 Route::get('Trainning', function () {
     return view('IModul');
