@@ -51,9 +51,15 @@ Route::post('raport/submit/{id}', 'ScoreSummaryController@store');
 
 Route::resource('news-reply', 'NewsReplieController');
 
+Route::resource('access', 'UserTrainingAuthController');
+
 Route::get('/slider/{id}/active', 'ContentSliderController@active');
 
 Route::get('/slider/{id}/nonactive', 'ContentSliderController@nonactive');
+
+Route::get('/access/{id}/active', 'UserTrainingAuthController@active');
+
+Route::get('/access/{id}/nonactive', 'UserTrainingAuthController@nonactive');
 
 Route::get('/berita/{id}/active', 'BeritaController@active');
 
