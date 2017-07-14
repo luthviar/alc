@@ -41,9 +41,10 @@
 						      </h4>
 						    </div>
 						    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="panel-body">
-						      <iframe id="viewer" src = "{{URL::to($materi->url)}}" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe>
-						        
+						      <div class="panel-body">							  
+						        <iframe id="viewer" src = "{{URL::to($materi->url)}}" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe> 
+							   {{--<iframe id="viewer" src = "http://www.tutorialspoint.com/php/php_tutorial.pdf" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe> --}}
+						       {{-- <iframe src="http://docs.google.com/gview?url=http://www.tutorialspoint.com/php/php_tutorial.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>  --}}
 						      </div>
 						    </div>
 						  </div>
