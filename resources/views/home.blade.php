@@ -11,7 +11,7 @@
             <section class="promo" style="border: 1px solid green;">
                 <ul class="slider">
                     @foreach ($slider as $slide)
-                    <li style="background: url({{$slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 50% 50%;">
+                    <li style="background: url({{$slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 100% 100%;">
                         <div class="slide-holder">
                             <div class="slide-info">
                                 <h1>{{$slide->title}}</h1>
