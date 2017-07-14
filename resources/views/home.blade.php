@@ -11,7 +11,9 @@
             <section class="promo" style="border: 1px solid green;">
                 <ul class="slider">
                     @foreach ($slider as $slide)
-                    <li style="background: url({{ $slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 100% 100%;">
+
+                    <li style="background: url({{$slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 100% 100%;">
+
                         <div class="slide-holder">
                             <div class="slide-info">
                                 <h1>{{$slide->title}}</h1>
@@ -70,15 +72,15 @@
                       <div class="col-lg-4 col-sm-6 portfolio-item" style="
                       height: 400px;">
                             <div class="card h-100">
-                                <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%;"></a>
+                                <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; "></a>
                                 <div class="card-block">
+									<div  style="height:15vh; width:100%;">
                                     <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
-                                    <p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p>
+									<p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p></div>
                                     <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p><br>
                                 </div>
                             </div>
                         </div>
-                    </li>
                     @endforeach
                         
             </div>
