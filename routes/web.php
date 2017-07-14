@@ -124,7 +124,6 @@ Route::get('CreateTrainning', function () {
     return view('Admin.CreateTrainning');
 });
 
-
 Route::get('EditProfile', function () {
     return view('Admin.EditProfile');
 });
@@ -132,8 +131,6 @@ Route::get('EditProfile', function () {
 Route::get('UserList', function () {
     return view('Admin.UserList');
 });
-
-
 
 Route::get('CreateNews', function () {
     return view('Admin.CreateNews');
@@ -153,4 +150,14 @@ Route::get('QuestionList', function () {
     return view('Admin.QuestionList');
 });
 
+Route::get('CreatePreTest', function () {
+    return view('Admin.CreatePreTest');
+});
 
+Route::get('CreateTrainningMateri', function () {
+    return view('Admin.CreateTrainningMateri');
+});
+
+Route::get('AddMateri', function () {
+    return view('Admin.AddMateri');
+});
