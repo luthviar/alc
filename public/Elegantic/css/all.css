@@ -383,7 +383,10 @@ a:hover{text-decoration:underline;}
 }
 .slider li {
 	background-size: cover !important;
+	
 }
+
+
 .slide-holder {
 	color: #fff;
 	max-width: 1170px;
@@ -1302,6 +1305,7 @@ hr.style3 {
 		border: 1px solid green;
     width: 100%;
     border-radius: 5%;
+	height:35vh;
 }
 
 form.forms{
