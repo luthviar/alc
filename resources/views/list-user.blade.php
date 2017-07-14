@@ -11,6 +11,7 @@
 <div class = "PageContainer">
     <div class="quick-press">
 		<h3>User List</h3>
+		<a href="/personnel/create" class="btn btn-info">Create New User</a><br><br>	
 		<div class = "main-table">
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
