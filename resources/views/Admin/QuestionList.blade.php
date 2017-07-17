@@ -18,37 +18,40 @@
 			  <thead>
 				<tr>
 				  <th>Question</th>
-				  <th>Detail</th>
-				  <th>Delete</th>
+				  <th>Answer</th>
+				  <th>Edit</th>
 				</tr>
 			  </thead>
 			  <tbody>
 				<tr>
 				  <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-				  <td><a href='QuestionDetail'>Detail</a></td>
-				  <td><a href="#" class="btn btn-info btn-lg">
-				  <span class="glyphicon glyphicon-trash"></span>Delete </a></td>
+				  <td>A. QuestionDetail</td>
+				  <td><button  data-toggle="modal" data-target="#Edit">Add More Question</button>
+				  <span class="glyphicon glyphicon-trash"></span>Edit </a></td>
 				</tr>
 				<tr>
 				  <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-				  <td><a href='QuestionDetail'>Detail</a></td>
-				  <td><a href="#" class="btn btn-info btn-lg">
-				  <span class="glyphicon glyphicon-trash"></span>Delete </a></td>
-				</tr><tr>
+				  <td>A. QuestionDetail</td>
+				  <td><button  data-toggle="modal" data-target="#Edit">Add More Question</button>
+				  <span class="glyphicon glyphicon-trash"></span>Edit </a></td>
+				</tr>
+				<tr>
 				  <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-				  <td><a href='QuestionDetail'>Detail</a></td>
-				  <td><a href="#" class="btn btn-info btn-lg">
-				  <span class="glyphicon glyphicon-trash"></span>Delete </a></td>
-				</tr><tr>
+				  <td>A. QuestionDetail</td>
+				  <td><button  data-toggle="modal" data-target="#Edit">Add More Question</button>
+				  <span class="glyphicon glyphicon-trash"></span>Edit </a></td>
+				</tr>
+				<tr>
 				  <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-				  <td><a href='QuestionDetail'>Detail</a></td>
-				  <td><a href="#" class="btn btn-info btn-lg">
-				  <span class="glyphicon glyphicon-trash"></span>Delete </a></td>
-				</tr><tr>
+				  <td>A. QuestionDetail</td>
+				  <td><button  data-toggle="modal" data-target="#Edit">Add More Question</button>
+				  <span class="glyphicon glyphicon-trash"></span>Edit </a></td>
+				</tr>
+				<tr>
 				  <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-				  <td><a href='QuestionDetail'>Detail</a></td>
-				  <td><a href="#" class="btn btn-info btn-lg">
-				  <span class="glyphicon glyphicon-trash"></span>Delete </a></td>
+				  <td>A. QuestionDetail</td>
+				  <td><button  data-toggle="modal" data-target="#Edit">Add More Question</button>
+				  <span class="glyphicon glyphicon-trash"></span>Edit </a></td>
 				</tr>
 			  </tbody>
 			</table>
