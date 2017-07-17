@@ -7,22 +7,29 @@
                                 <div class="heading">
                                     <h3>About us</h3>
                                 </div>
-                                <p>Vero eos et accusamus et iusto dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti</p>
-                                <p>Quos dolores et quas molestias excepturi sint occaecati cupiditate.</p>
-                            </div>
+                                <p>PT Aerofood Indonesia, is the holding company of Aerowisata Group which is also a holding company of Garuda Indonesia Group. 
+								Aerofood is a company that serves the procurement of products and logistics needs in flight with domestic and international sizes.</p>
+                                </div>
                             <div class="col">
                                 <div class="heading">
                                     <h3>Contact</h3>
                                 </div>
                                 <address>
-                                    <p><strong>Elegantic Inc.</strong></p>
-                                    <p>1041 Madison Ave,</p>
-                                    <p>New York</p>
+                                    <p><strong>Head Office:</strong></p>
+										<p>Aerowisata Park</p>
+										<p>Jl. Prof. DR. Soepomo No. 45 Tebet</p>
+										<p>Jakarta 12810</p>
+										<p>P: +62 21 8370 5076 / F: +62 21 8370 5012</p>
+										<p>E:<a href="mailto:info@aerofood.co.id"> info@aerofood.co.id</a></p>
                                 </address>
                                 <address>
-                                    <p>(45) 523 565 242</p>
-                                    <p><a href="mailto:office@elegantic.com">office@elegantic.com</a></p>
-                                </address>
+                                    <p><strong>CGK Unit</strong></p>
+									<p>Aerofood ACS Building</p>
+									<p>Soekarno – Hatta International Airport</p>
+									<p>PO BOX 1023</p>
+									<p>Cengkareng – Jakarta 19120</p>                                                                                                                                                    
+									<p>P: +62 21 550 1750 / F: +62 21 550 1751</p>
+									</address>
                             </div>
                             <div class="col col-contact">
                                 <div class="heading">
@@ -39,7 +46,7 @@
                     </div>
                     <div class="footer-bottom">
                         <div class="holder">
-                            <p>Copyright 2014 Elegantic. All rights reserved.</p>
+                            <p>Copyright 2017 Aerofood. All rights reserved.</p>
                         </div>
                     </div>
                 </div>
