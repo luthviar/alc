@@ -60,14 +60,14 @@ $(document).ready(function() {
                             <label for="username" class="col-md-4 control-label">Option</label>
 
                             <div class="col-md-6">
-							<i class="fa fa-exclamation-triangle" aria-hidden="true" style="color:orange"></i>Choose correct answer by click the button beside option field<br><br>
-							<div><input type="text" name="mytext[]"/>
-							<span><input type="radio" name="isTrue"/></span><br><br></div>
-							<div><input type="text" name="mytext[]"/>
-							<span><input type="radio" name="isTrue"/></span><br><br></div>
-                                <div class="input_fields_wrap"></div>
-							   <button class="add_field_button">Add More Option</button>
-                        </div>
+								<i class="fa fa-exclamation-triangle" aria-hidden="true" style="color:orange"></i>Choose correct answer by click the button beside option field<br><br>
+								<div><input type="text" name="mytext[]"/>
+								<span><input type="radio" name="isTrue"/></span><br><br></div>
+								<div><input type="text" name="mytext[]"/>
+								<span><input type="radio" name="isTrue"/></span><br><br></div>
+								<div class="input_fields_wrap"></div>
+   							    <button class="add_field_button">Add More Option</button>
+                            </div>
 						
 						<br>
 						

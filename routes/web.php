@@ -171,3 +171,7 @@ Route::get('AddMateri', function () {
 Route::get('Upload', function () {
     return view('Admin.UploadImage');
 });
+
+Route::get('CreateTrainning2', function () {
+    return view('Admin.CreateTrainning2');
+});
