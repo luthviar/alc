@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use Auth;
+use App\JobFamily;
+use App\Personnel;
+use App\StrukturOrganisasi;
+use App\Employee;
+use App\UserTrainingAuth;
 use App\Department;
 use App\Training;
 use Illuminate\Http\Request;
@@ -64,6 +70,34 @@ class ModuleController extends Controller
         $modul = Module::find($id);
         $department = Department::all();
         $training = Training::where('id_module',$id)->get();
+        //get user information
+        $id_user = Auth::user()->id;
+        $personnel = Personnel::where('id_user',$id_user)->first();
+        $employee = Employee::where('id_personnel',$personnel->id)->first();
+        $job_family_user = null;
+        if (empty($employee)) {
+            
+        }else{
+            $struktur = StrukturOrganisasi::find($employee->struktur);
+            $department_user = Department::where('id_department',$struktur->id_department)->first();
+            $job_family_user = JobFamily::find($department_user->id_job_family);
+        }
+        foreach ($training as $key => $value) {
+            if (empty($value->id_job_family)) {
+                $value['open'] = 1;
+            }else {
+                if ($value->id_module ==3 and $value->id_job_family == $job_family_user->id) {
+                    $value['open'] = 1;
+                }elseif ($value->id_module ==3 and $value->id_job_family != $job_family_user->id) {
+                    $user_auth = UserTrainingAuth::where('id_training',$value->id)->where('id_user',$id_user)->first();
+                    if (empty($user_auth)) {
+                        $value['open'] = 0;
+                    }else{
+                        $value['open'] = 1;
+                    }
+                }
+            }
+        }
         return view('module')->with('module',$module)->with('modul',$modul)->with('department',$department)->with('training',$training);
     }
 

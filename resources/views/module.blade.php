@@ -38,7 +38,14 @@
 							<ul>
 								@foreach($training as $trains)
 									@if($trains->id_department == $dep->id_department)
-										<li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a></li>
+										<li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a>
+                                        
+                                        @if($trains['open'] == 1)
+                                        <h6>buka</h6>
+                                        @else
+                                        <h6>tutup</h6>
+                                        @endif
+                                        </li>
 									@endif
 								@endforeach		
 							</ul>

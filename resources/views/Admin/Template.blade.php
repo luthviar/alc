@@ -41,6 +41,7 @@
 			  <li><a href="/slider">Slider</a></li>
 			  <li><a href="/berita">News</a></li>
 			  <li><a href="/raport">Raport</a></li>
+			  <li><a href="/access">Request Access</a></li>
 			  <li><a href="CreateDepartement">Create Departement</a></li>
 			  <li><a href="#tools">Trainning List</a></li>
 			  <li><a href="#tools">tools</a></li>
