@@ -23,14 +23,14 @@
 		<div class="w3-border" style="border-radius:5px">
 			<div class="w3-green" style="height:24px;width:0%;text-align:center;border-radius:5px"></div>
 		</div>
-		<BR>
+		<br>
 	
 <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Trainning Description</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('TrainingController@store') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">

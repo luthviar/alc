@@ -21,7 +21,7 @@
 		Create Trainning
 		<br><br>
 		<div class="w3-border" style="border-radius:5px">
-			<div class="w3-green" style="height:24px;width:25%;text-align:center;border-radius:5px"></div>
+			<div class="w3-green" style="height:24px;width:25%;text-align:center;border-radius:5px">25%</div>
 		</div>
 		<BR>
 	
@@ -30,7 +30,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Trainning Description</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('TrainingController@store') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
