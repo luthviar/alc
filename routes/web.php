@@ -127,7 +127,7 @@ Route::get('TrainningInfo', function () {
 
 
 Route::get('CreateTrainning', function () {
-    return view('Admin.CreateTrainning');
+    return view('Admin.CreateTrainning2');
 });
 
 Route::get('EditProfile', function () {

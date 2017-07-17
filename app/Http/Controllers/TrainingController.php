@@ -18,7 +18,15 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $training = Training::all();
+        foreach ($training as $key => $value) {
+            $value['module'] = Module::find($value->id_module);
+            $value['department'] = null;
+            if ($value->id_module == 3) {
+                $value['department'] = Department::where('id_department',$value->id_department)->first();
+            }
+        }
+        return view('list-training')->with('training',$training);
     }
 
     /**
@@ -31,7 +39,7 @@ class TrainingController extends Controller
        $module = Module::all();
        $jobs = JobFamily::all();
        $department = Department::all();
-       return view('test.create-training')->with('JobFamily', $jobs)->with('module', $module)->with('department',$department);
+       return view('add-training')->with('JobFamily', $jobs)->with('module', $module)->with('department',$department);
     }
 
     /**
@@ -54,7 +62,6 @@ class TrainingController extends Controller
             $training->title = $request->title;
             $training->description = $request->desc;
             $training->id_module = $request->module;
-            $training->enroll_key = $request->enroll_key;
             $training->id_department = $request->department;
             $training->id_job_family = $job_family;
             $training->save();
@@ -63,7 +70,6 @@ class TrainingController extends Controller
             $training->title = $request->title;
             $training->description = $request->desc;
             $training->id_module = $request->module;
-            $training->enroll_key = $request->enroll_key;
             $training->id_department = $request->department;
             $training->save();
         }

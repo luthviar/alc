@@ -36,7 +36,7 @@
 						
 			  <li><a href="AdminHome#dashboard">Dashboard</a></li>
 			  <li><a href="CreateTrainning">CreateTrainning</a></li>
-			  <li><a href="ListTrainning">Trainning List</a></li>
+			  <li><a href="/training">Training</a></li>
 			  <li><a href="/personnel">User</a></li>
 			  <li><a href="/slider">Slider</a></li>
 			  <li><a href="/berita">News</a></li>
