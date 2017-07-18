@@ -15,13 +15,20 @@
                     <div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
                             <li class="active">
-                                <a  href="#umum" data-toggle="tab">Forum Umum</a>
+                                <a  href="#umum" data-toggle="tab">
+                                    Forum Umum
+                                </a>
                             </li>
                             <li>
                                 <a href="#jobfamily" data-toggle="tab">Forum Job Family</a>
                             </li>
                             <li>
                                 <a href="#dept" data-toggle="tab">Forum Department</a>
+                            </li>
+                            <li>
+                                <a href="#edit" data-toggle="tab">
+                                    <i class="fa fa-edit fa-2x"></i>
+                                </a>
                             </li>
                         </ul>
 
@@ -53,6 +60,12 @@
                                                     <a href="#">
                                                         <i class="fa fa-sign-in fa-1x"></i>
                                                     </a>
+                                                    <a href="#">
+                                                        <i class="fa fa-remove fa-1x"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fa fa-edit fa-2x"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </a>
@@ -66,6 +79,12 @@
                                                 <a href="#">
                                                     <i class="fa fa-sign-in fa-1x"></i>
                                                 </a>
+                                                <a href="#">
+                                                    <i class="fa fa-remove fa-1x"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="fa fa-edit fa-2x"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -78,16 +97,11 @@
                                                 <a href="#">
                                                     <i class="fa fa-sign-in fa-1x"></i>
                                                 </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>satu Topic Discussion</td>
-                                            <td>satu Started By</td>
-                                            <td>satu replies</td>
-                                            <td>satu last post</td>
-                                            <td>
                                                 <a href="#">
-                                                    <i class="fa fa-sign-in fa-1x"></i>
+                                                    <i class="fa fa-remove fa-1x"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="fa fa-edit fa-2x"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -99,6 +113,29 @@
                                             <td>
                                                 <a href="#">
                                                     <i class="fa fa-sign-in fa-1x"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="fa fa-remove fa-1x"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="fa fa-edit fa-2x"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>satu Topic Discussion</td>
+                                            <td>satu Started By</td>
+                                            <td>satu replies</td>
+                                            <td>satu last post</td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="fa fa-sign-in fa-1x"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="fa fa-remove fa-1x"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="fa fa-edit fa-2x"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -119,6 +156,10 @@
 
                             <div class="tab-pane" id="dept">
                                 <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+                            </div>
+
+                            <div class="tab-pane" id="edit">
+                                <h3>EDIT FORUm</h3>
                             </div>
                         </div>
                     </div>

@@ -26,7 +26,8 @@ class ForumController extends Controller
      */
     public function create()
     {
-        //
+        $module = Module::all();
+        return view('Admin/edit-forum')->with('module',$module);
     }
 
     /**
