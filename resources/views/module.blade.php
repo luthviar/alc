@@ -34,21 +34,21 @@
                     @if($modul->id == 3)
 						<ul>
 						@foreach($department as $dep)
-							<li><h3>{{ $dep->nama_departmen}}</h3></li>
+							<li><a data-toggle="collapse" href="#collapse1{{$dep->id_department}}"><h3>{{ $dep->nama_departmen}}</h3></a></li>
+							<div id="collapse1{{$dep->id_department}}" class="panel-collapse collapse">
 							<ul>
 								@foreach($training as $trains)
 									@if($trains->id_department == $dep->id_department)
-										<li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a>
-                                        
-                                        @if($trains['open'] == 1)
-                                        <h6>buka</h6>
+										@if($trains['open'] == 1)
+										<div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true"></span></i></h5></a></div>
                                         @else
-                                        <h6>tutup</h6>
+                                        <div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></div>
                                         @endif
                                         </li>
 									@endif
 								@endforeach		
 							</ul>
+							</div>
 						@endforeach
 						</ul>
 					@else

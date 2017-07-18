@@ -191,3 +191,8 @@ Route::get('Upload', function () {
 Route::get('CreateTrainning2', function () {
     return view('Admin.CreateTrainning2');
 });
+
+
+Route::get('NewsBoard', function () {
+    return view('newsboard');
+});

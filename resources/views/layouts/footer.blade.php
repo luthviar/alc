@@ -22,14 +22,7 @@
 										<p>P: +62 21 8370 5076 / F: +62 21 8370 5012</p>
 										<p>E:<a href="mailto:info@aerofood.co.id"> info@aerofood.co.id</a></p>
                                 </address>
-                                <address>
-                                    <p><strong>CGK Unit</strong></p>
-									<p>Aerofood ACS Building</p>
-									<p>Soekarno – Hatta International Airport</p>
-									<p>PO BOX 1023</p>
-									<p>Cengkareng – Jakarta 19120</p>                                                                                                                                                    
-									<p>P: +62 21 550 1750 / F: +62 21 550 1751</p>
-									</address>
+                              
                             </div>
                             <div class="col col-contact">
                                 <div class="heading">
