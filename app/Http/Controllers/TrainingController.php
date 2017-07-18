@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use DB;
 use App\Department;
 use App\JobFamily;
 use App\Training;
@@ -54,30 +55,36 @@ class TrainingController extends Controller
             'module' => 'required',
             'title' => 'required',
         ]);
-        
+        $id_training = null;
         if ($request->module == 3) {
             $department = Department::where('id_department',$request->department)->first();
             $job_family = $department->id_job_family;
-            $training = new Training;
-            $training->title = $request->title; 
-            $training->description = $request->description;
-            $training->id_module = $request->module;
-            $training->is_publish = 0;
-            $training->id_department = $request->department;
-            $training->id_job_family = $job_family;
-            $training->save();
+            $id_training = DB::table('trainings')-> insertGetId(array(
+                'title' => $request->title,
+                'description' => $request->description,
+                'id_module' => $request->module,
+                'is_publish' => 0,
+                'id_department' => $request->department,
+                'id_job_family' => $job_family,
+            ));
         }else{
-            $training = new Training;
-            $training->title = $request->title;
-            $training->description = $request->description;
-            $training->id_module = $request->module;
-            $training->is_publish = 0;
-            $training->id_department = $request->department;
-            $training->save();
+            $id_training = DB::table('trainings')-> insertGetId(array(
+                'title' => $request->title,
+                'description' => $request->description,
+                'id_module' => $request->module,
+                'is_publish' => 0,
+                'id_department' => $request->department,
+            ));
         }
 
         
-        return redirect('module');
+        return view('add-question')->with('id_training',$id_training)->with('time',0)->with('questions',null);
+    }
+
+    public function add_post_test($id_training)
+    {
+        
+        return view('add-question-post-test')->with('id_training',$id_training)->with('time',0)->with('questions',null);
     }
 
     /**

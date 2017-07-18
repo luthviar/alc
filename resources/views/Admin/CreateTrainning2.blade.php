@@ -40,43 +40,32 @@ $(document).ready(function() {
 		</div>
 		<BR>
 	
-<div class="row">
-        <div class="col-md-12 ">
-            <div class="panel panel-default">
-                <div class="panel-heading">Create PreTest</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-
-                            
-						<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">PreTest Duration</label>
-
-                            <div class="col-md-4">
-                                <input id="username"onkeypress='return event.charCode >= 48 && event.charCode <= 57'  placeholder="IN MINUTES" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-						
-						<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Question</label>
-
-                            <div class="col-md-4">
-                               
-							   <button  data-toggle="modal" data-target="#myModal">Add More Question</button>
-                        </div>
-                            </div>
-                        </div>
-						
-					
-  </div>
-</div>
+		<div class="row">
+	        <div class="col-md-12 ">
+	            <div class="panel panel-default">
+	                <div class="panel-heading">Create PreTest</div>
+		                <div class="panel-body">
+		                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+		                        {{ csrf_field() }}		                            
+								<div class="form-group">
+		                            <label for="time" class="col-md-4 control-label">PreTest Duration</label>
+		                            <div class="col-md-4">
+		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time" value="{{ old('username') }}" required autofocus>
+		                            </div>
+		                        </div>
+								
+								<div class="form-group">
+									<label for="time" class="col-md-4 control-label"></label>
+		                            <div class="col-md-4">          
+									   <button  class="btn btn-default">Submit</button>
+		                            </div>
+		                        </div>
+		                    </form>						
+		                </div>
+		            </div>
+		        </div>
+		  	</div>
+		</div>
 
 
 
@@ -149,6 +138,7 @@ $(document).ready(function() {
 		<div class="panel-heading">Question List</div>
 		<div class="panel-body">
 		<div class = "main-table">
+		<button  class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Question</button><br><br>
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
 				<tr>
@@ -166,7 +156,7 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 				  <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-				  <td>A. QuestionDetail</td>
+					  <td>A. QuestionDetail</td>
 				  <td><button  data-toggle="modal" data-target="#Edit">
 				  <span ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>Edit </button></td>
 				</tr>
