@@ -33,19 +33,12 @@
 	<div class="container-fluid main-container">
 		<div class="col-md-2 sidebar">
 			<ul class="nav nav-pills nav-stacked">
-						
-			  <li><a href="AdminHome#dashboard">Dashboard</a></li>
-			  <li><a href="CreateTrainning">CreateTrainning</a></li>
-			  <li><a href="ListTrainning">Trainning List</a></li>
 			  <li><a href="/personnel">User</a></li>
+			  <li><a href="/training">Training</a></li>
+			  <li><a href="/access">Request Access</a></li>
+			  <li><a href="/raport">Raport</a></li>
 			  <li><a href="/slider">Slider</a></li>
 			  <li><a href="/berita">News</a></li>
-			  <li><a href="/raport">Raport</a></li>
-			  <li><a href="/access">Request Access</a></li>
-			  <li><a href="CreateDepartement">Create Departement</a></li>
-			  <li><a href="#tools">Trainning List</a></li>
-			  <li><a href="#tools">tools</a></li>
-			  <li><a href="#settings">settings</a></li>
 			</ul>
 		</div>
 		<div class="col-md-10 content">

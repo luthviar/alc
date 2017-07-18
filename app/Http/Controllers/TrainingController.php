@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use DB;
 use App\Department;
 use App\JobFamily;
 use App\Training;
@@ -18,7 +19,15 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $training = Training::all();
+        foreach ($training as $key => $value) {
+            $value['module'] = Module::find($value->id_module);
+            $value['department'] = null;
+            if ($value->id_module == 3) {
+                $value['department'] = Department::where('id_department',$value->id_department)->first();
+            }
+        }
+        return view('list-training')->with('training',$training);
     }
 
     /**
@@ -31,7 +40,7 @@ class TrainingController extends Controller
        $module = Module::all();
        $jobs = JobFamily::all();
        $department = Department::all();
-       return view('test.create-training')->with('JobFamily', $jobs)->with('module', $module)->with('department',$department);
+       return view('add-training')->with('JobFamily', $jobs)->with('module', $module)->with('department',$department);
     }
 
     /**
@@ -46,30 +55,36 @@ class TrainingController extends Controller
             'module' => 'required',
             'title' => 'required',
         ]);
-        
+        $id_training = null;
         if ($request->module == 3) {
             $department = Department::where('id_department',$request->department)->first();
             $job_family = $department->id_job_family;
-            $training = new Training;
-            $training->title = $request->title;
-            $training->description = $request->desc;
-            $training->id_module = $request->module;
-            $training->enroll_key = $request->enroll_key;
-            $training->id_department = $request->department;
-            $training->id_job_family = $job_family;
-            $training->save();
+            $id_training = DB::table('trainings')-> insertGetId(array(
+                'title' => $request->title,
+                'description' => $request->description,
+                'id_module' => $request->module,
+                'is_publish' => 0,
+                'id_department' => $request->department,
+                'id_job_family' => $job_family,
+            ));
         }else{
-            $training = new Training;
-            $training->title = $request->title;
-            $training->description = $request->desc;
-            $training->id_module = $request->module;
-            $training->enroll_key = $request->enroll_key;
-            $training->id_department = $request->department;
-            $training->save();
+            $id_training = DB::table('trainings')-> insertGetId(array(
+                'title' => $request->title,
+                'description' => $request->description,
+                'id_module' => $request->module,
+                'is_publish' => 0,
+                'id_department' => $request->department,
+            ));
         }
 
         
-        return redirect('module');
+        return view('add-question')->with('id_training',$id_training)->with('time',0)->with('questions',null);
+    }
+
+    public function add_post_test($id_training)
+    {
+        
+        return view('add-question-post-test')->with('id_training',$id_training)->with('time',0)->with('questions',null);
     }
 
     /**

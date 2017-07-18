@@ -41,6 +41,10 @@ Route::resource('personnel', 'PersonnelController');
 
 Route::resource('raport', 'ScoreSummaryController');
 
+Route::resource('test', 'TestController');
+
+Route::resource('question', 'QuestionController');
+
 Route::post('personnel/submit', 'PersonnelController@update');
 
 Route::post('slider/submit', 'ContentSliderController@update');
@@ -64,6 +68,18 @@ Route::get('/access/{id}/nonactive', 'UserTrainingAuthController@nonactive');
 Route::get('/berita/{id}/active', 'BeritaController@active');
 
 Route::get('/berita/{id}/nonactive', 'BeritaController@nonactive');
+
+Route::get('/content-learning/{id}', 'ContentLearningController@add_content_learning');
+
+Route::post('/content-learning/submit', 'ContentLearningController@store');
+
+Route::get('/get-content-learning/{id}', 'ContentLearningController@get_content_learning');
+
+Route::get('/add-post-test/{id}', 'TrainingController@add_post_test');
+
+Route::post('/post-test/submit', 'TestController@store_post_test');
+
+
 
 Route::get('Trainning', function () {
     return view('IModul');
@@ -127,7 +143,7 @@ Route::get('TrainningInfo', function () {
 
 
 Route::get('CreateTrainning', function () {
-    return view('Admin.CreateTrainning');
+    return view('Admin.CreateTrainning2');
 });
 
 Route::get('EditProfile', function () {
