@@ -196,3 +196,5 @@ Route::get('CreateTrainning2', function () {
 Route::get('NewsBoard', function () {
     return view('newsboard');
 });
+
+Route::resource('forum', 'ForumController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forum;
+use App\Module;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -14,7 +15,8 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //
+        $module = Module::all();
+        return view('view-forum')->with('module',$module);
     }
 
     /**
