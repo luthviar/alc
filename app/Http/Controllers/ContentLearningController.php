@@ -43,7 +43,7 @@ class ContentLearningController extends Controller
             return view('add-materi-training')->with('contents',null)->with('id_section',$id_section);
         }else{
             $id_section = $section->id;
-            return view('add-materi-training')->with('contents',null)->with('id_section',$id_section);
+            return view('add-materi-training')->with('contents',null)->with('id_section',$id_section)->with('id_training',$id_training);
         }
 
     }
