@@ -10,11 +10,31 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [
+            'readMore'
+        ]]);
+
+        $this->middleware('checkRole', ['except' => [
+            'readMore'
+        ]]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function readMore()
+    {
+        $news = Berita::all();
+        $module = Module::all();
+        return view('newsboard')->with('berita',$news)->with('module',$module);
+    }
+
     public function index()
     {
         $news = Berita::all();
@@ -26,12 +46,7 @@ class BeritaController extends Controller
         return view('list-news')->with('news',$news);
     }
 
-    public function read_more()
-    {
-        $news = Berita::all();
-        $module = Module::all();
-        return view('newsboard')->with('berita',$news)->with('module',$module);
-    }
+    
     /**
      * Show the form for creating a new resource.
      *

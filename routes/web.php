@@ -79,7 +79,7 @@ Route::get('/add-post-test/{id}', 'TrainingController@add_post_test');
 
 Route::post('/post-test/submit', 'TestController@store_post_test');
 
-Route::get('news-board', 'BeritaController@read_more');
+Route::get('news-board', 'BeritaController@readMore');
 
 Route::get('Trainning', function () {
     return view('IModul');
