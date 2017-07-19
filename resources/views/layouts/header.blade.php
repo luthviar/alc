@@ -34,7 +34,7 @@
 							<li><a href="/news-board">News</a></li>
 							<li><a href="products.html">Contact Us</a></li>
 							@if(Auth::user())
-							<li><a href="">Forum</a></li>
+							<li><a href="{{url('/forum')}}">Forum</a></li>
 							<div class="dropdown">
 								<li><a class="dropbtn">My Modules</a></li>
 								<div class="dropdown-content">
