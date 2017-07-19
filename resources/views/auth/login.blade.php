@@ -22,7 +22,7 @@
 				<hr class="style14">
 			<br>
 			<div class="panel panel-info" >
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="background-color:lightgreen; color:white">
                         <div class="panel-title">Sign In</div>
                     </div>     
 
@@ -52,23 +52,25 @@
 											</span>
 										@endif
                                     </div>
-                        
+								
+								<div style="text-align: center">
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <button type="submit" class="btn btn-primary">
+                                      <button type="submit" class="btn btn-primary" style="background-color:lightgreen; color:white">
 										Login
 									  </button>
 
                                     </div>
                                 </div>
+								</div>
 
 
                                 <div class="form-group">
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                             <a class="btn btn-link" href="{{ route('password.request') }}">
+                                             <a class="btn btn-link" href="{{ route('password.request') }}" style="color:green">
 												Forgot Your Password?
 											</a>
                                         </div>
