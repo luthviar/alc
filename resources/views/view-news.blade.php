@@ -1,33 +1,42 @@
 @include('layouts.head')
+<style>
+p.big {
+    line-height: 300%;
+	font-size : 15px;
+}
+</style>
 <body>
 
-	<!-- Header -->
-	<div id="wrapper">
-		<div class="wrapper-holder">
-			@include('layouts.header')
-			
-				<section id="main">
-					
-					<div class="block-advice">
-							
-							<h3>{{ $news['title'] }}</h3>
+    <!-- Header -->
+    <div id="wrapper">
+        <div class="wrapper-holder">
+            @include('layouts.header')
+                 
+            <section id="main">
+				<div class ="col-sm-9">
+				<h3>{{ $news['title'] }}</h3>
 							<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('d - m - Y , H:i:s')}}</h6>
-
+							<hr class="style14">
+								<img src="/Elegantic/images/ALS.jpg" alt="Card image cap" width="100%">
+							<hr class="style14"> 
+								<p align="justify" class="big">
+									{{ $news['content'] }}
+								</p><br>
 								
-							<p align="justify">
-								{{ $news['content'] }}
-							</p><br>
-							
-						@if($news->can_reply == 1)
+								@if($news->can_reply == 1)
+									
+							<div class="block-advice">
+							 <h1>Comments(9)</h1>
+							 <br>
 							@foreach($replies as $reply)
-								<div class="block-advice">
-									<h4>{{ $reply['title'] }}</h4>
-									<h6>{{ \Carbon\Carbon::parse($reply->create_at)->format('d - m - Y , H:i:s')}}</h6>
-									<p align="justify">
-										{{ $reply['content'] }}
-									</p>
-								</div>	
+							<div class="panel panel-default">
+								<div class="panel-heading">{{ $reply['title'] }}<br>
+								Rohmat, {{ \Carbon\Carbon::parse($reply->create_at)->format('d - m - Y , H:i:s')}}</div>
+								<div class="panel-body">
+										{{ $reply['content'] }}</div>
+							</div><br>
 							@endforeach
+							</div>
 							<div class="block-advice">
 							<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('NewsReplieController@store') }}">
                         		{{ csrf_field() }}
@@ -57,15 +66,29 @@
 							</form>
 							</div>	
 						@endif
+						
+				</div>
+				
+				<div class="col-lg-3  col-md-3 col-sm-12">
+						<div class="well">
+							<h4>Recent Post</h4>
+							<hr class="style14">
+						<p>ALC NEWS 5</p>
+						<p>ALC NEWS 4</p>
+						<p>ALC NEWS 3</p>
+						<p>ALC NEWS 2</p>
+						<p>ALC NEWS 1</p>
+					<br>
+						
+						</div>
 					</div>
-				</section>
-			</div>
-	
-		<!-- Modul -->
-		@include('layouts.footer')
-		</div>
-	</div>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        @include('layouts.footer')
+    </div>
 
-	@include('layouts.script')
+    @include('layouts.script')
 </body>
 </html>
