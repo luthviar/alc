@@ -86,7 +86,7 @@
             </div>
                     <br>
                     <div style="text-align: center">
-                        <a class="btn white big" href="#">Read More</a>
+                        <a class="btn white big" href="/news-board">Read More</a>
                     </div>
                         
                     </div>

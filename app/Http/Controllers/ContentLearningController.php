@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 
 class ContentLearningController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +51,7 @@ class ContentLearningController extends Controller
             return view('add-materi-training')->with('contents',null)->with('id_section',$id_section);
         }else{
             $id_section = $section->id;
-            return view('add-materi-training')->with('contents',null)->with('id_section',$id_section);
+            return view('add-materi-training')->with('contents',null)->with('id_section',$id_section)->with('id_training',$id_training);
         }
 
     }

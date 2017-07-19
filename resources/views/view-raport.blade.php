@@ -14,9 +14,11 @@
                     
                         <h2>Raport Saya</h2><br>
                         <p align="justify">
-                            
+                                @if(empty($raport))
+                                <h3>Anda Belum mempunyai raport</h3>
+                                @else
                                 <iframe id="viewer" src = "{{URL::to($raport->url_file_pdf)}}" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe>
-                                    
+                                @endif
                         </p>   
                     </div>
                 </div>

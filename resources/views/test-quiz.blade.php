@@ -409,17 +409,5 @@ SFS dark red = #9f2026; */
 
 </script>
 
-<script type="text/javascript">
- 
-   $(window).on('beforeunload', function(){
-      return 'Are you sure you want to leave?';
-    });
 
-    $(window).on('unload', function(){
-
-             document.getElementById('myquiz').submit();
-
-    });
-   
-</script>
 
