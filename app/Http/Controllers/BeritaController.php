@@ -14,11 +14,11 @@ class BeritaController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => [
-            'readMore'
+            'readMore', 'show'
         ]]);
 
         $this->middleware('checkRole', ['except' => [
-            'readMore'
+            'readMore' , 'show'
         ]]);
     }
 

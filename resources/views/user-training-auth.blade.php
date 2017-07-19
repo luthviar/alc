@@ -39,7 +39,7 @@ $(document).ready(function(){
 			  	@foreach($user_auth as $auth)
 				<tr>
 				  <td>{{$auth['personnel']->fname}} {{$auth['personnel']->lname}}</td>
-				  <td>{{$auth['personnel-departmen']->nama_departmen}}</td>
+				  <td>{{$auth['personnel-department']->nama_departmen}}</td>
 				  <td>{{$auth['training']->title}}</td>
 				  <td>{{$auth['training-department']->nama_departmen}}</td>
 				  @if($auth->auth == 1 )

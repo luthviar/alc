@@ -28,7 +28,10 @@
 									</p>
 								</div>	
 							@endforeach
+							@if(Auth::user() == null)
+							@else
 							<div class="block-advice">
+
 							<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('NewsReplieController@store') }}">
                         		{{ csrf_field() }}
                         		<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
@@ -56,6 +59,7 @@
 			                    </div>
 							</form>
 							</div>	
+							@endif
 						@endif
 					</div>
 				</section>

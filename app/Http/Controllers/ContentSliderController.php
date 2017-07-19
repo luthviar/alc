@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class ContentSliderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [
+            'show'
+        ]]);
+
+        $this->middleware('checkRole', ['except' => [
+            'show'
+        ]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -81,6 +81,8 @@ Route::post('/post-test/submit', 'TestController@store_post_test');
 
 Route::get('news-board', 'BeritaController@readMore');
 
+Route::get('/request-access/{id_training}', 'UserTrainingAuthController@request_access');
+
 Route::get('Trainning', function () {
     return view('IModul');
 });
