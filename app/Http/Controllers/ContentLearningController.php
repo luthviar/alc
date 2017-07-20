@@ -48,7 +48,7 @@ class ContentLearningController extends Controller
                 'id_training' => $id_training,
                 'id_type' => 2,
             ));
-            return view('add-materi-training')->with('contents',null)->with('id_section',$id_section);
+            return view('add-materi-training')->with('contents',null)->with('id_section',$id_section)->with('id_training',$id_training);
         }else{
             $id_section = $section->id;
             return view('add-materi-training')->with('contents',null)->with('id_section',$id_section)->with('id_training',$id_training);

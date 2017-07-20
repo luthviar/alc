@@ -4,14 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Module;
 use DB;
+use Auth;
 use App\Department;
 use App\JobFamily;
 use App\Training;
+use App\Personnel;
+use App\Employee;
+use App\UserTrainingAuth;
+use App\StrukturOrganisasi;
 use App\SectionTraining;
 use Illuminate\Http\Request;
 
 class TrainingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole', ['except' => [
+            'show'
+        ]]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -98,6 +111,39 @@ class TrainingController extends Controller
         $module = Module::all();
         $training = Training::find($id);
         $section = SectionTraining::where('id_training',$id)->where('id_type','1')->first();
+
+        $id_user = Auth::user()->id;
+        $personnel = Personnel::where('id_user',$id_user)->first();
+        $employee = Employee::where('id_personnel',$personnel->id)->first();
+        $job_family_user = null;
+        if (empty($employee)) {
+            
+        }else{
+            $struktur = StrukturOrganisasi::find($employee->struktur);
+            $department_user = Department::where('id_department',$struktur->id_department)->first();
+            $job_family_user = JobFamily::find($department_user->id_job_family);
+        }
+        
+        if (empty($training->id_job_family)) {
+            $training['open'] = 1;
+        }else {
+            if ($training->id_module ==3 and $training->id_job_family == $job_family_user->id) {
+                $training['open'] = 1;
+            }elseif ($training->id_module ==3 and $training->id_job_family != $job_family_user->id) {
+                $user_auth = UserTrainingAuth::where('id_training',$training->id)->where('id_user',$id_user)->first();
+                if (empty($user_auth)) {
+                    $training['open'] = 0;
+                }else{
+                    if($user_auth->auth == 1){
+                        $training['open'] = 1;
+                    }else{
+                        $training['open'] = 2;
+                    }
+                    
+                }
+            }
+        }
+        
         return view('training')->with('training',$training)->with('module',$module)->with('next_section',$section);
     }
 

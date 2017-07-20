@@ -1,25 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#detailTable').DataTable();
-    });
-</script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
-
-
-<script>
-$(document).ready(function(){
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
-    });
-});
-</script>
 
 <!--Form to Create New Trainning -->
 Create Trainning
@@ -121,5 +102,26 @@ Create Trainning
         </form>            
     </div>
 </div>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detailTable').DataTable();
+    });
+</script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
+
+
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
+</script>
+
+
 
 @endsection

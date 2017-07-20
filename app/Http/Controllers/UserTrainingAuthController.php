@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\UserTrainingAuth;
 use App\Personnel;
 use App\Employee;
@@ -12,6 +13,14 @@ use Illuminate\Http\Request;
 
 class UserTrainingAuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole', ['except' => [
+            'request_access' 
+        ]]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +31,13 @@ class UserTrainingAuthController extends Controller
         $user_auth = UserTrainingAuth::all();
         foreach ($user_auth as $key => $value) {
             //get personnel and departmen
-            $user_auth['personnel'] = Personnel::where('id_user',$value->id_user)->first();
-            $employee = Employee::where('id_personnel', $user_auth['personnel']->id)->first();
+            $value['personnel'] = Personnel::where('id_user',$value->id_user)->first();
+            $employee = Employee::where('id_personnel', $value['personnel']->id)->first();
             $struktur = StrukturOrganisasi::find($employee->struktur);
-            $user_auth['personnel-department'] = Department::where('id_department',$struktur->id_department)->first();
+            $value['personnel-department'] = Department::where('id_department',$struktur->id_department)->first();
             //get training
-            $user_auth['training'] = Training::find($value->id_training);
-            $user_auth['training-department'] = Department::where('id_department',$user_auth['training']->id_department);
+            $value['training'] = Training::find($value->id_training);
+            $value['training-department'] = Department::where('id_department',$value['training']->id_department)->first();
         }
         return view('user-training-auth')->with('user_auth',$user_auth);
     }
@@ -114,4 +123,19 @@ class UserTrainingAuthController extends Controller
 
         return redirect('access');
     }
+
+    public function request_access($id_training){
+        
+        $id_user = Auth::user()->id;
+        $user_auth = new UserTrainingAuth;
+        $user_auth->id_user = $id_user;
+        $user_auth->id_training = $id_training;
+        $user_auth->auth = 0;
+        $user_auth->save();
+
+        return redirect()->action(
+            'TrainingController@show', ['id' => $id_training]
+        );
+    }
+
 }

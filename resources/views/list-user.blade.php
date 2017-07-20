@@ -8,18 +8,19 @@
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<div class = "PageContainer">
-    <div class="quick-press">
-		<h3>User List</h3>
-		<a href="/personnel/create" class="btn btn-info">Create New User</a><br><br>	
-		<div class = "main-table">
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">User List</div>
+		<div class ="panel-body">
+				<a href="/personnel/create" class="btn btn-info">Create New User</a><br><br>	
+		   <div class = "main-table">
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
 				<tr>
 				  <th>Name</th>
 				  <th>Position</th>
 				  <th>Divisi</th>
-				  <th></th>
+				  <th>Edit</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -34,8 +35,8 @@
 				@endforeach
 				
 			  </tbody>
-			  </tbody>
 			</table>
+		  </div>
 		</div>
 	</div>
 </div>

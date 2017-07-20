@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Berita;
 use App\Personnel;
 use App\NewsReplie;
@@ -14,11 +15,11 @@ class BeritaController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => [
-            'readMore'
+            'readMore', 'show'
         ]]);
 
         $this->middleware('checkRole', ['except' => [
-            'readMore'
+            'readMore' , 'show'
         ]]);
     }
 
@@ -107,8 +108,9 @@ class BeritaController extends Controller
                 }
             }
         }
+        $recent = DB::table('beritas')->orderBy('id', 'desc')->take(6)->get();
         $module = Module::all();
-        return view('view-news')->with('module',$module)->with('news',$berita)->with('replies',$replies);
+        return view('view-news')->with('module',$module)->with('news',$berita)->with('replies',$replies)->with('beritas',$recent);
     }
 
     /**

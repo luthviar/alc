@@ -1,7 +1,6 @@
 @include('layouts.head')
 
 <body>
-
     <!-- Header -->
     <div id="wrapper">
         <div class="wrapper-holder">
@@ -27,11 +26,11 @@
             </section>
             
             
-            <div class="row">
+            
                 <div class="container">
                     <hr class="style3">
                 </div>
-            </div>
+            
             
             <section id="main">
                 <div class="block-advice">
@@ -53,11 +52,10 @@
             
             
             
-            <div class="row">
+            
                 <div class="container">
                     <hr class="style3">
-                </div>
-            </div>
+				</div>
             
             
             <!-- News Board -->
@@ -76,26 +74,27 @@
                                 <div class="card-block">
 									<div  style="height:15vh; width:100%;">
                                     <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
-									<p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p></div>
+									<p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p>
+                                    </div>
                                     <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p><br>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                        
-            </div>
-                    <br>
-                    <div style="text-align: center">
-                        <a class="btn white big" href="/news-board">Read More</a>
-                    </div>
-                        
-                    </div>
+                </div>            
+            
+                <br>
+                <div style="text-align: center">
+                    <a class="btn white big" href="/news-board">Read More</a>
+                </div>
+                    
             </section>
         </div>
         
         <!-- Footer -->
         @include('layouts.footer')
     </div>
+
 
     @include('layouts.script')
 </body>

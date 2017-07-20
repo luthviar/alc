@@ -15,6 +15,14 @@ use Illuminate\Http\Request;
 
 class ModuleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole', ['except' => [
+            'show'
+        ]]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -93,7 +101,11 @@ class ModuleController extends Controller
                     if (empty($user_auth)) {
                         $value['open'] = 0;
                     }else{
-                        $value['open'] = 1;
+                        if($user_auth->auth == 1){
+                            $value['open'] = 1;
+                        }else{
+                            $value['open'] = 2;
+                        }
                     }
                 }
             }

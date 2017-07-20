@@ -34,7 +34,13 @@
 									</strong>	
 								</h4><br>
 								<h6>
+									@if($training['open']==1)
 									<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
+									@elseif($training['open']==2)
+									<a class="btn darkgreen"  disabled>Access Requested</a>
+									@else
+									<a class="btn darkgreen" href="/request-access/{{$training->id}}">Request Access</a>
+									@endif
 								</h6>
 							</div>
 						</div>
