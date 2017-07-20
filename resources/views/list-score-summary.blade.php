@@ -41,8 +41,9 @@
 											{{ csrf_field() }}
 											
 
-											<div class="form-group">															
-												<div class="col-md-6 col-md-offset-4">
+											<div class="form-group">				
+												<label for="question" class="col-md-4 control-label">Upload File</label>
+												<div class="col-md-6">
 													<div class="input-group image-preview">
 														<input type="text" class="form-control image-preview-filename" disabled="disabled"> 
 														<!-- don't give a name === doesn't send on POST/GET -->
