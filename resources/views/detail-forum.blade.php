@@ -1,4 +1,5 @@
 @include('layouts.head')
+<script type="text/javascript" src="{{URL::asset('js/textarea.js')}}"></script>
 <style>
 p.big {
     line-height: 300%;
