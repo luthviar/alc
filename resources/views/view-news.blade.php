@@ -1,4 +1,5 @@
 @include('layouts.head')
+<script type="text/javascript" src="js/textarea.js"></script>
 <style>
 p.big {
     line-height: 300%;
@@ -27,13 +28,13 @@ p.big {
 									
 							<div class="block-advice">
 							 <h1>Comments(9)</h1>
-							 <br>
+
 							@foreach($replies as $reply)
 							<div class="panel panel-default">
 								<div class="panel-heading">{{ $reply['title'] }}<br>
 								Rohmat, {{ \Carbon\Carbon::parse($reply->create_at)->format('d - m - Y , H:i:s')}}</div>
-								<div class="panel-body">
-										{{ $reply['content'] }}</div>
+								<div class="panel-body">&nbsp;
+										{{ $reply['content'] }}&nbsp</div>
 							</div><br>
 							@endforeach
 							</div>
@@ -53,7 +54,8 @@ p.big {
 			                        <label for="content" class="col-md-4 control-label">Content</label>
 
 			                        <div class="col-md-6">
-			                            <textarea id="content" type="text" class="form-control" name="content" required autofocus style="resize: none;"></textarea>
+			                            <textarea id="content" type="text" class="form-control"name="content" required autofocus style="resize: none;">
+										</textarea>
 			                        </div>
 			                    </div>
 			                    <div class="form-group">

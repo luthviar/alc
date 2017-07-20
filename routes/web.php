@@ -192,4 +192,6 @@ Route::get('CreateTrainning2', function () {
     return view('Admin.CreateTrainning2');
 });
 
-
+Route::get('404', function () {
+    return view('404');
+});
