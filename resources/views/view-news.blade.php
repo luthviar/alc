@@ -93,6 +93,7 @@ p.big {
         
         <!-- Footer -->
         @include('layouts.footer')
+        </div>
     </div>
 
     @include('layouts.script')
