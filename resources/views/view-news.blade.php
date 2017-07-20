@@ -1,4 +1,5 @@
 @include('layouts.head')
+<script type="text/javascript" src="js/textarea.js"></script>
 <style>
 p.big {
     line-height: 300%;
@@ -25,7 +26,7 @@ p.big {
 					<p align="justify" class="big">
 						{{ $news['content'] }}
 					</p><br>
-								
+
 					@if($news->can_reply == 1)
 						<div class="block-advice">
 							<h3>Comments({{count($replies)}})</h3>

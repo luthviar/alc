@@ -1,17 +1,14 @@
-
 @include('Admin.AdminHead')
-
 @extends('Admin.Template')
 @section('section')
 
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Add New User</div>
                 <div class="panel-body">
                 <div class="container">
                     <div class="row">
-                        <h3>Data Diri</h3>
+                        <h3>User Profile</h3>
                     </div>
                 </div>
                     <form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('PersonnelController@store') }}">
@@ -198,7 +195,6 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 <script>

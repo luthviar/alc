@@ -196,8 +196,17 @@ Route::get('CreateTrainning2', function () {
     return view('Admin.CreateTrainning2');
 });
 
+Route::get('404', function () {
+    return view('404');
+});
+
 Route::get('NewsBoard', function () {
     return view('newsboard');
 });
 
 Route::resource('forum', 'ForumController');
+
+
+Route::get('RequestBoard', function () {
+    return view('Admin.RequestBoard');
+});

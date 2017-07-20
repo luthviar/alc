@@ -25,9 +25,9 @@
             </section>
             
             
-            <div class="row">
+            <div>
                 <div class="container">
-                    <hr class="style3" />
+                    <hr class="style3">
                 </div>
             </div>
             
@@ -38,7 +38,7 @@
                             <small>Welcome to</small>
                         </h2>
                         <h1 class="brand-name">Aerofood Learning Center</h1>
-                        <hr class="tagline-divider" />
+                        <hr class="tagline-divider">
                         <h2>
                             <small>
                                 <strong>Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
@@ -51,9 +51,9 @@
             
             
             
-            <div class="row">
+            <div>
                 <div class="container">
-                    <hr class="style3" />
+                    <hr class="style3">
                 </div>
             </div>
             
