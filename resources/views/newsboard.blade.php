@@ -6,58 +6,50 @@
                     
 			
 <div id="wrapper">
-        <div class="wrapper-holder">
+    <div class="wrapper-holder">
         @include('layouts.header')
-            <!-- News Board -->
-            <section id="main">
-                <div class="block-advice">
-                    <div class = "text-center">
-                        <h1 class="brand-name">News</h1>
-                    </div><br>
-                    <div class="row" >
-                        @if(empty($berita[0]))
+        <!-- News Board -->
+        <section id="main">
+            <div class="block-advice">
+                <div class = "text-center">
+                    <h1 class="brand-name">News</h1>
+                </div><br>
+                <div class="row" >
+                    @if(empty($berita[0]))
                         <div style="text-align: center;">
                             <h4>No news content</h4>
-                            </div>
-                            @else
-                          @foreach ($berita as $news)
-                            <input type='hidden' id='current_page' />
-                            <input type='hidden' id='show_per_page' />
+                        </div>
+                    @else
                         <div id="content">
-
-
-                        
-                              <div class="col-lg-4 col-sm-6 portfolio-item" style="
+                        <input type='hidden' id='current_page' />
+                        <input type='hidden' id='show_per_page' />
+                        @foreach ($berita as $news)
+                            <div class="col-lg-4 col-sm-6 portfolio-item" style="
                               height: 400px;">
-                                    <div class="card h-100">
-                                        <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; "></a>
-                                        <div class="card-block">
-                                            <div  style="height:15vh; width:100%;">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; "></a>
+                                    <div class="card-block">
+                                        <div  style="height:15vh; width:100%;">
                                             <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
-                                            <p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p></div>
-                                            <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p><br>
+                                            <p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p>
                                         </div>
+                                            <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p>
+                                            <br>
                                     </div>
                                 </div>
-                            @endforeach
-                        @endif
-					
-					</div>
-                    <br>
-                    
-                    <div style="text-align: center">
-                        <div class="container">
-                            <ul class="pagination" id="page_navigation">
-                                
-                            </ul>
+                            </div>
+                        @endforeach
                         </div>
-                    </div>
-                        
+                    @endif
+                    <br> 
                 </div>
-                    
-
-
-
+                <div style="text-align: center">
+                    <div class="container">
+                        <ul class="pagination" id="page_navigation">
+                            
+                        </ul>
+                    </div>
+                </div>
             </section>
         </div>
 		
@@ -73,7 +65,7 @@
     $(document).ready(function(){
 
     //how much items per page to show
-    var show_per_page = 3;
+    var show_per_page = 6;
     //getting the amount of elements inside content div
     var number_of_items = $('#content').children().size();
     //calculate the number of pages we are going to have

@@ -35,7 +35,17 @@ class ReplieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reply = new Replie;
+        $reply->id_forum = $request->id_forum;
+        $reply->id_user = $request->id_user;
+        $reply->title = $request->title;
+        $reply->content = $request->content;
+        $reply->save();
+
+
+        return redirect()->action(
+            'ForumController@show', ['id' => $request->id_forum]
+        );
     }
 
     /**

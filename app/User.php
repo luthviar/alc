@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Personnel;
+use App\Employee;
+use App\LevelPosition;
+use App\StrukturOrganisasi;
 
 class User extends Authenticatable
 {
@@ -29,5 +33,12 @@ class User extends Authenticatable
 
     public function is_admin(){
         return $this->is_admin;
+    }
+
+    public function get_level(){
+        $personnel = Personnel::where('id_user',$this->id)->first();
+        $employee  = Employee::where('id_personnel',$personnel->id)->first();
+        $level_position = LevelPosition::find($employee->level_position);
+        return $level_position;
     }
 }

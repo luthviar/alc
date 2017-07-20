@@ -55,6 +55,8 @@ Route::post('raport/submit/{id}', 'ScoreSummaryController@store');
 
 Route::resource('news-reply', 'NewsReplieController');
 
+Route::resource('forum-reply', 'ReplieController');
+
 Route::resource('access', 'UserTrainingAuthController');
 
 Route::get('/slider/{id}/active', 'ContentSliderController@active');

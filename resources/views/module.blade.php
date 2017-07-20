@@ -51,7 +51,15 @@
 							</div>
 						@endforeach
 						</ul>
-					@else
+					@elseif($modul->id == 4)
+                        @if(Auth::user()->get_level()->id >= 6)
+                            @foreach($training as $trains)
+                                <li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a></li>
+                            @endforeach     
+                        @else
+                            <h4>Anda Tidak memiliki autentikasi untuk modul ini</h4>
+                        @endif
+                    @else
 						<ul>
 							@foreach($training as $trains)
 								<li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a></li>
