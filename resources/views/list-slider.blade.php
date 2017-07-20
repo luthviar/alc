@@ -8,9 +8,10 @@
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<div class = "PageContainer">
-    <div class="quick-press">
-		<h3>Slider</h3>
+<div class="col-md-12 ">
+	<div class="panel panel-default">
+	    <div class="panel-heading">Slider List</div>
+	    <div class="panel-body">
 		<div class = "main-table">
 			<div class="row">
 				<div class="container">
@@ -22,8 +23,8 @@
 			  <thead>
 				<tr>
 				  <th>Slider</th>
-				  <th>Activ</th>
-				  <th></th>
+				  <th>Status</th>
+				  <th>Edit</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -32,13 +33,13 @@
 				  <td>{{$slider->title}}</td>
 				  @if($slider->is_activ == 1)
 				  <td> active 
-				  <span><a class="btn btn-danger" href="/slider/{{$slider->id}}/nonactive">nonaktifkan</a></span>
+				  <span><a class="btn btn-danger" href="/slider/{{$slider->id}}/nonactive">Deactive</a></span>
 				  </td>
 
 				  @else
 				  <td >
 				  <span style="opacity: 0.5;">not active </span>
-				  <span><a class="btn btn-warning" href="/slider/{{$slider->id}}/active">aktifkan</a></span></td>
+				  <span><a class="btn btn-warning" href="/slider/{{$slider->id}}/active">Activicate</a></span></td>
 				  @endif
 				  <td>
 				  <span><a class="btn btn-default" href="/slider/{{$slider->id}}/edit">edit</a></span></td>
@@ -46,8 +47,8 @@
 				@endforeach
 				
 			  </tbody>
-			  </tbody>
 			</table>
+		</div>
 		</div>
 	</div>
 </div>

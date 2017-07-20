@@ -8,9 +8,10 @@
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<div class = "PageContainer">
-    <div class="quick-press">
-		<h3>News</h3>
+<div class="col-md-12 ">
+	<div class="panel panel-default">
+	    <div class="panel-heading">List News</div>
+	    <div class="panel-body">
 		<div class = "main-table">
 			<div class="row">
 				<div class="container">
@@ -21,10 +22,10 @@
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
 				<tr>
-				  <th>News</th>
+				  <th>News Title</th>
 				  <th>Can Reply</th>
 				  <th>Replies Count</th>
-				  <th></th>
+				  <th>Edit</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -33,13 +34,13 @@
 				  <td><a href="/berita/{{$value->id}}">{{$value->title}}</a></td>
 				  @if($value->can_reply == 1)
 				  <td> Yes 
-				  <span><a class="btn btn-danger" href="/berita/{{$value->id}}/nonactive">nonaktifkan</a></span>
+				  <span><a class="btn btn-danger" href="/berita/{{$value->id}}/nonactive">Deactive</a></span>
 				  </td>
 				  <td>{{$value['replies']->count()}}</td>
 				  @else
 				  <td >
 				  <span style="opacity: 0.5;">No </span>
-				  <span><a class="btn btn-warning" href="/berita/{{$value->id}}/active">aktifkan</a></span></td>
+				  <span><a class="btn btn-warning" href="/berita/{{$value->id}}/active">Activicate</a></span></td>
 				  <td>-</td>
 				  @endif
 				  <td>
@@ -48,8 +49,8 @@
 				@endforeach
 				
 			  </tbody>
-			  </tbody>
 			</table>
+			</div>
 		</div>
 	</div>
 </div>
