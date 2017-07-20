@@ -20,9 +20,10 @@ $(document).ready(function(){
     });
 });
 </script>
-<div class = "PageContainer">
-    <div class="quick-press">
-		<h3>Employee Raport</h3>
+<div class="col-md-12 ">
+	<div class="panel panel-default">
+	    <div class="panel-heading">Trainning Request List</div>
+	    <div class="panel-body">
 		<div class = "main-table">
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
@@ -53,8 +54,8 @@ $(document).ready(function(){
 				@endforeach
 				
 			  </tbody>
-			  </tbody>
 			</table>
+		</div>
 		</div>
 	</div>
 </div>
