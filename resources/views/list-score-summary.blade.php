@@ -56,7 +56,7 @@
 															<div class="btn btn-default image-preview-input">
 																<span class="glyphicon glyphicon-folder-open"></span>
 																<span class="image-preview-input-title">Browse</span>
-																<input type="file" accept="Application/pdf" name="file"/> <!-- rename it -->
+																<input type="file" accept="Application/pdf" name="score"/> <!-- rename it -->
 															</div>
 														</span>
 													</div><!-- /input-group image-preview [TO HERE]--> 
