@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\StrukturOrganisasi;
+use App\Department;
+use App\Section;
+use App\Unit;
+use App\Divisi;
 use Illuminate\Http\Request;
 
 class StrukturOrganisasiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,14 @@ class StrukturOrganisasiController extends Controller
      */
     public function index()
     {
-        //
+        $struktur = StrukturOrganisasi::all();
+        foreach ($struktur as $key => $value) {
+            $value['department'] = Department::where('id_department',$value->id_department)->first();
+            $value['divisi'] = Divisi::where('id_divisi',$value->id_divisi)->first();
+            $value['unit'] = Unit::where('id_unit', $value->id_unit)->first();
+            $value['section'] = Section::where('id_section',$value->id_section)->first();
+        }
+        return view('list-struktur')->with('struktur',$struktur);
     }
 
     /**

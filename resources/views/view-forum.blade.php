@@ -127,7 +127,7 @@
                                             @if($forum['replie'] == null)
                                             <td>-</td>
                                             @else
-                                            <td>{{$forum['last_reply_personnel']['fname']}} {{$forum['last_reply_personnel']['lname']}}, {{ \Carbon\Carbon::parse($forum['last_reply'][0]->created_at)->format('l jS \\of F Y')}}</td>
+                                            <td></td>
                                             @endif
                                             
                                         </tr>

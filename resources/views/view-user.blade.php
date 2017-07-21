@@ -4,105 +4,159 @@
 <!--User Prfoile-->
 <link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
 <script type="text/javascript" src="js/EditProfile.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.detailTable').DataTable();
+    });
+</script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<div class="col-md-12">
 
-      <div class="row">
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">User Profile</div>
+      <div class="panel-body">
+        <h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
+      </div>
+    <div class="panel-body">
+    <div class="row">
+        <div class=" col-md-6 col-lg-6 "> 
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td width="50%">Username</td>
+                <td width="50%">{{$personnel['user']->username}}</td>
+              </tr>
+              <tr>
+                <td>Positition</td>
+                @if(empty($personnel->struktur))
+                <td>-</td>
+                @else
+                <td>{{$personnel['level']->nama_level}}</td>
+                @endif
+              </tr>
+              <tr>
+                <td>Section</td>
+                @if(empty($personnel->struktur) or empty($personnel['section']))
+                <td>-</td>
+                @else
+                <td>{{$personnel['section']->nama_section}}</td>
+                @endif
+              </tr>
+              <tr>
+                <td>Department</td>
+                @if(empty($personnel->struktur) or empty($personnel['department']))
+                <td>-</td>
+                @else
+                <td>{{$personnel['department']->nama_departmen}}</td>
+                @endif
+              </tr>
+              <tr>
+                <td>Unit</td>
+                @if(empty($personnel->struktur) or empty($personnel['unit']))
+                <td>-</td>
+                @else
+                <td>{{$personnel['unit']->nama_unit}}</td>
+                @endif
+              </tr>
+              <tr>
+                <td>Divisi</td>
+                @if(empty($personnel->struktur) or empty($personnel['divisi']))
+                <td>-</td>
+                @else
+                <td>{{$personnel['divisi']->nama_divisi}}</td>
+                @endif
+              </tr>
+              <tr>
+                <td>Date of Birth</td>
+                <td>{{$personnel->tanggal_lahir}}</td>
+              </tr>
+              <tr>
+                <td>Gender</td>
+                @if($personnel->jenis_kelamin == 1)
+                <td>Male</td>
+                @else
+                <td>Female</td>
+                @endif
+              </tr>
+                <tr>
+                <td>Home Address</td>
+                <td>{{$personnel->alamat}}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{$personnel->email}}</td>
+              </tr>
+                <td>Phone Number</td>
+                <td>{{$personnel->no_hp}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class=" col-md-6 col-lg-6 "> 
         <div class="panel panel-default">
-                <div class="panel-heading">User Profile</div>
-                <div class="panel-body">
-   
-              <h3 class="panel-title">{{$personnel->fname}} {{$personnel->lname}}</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Username</td>
-                        <td>{{$personnel['user']->username}}</td>
-                      </tr>
-                      <tr>
-                        <td>Positition</td>
-                        @if(empty($personnel->struktur))
-                        <td>-</td>
-                        @else
-                        <td>{{$personnel['level']->nama_level}}</td>
-                        @endif
-                      </tr>
-                      <tr>
-                        <td>Section</td>
-                        @if(empty($personnel->struktur) or empty($personnel['section']))
-                        <td>-</td>
-                        @else
-                        <td>{{$personnel['section']->nama_section}}</td>
-                        @endif
-                      </tr>
-                      <tr>
-                        <td>Department</td>
-                        @if(empty($personnel->struktur) or empty($personnel['department']))
-                        <td>-</td>
-                        @else
-                        <td>{{$personnel['department']->nama_departmen}}</td>
-                        @endif
-                      </tr>
-                      <tr>
-                        <td>Unit</td>
-                        @if(empty($personnel->struktur) or empty($personnel['unit']))
-                        <td>-</td>
-                        @else
-                        <td>{{$personnel['unit']->nama_unit}}</td>
-                        @endif
-                      </tr>
-                      <tr>
-                        <td>Divisi</td>
-                        @if(empty($personnel->struktur) or empty($personnel['divisi']))
-                        <td>-</td>
-                        @else
-                        <td>{{$personnel['divisi']->nama_divisi}}</td>
-                        @endif
-                      </tr>
-                      <tr>
-                        <td>Date of Birth</td>
-                        <td>{{$personnel->tanggal_lahir}}</td>
-                      </tr>
-                      <tr>
-                        <td>Gender</td>
-                        @if($personnel->jenis_kelamin == 1)
-                        <td>Male</td>
-                        @else
-                        <td>Female</td>
-                        @endif
-                      </tr>
-                        <tr>
-                        <td>Home Address</td>
-                        <td>{{$personnel->alamat}}</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td>{{$personnel->email}}</td>
-                      </tr>
-                        <td>Phone Number</td>
-                        <td>{{$personnel->no_hp}}</td>
-                      </tr>
-                     
-                    </tbody>
-                  </table>
-                  
-                  <a href="#" class="btn btn-primary">Grade History</a>
-                  <a href="#" class="btn btn-primary">User Activity</a>
-                </div>
+          <div class="panel-heading">User Raport</div>
+            <div class ="panel-body">
+              <div class = "main-table">
+                <table class="table table-striped detailTable">
+                  <thead>
+                    <tr>
+                      <th>Raport</th>
+                      <th>Created at</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($personnel['score'] as $score)
+                    <tr>
+                      <td>{{$score->file_name}}</td>
+                      <td>{{ \Carbon\Carbon::parse($score->created_at)->format('l jS \\of F Y')}}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
               </div>
             </div>
-                 <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                            <a href="/personnel/{{$personnel->id}}/edit" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                    </div>
+          </div>
+        </div>
+      </div>
+      <div class=" col-md-12 col-lg-12 "> 
+        <div class="panel panel-default">
+          <div class="panel-heading">List Training  </div>
+          <div class ="panel-body">
+             <div class = "main-table">
+            <table class="table table-striped detailTable">
+              <thead>
+                <tr>
+                  <th>Training</th>
+                  <th>Pre Test Score</th>
+                  <th>Post Test Score</th>
+                  <th>Test Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($personnel['training'] as $training)
+                <tr>
+                  <td>{{$training['info']->title}}</td>
+                  <td>{{$training->pre_test_score}}</td>
+                  <td>{{$training->post_test_score}}</td>
+                  <td>{{ \Carbon\Carbon::parse($training->created_at)->format('l jS \\of F Y')}}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="panel-footer">
+      <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+      <span class="pull-right">
+        <a href="/personnel/{{$personnel->id}}/edit" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+      </span>
+    </div>
+  </div>
 </div>
-
 @endsection

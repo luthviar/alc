@@ -50,6 +50,7 @@
 			  <li><a href="/personnel">User</a></li>
 			  <li><a href="/training">Training</a></li>
 			  <li><a href="/access">Request Access</a></li>
+			  <li><a href="/struktur">Organizational Structure</a></li>
 			  <li><a href="/raport">Raport</a></li>
 			  <li><a href="/slider">Slider</a></li>
 			  <li><a href="/berita">News</a></li>

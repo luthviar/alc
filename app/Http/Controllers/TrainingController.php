@@ -180,4 +180,18 @@ class TrainingController extends Controller
     {
         //
     }
+
+    public function publish ($id_training){
+        $training = Training::find($id_training);
+        $training->is_publish = 1;
+        $training->save();
+        return redirect('/training');
+    }
+
+    public function deactive ($id_training){
+        $training = Training::find($id_training);
+        $training->is_publish = 0;
+        $training->save();
+        return redirect('/training');
+    }
 }

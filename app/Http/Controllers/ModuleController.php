@@ -77,7 +77,7 @@ class ModuleController extends Controller
         $module = Module::all();
         $modul = Module::find($id);
         $department = Department::all();
-        $training = Training::where('id_module',$id)->get();
+        $training = Training::where('id_module',$id)->where('is_publish', 1)->get();
         //get user information
         $id_user = Auth::user()->id;
         $personnel = Personnel::where('id_user',$id_user)->first();

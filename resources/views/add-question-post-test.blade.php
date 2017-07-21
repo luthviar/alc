@@ -23,7 +23,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" value="'+count+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
+            $(wrapper).append('<div><input type="text" name="opsi[]"/>  <input type="radio" required="true" name="isTrue" value="'+count+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
             count+=1;
         }
     });
@@ -115,11 +115,11 @@ $(document).ready(function() {
 									<i class="fa fa-exclamation-triangle" aria-hidden="true" style="color:orange"></i>Choose correct answer by click the button beside option field<br><br>
 									<div>
 									<input type="text" name="opsi[]"/>
-									<span><input type="radio" name="isTrue" value="0" /></span><br><br>
+									<span><input type="radio" name="isTrue" value="0" required="true" /></span><br><br>
 									</div>
 									<div>
 									<input type="text" name="opsi[]"/>
-									<span><input type="radio" name="isTrue" value="1"/></span><br><br>
+									<span><input type="radio" name="isTrue" value="1" required="true"/></span><br><br>
 									</div>
 									<div class="input_fields_wrap">
 									</div>
@@ -150,7 +150,7 @@ $(document).ready(function() {
     </div>
   </div>
   
-  
+  @if($time!=0)  
   <!--Table -->
   <div class="col-md-12 ">
     <div class="panel panel-default">
@@ -189,6 +189,7 @@ $(document).ready(function() {
 	</div>
 	<a class="btn btn-primary" href="/training">Finish</a>
 </div>
+@endif
 
 
 <!--Edit Question -->

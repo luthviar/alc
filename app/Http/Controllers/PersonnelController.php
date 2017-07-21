@@ -10,7 +10,9 @@ use App\Personnel;
 use App\Department;
 use App\Section;
 use App\Divisi;
+use App\UserTest;
 use App\Unit;
+use App\Training;
 use App\LevelPosition;
 use App\StrukturOrganisasi;
 use Illuminate\Http\Request;
@@ -37,9 +39,11 @@ class PersonnelController extends Controller
         foreach ($personnels as $key => $personnel) {
             $employee = Employee::where('id_personnel',$personnel->id)->first();
             $personnel['employee'] = $employee;
+            $personnel['user'] = User::find($personnel->id_user);
             if (empty($employee)) {
                 $personnel['position'] = "-";
                 $personnel['divisi'] = "-";
+                $personnel['department'] = "-";
             }else{
                 foreach ($position as $key => $value) {
                     if ($value->id == $employee->level_position) {
@@ -56,6 +60,7 @@ class PersonnelController extends Controller
                         }
                     }    
                 }
+                $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
             }
         }
         return view('list-user')->with('personnels',$personnels);
@@ -167,6 +172,11 @@ class PersonnelController extends Controller
             $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
             $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
             $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+        }
+        $personnel['score'] = ScoreSummary::where('id_user',$personnel->id_user)->get();
+        $personnel['training'] = UserTest::where('id_user',$personnel->id_user)->get();
+        foreach ($personnel['training'] as $key => $value) {
+            $value['info'] = Training::find($value->id_training);
         }
         return view('view-user')->with('personnel',$personnel);
 

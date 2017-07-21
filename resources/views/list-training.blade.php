@@ -39,11 +39,11 @@
 							  @endif
 							  <td>{{ \Carbon\Carbon::parse($trains->created_at)->format('l jS \\of F Y')}}</td>
 							  @if($trains->is_publish == 1)
-							  <td><div class="text-center"><i class="fa fa-check" aria-hidden="true"></i></div></td> 
-							  <td><a href="">hapus</a></td> 
+							  <td><div class="text-center"><i class="fa fa-check" aria-hidden="true" style="color:green;"></i></div></td> 
+							  <td><a href="/training/deactive/{{$trains->id}}">Deactive</a></td> 
 							  @else
 							  <td><div class="text-center"><i class="fa fa-times" aria-hidden="true" style="color:red;"></i></div></td> 
-							  <td><a href="">Publish Now</a></td> 
+							  <td><a href="/training/publish/{{$trains->id}}">Publish Now</a></td> 
 							  @endif
 							</tr>
 							@endforeach

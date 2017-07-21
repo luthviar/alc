@@ -1,6 +1,22 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
+<script>
+    $(function() {
+    $('#unit').hide(); 
+    $('#department').hide();
+    $('#section').hide();
+    $('#divisi').change(function(){
+        $('#unit').show();
+    });
+    $('#unit').change(function(){
+        $('#department').show();
+    });
+    $('#department').change(function(){
+        $('#section').show();
+    });
+});
+</script>
 
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -136,18 +152,18 @@
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="department" class="col-md-4 control-label">Department</label>                                     
+                    <div class="form-group" id="divisi">
+                        <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                         <div class="col-md-6">
-                            <select name="department" class="selectpicker">
+                            <select name="divisi" class="selectpicker">
                                 <option value="">..</option>
-                                @foreach($department as $deps)
-                                <option value="{{$deps->id_department}}">{{$deps->nama_departmen}}</option>
+                                @foreach($divisi as $div)
+                                <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
                                 @endforeach
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="unit">
                         <label for="unit" class="col-md-4 control-label">Unit</label>                                     
                         <div class="col-md-6">
                             <select name="unit" class="selectpicker">
@@ -158,24 +174,24 @@
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="department">
+                        <label for="department" class="col-md-4 control-label">Department</label>                                     
+                        <div class="col-md-6">
+                            <select name="department" class="selectpicker">
+                                <option value="">..</option>
+                                @foreach($department as $deps)
+                                <option value="{{$deps->id_department}}">{{$deps->nama_departmen}}</option>
+                                @endforeach
+                            </select><br>
+                        </div>
+                    </div>
+                    <div class="form-group" id="section">
                         <label for="section" class="col-md-4 control-label">Section</label>                                     
                         <div class="col-md-6">
                             <select name="section" class="selectpicker">
                                 <option value="">..</option>
                                 @foreach($section as $sect)
                                 <option value="{{$sect->id_section}}">{{$sect->nama_section}}</option>
-                                @endforeach
-                            </select><br>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
-                        <div class="col-md-6">
-                            <select name="divisi" class="selectpicker">
-                                <option value="">..</option>
-                                @foreach($divisi as $div)
-                                <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
                                 @endforeach
                             </select><br>
                         </div>

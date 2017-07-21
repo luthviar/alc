@@ -20,6 +20,8 @@
 				  <th>Name</th>
 				  <th>Position</th>
 				  <th>Divisi</th>
+				  <th>Department</th>
+				  <th>Authority</th>
 				  <th>Edit</th>
 				</tr>
 			  </thead>
@@ -29,6 +31,12 @@
 				  <td>{{$personnel->fname}} {{$personnel->lname}}</td>
 				  <td>{{$personnel->position}}</td>
 				  <td>{{$personnel->divisi}}</td>
+				  <td>{{$personnel->department->nama_departmen}}</td>
+				  @if($personnel['user']->is_admin == 1)
+				  <td>Admin</td>
+				  @else
+				  <td>User</td>
+				  @endif
 				  <td><span><a class="btn btn-info" href="/personnel/{{$personnel->id}}">view</a></span>
 				  <span><a class="btn btn-default" href="/personnel/{{$personnel->id}}/edit">edit</a></span></td>
 				</tr>

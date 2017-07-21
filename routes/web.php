@@ -25,6 +25,8 @@ Route::resource('module', 'ModuleController');
 
 Route::resource('training', 'TrainingController');
 
+Route::resource('struktur', 'StrukturOrganisasiController');
+
 Route::resource('job-family', 'JobFamilyController');
 
 Route::resource('department', 'DepartmentController');
@@ -84,6 +86,10 @@ Route::post('/post-test/submit', 'TestController@store_post_test');
 Route::get('news-board', 'BeritaController@readMore');
 
 Route::get('/request-access/{id_training}', 'UserTrainingAuthController@request_access');
+
+Route::get('/training/publish/{id}','TrainingController@publish');
+
+Route::get('/training/deactive/{id}','TrainingController@deactive');
 
 Route::get('Trainning', function () {
     return view('IModul');
