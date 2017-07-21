@@ -210,3 +210,7 @@ Route::resource('forum', 'ForumController');
 Route::get('RequestBoard', function () {
     return view('Admin.RequestBoard');
 });
+
+Route::get('ResetPassword', function () {
+    return view('ResetPassword');
+});
