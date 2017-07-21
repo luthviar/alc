@@ -16,6 +16,11 @@
                                      document.getElementById('logout-form').submit();">
                             Logout
                         </a>
+                        @if(Auth::user()->is_admin == 1)
+                        <a href="/personnel">
+                            Acting As Admin
+                        </a>
+                        @endif
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}

@@ -1,5 +1,5 @@
 @include('layouts.head')
-<script type="text/javascript" src="js/textarea.js"></script>
+<script type="text/javascript" src="{{URL::asset('js/textarea.js')}}"></script>
 <style>
 p.big {
     line-height: 300%;
@@ -57,14 +57,14 @@ p.big {
 					                    <label for="title" class="col-md-4 control-label">Title</label>
 
 					                    <div class="col-md-6">
-					                        <input id="title" type="text" class="form-control" name="title" required autofocus value="[RE:] {{$news['title']}}">
+					                        <input id="title" type="text" class="form-control" name="title" required  value="[RE:] {{$news['title']}}">
 					                    </div>
 					                </div>
 					                <div class="form-group">
 					                    <label for="content" class="col-md-4 control-label">Content</label>
 
 					                    <div class="col-md-6">
-					                        <textarea id="content" type="text" class="form-control" name="content" required autofocus style="resize: none;"></textarea>
+					                        <textarea id="content" type="text" class="form-control" name="content" required  style="resize: none;"></textarea>
 					                    </div>
 					                </div>
 					                <div class="form-group">
