@@ -53,6 +53,8 @@ Route::post('slider/submit', 'ContentSliderController@update');
 
 Route::post('berita/submit', 'BeritaController@update');
 
+Route::post('question/submit', 'QuestionController@update');
+
 Route::post('raport/submit/{id}', 'ScoreSummaryController@store');
 
 Route::resource('news-reply', 'NewsReplieController');
@@ -77,6 +79,8 @@ Route::get('/content-learning/{id}', 'ContentLearningController@add_content_lear
 
 Route::post('/content-learning/submit', 'ContentLearningController@store');
 
+Route::post('/training/update', 'TrainingController@update');
+
 Route::get('/get-content-learning/{id}', 'ContentLearningController@get_content_learning');
 
 Route::get('/add-post-test/{id}', 'TrainingController@add_post_test');
@@ -90,6 +94,18 @@ Route::get('/request-access/{id_training}', 'UserTrainingAuthController@request_
 Route::get('/training/publish/{id}','TrainingController@publish');
 
 Route::get('/training/deactive/{id}','TrainingController@deactive');
+
+Route::get('/training/view/{id}','TrainingController@view');
+
+Route::get('/question/delete/{id}','QuestionController@destroy');
+
+Route::get('/content-learning/delete/{id}','ContentLearningController@destroy');
+
+Route::post('/change-time','TestController@change_time');
+
+Route::post('/content-learning/add-content','ContentLearningController@add_content');
+
+Route::post('/question/submit','QuestionController@submit');
 
 Route::get('Trainning', function () {
     return view('IModul');

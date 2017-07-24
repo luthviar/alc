@@ -71,7 +71,12 @@ class JawabanTraineeController extends Controller
             }
             $jawaban->save();
         }
-        $skor = ($benar/$test->jumlah_soal)*100;
+        if ($test->jumlah_soal == 0) {
+            $skor = null;    
+        }else{
+            $skor = ($benar/$test->jumlah_soal)*100;    
+        }
+        
         if ($section->id_type == 1) {
             $user_test = new UserTest;
             $user_test->id_user = $request->id_user;
@@ -84,7 +89,7 @@ class JawabanTraineeController extends Controller
             $module = Module::all();
             $training = Training::find($section->id_training);
             $modul_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
-            $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$section->id +1)->first();
+            $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$section->id_type +1)->first();
             return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_pre_test',$skor)->with('next_section',$next_section);
         }elseif ($section->id_type ==3) {
             $user_test = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();

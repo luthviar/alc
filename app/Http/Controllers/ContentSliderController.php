@@ -53,17 +53,24 @@ class ContentSliderController extends Controller
             'title' => 'required',
             'content' => 'required',
         ]);
-
-        $file = $request->file('image');
-        $destinationPath = 'uploads';
-        $movea = $file->move($destinationPath,$file->getClientOriginalName());
-        $url = "uploads/{$file->getClientOriginalName()}";
-        $slider = new ContentSlider;
-        $slider->is_activ = 0;
-        $slider->title = $request->title;
-        $slider->content = $request->content;
-        $slider->image = $url;
-        $slider->save();
+        if (empty($file = $request->file('image'))) {
+            $slider = new ContentSlider;
+            $slider->is_activ = 0;
+            $slider->title = $request->title;
+            $slider->content = $request->content;
+            $slider->save();
+        }else{
+            $file = $request->file('image');
+            $destinationPath = 'uploads';
+            $movea = $file->move($destinationPath,$file->getClientOriginalName());
+            $url = "uploads/{$file->getClientOriginalName()}";
+            $slider = new ContentSlider;
+            $slider->is_activ = 0;
+            $slider->title = $request->title;
+            $slider->content = $request->content;
+            $slider->image = $url;
+            $slider->save();
+        }
 
         return redirect('slider');
     }

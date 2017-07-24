@@ -120,4 +120,17 @@ class TestController extends Controller
     {
         //
     }
+
+    public function change_time (Request $request){
+
+        $test       = Test::find($request->id_test);
+        $test->time = $request->time;
+        $test->save();
+
+        $section = SectionTraining::find($test->id_section_training);
+
+        return redirect()->action(
+                'TrainingController@view', ['id' => $section->id_training]
+            );
+    }
 }

@@ -16,7 +16,7 @@
 	    <div class="panel-body">
 			<div class = "main-table">
 				<div class="container">
-					<a   class="btn btn-info" href="/slider/create">Create New Org. Structure</a>
+					<a   class="btn btn-info" href="/struktur/create">Create New Org. Structure</a>
 				</div>
 				<br>
 				<table id= "detailTable" class="table table-striped">

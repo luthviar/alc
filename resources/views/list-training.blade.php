@@ -30,7 +30,7 @@
 						  <tbody>
 							@foreach($training as $trains)
 							<tr>
-							  <td>{{$trains->title}}</td>
+							  <td><a href="/training/view/{{$trains->id}}">{{$trains->title}}</a></td>
 							  <td>{{$trains['module']->nama}}</td>
 							  @if(empty($trains['department']))
 							  <td>-</td>

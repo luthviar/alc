@@ -68,6 +68,7 @@
                             <label for="department" class="col-md-4 control-label">Select Departement</label>
 							<div class="col-md-6">
 								<select name="department" class="selectpicker" data-live-search="true">
+                                    
                                     @foreach($department as $dept)
 									<option value="{{$dept->id_department}}">{{$dept->nama_departmen}}</option>
                                     @endforeach

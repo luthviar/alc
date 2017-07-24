@@ -78,7 +78,8 @@ class PersonnelController extends Controller
         $unit = Unit::all();
         $divisi = Divisi::all();
         $level = LevelPosition::all();
-        return view('add-user')->with('department',$department)->with('section',$section)->with('unit',$unit)->with('divisi',$divisi)->with('level',$level);
+        $struktur = StrukturOrganisasi::all();
+        return view('add-user')->with('department',$department)->with('section',$section)->with('unit',$unit)->with('divisi',$divisi)->with('level',$level)->with('struktur',$struktur);
     }
 
     /**
