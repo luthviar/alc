@@ -55,7 +55,7 @@ $(document).ready(function() {
 		                            <label for="time" class="col-md-4 control-label">PreTest Duration</label>
 		                            <div class="col-md-4">
 		                            	@if($time==0)
-		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time"  required autofocus>
+		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time" min="1" required autofocus>
 		                                @else
 		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time" value="{{ $time }}" required autofocus readonly="true">
 		                                @endif
@@ -214,7 +214,7 @@ $(document).ready(function() {
 								<label for="username" class="col-md-4 control-label">Question</label>
 						
 								<div class="col-md-6">
-									<textarea id="username" placeholder="Trainning Title" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+									<textarea id="username" required="true" placeholder="Trainning Title" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
 
 									</textarea>
 								</div>
@@ -226,8 +226,8 @@ $(document).ready(function() {
 								<div class="col-lg-6">
 									<i class="fa fa-exclamation-triangle" aria-hidden="true" style="color:orange"></i>Choose correct answer by click the button beside option field<br><br>
 									<div>
-									<input type="text" name="mytext[]"/>
-									<span><input type="radio" name="isTrue"/></span><br><br>
+									<input type="text"  name="mytext[]"/>
+									<span><input type="radio"  name="isTrue"/></span><br><br>
 									</div>
 									<div>
 									<input type="text" name="mytext[]"/>

@@ -14,11 +14,8 @@
 	    	Organizational Structure List
 	    </div>
 	    <div class="panel-body">
+					<a class="btn btn-info" href="/slider/create">Create New Org. Structure</a><br><br>
 			<div class = "main-table">
-				<div class="container">
-					<a   class="btn btn-info" href="/slider/create">Create New Org. Structure</a>
-				</div>
-				<br>
 				<table id= "detailTable" class="table table-striped">
 		  			<thead>
 						<tr>

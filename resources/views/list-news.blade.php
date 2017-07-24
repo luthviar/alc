@@ -12,14 +12,9 @@
 	<div class="panel panel-default">
 	    <div class="panel-heading">List News</div>
 	    <div class="panel-body">
-		<div class = "main-table">
-			<div class="row">
-				<div class="container">
-					<a   class="btn btn-info" href="/berita/create">Create New News</a>
-				</div>
-			</div>
-			<br>
-			<table id= "detailTable" class="table table-striped">
+			<a  class="btn btn-info" href="/berita/create">Create New News</a><br><br>
+			 <div class = "main-table">
+			  <table id= "detailTable" class="table table-striped">
 			  <thead>
 				<tr>
 				  <th>News Title</th>
