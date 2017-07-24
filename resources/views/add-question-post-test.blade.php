@@ -55,7 +55,7 @@ $(document).ready(function() {
 		                            <label for="time" class="col-md-4 control-label">PostTest Duration</label>
 		                            <div class="col-md-4">
 		                            	@if($time==0)
-		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time"  required autofocus>
+		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time" min="1" required autofocus>
 		                                @else
 		                                <input id="time" placeholder="In Minutes" type="number" class="form-control" name="time" value="{{ $time }}" required autofocus readonly="true">
 		                                @endif
@@ -102,7 +102,7 @@ $(document).ready(function() {
 								<label for="question" class="col-md-4 control-label">Question</label>
 						
 								<div class="col-md-6">
-									<textarea id="question" placeholder="Trainning Title" type="text" class="form-control" name="question" required autofocus>
+									<textarea id="question" placeholder="Trainning Title" type="text" class="form-control" name="question" required="true" required autofocus>
 
 									</textarea>
 								</div>

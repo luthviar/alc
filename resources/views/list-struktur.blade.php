@@ -19,6 +19,7 @@
 					<a   class="btn btn-info" href="/struktur/create">Create New Org. Structure</a>
 				</div>
 				<br>
+
 				<table id= "detailTable" class="table table-striped">
 		  			<thead>
 						<tr>

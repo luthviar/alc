@@ -57,12 +57,15 @@ $(document).ready(function() {
 </script>
 
 <!--Form to Create New Trainning -->
+
 Create Trainning
 <br><br>
 <div class="w3-border" style="border-radius:5px">
 	<div class="w3-green" style="height:24px;width:50%;text-align:center;border-radius:5px">50%</div>
 </div>
 <br>
+	
+		
 
 <!-- Form for PreTest's Time  -->
 <div class="row">
@@ -269,12 +272,13 @@ Create Trainning
 			  
 			  	<div class="modal-body">		
 							
+
 					{{ csrf_field() }}
 
 					<input type="hidden" name="id_training" value="{{$id_training}}">
 					<input type="hidden" name="id_test" value="{{$id_test or null}}">
 					<input type="hidden" name="time" value="{{$time or null}}">
-							
+
 							
 					<div class="form-group">
 						<label for="question" class="col-md-4 control-label">Question</label>
@@ -304,6 +308,7 @@ Create Trainning
 									<span>
 										<input type="radio" name="isTrue" value="1" required="true"/>
 									</span><br><br>
+
 								</div>
 								
 								<div class="input_fields_wrap">

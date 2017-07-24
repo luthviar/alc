@@ -12,13 +12,8 @@
 	<div class="panel panel-default">
 	    <div class="panel-heading">Slider List</div>
 	    <div class="panel-body">
-		<div class = "main-table">
-			<div class="row">
-				<div class="container">
-					<a   class="btn btn-info" href="/slider/create">Create New Slider</a>
-				</div>
-			</div>
-			<br>
+		  <a   class="btn btn-info" href="/slider/create">Create New Slider</a><br><br>
+			<div class = "main-table">
 			<table id= "detailTable" class="table table-striped">
 			  <thead>
 				<tr>

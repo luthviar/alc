@@ -17,7 +17,7 @@ $(document).ready(function(){
 </script>
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Add New Slider</div>
                 <div class="panel-body">
@@ -50,7 +50,7 @@ $(document).ready(function(){
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image">
+                                        Browse… <input type="file" id="imgInp" name="image" accept="image/gif, image/jpeg, image/png">
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
