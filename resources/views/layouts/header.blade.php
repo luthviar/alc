@@ -1,16 +1,18 @@
 <header id="header">
-	<span class ="Logo"><a href="/"><img src="{{URL::asset('Elegantic/images/ALS.jpg')}}" width="170px" height="100" ></a></span>
+	<span class ="Logo"><a href="/"><img src="{{URL::asset('Elegantic/images/ALS.jpg')}}" width="350px" height="95px" ></a></span>
 	<ul class="nav navbar-right">
 		@if (Auth::guest())
-            <li><a href="{{ route('login') }}">Login</a></li>
+			<br>
+            <button class="btn btn-success btn-lg"><li><a style="color:white;" href="{{ route('login') }}"><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a></li></button>
         @else
 			<li class="dropdown">
+				<br><br>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    {{ Auth::user()->username }} <span class="caret"></span>
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>  {{ Auth::user()->username }} <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
-                    <li>
+                    <li class="login">
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">

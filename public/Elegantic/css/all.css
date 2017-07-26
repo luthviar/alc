@@ -167,7 +167,7 @@ a.Logo{
 }
 
 hr.style14 { 
-  border: 10px; 
+  border: 60px; 
   height: 1px; 
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -289,7 +289,7 @@ a:hover{text-decoration:underline;}
 #header {
 	max-width: 1170px;
 	margin: 0 auto;
-	padding: 10px 20px 45px;
+	padding: 10px 20px 1px;
 	position:relative;
 }
 .menu_trigger{
@@ -383,7 +383,6 @@ a:hover{text-decoration:underline;}
 }
 .slider li {
 	background-size: cover !important;
-	
 }
 
 
@@ -1313,6 +1312,10 @@ form.forms{
 			
 }
 
-
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
 
 

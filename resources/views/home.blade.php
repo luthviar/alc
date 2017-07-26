@@ -6,7 +6,8 @@
             @include('layouts.header')
         
             <!-- Slider -->
-            <section class="promo" style="border: 1px solid green;">
+			<hr class="style13">
+            <section class="promo">
                 <ul class="slider">
                     @foreach ($slider as $slide)
 
