@@ -9,6 +9,7 @@ use App\Personnel;
 use App\StrukturOrganisasi;
 use App\Employee;
 use App\UserTrainingAuth;
+use App\LevelPosition;
 use App\Department;
 use App\Training;
 use Illuminate\Http\Request;
@@ -92,7 +93,35 @@ class ModuleController extends Controller
         }
         foreach ($training as $key => $value) {
             if (empty($value->id_job_family)) {
-                $value['open'] = 1;
+                if ($value->id_module == 4 ) {
+                    $user_auth = UserTrainingAuth::where('id_training',$value->id)->where('id_user',$id_user)->first();
+                    if ($employee->level_position >= 6) {
+                        $value['open'] = 1;
+                    }else{
+                        if (empty($user_auth)) {
+                            $value['open'] = 0;
+                        }else{
+                            if($user_auth->auth == 1){
+                                $value['open'] = 1;
+                            }else{
+                                $value['open'] = 2;
+                            }
+                        }
+                    }
+                }elseif ($value->id_module == 5) {
+                    $user_auth = UserTrainingAuth::where('id_training',$value->id)->where('id_user',$id_user)->first();
+                    if (empty($user_auth)) {
+                        $value['open'] = 0;
+                    }else{
+                        if($user_auth->auth == 1){
+                            $value['open'] = 1;
+                        }else{
+                            $value['open'] = 2;
+                        }
+                    }
+                }else{
+                    $value['open'] = 1;
+                }
             }else {
                 if ($value->id_module ==3 and $value->id_job_family == $job_family_user->id) {
                     $value['open'] = 1;

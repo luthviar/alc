@@ -20,6 +20,7 @@
 				  <th>News Title</th>
 				  <th>Can Reply</th>
 				  <th>Replies Count</th>
+				  <th>Created At</th>
 				  <th>Edit</th>
 				</tr>
 			  </thead>
@@ -38,6 +39,7 @@
 				  <span><a class="btn btn-warning" href="/berita/{{$value->id}}/active">Activicate</a></span></td>
 				  <td>-</td>
 				  @endif
+				  <td>{{ \Carbon\Carbon::parse($value->created_at)->format('l jS \\of F Y')}}</td>
 				  <td>
 				  <span><a class="btn btn-default" href="/berita/{{$value->id}}/edit">edit</a></span></td>
 				</tr>

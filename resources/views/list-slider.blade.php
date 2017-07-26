@@ -19,6 +19,7 @@
 				<tr>
 				  <th>Slider</th>
 				  <th>Status</th>
+				  <th>Created_at</th>
 				  <th>Edit</th>
 				</tr>
 			  </thead>
@@ -36,6 +37,7 @@
 				  <span style="opacity: 0.5;">not active </span>
 				  <span><a class="btn btn-warning" href="/slider/{{$slider->id}}/active">Activicate</a></span></td>
 				  @endif
+				  <td>{{ \Carbon\Carbon::parse($slider->created_at)->format('l jS \\of F Y')}}</td>
 				  <td>
 				  <span><a class="btn btn-default" href="/slider/{{$slider->id}}/edit">edit</a></span></td>
 				</tr>

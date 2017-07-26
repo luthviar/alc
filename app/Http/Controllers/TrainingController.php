@@ -129,7 +129,36 @@ class TrainingController extends Controller
         }
         
         if (empty($training->id_job_family)) {
-            $training['open'] = 1;
+            $user_auth = UserTrainingAuth::where('id_training',$training->id)->where('id_user',$id_user)->first();
+            if ($training->id_module == 4 ) {
+                if ($employee->level_position >= 6) {
+                    $training['open'] = 1;
+                }else{
+                    if (empty($user_auth)) {
+                        $training['open'] = 0;
+                    }else{
+                        if($user_auth->auth == 1){
+                            $training['open'] = 1;
+                        }else{
+                            $training['open'] = 2;
+                        }
+                    }
+                }
+            }elseif ($training->id_module == 5) {
+                
+                if (empty($user_auth)) {
+                    $training['open'] = 0;
+                }else{
+                    if($user_auth->auth == 1){
+                        $training['open'] = 1;
+                    }else{
+                        $training['open'] = 2;
+                    }
+                }
+            }else{
+                $training['open'] = 1;
+            }
+            
         }else {
             if ($training->id_module ==3 and $training->id_job_family == $job_family_user->id) {
                 $training['open'] = 1;

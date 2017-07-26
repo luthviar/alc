@@ -42,23 +42,34 @@
 										@if($trains['open'] == 1)
 										<div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true"></span></i></h5></a></div>
                                         @else
-                                        <div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></div>
+                                        <div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></li></div>
                                         @endif
-                                        </li>
+                                        
 									@endif
 								@endforeach		
 							</ul>
 							</div>
 						@endforeach
 						</ul>
-					@elseif($modul->id == 4)
-                        @if(Auth::user()->get_level()->id >= 6)
-                            @foreach($training as $trains)
-                                <li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a></li>
-                            @endforeach     
-                        @else
-                            <h4>Anda Tidak memiliki autentikasi untuk modul ini</h4>
-                        @endif
+					@elseif($modul->id == 4 or $modul->id == 5)
+                        @foreach($training as $trains)
+                            @if($trains['open'] == 1)
+                                    <div class="panel-body">
+                                        <li>
+                                            <a href="/training/{{$trains->id}}">
+                                                <h5>{{$trains->title}}
+                                                <span>  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true">
+                                                </i></span>
+                                                </h5>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    @else
+                                    <div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></li></div>
+                                    @endif
+                                    
+                        @endforeach     
+                        
                     @else
 						<ul>
 							@foreach($training as $trains)

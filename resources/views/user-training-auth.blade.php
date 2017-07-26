@@ -32,6 +32,7 @@ $(document).ready(function(){
 				  <th>User Department</th>
 				  <th>Training</th>
 				  <th>Training for Department</th>
+				  <th>Request Date</th>
 				  <th>Auth</th>
 				  <th>Action</th>
 				</tr>
@@ -42,13 +43,14 @@ $(document).ready(function(){
 				  <td>{{$auth['personnel']->fname}} {{$auth['personnel']->lname}}</td>
 				  <td>{{$auth['personnel-department']->nama_departmen}}</td>
 				  <td>{{$auth['training']->title}}</td>
-				  <td>{{$auth['training-department']->nama_departmen}}</td>
+				  <td>{{$auth['training-department']->nama_departmen or 'All Department'}}</td>
+				  <td>{{ \Carbon\Carbon::parse($auth->created_at)->format('l jS \\of F Y')}}</td>
 				  @if($auth->auth == 1 )
-				  <td>Aktif</td>
-				  <td><a href="/access/{{$auth->id}}/nonactive" class="btn btn-default">Nonaktifkan</a></td>
+				  <td>Open</td>
+				  <td><a href="/access/{{$auth->id}}/nonactive" class="btn btn-warning">close</a></td>
 				  @else
-				  <td>Nonaktif</td>
-				  <td><a href="/access/{{$auth->id}}/active" class="btn btn-default">Aktifkan</a></td>
+				  <td>Close</td>
+				  <td><a href="/access/{{$auth->id}}/active" class="btn btn-default">open</a></td>
 				  @endif
 				</tr>
 				@endforeach

@@ -61,9 +61,9 @@ class ScoreSummaryController extends Controller
         
 
         $file = $request->file('score');
-        $destinationPath = 'ViewerJS/raports';
+        $destinationPath = 'raports';
         $movea = $file->move($destinationPath,$file->getClientOriginalName());
-        $url = "ViewerJS/#..home.html/{$file->getClientOriginalName()}";
+        $url = "/ViewerJS/index.html#../raports/{$file->getClientOriginalName()}";
 
         $score = new ScoreSummary;
         $score->id_user = $id;

@@ -107,6 +107,13 @@ Route::post('/content-learning/add-content','ContentLearningController@add_conte
 
 Route::post('/question/submit','QuestionController@submit');
 
+Route::post('/get-unit','StrukturOrganisasiController@get_unit');
+
+Route::post('/get-department','StrukturOrganisasiController@get_department');
+
+Route::post('/get-section','StrukturOrganisasiController@get_section');
+
+
 Route::get('Trainning', function () {
     return view('IModul');
 });
@@ -143,8 +150,8 @@ Route::get('Tests', function () {
 });
 
 
-Route::get('AdminHome', function () {
-    return view('Admin.Dashboard');
+Route::get('ajax', function () {
+    return view('ajax');
 });
 
 Route::get('/CreateDepartement', function () {

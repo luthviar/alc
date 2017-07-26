@@ -79,7 +79,7 @@ class PersonnelController extends Controller
         $divisi = Divisi::all();
         $level = LevelPosition::all();
         $struktur = StrukturOrganisasi::all();
-        return view('add-user')->with('department',$department)->with('section',$section)->with('unit',$unit)->with('divisi',$divisi)->with('level',$level)->with('struktur',$struktur);
+        return view('ajax')->with('department',$department)->with('section',$section)->with('unit',$unit)->with('divisi',$divisi)->with('level',$level)->with('struktur',$struktur);
     }
 
     /**
@@ -114,7 +114,7 @@ class PersonnelController extends Controller
             'no_hp' => $request->no_hp,
             'tanggal_lahir' => $request->tanggal_lahir,
         ));
-        if (empty($request->divisi) and empty($request->department) and empty($request->unit) and empty($request->section)) {
+        if (empty($request->id_divisi) and empty($request->id_department) and empty($request->id_unit) and empty($request->id_section)) {
             if (empty($request->nik) and empty($request->level_position)) {
                 # code...
             }else{
@@ -126,15 +126,9 @@ class PersonnelController extends Controller
             }
         }else{
             $id_struktur = null;
-            $struktur = StrukturOrganisasi::where('id_divisi',$request->divisi)->where('id_department',$request->department)->where('id_unit',$request->unit)->where('id_section',$request->section)->first();
+            $struktur = StrukturOrganisasi::where('id_divisi',$request->id_divisi)->where('id_department',$request->id_department)->where('id_unit',$request->id_unit)->where('id_section',$request->id_section)->first();
             if (empty($struktur)) {
-                $id = DB::table('struktur_organisasis')-> insertGetId(array(
-                    'id_divisi' => $request->divisi,
-                    'id_department' => $request->department,
-                    'id_unit' => $request->unit,
-                    'id_section' => $request->section,
-                ));
-                $id_struktur = $id;
+                
             }else{
                 $id_struktur = $struktur->id;
             }

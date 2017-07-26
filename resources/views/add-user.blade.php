@@ -1,108 +1,12 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<script>
-$(document).ready(function() {
-    var struktur = $('#struktur').val();
-    var strk = JSON.parse(struktur);
-
-    var l_unit = $('#listUnit').val();
-    var l_unit = JSON.parse(l_unit);
-
-    var l_deps = $('#listDept').val();
-    var l_deps = JSON.parse(l_deps);
-
-    var sel_div = null;
-    var sel_unit = null;
-    var sel_dep = null;
-    var sel_sec = null;
 
 
-    var myUnit = $('#myUnit').val();
-    $("#coba").append(myUnit);
-    $("#unit").hide();
-    $("#department").hide();
-    $("#section").hide();
-
-    $("#myDivisi").change(function(){
-        if($("#myDivisi").val() != "") {
-            $("#unit").show();
-            var newStruktur = [];
-            strk.forEach(function(element){
-                if(element.id_divisi == $('#myDivisi').val()){
-                    newStruktur.push(element);
-                }
-            });
-            strk = newStruktur;
-            var unit = [];
-            newStruktur.forEach(function(struktur){
-                var same = false;
-                unit.forEach(function(unit){
-                    if (unit == struktur.id_unit) {
-                        same = true;
-                    }
-                });
-                if (same == false) {
-                    unit.push(struktur.id_unit);
-                }
-            });
-            var isi = '<select name="unit" id="myUnit" >';
-            unit.forEach(function(unit){
-                l_unit.forEach(function(l_unit){
-                    if(unit == l_unit.id_unit){
-                        isi += '<option value="'+unit+'">'+l_unit.nama_unit+'</option>';        
-                    }
-                });
-            });
-            isi += '</select>';
-            $("#div_unit").html(isi);
-            
-        } 
-    });
-    $("#myUnit").change(function(){
-        if($("#myUnit").val() != "") {
-            $("#department").show();
-            var newStruktur = [];
-            strk.forEach(function(element){
-                if(element.id_unit == $('#myUnit').val()){
-                    newStruktur.push(element);
-                }
-            });
-            strk = newStruktur;
-            var dept = [];
-            newStruktur.forEach(function(struktur){
-                var same = false;
-                dept.forEach(function(dept){
-                    if (dept == struktur.id_department) {
-                        same = true;
-                    }
-                });
-                if (same == false) {
-                    dept.push(struktur.id_department);
-                }
-            });
-            var isi = '<select name="department"  id="myDepartment" >';
-            dept.forEach(function(dept){
-                l_deps.forEach(function(l_deps){
-                    if(dept == l_deps.id_department){
-                        isi += '<option value="'+dept+'">'+l_deps.nama_departmen+'</option>';        
-                    }
-                });
-            });
-            isi += '</select>';
-            $("#div_department").html(isi);
-        } 
-    });
-    $("#myDepartment").change(function(){
-        if($("#myDepartment").val() != "") {
-            $("#section").show();
-        } 
-    });
-});
 </script>
-<div id="coba">
-    
-</div>
+<button type="button" id="ajax" class="btn">Click me!</button>
+<p class="text">Replace me!!</p>
+
 <input type="hidden" name="" id="struktur" value="{{json_encode($struktur)}}">
 <input type="hidden" name="" id="listUnit" value="{{json_encode($unit)}}">
 <input type="hidden" name="" id="listDept" value="{{json_encode($department)}}">
@@ -241,40 +145,45 @@ $(document).ready(function() {
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group" id="divisi">
+                   
+                    <div class="form-group">
                         <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                         <div class="col-md-6">
-                            <select name="divisi" class="selectpicker" id="myDivisi">
+                            <select name="id_divisi" class="form-control" id="MyDivisi">
                                 <option value="">..</option>
                                 @foreach($divisi as $div)
                                 <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
                                 @endforeach
+                                
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group" id="unit">
-                        <label for="unit" class="col-md-4 control-label">Unit</label>                                     
-                        <div class="col-md-6" id="div_unit">
-                            
+                    <div class="form-group" id="Unit">
+                        <label for="divisi" class="col-md-4 control-label">Unit</label>                                     
+                        <div class="col-md-6">
+                            <select name="id_unit" class="form-control" id="MyUnit">
+                                <option value="0">...</option>
+                            </select><br>
                         </div>
                     </div>
-                    <div class="form-group" id="department">
-                        <label for="department" class="col-md-4 control-label">Department</label>                                     
-                        <div class="col-md-6" id="div_department">
-                            
+                    <div class="form-group" id="Department">
+                        <label for="divisi" class="col-md-4 control-label">Department</label>
+                        <div class="col-md-6">
+                            <select name="id_department" class="form-control" id="MyDepartment">
+                                <option value="0">...</option>
+                            </select><br>
                         </div>
+                         
                     </div>
-                    <div class="form-group" id="section">
+                    <div class="form-group">
                         <label for="section" class="col-md-4 control-label">Section</label>                                     
                         <div class="col-md-6">
-                            <select name="section" class="selectpicker" id="mySection">
-                                <option value="">..</option>
-                                @foreach($section as $sect)
-                                <option value="{{$sect->id_section}}">{{$sect->nama_section}}</option>
-                                @endforeach
+                            <select name="id_section" class="form-control" id="MySection">
+                                <option value="0">...</option>
                             </select><br>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
@@ -335,4 +244,131 @@ $(document).ready(function() {
 
     
 });
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+
+
+
+    $('#MyDivisi').click(function() {
+      var id_divisi = $('#MyDivisi').val();
+      $.ajax({
+        type:"POST",
+        url:"/get-unit",
+        dataType: 'json',
+        data:{id_divisi:id_divisi,_token: '{{csrf_token()}}'},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(units) {
+            var html = '';
+            $.each(units.units, function(key, value){
+                html += '<option value="'+value.id_unit+'">'+value.nama_unit+'</option>';               
+                
+            });
+            $('#MyUnit').html(html);        
+            
+            
+        },
+        error: function(data){
+            console.log(data);
+        },
+      });
+      
+    });
+
+
+    
+    
+
+</script>
+
+<script type="text/javascript">
+
+
+    $('#MyUnit').click(function() {
+      var id_divisi = $('#MyDivisi').val();
+      var id_unit = $('#MyUnit').val();
+      $.ajax({
+        type:"POST",
+        url:"/get-department",
+        dataType: 'json',
+        data:{id_unit:id_unit,id_divisi:id_divisi,_token: '{{csrf_token()}}'},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(departments) {
+            var html = '';
+            $.each(departments.departments, function(key, value){               
+                html += '<option value="'+value.id_department+'">'+value.nama_departmen+'</option>';
+                
+            });
+            $('#MyDepartment').html(html);  
+                
+            
+            
+        },
+        error: function(data){
+            console.log(data);
+        },
+      });
+      
+    });
+
+
+    
+    
+
+</script>
+
+<script type="text/javascript">
+
+
+    $('#MyDepartment').click(function() {
+      var id_divisi = $('#MyDivisi').val();
+      var id_unit = $('#MyUnit').val();
+      var id_department = $('#MyDepartment').val();
+      $.ajax({
+        type:"POST",
+        url:"/get-section",
+        dataType: 'json',
+        data:{id_department:id_department,id_unit:id_unit,id_divisi:id_divisi,_token: '{{csrf_token()}}'},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(sections) {
+            var html = '';
+            $.each(sections.sections, function(key, value){             
+                html += '<option value="'+value.id_section+'">'+value.nama_section+'</option>';
+                
+            });
+            $('#MySection').html(html); 
+                
+            
+            
+        },
+        error: function(data){
+            console.log(data);
+        },
+      });
+      
+    });
+
+
+    
+    
+
 </script>

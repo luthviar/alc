@@ -41,11 +41,11 @@
             <hr class="tagline-divider">
             <h2>
             </h2><br>
-              <h6>
+              <h4>
                 Quiz Duration = {{$test->time}} Minutes<br><br>
                 Total Question = {{$test->jumlah_soal}} Question<br><br>
                 
-              </h6>
+              </h4>
               <!-- Button modal fullscreen -->
               <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
                 Mulai Test

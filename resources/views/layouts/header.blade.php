@@ -43,11 +43,9 @@
 					<li><a class="dropbtn">My Modules</a></li>
 					<div class="dropdown-content">
 					@foreach ($module as $modul)
-						@if(Auth::user()->get_level()->id < 6 and $modul->id == 4)
-                            
-                        @else
+						
                             <a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-                        @endif
+                        
 					@endforeach
 					</div>
 				</div>
