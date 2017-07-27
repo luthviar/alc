@@ -58,18 +58,17 @@ $(document).ready(function() {
 
 <!--Form to Create New Trainning -->
 
-Create Trainning
-<br><br>
-<div class="w3-border" style="border-radius:5px">
-	<div class="w3-green" style="height:24px;width:50%;text-align:center;border-radius:5px">50%</div>
-</div>
-<br>
+
+   <div class="col-md-12 ">
+	<br><br>
+		<div class="w3-border" style="border-radius:5px">
+			<div class="w3-green" style="height:24px;width:50%;text-align:center;border-radius:5px">50%</div>
+		</div>
+		<br>
 	
 		
 
 <!-- Form for PreTest's Time  -->
-<div class="row">
-    <div class="col-md-12 ">
         <div class="panel panel-default">
             <div class="panel-heading">Create PreTest</div>
                 <div class="panel-body">
@@ -98,8 +97,6 @@ Create Trainning
                 </div>
             </div>
         </div>
-  	</div>
-</div>
 
 
 <!-- List of question, show when time submitted-->

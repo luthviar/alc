@@ -200,12 +200,12 @@ Route::get('ListTrainning', function () {
 
 
 Route::get('lol', function () {
-    return view('Admin(New).admintemplate');
+    return view('Admin.Template');
 });
 
 
 Route::get('QuestionList', function () {
-    return view('Admin.QuestionList');
+    return view('Admin1.QuestionList');
 });
 
 Route::get('CreatePreTest', function () {
