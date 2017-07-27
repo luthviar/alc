@@ -2,21 +2,110 @@
 @extends('Admin.Template')
 @section('section')
 <script>
-    $(function() {
-    $('#unit').hide(); 
-    $('#department').hide();
-    $('#section').hide();
-    $('#divisi').change(function(){
-        $('#unit').show();
+$(document).ready(function() {
+    var struktur = $('#struktur').val();
+    var strk = JSON.parse(struktur);
+
+    var l_unit = $('#listUnit').val();
+    var l_unit = JSON.parse(l_unit);
+
+    var l_deps = $('#listDept').val();
+    var l_deps = JSON.parse(l_deps);
+
+    var sel_div = null;
+    var sel_unit = null;
+    var sel_dep = null;
+    var sel_sec = null;
+
+
+    var myUnit = $('#myUnit').val();
+    $("#coba").append(myUnit);
+    $("#unit").hide();
+    $("#department").hide();
+    $("#section").hide();
+
+    $("#myDivisi").change(function(){
+        if($("#myDivisi").val() != "") {
+            $("#unit").show();
+            var newStruktur = [];
+            strk.forEach(function(element){
+                if(element.id_divisi == $('#myDivisi').val()){
+                    newStruktur.push(element);
+                }
+            });
+            strk = newStruktur;
+            var unit = [];
+            newStruktur.forEach(function(struktur){
+                var same = false;
+                unit.forEach(function(unit){
+                    if (unit == struktur.id_unit) {
+                        same = true;
+                    }
+                });
+                if (same == false) {
+                    unit.push(struktur.id_unit);
+                }
+            });
+            var isi = '<select name="unit" id="myUnit" >';
+            unit.forEach(function(unit){
+                l_unit.forEach(function(l_unit){
+                    if(unit == l_unit.id_unit){
+                        isi += '<option value="'+unit+'">'+l_unit.nama_unit+'</option>';        
+                    }
+                });
+            });
+            isi += '</select>';
+            $("#div_unit").html(isi);
+            
+        } 
     });
-    $('#unit').change(function(){
-        $('#department').show();
+    $("#myUnit").change(function(){
+        if($("#myUnit").val() != "") {
+            $("#department").show();
+            var newStruktur = [];
+            strk.forEach(function(element){
+                if(element.id_unit == $('#myUnit').val()){
+                    newStruktur.push(element);
+                }
+            });
+            strk = newStruktur;
+            var dept = [];
+            newStruktur.forEach(function(struktur){
+                var same = false;
+                dept.forEach(function(dept){
+                    if (dept == struktur.id_department) {
+                        same = true;
+                    }
+                });
+                if (same == false) {
+                    dept.push(struktur.id_department);
+                }
+            });
+            var isi = '<select name="department"  id="myDepartment" >';
+            dept.forEach(function(dept){
+                l_deps.forEach(function(l_deps){
+                    if(dept == l_deps.id_department){
+                        isi += '<option value="'+dept+'">'+l_deps.nama_departmen+'</option>';        
+                    }
+                });
+            });
+            isi += '</select>';
+            $("#div_department").html(isi);
+        } 
     });
-    $('#department').change(function(){
-        $('#section').show();
+    $("#myDepartment").change(function(){
+        if($("#myDepartment").val() != "") {
+            $("#section").show();
+        } 
     });
 });
 </script>
+<div id="coba">
+    
+</div>
+<input type="hidden" name="" id="struktur" value="{{json_encode($struktur)}}">
+<input type="hidden" name="" id="listUnit" value="{{json_encode($unit)}}">
+<input type="hidden" name="" id="listDept" value="{{json_encode($department)}}">
 
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -155,7 +244,7 @@
                     <div class="form-group" id="divisi">
                         <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                         <div class="col-md-6">
-                            <select name="divisi" class="selectpicker">
+                            <select name="divisi" class="selectpicker" id="myDivisi">
                                 <option value="">..</option>
                                 @foreach($divisi as $div)
                                 <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
@@ -165,30 +254,20 @@
                     </div>
                     <div class="form-group" id="unit">
                         <label for="unit" class="col-md-4 control-label">Unit</label>                                     
-                        <div class="col-md-6">
-                            <select name="unit" class="selectpicker">
-                                <option value="">..</option>
-                                @foreach($unit as $unt)
-                                <option value="{{$unt->id_unit}}">{{$unt->nama_unit}}</option>
-                                @endforeach
-                            </select><br>
+                        <div class="col-md-6" id="div_unit">
+                            
                         </div>
                     </div>
                     <div class="form-group" id="department">
                         <label for="department" class="col-md-4 control-label">Department</label>                                     
-                        <div class="col-md-6">
-                            <select name="department" class="selectpicker">
-                                <option value="">..</option>
-                                @foreach($department as $deps)
-                                <option value="{{$deps->id_department}}">{{$deps->nama_departmen}}</option>
-                                @endforeach
-                            </select><br>
+                        <div class="col-md-6" id="div_department">
+                            
                         </div>
                     </div>
                     <div class="form-group" id="section">
                         <label for="section" class="col-md-4 control-label">Section</label>                                     
                         <div class="col-md-6">
-                            <select name="section" class="selectpicker">
+                            <select name="section" class="selectpicker" id="mySection">
                                 <option value="">..</option>
                                 @foreach($section as $sect)
                                 <option value="{{$sect->id_section}}">{{$sect->nama_section}}</option>

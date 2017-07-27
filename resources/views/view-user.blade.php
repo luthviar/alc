@@ -109,7 +109,7 @@
                   <tbody>
                     @foreach($personnel['score'] as $score)
                     <tr>
-                      <td>{{$score->file_name}}</td>
+                      <td><a href="{{URL::asset($score->url_file_pdf)}}">{{$score->file_name}}</a></td>
                       <td>{{ \Carbon\Carbon::parse($score->created_at)->format('l jS \\of F Y')}}</td>
                     </tr>
                     @endforeach

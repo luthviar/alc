@@ -134,8 +134,36 @@ class ContentLearningController extends Controller
      * @param  \App\ContentLearning  $contentLearning
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContentLearning $contentLearning)
+    public function destroy($id_contentLearning)
     {
-        //
+        $content    = ContentLearning::find($id_contentLearning);
+        $section    = SectionTraining::find($content->id_section);
+        $training   =  Training::find($section->id_training);
+        //delete content learning
+        DB:: table('content_learnings')->delete($id_contentLearning);
+
+        return redirect()->action(
+                'TrainingController@view', ['id' => $training->id]
+            );
+    }
+
+    public function add_content (Request $request){
+        $training = Training::find($request->id_training);
+        $section = SectionTraining::where('id_training', $request->id_training)->where('id_type', 2)->first();
+
+        $file = $request->file('file');
+        $destinationPath = 'contents';
+        $movea = $file->move($destinationPath,$file->getClientOriginalName());
+        $url = "/ViewerJS/index.html#../contents/{$file->getClientOriginalName()}";
+        
+        $content = new ContentLearning;
+        $content->id_section = $section->id;
+        $content->file_name = $request->file_name;
+        $content->url = $url;
+        $content->save();
+
+        return redirect()->action(
+                'TrainingController@view', ['id' => $training->id]
+            );
     }
 }

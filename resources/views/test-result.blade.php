@@ -36,7 +36,7 @@
 									    <h3 class="panel-title"><strong>Pre-Test Score</strong></h3>
 									</div>
 									<div class="panel-body" style="font-size: 100px;">
-									    {{$skor_pre_test}}
+									    {{$skor_pre_test or 'null'}}
 									</div>
 								</div>
 							</div>
@@ -46,7 +46,7 @@
 									    <h3 class="panel-title"><strong>Post-Test Score</strong></h3>
 									</div>
 									<div class="panel-body" style="font-size: 100px;">
-									    {{$skor_post_test or '?'}}
+									    {{$skor_post_test or 'null'}}
 									</div>
 								</div>
 							</div>

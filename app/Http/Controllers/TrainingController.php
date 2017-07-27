@@ -7,8 +7,12 @@ use DB;
 use Auth;
 use App\Department;
 use App\JobFamily;
+use App\Question;
+use App\OpsiJawaban;
 use App\Training;
+use App\ContentLearning;
 use App\Personnel;
+use App\Test;
 use App\Employee;
 use App\UserTrainingAuth;
 use App\StrukturOrganisasi;
@@ -86,7 +90,7 @@ class TrainingController extends Controller
                 'description' => $request->description,
                 'id_module' => $request->module,
                 'is_publish' => 0,
-                'id_department' => $request->department,
+                
             ));
         }
 
@@ -153,9 +157,13 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function edit(Training $training)
+    public function edit( $id_training )
     {
-        //
+        $training = Training::find($id_training);
+        $module = Module::all();
+        $department = Department::all();
+
+        return view('edit-training-info')->with('module',$module)->with('department',$department)->with('training',$training);
     }
 
     /**
@@ -165,9 +173,51 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Training $training)
+    public function update(Request $request)
     {
-        //
+        $training = Training::find($request->id_training);
+        $training->title        = $request->title;
+        $training->description  = $request->description;
+        $training->id_module    = $request->module;
+        if ($request->module == 3) {
+            $training->id_department = $request->department;
+            $department = Department::where('id_department',$request->department)->first();
+            $training->id_job_family = $department->id_job_family;
+        }
+        $training->save();
+
+        return redirect()->action(
+                'TrainingController@view', ['id' => $training->id]
+            );
+    }
+
+    public function view( $id_training ){
+
+        $training = Training::find($id_training);
+        $training['module'] = Module::find($training->id_module);
+        if (!empty($training->id_department)) {
+            $training['department'] = Department::where('id_department',$training->id_department)->first();
+        }
+        $section = SectionTraining::where('id_training',$id_training)->get();
+        foreach ($section as $key => $value) {
+            if ($value->id_type == 1) {
+                $training['pretest'] = Test::where('id_section_training', $value->id)->first();
+                $training['pretest-question'] = Question::where('id_test', $training['pretest']->id)->get();
+                foreach ($training['pretest-question'] as $key => $ques) {
+                    $ques['opsi'] = OpsiJawaban::where('id_question', $ques->id)->get();
+                }
+            }elseif ($value->id_type == 2) {
+                $training['content'] = ContentLearning::where('id_section', $value->id)->get();
+            }elseif ($value->id_type == 3) {
+                $training['posttest'] = Test::where('id_section_training', $value->id)->first();
+                $training['posttest-question'] = Question::where('id_test', $training['posttest']->id)->get();
+                foreach ($training['posttest-question'] as $key => $ques) {
+                    $ques['opsi'] = OpsiJawaban::where('id_question', $ques->id)->get();
+                }
+            }
+        }
+
+        return view('view-training')->with('training', $training);
     }
 
     /**

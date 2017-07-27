@@ -26,10 +26,12 @@ class StrukturOrganisasiController extends Controller
     {
         $struktur = StrukturOrganisasi::all();
         foreach ($struktur as $key => $value) {
-            $value['department'] = Department::where('id_department',$value->id_department)->first();
-            $value['divisi'] = Divisi::where('id_divisi',$value->id_divisi)->first();
-            $value['unit'] = Unit::where('id_unit', $value->id_unit)->first();
-            $value['section'] = Section::where('id_section',$value->id_section)->first();
+
+            $value['department']    = Department::where('id_department',$value->id_department)->first();
+            $value['divisi']        = Divisi::where('id_divisi',$value->id_divisi)->first();
+            $value['unit']          = Unit::where('id_unit', $value->id_unit)->first();
+            $value['section']       = Section::where('id_section',$value->id_section)->first();
+            
         }
         return view('list-struktur')->with('struktur',$struktur);
     }
@@ -41,7 +43,12 @@ class StrukturOrganisasiController extends Controller
      */
     public function create()
     {
-        //
+        $divisi     = Divisi::all();
+        $unit       = Unit::all();
+        $department = Department::all();
+        $section    = Section::all();
+
+        return view('add-struktur')->with('divisi', $divisi)->with('unit',$unit)->with('department',$department)->with('section', $section);
     }
 
     /**
@@ -52,7 +59,16 @@ class StrukturOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $struktur = StrukturOrganisasi::where('id_divisi', $request->id_divisi)->where('id_unit', $request->id_unit)->where('id_department', $request->id_department)->where('id_section', $request->id_section)->first();
+        if (empty($struktur)) {
+            $new_struktur               = new StrukturOrganisasi;
+            $new_struktur->id_divisi    = $request->id_divisi;
+            $new_struktur->id_unit      = $request->id_unit;
+            $new_struktur->id_department= $request->id_department;
+            $new_struktur->id_section   = $request->id_section;
+            $new_struktur->save();
+        }
+        return redirect('struktur');
     }
 
     /**

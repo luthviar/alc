@@ -76,14 +76,14 @@ class SectionTrainingController extends Controller
                     $value['opsi'] = $opsi;
 
                 }
-                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$id+1)->first();
+                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
                 return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('next_section',$next_section);
             }elseif($type->id == 2){
                 $module = Module::all();
                 $content = ContentLearning::where('id_section',$id)->get();
                 $section = SectionTraining::find($id);
                 $training = Training::find($section->id_training);
-                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$id+1)->first();
+                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
                 if (empty($check_user->id_post_test)) {
                     return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section);
                 }else{
