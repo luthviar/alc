@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
 	<title>ALC | Aerofood Learning Center</title>
-	<link rel="icon" href="{{URL::asset('Elegantic/images/ALS.jpg')}}" type="image/jpg" sizes="16x16">
+	<link rel="icon" href="{{URL::asset('Elegantic/images/ALS.png')}}" type="image/jpg" sizes="16x16">
 	<link rel="stylesheet" href="{{ URL::asset('Elegantic/css/fancySelect.css')}}" />
 	<link rel="stylesheet" href="{{ URL::asset('Elegantic/css/uniform.css')}}" />
 	<link rel="stylesheet" href="{{ URL::asset('Elegantic/css/all.css')}}" />
