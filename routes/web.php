@@ -195,7 +195,7 @@ Route::get('lol', function () {
 
 
 Route::get('QuestionList', function () {
-    return view('Admin.QuestionList');
+    return view('Admin1.QuestionList');
 });
 
 Route::get('CreatePreTest', function () {
