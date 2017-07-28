@@ -21,6 +21,7 @@
 				  <th>Position</th>
 				  <th>Divisi</th>
 				  <th>Department</th>
+				  <th>Created_at</th>
 				  <th>Authority</th>
 				  <th>Edit</th>
 				</tr>
@@ -28,16 +29,17 @@
 			  <tbody>
 			  	@foreach($personnels as $personnel)
 				<tr>
-				  <td>{{$personnel->fname}} {{$personnel->lname}}</td>
+				  <td><a  href="/personnel/{{$personnel->id}}">{{$personnel->fname}} {{$personnel->lname}}</a></td>
 				  <td>{{$personnel->position}}</td>
 				  <td>{{$personnel->divisi}}</td>
 				  <td>{{$personnel->department->nama_departmen}}</td>
+				  <td>{{ \Carbon\Carbon::parse($personnel->created_at)->format('l jS \\of F Y')}}</td>
 				  @if($personnel['user']->is_admin == 1)
 				  <td>Admin</td>
 				  @else
 				  <td>User</td>
 				  @endif
-				  <td><span><a class="btn btn-info" href="/personnel/{{$personnel->id}}">view</a></span>
+				  <td>
 				  <span><a class="btn btn-default" href="/personnel/{{$personnel->id}}/edit">edit</a></span></td>
 				</tr>
 				@endforeach

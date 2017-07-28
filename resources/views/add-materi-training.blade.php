@@ -10,9 +10,10 @@ Create Trainning
 </div>
 <br>
 
-<div class = "PageContainer">
-    <div class="quick-press">
-        <h3>Content Learning</h3>
+<div class="col-md-12">
+   <div class="panel panel-default">
+     <div class="panel-heading">Content Learning</div>
+       <div class="panel-body">
 
         <div class = "main-table">
             <div class="row">
@@ -44,7 +45,8 @@ Create Trainning
             </table>
         </div>                
         <a href="/add-post-test/{{$id_training}}" class="btn btn-info">Next</a>
-    </div>
+	 </div>
+	</div>
 </div>
 
 
@@ -100,7 +102,8 @@ Create Trainning
                 </div>
             </div>
         </form>            
-    </div>
+     </div>
+ </div>
 </div>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">

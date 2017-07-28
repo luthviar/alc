@@ -7,6 +7,7 @@ use App\Department;
 use App\Section;
 use App\Unit;
 use App\Divisi;
+use DB;
 use Illuminate\Http\Request;
 
 class StrukturOrganisasiController extends Controller
@@ -24,16 +25,38 @@ class StrukturOrganisasiController extends Controller
      */
     public function index()
     {
-        $struktur = StrukturOrganisasi::all();
+        
+        $struktur = DB::table('struktur_organisasis')->distinct()->get(['id_divisi']);
+        $divisi = array();
         foreach ($struktur as $key => $value) {
-
-            $value['department']    = Department::where('id_department',$value->id_department)->first();
-            $value['divisi']        = Divisi::where('id_divisi',$value->id_divisi)->first();
-            $value['unit']          = Unit::where('id_unit', $value->id_unit)->first();
-            $value['section']       = Section::where('id_section',$value->id_section)->first();
-            
+            $new_divisi    = Divisi::where('id_divisi',$value->id_divisi)->first();
+            array_push($divisi, $new_divisi);
         }
-        return view('list-struktur')->with('struktur',$struktur);
+        foreach ($divisi as $key => $value) {
+            $value['unit'] = StrukturOrganisasi::where('id_divisi', $value->id_divisi)->distinct()->get(['id_unit']);
+
+            foreach ($value['unit'] as  $unit) {
+                $unit['department'] = StrukturOrganisasi::where('id_divisi', $value->id_divisi)->where('id_unit', $unit->id_unit)->distinct()->get(['id_department']);
+
+                foreach ($unit['department'] as $key => $department) {
+                    $department['section'] = StrukturOrganisasi::where('id_divisi', $value->id_divisi)->where('id_unit', $unit->id_unit)->where('id_department', $department->id_department)->distinct()->get(['id_section']);
+                }
+            }
+        }
+
+        $units = Unit::all();
+        $departments = Department::all();
+        $sections = Section::all();
+
+        // foreach ($struktur as $key => $value) {
+
+        //     $value['department']    = Department::where('id_department',$value->id_department)->first();
+        //     $value['divisi']        = Divisi::where('id_divisi',$value->id_divisi)->first();
+        //     $value['unit']          = Unit::where('id_unit', $value->id_unit)->first();
+        //     $value['section']       = Section::where('id_section',$value->id_section)->first();
+            
+        // }
+        return view('list-struktur')->with('struktur',$struktur)->with('divisi',$divisi)->with('units', $units)->with('departments', $departments)->with('sections', $sections);
     }
 
     /**
@@ -114,5 +137,50 @@ class StrukturOrganisasiController extends Controller
     public function destroy(StrukturOrganisasi $strukturOrganisasi)
     {
         //
+    }
+
+    public function get_unit(Request $request){
+
+        $id_divisi = $request->id_divisi;
+        $struktur = StrukturOrganisasi::where('id_divisi',$id_divisi)->distinct()->get(['id_unit']);
+        $unit = array();
+        foreach ($struktur as $key => $value) {
+            $new_unit = Unit::where('id_unit', $value->id_unit)->first();
+            array_push($unit, $new_unit);
+        }
+
+        return response()->json(['units'=>$unit]);
+        
+    }
+
+    public function get_department(Request $request){
+
+        $id_divisi  = $request->id_divisi;
+        $id_unit    = $request->id_unit;
+        $struktur   = StrukturOrganisasi::where('id_unit',$id_unit)->where('id_divisi',$id_divisi)->distinct()->get(['id_department']);
+        $departments = array();
+        foreach ($struktur as $key => $value) {
+            $new_department = Department::where('id_department', $value->id_department)->first();
+            array_push($departments, $new_department);
+        }
+
+        return response()->json(['departments'=>$departments]);
+        
+    }
+
+    public function get_section(Request $request){
+
+        $id_divisi      = $request->id_divisi;
+        $id_unit        = $request->id_unit;
+        $id_department  = $request->id_department;
+        $struktur   = StrukturOrganisasi::where('id_department',$id_department)->where('id_unit',$id_unit)->where('id_divisi',$id_divisi)->distinct()->get(['id_section']);
+        $sections = array();
+        foreach ($struktur as $key => $value) {
+            $new_section = Section::where('id_section', $value->id_section)->first();
+            array_push($sections, $new_section);
+        }
+
+        return response()->json(['sections'=>$sections]);
+        
     }
 }

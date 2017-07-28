@@ -1,7 +1,4 @@
-
 @include('Admin.AdminHead')
-
-
 @extends('Admin.Template')
 @section('section')
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
@@ -15,8 +12,6 @@ $(document).ready(function(){
     });
 });
 </script>
-
-    <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Add New News</div>
@@ -87,8 +82,6 @@ $(document).ready(function(){
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @endsection
 
 <script>

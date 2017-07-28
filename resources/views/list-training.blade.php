@@ -11,10 +11,12 @@
 
 <!-- Trainning List -->
 <div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">Trainning List</div>
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<strong><h4>Training List</h4></strong>
+			</div>
 				<div class ="panel-body">
-					<a href="/training/create" class="btn btn-info">Create New Training</a><br><br>
+					<a href="/training/create" class="btn btn-warning">Create New Training</a><br><br>
 					<div class = "main-table">
 						<table id= "detailTable" class="table table-striped">
 						  <thead>

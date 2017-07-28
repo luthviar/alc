@@ -5,7 +5,7 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- logo for regular state and mobile devices -->
-      <span><b>E-Recruitment<span>
+      <span><b>ALC-Admin Page<span>
     </a>
 
     <!-- Header Navbar -->
@@ -22,7 +22,7 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
@@ -39,7 +39,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Act as user</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -48,9 +48,6 @@
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
         </ul>
       </div>
     </nav>

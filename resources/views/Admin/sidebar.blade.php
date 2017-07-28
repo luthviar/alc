@@ -11,8 +11,6 @@
         </div>
         <div  class="pull-left info">
           <p>Alexander Pierce</p>
-		  <p><small>Manager</small></p>
-		  <p><small>ACS Cengkareng, In-Flight</small></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -21,59 +19,44 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><span>Dashboard</span></a></li>
-        <li class="treeview">
-          <a href="#"><span>MPP</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+        <li>
+          <a href="/personnel">
+            <i class="fa fa-user"></i> <span>User</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#">View</a></li>
-          </ul>
         </li>
-		<li class="treeview">
-          <a href="#"><span>P-Req</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+		<li>
+          <a href="/training">
+            <i class="fa fa-book" aria-hidden="true"></i></i> <span>Trainning</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Create</a></li>
-            <li><a href="#">Draft</a></li>
-			<li><a href="#">List Request</a></li>
-          </ul>
         </li>
-		<li class="treeview">
-          <a href="#"><span>Job Vacancy</span>
+		<li>
+          <a href="/access">
+            <i class="fa fa-universal-access" ></i> <span>Request Access</span>
             <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+              <small class="label pull-right bg-red">121</small>
+			  <small class="label pull-right bg-green">100</small>
+            </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Post Job</a></li>
-            <li><a href="#">List Job Vacancy</a></li>
-          </ul>
         </li>
-		<li class="treeview">
-          <a href="#"><span>Canidates</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+		<li>
+          <a href="/struktur">
+            <i class="fa fa-university" aria-hidden="true"></i> <span>Organizational Structure</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#">List</a></li>
-          </ul>
         </li>
-		<li class="treeview">
-          <a href="#"><span>Employees</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+		<li>
+          <a href="/raport">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i> <span>Raport</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#">List</a></li>
-          </ul>
+        </li>
+		<li>
+          <a href="/slider">
+            <i class="fa fa-sliders aria-hidden="true"></i> <span>Slider</span>
+          </a>
+        </li>
+		<li>
+          <a href="/berita">
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>News</span>
+          </a>
         </li>
       </ul>
       <!-- /.sidebar-menu -->
