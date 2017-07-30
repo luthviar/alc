@@ -44,10 +44,6 @@
 	<script src="{{URL::asset('AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
 	<!-- FastClick -->
 	<script src="{{URL::asset('AdminLTE/plugins/fastclick/fastclick.js')}}"></script>
-	<!-- AdminLTE App -->
-	<script src="{{URL::asset('AdminLTE/dist/js/app.min.js')}}"></script>
-	<script src="{{URL::asset('AdminLTE/dist/js/demo.js')}}"></script>
-
   
 
 <style type="text/css">
