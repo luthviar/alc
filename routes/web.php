@@ -119,6 +119,14 @@ Route::post('/get-forum', 'ForumController@get_forum');
 
 Route::post('/delete-forum', 'ForumController@delete_forum');
 
+Route::get('/personnel/nonactive/{id}', 'PersonnelController@nonactive');
+
+Route::get('/personnel/active/{id}', 'PersonnelController@active');
+
+Route::get('/reset-password', 'PersonnelController@reset');
+
+Route::post('/reset-password', 'PersonnelController@reset_password');
+
 Route::get('Trainning', function () {
     return view('IModul');
 });

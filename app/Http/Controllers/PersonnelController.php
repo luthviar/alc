@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Auth;
 use App\User;
 use App\Employee;
 use App\ScoreSummary;
@@ -14,6 +15,7 @@ use App\UserTest;
 use App\Unit;
 use App\Training;
 use App\LevelPosition;
+use App\Module;
 use App\StrukturOrganisasi;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,9 @@ class PersonnelController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole');
+        $this->middleware('checkRole', ['except' => [
+            'reset_password' , 'reset'
+        ]]);
     }
     /**
      * Display a listing of the resource.
@@ -301,5 +305,37 @@ class PersonnelController extends Controller
     public function destroy(Personnel $personnel)
     {
         //
+    }
+
+    public function nonactive($id){
+        $personnel = Personnel::find($id);
+        $user = User::find($personnel->id_user);
+        $user->is_aktif = 0;
+        $user->save();
+
+        return redirect('/personnel');
+    }
+
+    public function active($id){
+        $personnel = Personnel::find($id);
+        $user = User::find($personnel->id_user);
+        $user->is_aktif = 1;
+        $user->save();
+
+        return redirect('/personnel');
+    }
+
+    public function reset_password(Request $request){
+        $user = User::find($request->id_user);
+        $user->password = bcrypt($request->newpassword);
+        $user->save();
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    public function reset(){
+        $module = Module::all();
+
+        return view('reset-password')->with('module',$module);
     }
 }

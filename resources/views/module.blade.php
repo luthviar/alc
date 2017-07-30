@@ -52,6 +52,7 @@
 						@endforeach
 						</ul>
 					@elseif($modul->id == 4 or $modul->id == 5)
+                        <ul>
                         @foreach($training as $trains)
                             @if($trains['open'] == 1)
                                     <div class="panel-body">
@@ -69,7 +70,7 @@
                                     @endif
                                     
                         @endforeach     
-                        
+                        </ul>
                     @else
 						<ul>
 							@foreach($training as $trains)

@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#detailTable').DataTable();
+        var table = $('#detailTable').DataTable({
+        	"aaSorting": [[ 3, "asc" ]]
+        });
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
