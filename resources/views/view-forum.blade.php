@@ -1,5 +1,10 @@
 @include('layouts.head')
-
+<?php require_once "Rich/richtexteditor/include_rte.php" ?>
+<?php
+    $rte=new RichTextEditor();
+    $rte->MvcInit();
+    
+?>
 
 <body>
 
@@ -185,14 +190,13 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-                            <textarea id="title" placeholder="Thread Title" type="text" class="form-control" name="title" required autofocus>
-
-                            </textarea>
+							<input type="text" name=""/>
                         </div>
                     </div>
                             
                     <div class="form-group">
-                        <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
+                        <label for="can_repl
+						y" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
                             <select name="can_reply" class="selectpicker">
                                 <option value="1">Yes</option>
@@ -201,13 +205,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="content" class="col-md-3 control-label">Content</label>
+                    <div class="form-group" >
+                        <label for="content" class="col-md-6 control-label">Content</label>
                         
-                        <div class="col-lg-6">
-                            <textarea id="content" placeholder="Thread content" type="text" class="form-control" name="content" required autofocus>
-
-                            </textarea>
+                        <div class="col-md-8 col-xs-offset-1">
+							<?php
+								echo $rte->GetString();
+							?>
                         </div>
                     </div>
 
@@ -249,9 +253,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-                            <textarea id="title" placeholder="Thread Title" type="text" class="form-control" name="title" required autofocus>
-
-                            </textarea>
+							<input type="text" name=""/>
                         </div>
                     </div>
                             
@@ -268,10 +270,10 @@
                     <div class="form-group">
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-                        <div class="col-lg-6">
-                            <textarea id="content" placeholder="Thread content" type="text" class="form-control" name="content" required autofocus>
-
-                            </textarea>
+                          <div class="col-md-8 col-xs-offset-1">
+							<?php
+								echo $rte->GetString();
+							?>
                         </div>
                     </div>
 
@@ -312,9 +314,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-                            <textarea id="title" placeholder="Thread Title" type="text" class="form-control" name="title" required autofocus>
-
-                            </textarea>
+							<input type="text" name=""/>
                         </div>
                     </div>
                             
@@ -331,10 +331,10 @@
                     <div class="form-group">
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-                        <div class="col-lg-6">
-                            <textarea id="content" placeholder="Thread content" type="text" class="form-control" name="content" required autofocus>
-
-                            </textarea>
+						<div class="col-md-8 col-xs-offset-1">
+							<?php
+								echo $rte->GetString();
+							?>
                         </div>
                     </div>
 
