@@ -1,8 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
 $(function() {
     $('#Optionals').hide(); 
@@ -17,11 +15,7 @@ $(function() {
 </script>
 
     <div class="col-md-12">
-		<br><br>
-		<div class="w3-border" style="border-radius:5px">
-			<div class="w3-green" style="height:24px;width:25%;text-align:center;border-radius:5px">25%</div>
-		</div>
-		<BR>
+		
 	       <div class="panel panel-default">
                 <div class="panel-heading">Trainning Description</div>
                 <div class="panel-body">

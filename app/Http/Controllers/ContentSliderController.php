@@ -27,8 +27,13 @@ class ContentSliderController extends Controller
     public function index()
     {
         $slider = ContentSlider::all();
+        $can_activ = true;
+        $slider_aktif = ContentSlider::where('is_activ', 1)->get();
+        if (count($slider_aktif) >= 5) {
+            $can_activ = false;
+        }
         $module = Module::all();
-        return view('list-slider')->with('sliders',$slider)->with('module',$module);
+        return view('list-slider')->with('sliders',$slider)->with('module',$module)->with('can_activ',$can_activ);
     }
 
     /**
