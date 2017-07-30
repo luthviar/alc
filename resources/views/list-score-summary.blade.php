@@ -2,8 +2,10 @@
 @extends('Admin.Template')
 @section('section')
 <div class="col-md-12 ">
-	<div class="panel panel-default">
-	    <div class="panel-heading">Employee Raport</div>
+	<div class="panel panel-success">
+	    <div class="panel-heading">
+	    	<h4>Employee Raport</h4>
+	    </div>
 	    <div class="panel-body">
 			<div class = "main-table">
 				<table id= "detailTable" class="table table-striped">
@@ -11,30 +13,31 @@
 					<tr>
 					  <th>Name</th>
 					  <th>Raport</th>
+					  <th>Created_At</th>
 					  <th>Update Raport</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					@foreach($employee as $personnel)
 					<tr>
-					  <td>{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</td>
+					  <td><strong><a href="/personnel/{{$personnel->id}}">{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</a></strong></td>
 					  @if(empty($personnel['score']))
 					  <td>-</td>
 					  @else
 					  <td><a href="{{URL::asset($personnel['score']->url_file_pdf)}}">{{$personnel['score']->file_name}}</a></td>
 					  @endif
+					  <td>{{ \Carbon\Carbon::parse($personnel['score']['created_at'])->format('l jS \\of F Y')}}</td>
 					  <td>
 					  <!-- Large modal -->
-							<a type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg{{$personnel['personnel']->id}}">Update Raport</a>
+							<a type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target=".bs-example-modal-lg{{$personnel['personnel']->id}}">Update Raport</a>
 
 							<div class="modal fade bs-example-modal-lg{{$personnel['personnel']->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 							  <div class="modal-dialog modal-lg" role="document">
 								<div class="modal-content">
 								  <div class="modal-header">
-									  <a class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
-									  <h4 class="modal-title" id="myModalLabel">{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</h4>
-									  <hr>
-									  <h4>Add New Raport </h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+                					<h4 class="modal-title"><strong>{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</strong> | Add New Raport</h4>
+									  
 								  </div>
 									<div class="modal-body">
 										 <form id="myform" class="form-horizontal" role="form" method="POST" action="/raport/submit/{{$personnel['personnel']->id_user}}" enctype="multipart/form-data">

@@ -10,7 +10,7 @@
           <img src="{{URL::asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div  class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{Auth::user()->get_nama()}}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -21,41 +21,46 @@
         <!-- Optionally, you can add icons to the links -->
         <li>
           <a href="/personnel">
-            <i class="fa fa-user"></i> <span>User</span>
+            <i class="fa fa-user"></i> <span>Personnel</span>
           </a>
         </li>
-		<li>
+		    <li>
           <a href="/training">
             <i class="fa fa-book" aria-hidden="true"></i></i> <span>Trainning</span>
           </a>
         </li>
-		<li>
+		    <li>
           <a href="/access">
             <i class="fa fa-universal-access" ></i> <span>Request Access</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">121</small>
-			  <small class="label pull-right bg-green">100</small>
+			        <small class="label pull-right bg-green">100</small>
             </span>
           </a>
         </li>
-		<li>
+		    <li>
           <a href="/struktur">
             <i class="fa fa-university" aria-hidden="true"></i> <span>Organizational Structure</span>
           </a>
         </li>
-		<li>
+		    <li>
           <a href="/raport">
             <i class="fa fa-floppy-o" aria-hidden="true"></i> <span>Raport</span>
           </a>
         </li>
-		<li>
+		    <li>
           <a href="/slider">
             <i class="fa fa-sliders aria-hidden="true"></i> <span>Slider</span>
           </a>
         </li>
-		<li>
+		    <li>
           <a href="/berita">
             <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>News</span>
+          </a>
+        </li>
+        <li>
+          <a href="/forum/list">
+            <i class="fa fa-weixin" aria-hidden="true"></i> <span>Forum</span>
           </a>
         </li>
       </ul>

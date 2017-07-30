@@ -13,8 +13,8 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <div class="col-md-12">
 
-<div class="row">
-  <div class="panel panel-default">
+
+  <div class="panel panel-success">
     <div class="panel-heading">User Profile</div>
       <div class="panel-body">
         <h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
@@ -95,7 +95,7 @@
           </table>
       </div>
       <div class=" col-md-6 col-lg-6 "> 
-        <div class="panel panel-default">
+        <div class="panel panel-success">
           <div class="panel-heading">User Raport</div>
             <div class ="panel-body">
               <div class = "main-table">
@@ -121,7 +121,7 @@
         </div>
       </div>
       <div class=" col-md-12 col-lg-12 "> 
-        <div class="panel panel-default">
+        <div class="panel panel-success">
           <div class="panel-heading">List Training  </div>
           <div class ="panel-body">
              <div class = "main-table">
@@ -137,7 +137,7 @@
               <tbody>
                 @foreach($personnel['training'] as $training)
                 <tr>
-                  <td>{{$training['info']->title}}</td>
+                  <td><a href="/training/view/{{$training->id}}">{{$training['info']->title}}</a></td>
                   <td>{{$training->pre_test_score}}</td>
                   <td>{{$training->post_test_score}}</td>
                   <td>{{ \Carbon\Carbon::parse($training->created_at)->format('l jS \\of F Y')}}</td>
@@ -158,5 +158,5 @@
       </span>
     </div>
   </div>
-</div>
+
 @endsection

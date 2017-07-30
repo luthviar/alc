@@ -7,7 +7,7 @@
 
 <!-- Trainning List -->
 <div class="col-md-12">
-	<div class="panel panel-warning">
+	<div class="panel panel-success">
 		<div class="panel-heading">
 			<strong><h4>Forum</h4></strong>
 		</div>

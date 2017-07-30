@@ -5,7 +5,6 @@
 <!--Detail Trainning-->
 <link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
 <script type="text/javascript" src="js/EditProfile.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
         $('.detailTable').DataTable({
@@ -17,7 +16,6 @@
         });
     });
 </script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
@@ -64,13 +62,13 @@ $(document).ready(function() {
 </script>
 
 
-<div class="row">
-    <div class="panel panel-default">
+
+    <div class="panel panel-success">
         <div class="panel-heading">
-            <h3>Trainning Overview</h3>
+            <h4>Trainning Overview</h4>
         </div>
         <div class="panel-body">
-            <div class="row">
+            
                 <!-- Info training -->
                 <div class=" col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 "> 
                     <table class="table table-user-information">
@@ -264,10 +262,9 @@ $(document).ready(function() {
                     </div>
                 </div>
 
-            </div>
+            
         </div>
     </div>
-</div>
 
 <!-- MODAL for Add Question Pre Test -->
 <div class="modal fade" id="add-question-pretest" role="dialog">
@@ -564,8 +561,8 @@ $(document).ready(function() {
 
 
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
 
