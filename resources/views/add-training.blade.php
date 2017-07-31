@@ -15,7 +15,6 @@ $(function() {
 </script>
 
     <div class="col-md-12">
-		
 	       <div class="panel panel-default">
                 <div class="panel-heading">Trainning Description</div>
                 <div class="panel-body">
@@ -46,7 +45,7 @@ $(function() {
                             <label for="description" class="col-md-4 control-label">Trainning Description</label>
 
                             <div class="col-md-6">
-                                <textarea rows="4" col="50" id="description" type="text" class="form-control" name="description" required style="resize: none;">
+                                <textarea rows="4" col="50" id="description" type="text" class="form-control" name="description">
 								</textarea>
                             </div>
                         </div>

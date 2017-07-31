@@ -5,10 +5,7 @@
 <!--Form to Create New Trainning -->
 Create Trainning
 <br><br>
-<div class="w3-border" style="border-radius:5px">
-	<div class="w3-green" style="height:24px;width:70%;text-align:center;border-radius:5px">70%</div>
-</div>
-<br>
+
 
 <div class="col-md-12">
    <div class="panel panel-default">
