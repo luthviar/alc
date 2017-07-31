@@ -19,14 +19,9 @@ $(document).ready(function(){
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit User Profile</div>
+                <div class="panel-heading">Edit Slider</div>
                 <div class="panel-body">
-                <div class="container">
-                    <div class="row">
-                        <h3>Data Diri</h3>
-                    </div>
-                </div>
-                    <form id="myform" class="form-horizontal" role="form" method="POST" action="/slider/submit" enctype="multipart/form-data">
+                  <form id="myform" class="form-horizontal" role="form" method="POST" action="/slider/submit" enctype="multipart/form-data">
                         {{ csrf_field() }}
                     
                     <input type="hidden" class="form-control" name="id_slider" value="{{$slider->id}}" required autofocus>
@@ -67,7 +62,7 @@ $(document).ready(function(){
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image">
+                                        Browse… <input type="file" id="imgInp" name="image" accept="image/gif, image/jpeg, image/png"/>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
