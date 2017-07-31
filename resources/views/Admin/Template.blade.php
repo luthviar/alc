@@ -12,7 +12,7 @@
 			  <!-- Main content -->
 				  <section class="content" style="font-weight:normal">
 					 
-					  <div>
+					  <div class="row">
 							  
 						  @yield('section')
 						 
