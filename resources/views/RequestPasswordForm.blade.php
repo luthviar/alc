@@ -30,44 +30,48 @@
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-								          {{ csrf_field() }}
+                        <form class="form-horizontal" role="form" method="POST" action="/request-reset-password">
+								          
+                          {{ csrf_field() }}
 								
-                            <div style="margin-bottom: 25px" class="input-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                    <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
-										 @if ($errors->has('username'))
-											<span class="help-block">
-												<strong>{{ $errors->first('username') }}</strong>
-											</span>
-										@endif
+                                        
+                                        <input type="text" class="form-control" name="username" placeholder="Username" required >
+                    										
+                                         @if ($errors->has('username'))
+                    											<span class="help-block">
+                    												<strong>{{ $errors->first('username') }}</strong>
+                    											</span>
+                    										@endif
                                     </div>
                                 
-                            <div style="margin-bottom: 25px" class="input-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                    <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-                                        <input id="username" type="username" class="form-control" name="email" required placeholder="email">
-										@if ($errors->has('password'))
-											<span class="help-block">
-												<strong>{{ $errors->first('password') }}</strong>
-											</span>
-										@endif
+                                        <input type="email" class="form-control" name="email" required placeholder="email">
+										
+                                        @if ($errors->has('password'))
+                    											<span class="help-block">
+                    												<strong>{{ $errors->first('password') }}</strong>
+                    											</span>
+                    										@endif
                                     </div>
 								
-								<div style="text-align: center">
-                                <div style="margin-top:10px" class="form-group">
+								                    <div style="text-align: center">
+                                        <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 
-                                    <div class="col-sm-12 controls">
-                                      <button type="submit" class="btn btn-primary" style="background-color:green; color:white">
-										Request Password
-									  </button>
+                                            <div class="col-sm-12 controls">
+                                                <button type="submit" class="btn btn-primary" style="background-color:green; color:white">
+										                              Request Password
+									                             </button>
 
-                                    </div>
-                                </div>
-								</div> 
+                                            </div>
+                                          </div>
+								                      </div> 
                             </form>     
 
-					</div>
+					                 </div>
 
                         </div>                     
                     </div>  

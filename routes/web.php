@@ -127,6 +127,16 @@ Route::get('/reset-password', 'PersonnelController@reset');
 
 Route::post('/reset-password', 'PersonnelController@reset_password');
 
+Route::post('/request-reset-password', 'PersonnelController@request_reset');
+
+Route::get('/request-reset', function () {
+    return view('RequestPasswordForm');
+});
+
+Route::get('/access-process/{id}', 'UserTrainingAuthController@process');
+
+Route::post('process-access/submit', 'UserTrainingAuthController@process_submit');
+
 Route::get('Trainning', function () {
     return view('IModul');
 });
@@ -256,6 +266,3 @@ Route::get('ResetPassword', function () {
 });
 
 
-Route::get('RequestPasswordForm', function () {
-    return view('RequestPasswordForm');
-});

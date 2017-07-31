@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
+use App\User;
 use App\UserTrainingAuth;
 use App\Personnel;
 use App\Employee;
+use App\PasswordReset;
 use App\StrukturOrganisasi;
 use App\Department;
 use App\Training;
@@ -39,7 +42,24 @@ class UserTrainingAuthController extends Controller
             $value['training'] = Training::find($value->id_training);
             $value['training-department'] = Department::where('id_department',$value['training']->id_department)->first();
         }
-        return view('user-training-auth')->with('user_auth',$user_auth);
+
+        $password_auth = PasswordReset::all();
+        
+        foreach ($password_auth as $key => $value) {
+            $usr = User::where('username', $value->username)->first();
+            if (empty($usr)) {
+                $value['valid'] = 0;
+            }else{
+                $psnl = Personnel::where('email', $value->email)->first();
+                if (empty($psnl)) {
+                    $value['valid'] = 0;
+                }else{
+                    $value['valid'] = 1;
+                    $value['user'] = $usr;
+                }
+            }
+        }
+        return view('user-training-auth')->with('user_auth',$user_auth)->with('password_auth', $password_auth);
     }
 
     /**
@@ -136,6 +156,26 @@ class UserTrainingAuthController extends Controller
         return redirect()->action(
             'TrainingController@show', ['id' => $id_training]
         );
+    }
+
+    public function process($id){
+        $user = User::find($id);
+
+        return view('process-access')->with('user', $user);
+    }
+
+    public function process_submit(Request $request){
+        $user = User::find($request->id_user);
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        $personnel = Personnel::where('id_user',$user->id)->first();
+
+        $password = PasswordReset::where('username',$user->username)->where('email',$personnel->email)->where('is_process', 0)->first();
+        $password->is_process = 1;
+        $password->save();
+
+        return redirect('access');
     }
 
 }

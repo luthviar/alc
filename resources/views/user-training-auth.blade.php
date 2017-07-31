@@ -23,7 +23,7 @@ $(document).ready(function(){
 <div class="col-md-12 ">
 	<div class="panel panel-success">
 	    <div class="panel-heading">
-	    	<h4>Trainning Request List</h4>
+	    	<h4>Training Request List</h4>
 	    </div>
 	    <div class="panel-body">
 		<div class = "main-table">
@@ -53,6 +53,57 @@ $(document).ready(function(){
 				  @else
 				  <td>Close</td>
 				  <td><a href="/access/{{$auth->id}}/active" class="btn btn-default">open</a></td>
+				  @endif
+				</tr>
+				@endforeach
+				
+			  </tbody>
+			</table>
+		</div>
+		</div>
+	</div>
+
+	<div class="panel panel-success">
+	    <div class="panel-heading">
+	    	<h4>Request Password Reset List</h4>
+	    </div>
+	    <div class="panel-body">
+		<div class = "main-table">
+			<table id= "detailTable" class="table table-striped">
+			  <thead>
+				<tr>
+				  <th>Username</th>
+				  <th>Email</th>
+				  <th>Create_at</th>
+				  <th>Valid Account</th>
+				  <th>Process</th>
+				  <th>Action</th>
+				</tr>
+			  </thead>
+			  <tbody>
+			  	@foreach($password_auth as $password)
+				<tr>
+				  <td>{{$password->username}}</td>
+				  <td>{{$password->email}}</td>
+				  <td>{{$password->created_at}}</td>
+				  @if($password['valid'] == 1)
+				  <td>valid account</td>
+					  @if($password->is_process == 1)
+					  <td>success</td>
+					  <td><a class="btn btn-default btn-flat" disabled="true">process</a></td>
+					  @else
+					  <td style="opacity: 0.5">no action</td>
+					  <td><a href="/access-process/{{$password['user']->id}}" class="btn btn-default btn-flat">process</a></td>
+					  @endif
+				  
+				  @else
+				  <td>non valid accout</td>
+				  	  @if($password->is_process == 1)
+					  <td>success</td>
+					  @else
+					  <td style="opacity: 0.5">no action</td>
+					  @endif
+				  <td><a class="btn btn-default btn-flat" disabled="true">process</a></td>
 				  @endif
 				</tr>
 				@endforeach

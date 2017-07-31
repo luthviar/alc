@@ -24,10 +24,12 @@ class PersonnelController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => [
+             'request_reset'
+        ]]);
 
         $this->middleware('checkRole', ['except' => [
-            'reset_password' , 'reset'
+            'reset_password' , 'reset' , 'request_reset'
         ]]);
     }
     /**
@@ -337,5 +339,16 @@ class PersonnelController extends Controller
         $module = Module::all();
 
         return view('reset-password')->with('module',$module);
+    }
+
+    public function request_reset(Request $request){
+        $id_password = DB::table('password_resets')-> insertGetId(array(
+                'username' => $request->username,
+                'email' => $request->email,
+                'is_process' => 0,
+            ));
+
+        return redirect('/');
+
     }
 }

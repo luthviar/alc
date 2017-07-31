@@ -80,6 +80,7 @@ p.big {
 
 			}else{
 				$('#message').html('*your password is false');
+				$(':input[type="submit"]').prop('disabled', true);
 			}
 		});
 
@@ -94,6 +95,7 @@ p.big {
 
 				}else{
 					$('#message').html('*your password is false');
+					$(':input[type="submit"]').prop('disabled', true);
 				}
 			}
 		});

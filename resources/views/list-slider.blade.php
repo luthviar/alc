@@ -50,7 +50,7 @@
 					  <span><a class="btn btn-warning" href="/slider/{{$slider->id}}/active">Activicate</a></span>
 					  @else
 					  <span style="opacity: 0.5;">not active </span>
-					  <span><a class="btn btn-warning" disabled="true" href="/slider/{{$slider->id}}/active">Activicate</a></span>
+					  <span><a class="btn btn-warning" disabled="true" >Activicate</a></span>
 					  @endif
 				  </td>
 				  @endif
