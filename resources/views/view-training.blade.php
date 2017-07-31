@@ -526,22 +526,14 @@ $(document).ready(function() {
                             
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
-                        <div class="input-group image-preview">
-                            <input type="text" class="form-control image-preview-filename" disabled="disabled"> 
-                            <!-- don't give a name === doesn't send on POST/GET -->
-                            <span class="input-group-btn">
-                                <!-- image-preview-clear button -->
-                                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                                <span class="glyphicon glyphicon-remove"></span> Clear
-                                </button>
-                                <!-- image-preview-input -->
-                                <div class="btn btn-default image-preview-input">
-                                    <span class="glyphicon glyphicon-folder-open"></span>
-                                    <span class="image-preview-input-title">Browse</span>
-                                    <input type="file" accept="Application/pdf" name="file"/> <!-- rename it -->
-                                </div>
-                            </span>
-                        </div><!-- /input-group image-preview [TO HERE]--> 
+                        <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file" accept="Application/pdf">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
                     </div>
                 </div>
             </div>
@@ -563,8 +555,8 @@ $(document).ready(function() {
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
+<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 
 
 <script>
