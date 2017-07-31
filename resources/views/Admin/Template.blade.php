@@ -1,4 +1,5 @@
-  @include('Admin.Adminhead')
+@include('Admin.Adminhead')
+	<script src="{{URL::asset('AdminLTE/dist/js/app.min.js')}}"></script>
 
  <body class= "hold-transition skin-green sidebar-mini">
   <div class="wrapper">
@@ -25,17 +26,7 @@
 
 </div>
 
-<!-- ./wrapper -->
-<!-- jQuery 2.2.3 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="AdminLTE/plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="AdminLTE/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="AdminLTE/dist/js/app.min.js"></script>
+
 
 
 </body>
