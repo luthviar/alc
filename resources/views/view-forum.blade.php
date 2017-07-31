@@ -48,7 +48,7 @@
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
-                                            @if($forum['replie'] == null)
+                                            @if(count($forum['replie']) == 0)
                                             <td>-</td>
                                             @else
                                             <td>{{$forum['last_reply_personnel']['fname']}} {{$forum['last_reply_personnel']['lname']}}, {{ \Carbon\Carbon::parse($forum['last_reply'][0]->created_at)->format('l jS \\of F Y')}}</td>

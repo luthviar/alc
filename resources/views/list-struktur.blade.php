@@ -12,9 +12,9 @@
 
 
 <div class="col-md-12 ">
-	<div id="narrow-browser-alert" class="alert alert-info text-center">
-      	<strong>Organization Structure Aerofood ACS</strong> 
-      	<br>
+	<div id="narrow-browser-alert" class="alert alert-success text-center">
+      	<strong><h4>Organization Structure of Aerofood ACS</h4></strong> 
+      	
       	<a href="/struktur/create"><span><i class="glyphicon glyphicon-plus"></i> new_structure</span> </a>
     </div>
     

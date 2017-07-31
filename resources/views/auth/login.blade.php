@@ -22,7 +22,7 @@
 				<hr class="style14">
 			<br>
 			<div class="panel panel-info" >
-                    <div class="panel-heading" style="background-color:lightgreen; color:white">
+                    <div class="panel-heading" style="background-color:green; color:white">
                         <div class="panel-title">Sign In</div>
                     </div>     
 
@@ -31,7 +31,7 @@
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-								{{ csrf_field() }}
+								          {{ csrf_field() }}
 								
                             <div style="margin-bottom: 25px" class="input-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -58,7 +58,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <button type="submit" class="btn btn-primary" style="background-color:lightgreen; color:white">
+                                      <button type="submit" class="btn btn-primary" style="background-color:green; color:white">
 										Login
 									  </button>
 

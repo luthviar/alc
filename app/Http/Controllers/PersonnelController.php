@@ -100,6 +100,7 @@ class PersonnelController extends Controller
             'username' => $request->username,
             'password' => bcrypt($request->password),
             'is_admin' => $request->is_admin,
+            'is_aktif' => 1,
         ));
 
         

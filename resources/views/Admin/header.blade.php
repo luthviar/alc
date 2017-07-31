@@ -23,12 +23,12 @@
               <!-- The user image in the navbar-->
               <i class="fa fa-user-circle" aria-hidden="true"></i>
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{Auth::user()->get_nama()}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{URL::asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
                   ACS - CKG
@@ -38,10 +38,15 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Act as user</a>
+
+                  <a href="/" class="btn btn-success btn-flat">Act as user</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a class="btn btn-danger btn-flat" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
                 </div>
               </li>
             </ul>

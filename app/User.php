@@ -41,4 +41,9 @@ class User extends Authenticatable
         $level_position = LevelPosition::find($employee->level_position);
         return $level_position;
     }
+
+    public function get_nama(){
+        $personnel = Personnel::where('id_user',$this->id)->first();
+        return sprintf(" %s %s ",$personnel->fname,$personnel->lname);
+    }
 }

@@ -8,11 +8,18 @@
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
 <div class="col-md-12 ">
-	<div class="panel panel-default">
-	    <div class="panel-heading">List News</div>
+	<div class="panel panel-success">
+	    <div class="panel-heading">
+	    	<h4>News List</h4>
+	    </div>
 	    <div class="panel-body">
-			<a  class="btn btn-info" href="/berita/create">Create New News</a><br><br>
+	    	<span class="pull-right" style="color: green;">
+					<a href="/berita/create"><i class="glyphicon glyphicon-plus">New_News</i>
+					 </a>
+				</span><br><br>
+			
 			 <div class = "main-table">
 			  <table id= "detailTable" class="table table-striped">
 			  <thead>

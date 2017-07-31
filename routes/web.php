@@ -113,6 +113,11 @@ Route::post('/get-department','StrukturOrganisasiController@get_department');
 
 Route::post('/get-section','StrukturOrganisasiController@get_section');
 
+Route::get('/forum/list', 'ForumController@list_forum');
+
+Route::post('/get-forum', 'ForumController@get_forum');
+
+Route::post('/delete-forum', 'ForumController@delete_forum');
 
 Route::get('Trainning', function () {
     return view('IModul');
@@ -150,9 +155,7 @@ Route::get('Tests', function () {
 });
 
 
-Route::get('ajax', function () {
-    return view('ajax');
-});
+
 
 Route::get('/CreateDepartement', function () {
     return view('Admin.CreateDept');
