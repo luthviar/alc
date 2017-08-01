@@ -45,7 +45,11 @@ class NewsReplieController extends Controller
         $reply->id_news = $request->id_news;
         $reply->id_user = $request->id_user;
         $reply->title = $request->title;
-        $reply->content = $request->content;
+        if (empty($request->content)) {
+            $reply->content = "";
+        }else{
+            $reply->content = $request->content;
+        }
         $reply->save();
 
 

@@ -1,6 +1,5 @@
 @include('layouts.head')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -173,8 +172,11 @@
         <!-- Footer -->
         @include('layouts.footer')
     </div>
-
-    @include('layouts.script')
+	<script type="text/javascript" src="{{URL::asset('Elegantic/js/jquery.bxslider.min.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('Elegantic/js/jquery.placeholder.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('Elegantic/js/jquery.uniform.min.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('Elegantic/js/fancySelect.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('Elegantic/js/main.js')}}"></script>
 </body>
 </html>
 

@@ -13,7 +13,7 @@
 							<h3>{{ $slider['title'] }}</h3>
 							<h6>{{ \Carbon\Carbon::parse($slider->create_at)->format('d - m - Y , H:i:s')}}</h6>	
 							<p align="justify">
-								{{ $slider['content'] }}
+								{{ strip_tags($slider['content']) }}
 							</p><br>
 					</div>
 				</section>

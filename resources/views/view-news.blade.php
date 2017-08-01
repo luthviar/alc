@@ -25,7 +25,7 @@ p.big {
 					@endif
 					<hr class="style14"> 
 					<p align="justify" class="big">
-						{{ $news['content'] }}
+						{{ strip_tags($news['content']) }}
 					</p><br>
 
 					@if($news->can_reply == 1)
@@ -37,7 +37,9 @@ p.big {
 									<div class="panel-heading"><strong>{{ $reply['title'] }}</strong><br>
 										{{$reply['user']->fname}} {{$reply['user']->lname}}, {{ \Carbon\Carbon::parse($reply->create_at)->format('d - m - Y , H:i:s')}}</div>
 									<div class="panel-body">
+
 											{!! html_entity_decode($reply['content']) !!}
+ 
 									</div>
 								</div>
 								<br>
@@ -66,12 +68,17 @@ p.big {
 
 					                    <div class="col-md-10">
 					                    <?php   
-							                //Step 2: Create Editor object.   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
 							                $editor=new CuteEditor();     
-							                //Step 3: Set a unique ID to Editor   
+							                //Step 3: Set a unique ID to Editor
 							                $editor->ID="content";    
 							                $editor->AutoConfigure="Simple";
-							                
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
 							                //Step 4: Render Editor   
 							                $editor->Draw();   
 							            ?>   

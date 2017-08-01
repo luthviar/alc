@@ -18,7 +18,7 @@ p.big {
 					<h6>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}, {{ \Carbon\Carbon::parse($forum->create_at)->format('l jS \\of F Y')}}</h6> 
 					<hr class="style14"> 
 					<p align="justify" class="big">
-						{{ $forum['content'] }}
+						{{ strip_tags($forum['content']) }}
 					</p><br>
 								
 					@if($forum->can_reply == 1)
@@ -30,7 +30,7 @@ p.big {
 									<div class="panel-heading"><strong>{{ $reply['title'] }}</strong><br>
 										{{$reply['personnel']->fname}} {{$reply['personnel']->lname}}, {{ \Carbon\Carbon::parse($reply->create_at)->format('l jS \\of F Y')}}</div>
 									<div class="panel-body">
-											{{ $reply['content'] }}
+											{{ strip_tags($reply['content']) }}
 									</div>
 								</div>
 								<br>

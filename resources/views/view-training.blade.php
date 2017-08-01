@@ -62,7 +62,7 @@ $(document).ready(function() {
 </script>
 
 
-
+	<div class="col-md-12">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Trainning Overview</h4>
@@ -96,7 +96,7 @@ $(document).ready(function() {
                             </tr>
                             <tr>
                                 <td>Description</td>
-                                <td>{{$training->description}}</td>
+                                <td>{{strip_tags($training->description)}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -4,7 +4,13 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detailTable').DataTable();
+    });
+</script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <!-- Trainning List -->
 <div class="col-md-12">
 	<div class="panel panel-success">
