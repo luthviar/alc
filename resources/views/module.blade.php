@@ -29,55 +29,71 @@
 		            </div>
 		            <div class="row">
 
-                    <h2>Daftar Training Modul {{$modul->nama}}</h2>
+                    <h2>Training Modul {{$modul->nama}}</h2>
                     <br>
-                    @if($modul->id == 3)
-						<ul>
-						@foreach($department as $dep)
-							<li><a data-toggle="collapse" href="#collapse1{{$dep->id_department}}"><h3>{{ $dep->nama_departmen}}</h3></a></li>
-							<div id="collapse1{{$dep->id_department}}" class="panel-collapse collapse">
-							<ul>
-								@foreach($training as $trains)
-									@if($trains->id_department == $dep->id_department)
-										@if($trains['open'] == 1)
-										<div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true"></span></i></h5></a></div>
-                                        @else
-                                        <div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></li></div>
-                                        @endif
-                                        
-									@endif
-								@endforeach		
-							</ul>
+					
+					@if($modul->id == 3)
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  @foreach($department as $dep)
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+						  <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1{{$dep->id_department}}" aria-expanded="true" aria-controls="#collapse1{{$dep->id_department}}">
+							  {{ $dep->nama_departmen}}<span class="pull-right"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
+							</a>
+						  </h4>
+						</div>
+						<div id="collapse1{{$dep->id_department}}" class="panel-collapse collapse">
+							  <div class="panel-body">
+								<ul class="list-group">
+									@foreach($training as $trains)
+										@if($trains->id_department == $dep->id_department)
+											@if($trains['open'] == 1)
+											<li class ="list-group-item"><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class="pull-right">  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true"></span></i></h5></a></li>
+											@else
+											<li class ="list-group-item"><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></li>
+											@endif
+										@endif
+									@endforeach
+								</ul>
+							  </div>
 							</div>
-						@endforeach
-						</ul>
+						  </div>
+						  	@endforeach
+					</div>
+					
 					@elseif($modul->id == 4 or $modul->id == 5)
-                        <ul>
-                        @foreach($training as $trains)
-                            @if($trains['open'] == 1)
-                                    <div class="panel-body">
-                                        <li>
-                                            <a href="/training/{{$trains->id}}">
-                                                <h5>{{$trains->title}}
-                                                <span>  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true">
-                                                </i></span>
-                                                </h5>
-                                            </a>
-                                        </li>
-                                    </div>
-                                    @else
-                                    <div class="panel-body"><li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span>  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></li></div>
-                                    @endif
-                                    
-                        @endforeach     
-                        </ul>
-                    @else
-						<ul>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 							@foreach($training as $trains)
-								<li><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}</h5></a></li>
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingOne">
+									  <h4 class="panel-title">
+									
+										@if($trains['open'] == 1)
+												<a href="/training/{{$trains->id}}">
+													{{$trains->title}}
+													<span class ="pull-right">  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true">
+													</i></span>
+												</a>
+										@else
+										<a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class ="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a>
+										@endif 
+									@endforeach 
+									</h4>
+								  </div>
+								</div>
+					  </div>
+      				@else
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							@foreach($training as $trains)
+							<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingOne">
+									  <h4 class="panel-title">
+								      <a href="/training/{{$trains->id}}">{{$trains->title}}</a></h4></div>
+							</div>
 							@endforeach		
-						</ul>
 					@endif
+						
 					</div>
                 </div>
             </section>
