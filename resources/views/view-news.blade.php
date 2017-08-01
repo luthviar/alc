@@ -24,7 +24,7 @@ p.big {
 					@endif
 					<hr class="style14"> 
 					<p align="justify" class="big">
-						{{ $news['content'] }}
+						{{ strip_tags($news['content']) }}
 					</p><br>
 
 					@if($news->can_reply == 1)
@@ -36,7 +36,7 @@ p.big {
 									<div class="panel-heading"><strong>{{ $reply['title'] }}</strong><br>
 										{{$reply['user']->fname}} {{$reply['user']->lname}}, {{ \Carbon\Carbon::parse($reply->create_at)->format('d - m - Y , H:i:s')}}</div>
 									<div class="panel-body">
-											{{ $reply['content'] }}
+											{{strip_tags($reply['content'] )}}
 									</div>
 								</div>
 								<br>

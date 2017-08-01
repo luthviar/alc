@@ -88,7 +88,7 @@
               </tr>
                 <tr>
                 <td>Home Address</td>
-                <td>{{$personnel->alamat}}</td>
+                <td>{{strip_tags($personnel->alamat)}}</td>
               </tr>
               <tr>
                 <td>Email</td>
