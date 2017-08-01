@@ -72,18 +72,29 @@ class BeritaController extends Controller
             'id_user' => 'required',
             'can_reply' => 'required',
         ]);
-        $file = $request->file('image');
-        $destinationPath = 'uploads';
-        $movea = $file->move($destinationPath,$file->getClientOriginalName());
-        $url = "uploads/{$file->getClientOriginalName()}";
-        $berita = new Berita;
-        $berita->id_user = $request->id_user;
-        $berita->title = $request->title;
-        $berita->content = $request->content;
-        $berita->can_reply = $request->can_reply;
-        $berita->image = $url;
-        $berita->save();
+        if (empty($request->file('image'))) {
+            $file = $request->file('image');
+            $destinationPath = 'uploads';
+            $movea = $file->move($destinationPath,$file->getClientOriginalName());
+            $url = "uploads/{$file->getClientOriginalName()}";
+            $berita = new Berita;
+            $berita->id_user = $request->id_user;
+            $berita->title = $request->title;
+            $berita->content = $request->content;
+            $berita->can_reply = $request->can_reply;
+            $berita->image = $url;
+            $berita->save();
+        }else{
+            $berita = new Berita;
+            $berita->id_user = $request->id_user;
+            $berita->title = $request->title;
+            $berita->content = $request->content;
+            $berita->can_reply = $request->can_reply;
+            $berita->image = null;
+            $berita->save();
 
+        }
+        
         return redirect('berita');
     }
 

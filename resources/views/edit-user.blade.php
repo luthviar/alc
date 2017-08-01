@@ -4,10 +4,12 @@
 @extends('Admin.Template')
 @section('section')
 
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Edit User Profile</div>
+    
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4>Edit User Profile</h4>
+                </div>
                 <div class="panel-body">
                 <div class="container">
                     <div class="row">
@@ -240,8 +242,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
 @endsection
 
 <script>

@@ -2,11 +2,25 @@
 <?php require_once "Rich/richtexteditor/include_rte.php" ?>
 <?php
     $rte=new RichTextEditor();
+    $rte->ID="content";
+    $rte->Text="Type here";   
     $rte->MvcInit();
+
+    $rtee=new RichTextEditor();
+    $rtee->ID="content2";
+    $rtee->Text="Type here"; 
+    $rtee->MvcInit();
+
+    $rted=new RichTextEditor();
+    $rted->ID="content3";    
+    $rted->Text="Type here"; 
+    $rted->MvcInit();
     
 ?>
 
 <body>
+
+
 
 
 
@@ -190,7 +204,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name=""/>
+							<input type="text" name="title">
                         </div>
                     </div>
                             
@@ -208,7 +222,7 @@
                     <div class="form-group" >
                         <label for="content" class="col-md-6 control-label">Content</label>
                         
-                        <div class="col-md-8 col-xs-offset-1">
+                        <div class="col-md-8 col-xs-offset-1" name="content">
 							<?php
 								echo $rte->GetString();
 							?>
@@ -253,7 +267,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name=""/>
+							<input type="text" name="title"/>
                         </div>
                     </div>
                             
@@ -272,7 +286,7 @@
                         
                           <div class="col-md-8 col-xs-offset-1">
 							<?php
-								echo $rte->GetString();
+								echo $rted->GetString();
 							?>
                         </div>
                     </div>
@@ -314,7 +328,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name=""/>
+							<input type="text" name="title"/>
                         </div>
                     </div>
                             
@@ -333,8 +347,8 @@
                         
 						<div class="col-md-8 col-xs-offset-1">
 							<?php
-								echo $rte->GetString();
-							?>
+                                echo $rtee->GetString();
+                            ?>
                         </div>
                     </div>
 

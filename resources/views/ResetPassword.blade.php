@@ -10,19 +10,20 @@ p.big {
     <!-- Header -->
     <div id="wrapper">
         <div class="wrapper-holder">
-            @include('layouts.header')
                  
+            @include('layouts.header')
             <section id="main">
 						<div class="col-md-12">
-							<div class="panel panel-default">
+							<div class="panel panel-success">
 								<div class="panel-heading">Reset Password</div>
 								<div class="panel-body">
 							  <form id="myform" class="form-horizontal" role="form" method="POST">
+							  
 								<div class="form-group">
 									<label for="password" class="col-md-4 control-label">Old Password</label>
 
 									<div class="col-md-4">
-										<input id="password" type="password" class="form-control" name="password" required>
+										<input id="password" type="password" class="form-control" name="oldpassword" required>
 									</div>
 								</div>
 								
@@ -30,7 +31,7 @@ p.big {
 									<label for="password" class="col-md-4 control-label">New Password</label>
 
 									<div class="col-md-4">
-										<input id="password" type="password" class="form-control" name="password" required>
+										<input id="password" type="password" class="form-control" name="newpassword" required>
 									</div>
 								</div>
 								
@@ -38,7 +39,7 @@ p.big {
 									<label for="password-confirm" class="col-md-4 control-label">Confirm New Password</label>
 
 									<div class="col-md-4">
-										<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+										<input id="password-confirm" type="password" class="form-control"  required>
 									</div>
 								</div>
 								

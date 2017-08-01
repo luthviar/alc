@@ -71,7 +71,12 @@
                           <div class="col-lg-4 col-sm-6 portfolio-item" style="
                           height: 400px;">
                                 <div class="card h-100">
-                                    <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; "></a>
+                                    <a href="#">
+                                    @if(empty($news->image))
+                                    <img class="card-img-top img-fluid" src="{{URL::asset('/Elegantic/images/ALS.jpg')}}" alt="" style="border: 1px solid green; border-radius:5%; ">
+                                    @else
+                                    <img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; ">
+                                    @endif</a>
                                     <div class="card-block">
     									<div  style="height:15vh; width:100%;">
                                             <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>

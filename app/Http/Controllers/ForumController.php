@@ -105,7 +105,13 @@ class ForumController extends Controller
         $new_forum->id_user = $id_user;
         $new_forum->can_reply = $request->can_reply;
         $new_forum->title = $request->title;
-        $new_forum->content = $request->content;
+        if ($request->id_department != null) {
+            $new_forum->content = $request->content3;
+        }elseif($request->id_job_family != null){
+            $new_forum->content = $request->content2;
+        }else{
+            $new_forum->content = $request->content;
+        }
         $new_forum->id_department = $request->id_department;
         $new_forum->id_job_family = $request->id_job_family;
         $new_forum->save();

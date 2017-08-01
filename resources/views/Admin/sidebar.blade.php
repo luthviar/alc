@@ -32,10 +32,10 @@
 		    <li>
           <a href="/access">
             <i class="fa fa-universal-access" ></i> <span>Request Access</span>
-            <span class="pull-right-container">
+            <!--<span class="pull-right-container">
               <small class="label pull-right bg-red">121</small>
 			        <small class="label pull-right bg-green">100</small>
-            </span>
+            </span>-->
           </a>
         </li>
 		    <li>

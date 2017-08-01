@@ -4,7 +4,9 @@
  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#detailTable').DataTable();
+        $('#detailTable').DataTable({
+        	"aaSorting": [[ 2, "asc" ]]
+        });
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
@@ -48,7 +50,7 @@
 					  <span><a class="btn btn-warning" href="/slider/{{$slider->id}}/active">Activicate</a></span>
 					  @else
 					  <span style="opacity: 0.5;">not active </span>
-					  <span><a class="btn btn-warning" disabled="true" href="/slider/{{$slider->id}}/active">Activicate</a></span>
+					  <span><a class="btn btn-warning" disabled="true" >Activicate</a></span>
 					  @endif
 				  </td>
 				  @endif

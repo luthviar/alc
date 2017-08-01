@@ -18,10 +18,16 @@
     <div class="panel-heading">User Profile</div>
       <div class="panel-body">
         <h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
+        @if($personnel->is_aktif == 1)
+        <span ><a style="color: red;" href="/personnel/nonactive/{{$personnel->id}}"><i class="glyphicon glyphicon-remove"></i> Deactive</a></span>
+        @else
+        <span ><a style="color: green;" href="/personnel/active/{{$personnel->id}}"><i class="glyphicon glyphicon-check"></i> Activate</a></span>
+        @endif
       </div>
     <div class="panel-body">
     <div class="row">
         <div class=" col-md-6 col-lg-6 "> 
+          <span class="pull-left"><a href="/personnel/{{$personnel->id}}/edit"><i class="glyphicon glyphicon-edit"></i> Edit</a></span>
           <table class="table table-user-information">
             <tbody>
               <tr>
@@ -150,13 +156,7 @@
         </div>
       </div>
     </div>
-    <div class="panel-footer">
-      <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-      <span class="pull-right">
-        <a href="/personnel/{{$personnel->id}}/edit" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-      </span>
-    </div>
+    
   </div>
 
 @endsection
