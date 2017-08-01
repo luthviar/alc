@@ -20,8 +20,6 @@
 	<link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/datatables/dataTables.bootstrap.css')}}">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-	<script>tinymce.init({ selector:'textarea' });</script>
  
  <style>
 .card a img {

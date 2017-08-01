@@ -1,4 +1,5 @@
 @include('layouts.head')
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>   
 <script type="text/javascript" src="{{URL::asset('js/textarea.js')}}"></script>
 <style>
 p.big {
@@ -13,7 +14,7 @@ p.big {
             @include('layouts.header')
                  
             <section id="main">
-				<div class ="col-lg-8 col-md-8 col-sm-8">
+				<div class ="col-lg-10 col-md-10 col-sm-10">
 					<h3>{{ $news['title'] }}</h3>
 					<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('l jS \\of F Y')}}</h6>
 					<hr class="style14">
@@ -36,7 +37,7 @@ p.big {
 									<div class="panel-heading"><strong>{{ $reply['title'] }}</strong><br>
 										{{$reply['user']->fname}} {{$reply['user']->lname}}, {{ \Carbon\Carbon::parse($reply->create_at)->format('d - m - Y , H:i:s')}}</div>
 									<div class="panel-body">
-											{{ $reply['content'] }}
+											{!! html_entity_decode($reply['content']) !!}
 									</div>
 								</div>
 								<br>
@@ -63,8 +64,18 @@ p.big {
 					                <div class="form-group">
 					                    <label for="content" class="col-md-4 control-label">Content</label>
 
-					                    <div class="col-md-6">
-					                        <textarea id="content" type="text" class="form-control" name="content" required  style="resize: none;"></textarea>
+					                    <div class="col-md-10">
+					                    <?php   
+							                //Step 2: Create Editor object.   
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor   
+							                $editor->ID="content";    
+							                $editor->AutoConfigure="Simple";
+							                
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							            ?>   
+					                       
 					                    </div>
 					                </div>
 					                <div class="form-group">
