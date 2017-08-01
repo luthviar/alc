@@ -73,7 +73,7 @@
                                 <div class="card h-100">
                                     <a href="#">
                                     @if(empty($news->image))
-                                    <img class="card-img-top img-fluid" src="{{URL::asset('/Elegantic/images/ALS.jpg')}}" alt="" style="border: 1px solid green; border-radius:5%; ">
+                                    <img class="card-img-top img-fluid" src="/Elegantic/images/ALS.jpg" alt="" style="border: 1px solid green; border-radius:5%; ">
                                     @else
                                     <img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; ">
                                     @endif</a>

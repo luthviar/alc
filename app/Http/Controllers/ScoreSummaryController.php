@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use App\ScoreSummary;
 use App\Personnel;
 use App\Employee;
+use App\StrukturOrganisasi;
+use App\Department;
+use App\Divisi;
+use App\Section;
+use App\Unit;
+use App\LevelPosition;
+use App\UserTest;
+use App\Training;
 use App\Module;
 use App\User;
 use Illuminate\Http\Request;
@@ -82,9 +90,32 @@ class ScoreSummaryController extends Controller
      */
     public function show($id_user)
     {
+        $personnel = Personnel::where('id_user',$id_user)->first();
+        $id_personnel = $personnel->id;
+        $user = User::find($personnel->id_user);
+        $personnel['user'] = $user;
+        $employee = Employee::where('id_personnel',$id_personnel)->first();
+        $personnel['employee'] = $employee;
+        if (empty($employee)) {
+            $personnel['struktur'] = null;
+        }else{
+            $struktur = StrukturOrganisasi::find($employee->struktur);
+            $personnel['struktur'] = $struktur;
+            $personnel['level'] = LevelPosition::find($employee->level_position);
+            $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
+            $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
+            $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
+            $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+        }
+        $personnel['score'] = ScoreSummary::where('id_user',$personnel->id_user)->get();
+        $personnel['training'] = UserTest::where('id_user',$personnel->id_user)->get();
+        foreach ($personnel['training'] as $key => $value) {
+            $value['info'] = Training::find($value->id_training);
+        }
+
         $raport = ScoreSummary::where('id_user',$id_user)->orderBy('id','desc')->first();
         $module = Module::all();
-        return view('view-raport')->with('module',$module)->with('raport',$raport);
+        return view('view-raport')->with('module',$module)->with('raport',$raport)->with('personnel',$personnel);
     }
 
     /**

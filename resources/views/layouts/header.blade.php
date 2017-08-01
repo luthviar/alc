@@ -51,7 +51,7 @@
 					@endforeach
 					</div>
 				</div>
-				<li><a href="/raport/{{Auth::user()->id}}">Raport</a></li>
+				<li><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
 				@endif
 			</ul>
 		</nav>

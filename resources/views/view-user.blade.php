@@ -18,7 +18,7 @@
     <div class="panel-heading">User Profile</div>
       <div class="panel-body">
         <h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
-        @if($personnel->is_aktif == 1)
+        @if($personnel['user']->is_aktif == 1)
         <span ><a style="color: red;" href="/personnel/nonactive/{{$personnel->id}}"><i class="glyphicon glyphicon-remove"></i> Deactive</a></span>
         @else
         <span ><a style="color: green;" href="/personnel/active/{{$personnel->id}}"><i class="glyphicon glyphicon-check"></i> Activate</a></span>
