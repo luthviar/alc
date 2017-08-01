@@ -79,7 +79,7 @@ $(document).ready(function(){
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image">
+                                        Browse… <input type="file" id="imgInp" name="image" accept="image/gif, image/jpeg, image/png"/>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>

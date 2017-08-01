@@ -44,9 +44,6 @@
 	<script src="{{URL::asset('AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
 	<!-- FastClick -->
 	<script src="{{URL::asset('AdminLTE/plugins/fastclick/fastclick.js')}}"></script>
-  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-	<script>tinymce.init({ selector:'textarea' });</script>
-	
 
 <style type="text/css">
 /**

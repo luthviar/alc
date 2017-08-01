@@ -246,3 +246,8 @@ Route::get('RequestBoard', function () {
 Route::get('ResetPassword', function () {
     return view('ResetPassword');
 });
+
+
+Route::get('RequestPasswordForm', function () {
+    return view('RequestPasswordForm');
+});
