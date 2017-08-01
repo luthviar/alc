@@ -1,4 +1,3 @@
-
 @include('Admin.Adminhead')
 <script src="{{URL::asset('AdminLTE/dist/js/app.min.js')}}"></script>  
 <body class= "hold-transition skin-green sidebar-mini">

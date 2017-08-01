@@ -47,22 +47,14 @@
 											<div class="form-group">				
 												<label for="question" class="col-md-4 control-label">Upload File</label>
 												<div class="col-md-6">
-													<div class="input-group image-preview">
-														<input type="text" class="form-control image-preview-filename" disabled="disabled"> 
-														<!-- don't give a name === doesn't send on POST/GET -->
+													<div class="input-group">
 														<span class="input-group-btn">
-															<!-- image-preview-clear button -->
-															<button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-															<span class="glyphicon glyphicon-remove"></span> Clear
-															</button>
-															<!-- image-preview-input -->
-															<div class="btn btn-default image-preview-input">
-																<span class="glyphicon glyphicon-folder-open"></span>
-																<span class="image-preview-input-title">Browse</span>
-																<input type="file" accept="Application/pdf" name="score" required="true" /> <!-- rename it -->
-															</div>
+															<span class="btn btn-default btn-file">
+																Browse… <input type="file" name="score" id="imgInp" name="image" accept="Application/pdf">
+															</span>
 														</span>
-													</div><!-- /input-group image-preview [TO HERE]--> 
+														<input type="text" class="form-control" readonly>
+													</div></br>
 												</div>
 											</div>
 											<div class="modal-footer">
@@ -101,8 +93,8 @@
         $('#detailTable').DataTable();
     });
 </script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script><link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script><link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 
 <script>
 $(document).ready(function(){
