@@ -26,7 +26,7 @@ class StrukturOrganisasiController extends Controller
     public function index()
     {
         
-        $struktur = DB::table('struktur_organisasis')->distinct()->get(['id_divisi']);
+        $struktur = StrukturOrganisasi::distinct()->get(['id_divisi']);
         $divisi = array();
         foreach ($struktur as $key => $value) {
             $new_divisi    = Divisi::where('id_divisi',$value->id_divisi)->first();
