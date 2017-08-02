@@ -1,29 +1,6 @@
 @include('layouts.head')
-<?php require_once "Rich/richtexteditor/include_rte.php" ?>
-<?php
-    $rte=new RichTextEditor();
-    $rte->ID="content";
-    $rte->Text="Type here";   
-    $rte->MvcInit();
-
-    $rtee=new RichTextEditor();
-    $rtee->ID="content2";
-    $rtee->Text="Type here"; 
-    $rtee->MvcInit();
-
-    $rted=new RichTextEditor();
-    $rted->ID="content3";    
-    $rted->Text="Type here"; 
-    $rted->MvcInit();
-    
-?>
-
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 <body>
-
-
-
-
-
 <div id="wrapper">
     <div class="wrapper-holder">
         @include('layouts.header')
@@ -222,9 +199,21 @@
                     <div class="form-group" >
                         <label for="content" class="col-md-6 control-label">Content</label>
                         
-                        <div class="col-md-8 col-xs-offset-1" name="content">
-							<?php
-								echo $rte->GetString();
+                        <div class="col-md-10 col-xs-offset-1" name="content">
+							<?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content";    
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
 							?>
                         </div>
                     </div>
@@ -284,9 +273,21 @@
                     <div class="form-group">
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-                          <div class="col-md-8 col-xs-offset-1">
-							<?php
-								echo $rted->GetString();
+                          <div class="col-md-10 col-xs-offset-1">
+							<?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+					\		                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content3";    
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
 							?>
                         </div>
                     </div>
@@ -345,10 +346,22 @@
                     <div class="form-group">
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-						<div class="col-md-8 col-xs-offset-1">
-							<?php
-                                echo $rtee->GetString();
-                            ?>
+						<div class="col-md-10 col-xs-offset-1">
+							<?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content2";    
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							?>
                         </div>
                     </div>
 

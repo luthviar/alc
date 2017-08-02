@@ -2,9 +2,6 @@
 @extends('Admin.Template')
 @section('section')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
         $('#detailTable').DataTable();
