@@ -14,7 +14,7 @@ p.big {
             @include('layouts.header')
                  
             <section id="main">
-				<div class ="col-lg-10 col-md-10 col-sm-10">
+				<div class ="col-lg-8 col-md-8 col-sm-8">
 					<h3>{{ $news['title'] }}</h3>
 					<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('l jS \\of F Y')}}</h6>
 					<hr class="style14">
@@ -57,16 +57,16 @@ p.big {
 		                        	<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
 		                        	<input type="hidden" name="id_news" value="{{$news->id}}">
 		                        	<div class="form-group">
-					                    <label for="title" class="col-md-4 control-label">Title</label>
+					                    <label for="title" class="col-md-2 control-label">Title</label>
 
-					                    <div class="col-md-6">
+					                    <div class="col-md-8">
 					                        <input id="title" type="text" class="form-control" name="title" required  value="[RE:] {{$news['title']}}">
 					                    </div>
 					                </div>
 					                <div class="form-group">
-					                    <label for="content" class="col-md-4 control-label">Content</label>
+					                    <label for="content" class="col-md-2 control-label">Content</label>
 
-					                    <div class="col-md-10">
+					                    <div class="col-md-8">
 					                    <?php   
 							                //Step 2: Create Editor object. 
 							               	$id  =Auth::user()->id;
@@ -74,6 +74,7 @@ p.big {
 							                //Step 3: Set a unique ID to Editor
 							                $editor->ID="content";    
 							                $editor->AutoConfigure="Simple";
+							                $editor->Width="auto";
 							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
 							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
 							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
