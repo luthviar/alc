@@ -7,7 +7,7 @@
         <div class="wrapper-holder">
             @include('layouts.header')
         
-            
+            <!-- Main Content -->
             <section id="main">
                 <div class="block-advice">
                     <div class = "text-center">

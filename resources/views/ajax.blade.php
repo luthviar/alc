@@ -4,6 +4,7 @@
 
 @section('section')
 
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>   
 <div class="col-md-12 ">
 	<div class="panel panel-success">
     	<div class="panel-heading">
@@ -57,7 +58,7 @@
 					<div class="form-group">
                         <label for="jenis_kelamin" class="col-md-4 control-label">Gender</label>                                     
                         <div class="col-md-6">
-                            <select name="jenis_kelamin" class="selectpicker">
+                            <select name="jenis_kelamin" class="form-control">
                                 <option value="1">Laki - Laki</option>
                                 <option value="0">Perempuan</option>
                             </select><br>
@@ -94,16 +95,30 @@
 					
 					<div class="form-group">
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
-
-                        <div class="col-md-6">
-                            <textarea rows="4" col="50" id="alamat" type="text"  name="alamat" required style="resize: none;"></textarea>
+                        <div class="col-md-6" >
+                           <?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content";
+											$editor->Width="auto";
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							            ?>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="is_admin" class="col-md-4 control-label">User Category</label>                                     
                         <div class="col-md-6">
-                            <select name="is_admin" class="selectpicker">
+                            <select name="is_admin" class="form-control">
                                 <option value="1">Admin</option>
                                 <option value="0">User</option>
                             </select><br>
@@ -128,7 +143,7 @@
 	                    <div class="form-group">
 	                        <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
 	                        <div class="col-md-6">
-	                            <select name="level_position" class="selectpicker">
+	                            <select name="level_position" class="form-control">
 	                                @foreach($level as $pos)
 	                                <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
 	                                @endforeach

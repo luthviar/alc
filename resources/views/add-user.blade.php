@@ -1,9 +1,8 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 
-
-</script>
 <button type="button" id="ajax" class="btn">Click me!</button>
 <p class="text">Replace me!!</p>
 
@@ -68,7 +67,7 @@
 					<div class="form-group">
                         <label for="jenis_kelamin" class="col-md-4 control-label">Gender</label>                                     
                         <div class="col-md-6">
-                            <select name="jenis_kelamin" class="selectpicker">
+                            <select name="jenis_kelamin" class="form-control">
                                 <option value="1">Laki - Laki</option>
                                 <option value="0">Perempuan</option>
                             </select><br>
@@ -138,7 +137,7 @@
                     <div class="form-group">
                         <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
                         <div class="col-md-6">
-                            <select name="level_position" class="selectpicker">
+                            <select name="level_position" class="form-control">
                                 @foreach($level as $pos)
                                 <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
                                 @endforeach
