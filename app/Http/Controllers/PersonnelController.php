@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Auth;
+use File;
 use App\User;
 use App\Employee;
 use App\ScoreSummary;
@@ -108,8 +109,8 @@ class PersonnelController extends Controller
             'is_admin' => $request->is_admin,
             'is_aktif' => 1,
         ));
-
-        
+        $path = public_path().'/Uploads/' . $id_user;
+        $result = File::makeDirectory(sprintf($path, $mode=0777, true));
 
         $id_personnel = DB::table('personnels')-> insertGetId(array(
             'id_user' => $id_user,

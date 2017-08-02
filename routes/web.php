@@ -265,4 +265,8 @@ Route::get('ResetPassword', function () {
     return view('ResetPassword');
 });
 
+Route::get('editor', function () {
+    return view('editor');
+});
+
 
