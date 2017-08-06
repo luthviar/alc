@@ -5,7 +5,9 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#detailTable').DataTable({
-        	"aaSorting": [[ 2, "asc" ]]
+        	"processing": true,
+	        "serverSide": true,
+	        "ajax": "serverSideScript.php"
         });
     });
 </script>
@@ -31,7 +33,7 @@
 				  <th>Slider</th>
 				  <th>Status</th>
 				  <th>Created_at</th>
-				  <th>Edit</th>
+				  
 				</tr>
 			  </thead>
 			  <tbody>
