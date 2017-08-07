@@ -141,6 +141,13 @@ Route::get('Trainning', function () {
     return view('IModul');
 });
 
+Route::resource('datatables', 'DatatablesController', [
+    'anyData'  => 'datatables.data',
+    'getIndex' => 'datatables',
+]);
+
+Route::post('abc', 'DatatablesController@anyData');
+
 
 Route::get('Modul', function () {
     return view('module');

@@ -38,7 +38,7 @@
 				  <td><a  href="/personnel/{{$personnel->id}}">{{$personnel->fname}} {{$personnel->lname}}</a></td>
 				  <td>{{$personnel->position}}</td>
 				  <td>{{$personnel->divisi}}</td>
-				  <td>{{$personnel->department->nama_departmen}}</td>
+				  <td>{{$personnel->department->nama_departmen or "-"}}</td>
 				  <td>{{ \Carbon\Carbon::parse($personnel->created_at)->format('l jS \\of F Y')}}</td>
 				  @if($personnel['user']->is_admin == 1)
 				  <td>Admin</td>

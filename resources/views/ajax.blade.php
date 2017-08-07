@@ -101,7 +101,7 @@
 							               	$id  =Auth::user()->id;
 							                $editor=new CuteEditor();     
 							                //Step 3: Set a unique ID to Editor
-							                $editor->ID="content";
+							                $editor->ID="alamat";
 											$editor->Width="auto";
 							                $editor->AutoConfigure="Simple";
 							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
