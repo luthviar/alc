@@ -15,13 +15,13 @@
                     <form id="myform" class="form-horizontal" role="form" method="POST" action="/process-access/submit">
                         {{ csrf_field() }}
                     
-                    <input type="hidden" class="form-control" name="id_user" value="{{$user->id}}" required>
+                    <input type="hidden" class="form-control" name="id_user" value="{{$user->id}}" >
 
                     <div class="form-group">
                         <label for="password" class="col-md-4 control-label">New Password</label>
 
                         <div class="col-md-6">
-                            <input id="new_pass" type="password" class="form-control" name="newpassword" required>
+                            <input id="new_pass" type="password" class="form-control" name="newpassword" >
                         </div>
                     </div>
                     
@@ -29,14 +29,14 @@
                         <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                         <div class="col-md-6">
-                            <input id="confirm_pass" type="password" class="form-control" required>
+                            <input id="confirm_pass" type="password" class="form-control" >
                         </div>
                         <div id="message"></div>
                     </div>
 
                     <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" id="btn-sub" class="btn btn-primary" disabled="true">
+                                        <button type="submit" id="btn-sub" class="btn btn-primary">
                                             Reset Password
                                         </button>
                                     </div>
@@ -53,13 +53,13 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        
-    
 
-        $('#confirm_pass').on('input',function(e){
+
+
+        $('#confirm_passa').on('input',function(e){
             var new_pass = $('#new_pass').val();
             var confirm_pass = $('#confirm_pass').val();
-            
+
             if (new_pass === confirm_pass) {
                 $('#message').html('*correct');
                 $(':input[type="submit"]').prop('disabled', false);
@@ -70,10 +70,10 @@
             }
         });
 
-        $('#new_pass').on('input',function(e){
+        $('#new_passa').on('input',function(e){
             var new_pass = $('#new_pass').val();
             var confirm_pass = $('#confirm_pass').val();
-            
+
             if (confirm_pass !== "") {
                 if (new_pass === confirm_pass) {
                     $('#message').html('*correct');
@@ -85,11 +85,11 @@
                 }
             }
         });
-        
-        
 
-        
-        
+
+
+
+
     });
 </script>
 

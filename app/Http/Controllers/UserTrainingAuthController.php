@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+
 use Auth;
 use DB;
 use App\User;
@@ -12,7 +15,9 @@ use App\PasswordReset;
 use App\StrukturOrganisasi;
 use App\Department;
 use App\Training;
-use Illuminate\Http\Request;
+use Mail;
+
+use App\Http\Requests;
 
 class UserTrainingAuthController extends Controller
 {
@@ -165,15 +170,33 @@ class UserTrainingAuthController extends Controller
     }
 
     public function process_submit(Request $request){
+
+        $pinrandom = mt_rand(100, 999)
+             . mt_rand(100, 999);
+        // shuffle the result
+        $newpass = str_shuffle($pinrandom);
+
+
         $user = User::find($request->id_user);
-        $user->password = bcrypt($request->password);
+        $user->password = bcrypt($newpass);
         $user->save();
 
         $personnel = Personnel::where('id_user',$user->id)->first();
-
         $password = PasswordReset::where('username',$user->username)->where('email',$personnel->email)->where('is_process', 0)->first();
         $password->is_process = 1;
         $password->save();
+
+        $dataEmail = array(
+            'fname'=>$personnel->fname,
+            'lname'=>$personnel->lname,
+            'newpass'=>$newpass,
+        );
+
+        Mail::send(['html'=>'email-content.password-reset'], $dataEmail, function($message) use($personnel) {
+            $message->to($personnel->email, $personnel->fname.' '.$personnel->lname)->subject
+            ('[ALC] Informasi Ganti Password');
+            $message->from('luthviar.a@gmail.com','Admin ALC');
+        });
 
         return redirect('access');
     }
