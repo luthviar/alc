@@ -38,13 +38,7 @@ class BeritaController extends Controller
 
     public function index()
     {
-        $news = Berita::all();
-        foreach ($news as $key => $value) {
-            if ($value->can_reply == 1) {
-                $value['replies'] = NewsReplie::where('id_news',$value->id);
-            }
-        }
-        return view('list-news')->with('news',$news);
+        return view('list-news');
     }
 
     
