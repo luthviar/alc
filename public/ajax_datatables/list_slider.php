@@ -11,52 +11,55 @@ $requestData= $_REQUEST;
 
 $columns = array( 
 // datatable column index  => database column name
-	0 =>'title', 
-	1 => 'can_reply',
-	2 =>'replies_count', 
-	3 => 'created_at',
-	4 => 'edit'
+	0 =>'id', 
+	1 => 'username',
+	2 =>'password', 
+	3 => 'created_at'
 );
 
 // getting total number records without any search
 $sql = "SELECT * ";
-$sql.=" FROM beritas ";
-$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
+$sql.=" FROM content_sliders ";
+$query=mysqli_query($conn, $sql);
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
 $sql = "SELECT * ";
-$sql.=" FROM beritas WHERE 1=1";
+$sql.=" FROM content_sliders WHERE 1=1";
 if( !empty($requestData['search']['value']) and strlen($requestData['search']['value']) > 3) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" AND ( title LIKE '%".$requestData['search']['value']."%' )";    
 	
 }
-$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
+$query=mysqli_query($conn, $sql);
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
 $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */	
-$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
+$query=mysqli_query($conn, $sql);
+
+$sql2 = "SELECT id ";
+$sql2.="FROM content_sliders where is_activ = 1";
+$query2=mysqli_query($conn, $sql2);
+$totalData2 = mysqli_num_rows($query2);
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData=array(); 
 
-	$nestedData[] = "<a href='/berita/".$row["id"]."'>".$row["title"]."</a>";
-	if ($row["can_reply"] == 1) {
-		$nestedData[] = "Yes <span><a class='btn btn-danger' href='/berita/".$row["id"]."/nonactive'>Deactive</a></span>";
-		$sql2 = "SELECT id ";
-		$sql2.="FROM news_replies where id_news = ".$row["id"]."";
-		$query2=mysqli_query($conn, $sql2);
-		$totalData2 = mysqli_num_rows($query2);
-		$nestedData[] = $totalData2;
+	$nestedData[] = $row["title"];
+	if ($row['is_activ'] == 1) {
+		$nestedData[] = "active <span><a class='btn btn-danger' href='/slider/".$row['id']."/nonactive'>Deactive</a></span>";
 	}else{
-		$nestedData[] = "<span style='opacity: 0.5;''>No </span><span><a class='btn btn-warning' href='/berita/".$row["id"]."/active'>Activicate</a></span>";
-		$nestedData[] = "-";
+		if ($totalData2) {
+			$nestedData[] = "<span style='opacity: 0.5;''>not active </span>
+					  <span><a class='btn btn-warning' href='/slider/".$row["id"]."/active'>Activicate</a></span>";
+		}else{
+			$nestedData[] = "<span style='opacity: 0.5;'>not active </span>
+					  <span><a class='btn btn-warning' disabled='true' >Activicate</a></span>";
+		}
 	}
-
 	$nestedData[] = $row['created_at'];
-	$nestedData[] = "<a class='btn btn-default' href='/berita/".$row["id"]."/edit'>edit</a></span>";
+	$nestedData[] = "<span><a class='btn btn-default' href='/slider/".$row["id"]."/edit'>edit</a></span>";
 	
 	$data[] = $nestedData;
 }

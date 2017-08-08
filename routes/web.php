@@ -137,6 +137,8 @@ Route::get('/access-process/{id}', 'UserTrainingAuthController@process');
 
 Route::post('process-access/submit', 'UserTrainingAuthController@process_submit');
 
+Route::post('/get-slider-ajax', 'ContentSliderController@get_slider_ajax');
+
 Route::get('Trainning', function () {
     return view('IModul');
 });

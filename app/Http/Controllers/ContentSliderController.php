@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ContentSlider;
+use DB;
 use App\Module;
 use Illuminate\Http\Request;
 
@@ -26,14 +27,8 @@ class ContentSliderController extends Controller
      */
     public function index()
     {
-        $slider = ContentSlider::all();
-        $can_activ = true;
-        $slider_aktif = ContentSlider::where('is_activ', 1)->get();
-        if (count($slider_aktif) >= 5) {
-            $can_activ = false;
-        }
-        $module = Module::all();
-        return view('list-slider')->with('sliders',$slider)->with('module',$module)->with('can_activ',$can_activ);
+        
+        return view('list-slider');
     }
 
     /**
@@ -168,5 +163,31 @@ class ContentSliderController extends Controller
         $slider->save();
 
         return redirect('slider');
+    }
+
+    public function get_slider_ajax(Request $request){
+
+
+
+        $slider = DB::table('content_sliders')->skip($request['start']-1)->take($requestData['length'])->get();
+        $can_activ = true;
+        $slider_aktif = ContentSlider::where('is_activ', 1)->get();
+        if (count($slider_aktif) >= 5) {
+            $can_activ = false;
+        }
+
+        $data = array();
+        foreach ($slider as $key => $slid) {
+            $nestedData=array(); 
+
+            $nestedData[] = $slid["title"];
+            $nestedData[] = "asda";
+            $nestedData[] = "asddas";
+            $nestedData[] = "asddas";
+            
+            $data[] = $nestedData;
+        }
+        
+        return response()->json(['data'=>$data]);
     }
 }
