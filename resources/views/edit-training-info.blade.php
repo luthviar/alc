@@ -1,7 +1,7 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
 $(document).ready(function(){
@@ -69,8 +69,22 @@ $(function() {
                         <label for="description" class="col-md-4 control-label">Trainning Description</label>
 
                         <div class="col-md-6">
-                            <textarea rows="4" col="50" id="description" type="text" class="form-control" name="description" required style="resize: none;">{{$training->description}}
-							</textarea>
+							<?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content";
+											$editor->Width="auto";
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							            ?>
                         </div>
                     </div>
 					

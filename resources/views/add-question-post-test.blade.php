@@ -2,8 +2,7 @@
 @extends('Admin.Template')
 @section('section')
 
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
@@ -102,9 +101,22 @@ $(document).ready(function() {
 								<label for="question" class="col-md-4 control-label">Question</label>
 						
 								<div class="col-md-6">
-									<textarea id="question" placeholder="Trainning Title" type="text" class="form-control" name="question" required="true" required autofocus>
-
-									</textarea>
+									<?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content";
+											$editor->Width="auto";
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							            ?>
 								</div>
 							</div>
 							

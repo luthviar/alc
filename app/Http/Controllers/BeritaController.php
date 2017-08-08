@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use DB;
 use App\Berita;
 use App\Personnel;

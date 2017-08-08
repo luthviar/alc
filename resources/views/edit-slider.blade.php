@@ -5,6 +5,7 @@
 @section('section')
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 
 
 <script>
@@ -39,7 +40,22 @@ $(document).ready(function(){
                         <label for="content" class="col-md-4 control-label">Content</label>
 
                         <div class="col-md-6">
-                            <textarea rows="4" col="50" id="content" type="text" class="form-control" name="content" required style="resize: none;">{{$slider->content}}</textarea>
+							<?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content";
+											$editor->Width="auto";
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							            ?>
                         </div>
                     </div>
 

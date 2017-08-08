@@ -1,8 +1,7 @@
-
 @include('Admin.AdminHead')
-
 @extends('Admin.Template')
 @section('section')
+<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 
     
         <div class="col-md-12">
@@ -92,7 +91,22 @@
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
 
                         <div class="col-md-6">
-                            <textarea rows="4" col="50" id="alamat" type="text" class="form-control" name="alamat" required style="resize: none;" >{{$personnel->alamat}}</textarea>
+                            <?php   
+							                //Step 2: Create Editor object. 
+							               	$id  =Auth::user()->id;
+							                $editor=new CuteEditor();     
+							                //Step 3: Set a unique ID to Editor
+							                $editor->ID="content";
+											$editor->Width="auto";
+							                $editor->AutoConfigure="Simple";
+							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
+							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
+							                //Step 4: Render Editor   
+							                $editor->Draw();   
+							            ?>
                         </div>
                     </div>
 

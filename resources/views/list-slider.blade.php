@@ -5,9 +5,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#detailTable').DataTable({
-        	"processing": true,
-	        "serverSide": true,
-	        "ajax": "serverSideScript.php"
         });
     });
 </script>

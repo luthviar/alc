@@ -25,8 +25,6 @@
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css')}}">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/select2/select2.min.css')}}">
-   <!-- DataTables -->
-  <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/datatables/dataTables.bootstrap.css')}}">
    <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- Theme style -->
@@ -44,6 +42,9 @@
 	<script src="{{URL::asset('AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
 	<!-- FastClick -->
 	<script src="{{URL::asset('AdminLTE/plugins/fastclick/fastclick.js')}}"></script>
+	
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <style type="text/css">
 /**
