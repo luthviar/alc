@@ -111,9 +111,10 @@ class StrukturOrganisasiController extends Controller
      * @param  \App\StrukturOrganisasi  $strukturOrganisasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(StrukturOrganisasi $strukturOrganisasi)
+    public function edit(Request $request, $id)
     {
-        //
+        dd($request->name);
+        return 'berhasil';
     }
 
     /**
@@ -125,7 +126,8 @@ class StrukturOrganisasiController extends Controller
      */
     public function update(Request $request, StrukturOrganisasi $strukturOrganisasi)
     {
-        //
+        dd($request->divisi);
+        return 'berhasil';
     }
 
     /**

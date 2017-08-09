@@ -17,6 +17,7 @@
             <br>
             
             <section id="main">
+
 					<div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
                             <li class="active">
@@ -42,6 +43,25 @@
 								  </div>
 								<div class="panel-body">
 								<div class="row">
+                    <!-- profile phote-->
+                    <div class="col-lg-3 col-md-3" style="height: 400px;">
+                      <div style="height: 60%;">
+                        @if($personnel->photo == null)
+                        <img src="/photo.PNG" alt="photo" class="img-thumbnail" height="100%">
+                        @else
+                        <img src="{{URL::asset($personnel->photo)}}" alt="photo" class="img-thumbnail" height="100%">
+                        @endif
+                      </div>
+                      <form role="form" method="POST" action="/change-photo" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id_user" value="{{Auth::user()->id}}"><br>
+                        
+                        change profile :<input type="file" name="photo" accept="image/gif, image/jpeg, image/png">
+                        <br>
+                        <input type="submit" class="btn btn-flat">
+                      </form>
+                    </div>
+                    <div class="col-lg-9 col-md-9" style="height: 400px;">
 									  <table class="table table-user-information">
 										<tbody>
 										  <tr>
@@ -113,6 +133,7 @@
 										  </tr>
 										</tbody>
 									  </table>
+                    </div>
 								  </div>  
 							   </div>
 							</div>
