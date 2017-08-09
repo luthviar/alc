@@ -95,7 +95,7 @@ $(document).ready(function() {
 								<label for="question" class="col-md-4 control-label">Question</label>
 						
 								<div class="col-md-6">
-									<textarea id="summernote" name ="content"></textarea>
+									<textarea id="summernote" name ="question"></textarea>
 								</div>
 							</div>
 							

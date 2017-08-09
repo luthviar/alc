@@ -66,7 +66,7 @@ class ContentLearningController extends Controller
     {
         
         $file = $request->file('file');
-        $destinationPath = '/contents';
+        $destinationPath = 'contents';
         $movea = $file->move($destinationPath,$file->getClientOriginalName());
         $url = "/ViewerJS/index.html#../contents/{$file->getClientOriginalName()}";
         $content = new ContentLearning;
