@@ -3,8 +3,6 @@
 @section('section')
 
 <!--Form to Create New Trainning -->
-Create Trainning
-<br><br>
 
 
 <div class="col-md-12">

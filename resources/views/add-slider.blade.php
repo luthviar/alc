@@ -3,7 +3,6 @@
 @section('section')
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 
 
 <script>
@@ -30,31 +29,8 @@ $(document).ready(function(){
                             <input id="title" type="text" class="form-control" name="title" required autofocus>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="content" class="col-md-4 control-label">Content</label>
-
-                        <div class="col-md-6">
-                            <?php   
-							                //Step 2: Create Editor object. 
-							               	$id  =Auth::user()->id;
-							                $editor=new CuteEditor();     
-							                //Step 3: Set a unique ID to Editor
-							                $editor->ID="content";
-											$editor->Width="auto";
-							                $editor->AutoConfigure="Simple";
-							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-							                //Step 4: Render Editor   
-							                $editor->Draw();   
-							            ?>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
+					
+					<div class="form-group">
                         <label for="image" class="col-md-4 control-label">Upload Image</label>
 
                         <div class="col-md-6">
@@ -65,11 +41,39 @@ $(document).ready(function(){
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
-                            </div></br>
+                            </div>
                             <img id='img-upload'/>
                         </div>
                     </div>
 
+
+                    <div class="form-group">
+                        <label for="content" class="col-md-4 control-label">Content</label>
+
+                        <div class="col-md-6">
+							<textarea id ="summernote" name ="content"></textarea>
+                        </div>
+                    </div>
+					
+					<div class="form-group">
+                        <label for="image" class="col-md-4 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="image"/>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+								1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
+								2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
+								3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+							</div>
+                        </div>
+                    </div>
 
 						
 					

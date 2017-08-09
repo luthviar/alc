@@ -1,5 +1,8 @@
 @include('Admin.Adminhead')
+
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{{URL::asset('AdminLTE/dist/js/app.min.js')}}"></script>  
+
 <body class= "hold-transition skin-green sidebar-mini">
 		  <div class="wrapper">
 		  @include('Admin.header')
