@@ -30,7 +30,7 @@ p.big {
 									<div class="panel-heading"><strong>{{ $reply['title'] }}</strong><br>
 										{{$reply['personnel']->fname}} {{$reply['personnel']->lname}}, {{ \Carbon\Carbon::parse($reply->create_at)->format('l jS \\of F Y')}}</div>
 									<div class="panel-body">
-											{{ strip_tags($reply['content']) }}
+											{!! html_entity_decode($reply['content']) !!}
 									</div>
 								</div>
 								<br>
