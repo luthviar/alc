@@ -21,6 +21,33 @@
                             <input id="title" type="text" class="form-control" name="title" required autofocus value="{{$news->title}}">
                         </div>
                     </div>
+					
+					<div class="form-group">
+                        <label for="image" class="col-md-4 control-label">Image</label>
+
+                        <div class="col-md-6">
+                            @if(empty($slider->image))
+                                Belum ada image
+                            @else
+                             <img src="{{URL::asset($slider->image)}}" style="width: 100%;height: 100%;">
+                            @endif
+                        </div>
+                    </div>
+					
+					<div class="form-group">
+                        <label for="image" class="col-md-4 control-label">Upload Slider Image</label>
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="image" accept="image/gif, image/jpeg, image/png"/>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img id='img-upload'/>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="content" class="col-md-4 control-label">Content</label>
@@ -73,16 +100,30 @@
                         </div>
                     </div>
 
+					<div class="form-group">
+                        <label for="image" class="col-md-4 control-label">Upload attachment</label>
 
-                    
-
-
-                        
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="image"/>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+								1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
+								2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
+								3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+							</div>
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
-                                Edit Slider
+                                Edit News
                             </button>
                         </div>
                     </div>

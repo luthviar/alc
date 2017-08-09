@@ -1,18 +1,24 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-        <div class="col-md-12">
+
+<div class="col-md-12 ">
+	<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">General info</a></li>
+    <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab">Employee Status</a></li>
+</div>
+<br><br><br>
+	   <form id="myform" class="form-horizontal" role="form" method="POST" action="/personnel/submit">
+        <div class="col-md-12 ">
+		 <div class="tab-content">
+		  <div role="tabpanel" class="tab-pane active" id="info">
+
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Edit User Profile</h4>
+                    <h4>General Info</h4>
                 </div>
                 <div class="panel-body">
-                <div class="container">
-                    <div class="row">
-                        <h3>Data Diri</h3>
-                    </div>
-                </div>
-                    <form id="myform" class="form-horizontal" role="form" method="POST" action="/personnel/submit">
+                    
                         {{ csrf_field() }}
                     
                     <input type="hidden" class="form-control" name="id_personnel" value="{{$personnel->id}}" required autofocus>
@@ -107,14 +113,19 @@
                         </div>
                     </div>
 
-                    <!-- Data Karyawan-->
-                    <div class="container">
-                        <div class="row">
-                            <h3>Data Karyawan</h3>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
+                   </div>
+				  </div>
+                </div>
+				
+				<div role="tabpanel" class="tab-pane" id="status">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4>Employee status</h4>
+						</div>
+						<div class="panel-body">
+							
+							<div class="form-group">
                         <label for="nik" class="col-md-4 control-label">Employee Number</label>
 
                         <div class="col-md-6">
@@ -222,19 +233,19 @@
                             </select><br>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Edit User
-                            </button>
-                        </div>
-                    </div>
-                    </form>
-
-
-                    
-                </div>
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary">
+										Edit User
+									</button>
+								</div>
+							</div>
+							</form>
+						   </div>
+						  </div>
+						</div>
+								
+				
             </div>
         </div>
 

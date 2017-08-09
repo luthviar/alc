@@ -29,7 +29,7 @@
                             <h3>Follow us</h3>
                         </div>
                         <ul class="social">
-                            <li class="facebook"><a href="#">Facebook</a></li>
+                            <li class="facebook"><a href="https://www.facebook.com/AerofoodIndonesiaPT/">Facebook</a></li>
                             <li class="google"><a href="#">Google+</a></li>
                             <li class="twitter"><a href="#">Twitter</a></li>
                             <li class="pinterest"><a href="#">Pinterest</a></li>
