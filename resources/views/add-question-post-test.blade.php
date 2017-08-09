@@ -33,12 +33,7 @@ $(document).ready(function() {
 </script>
 
 <!--Form to Create New Trainning -->
-		Create Trainning
-		<br><br>
-		<div class="w3-border" style="border-radius:5px">
-			<div class="w3-green" style="height:24px;width:90%;text-align:center;border-radius:5px">90%</div>
-		</div>
-		<BR>
+
 	
 		<div class="row">
 	        <div class="col-md-12 ">

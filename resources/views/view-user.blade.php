@@ -88,7 +88,7 @@
               </tr>
                 <tr>
                 <td>Home Address</td>
-                <td>{{strip_tags($personnel->alamat)}}</td>
+                <td>{!! html_entity_decode($personnel->alamat) !!}</td>
               </tr>
               <tr>
                 <td>Email</td>

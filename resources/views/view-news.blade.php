@@ -25,7 +25,7 @@ p.big {
 					@endif
 					<hr class="style14"> 
 					<p align="justify" class="big">
-						{{ strip_tags($news['content']) }}
+						{!! html_entity_decode($news['content']) !!}
 					</p><br>
 
 					@if($news->can_reply == 1)

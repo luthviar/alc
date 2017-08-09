@@ -26,9 +26,37 @@
                         <label for="content" class="col-md-4 control-label">Content</label>
 
                         <div class="col-md-6">
-							<textarea id ="summernote" name="content"></textarea>
+							<textarea id ="summernote" name="content">{{$news->content}}</textarea>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="image" class="col-md-4 control-label">Image</label>
+
+                        <div class="col-md-6">
+                            @if($news->image ==null)
+                                Tidak ada image
+                            @else
+                             <img src="{{URL::asset($news->image)}}" style="width: 100%;height: 100%;">
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-md-4 control-label">Upload New Image</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="image" accept="image/gif, image/jpeg, image/png"/>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <img id='img-upload'/>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="can_reply" class="col-md-4 control-label">Can Reply</label>                                     

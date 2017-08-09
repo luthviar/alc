@@ -38,7 +38,7 @@
 	
   <link rel="stylesheet" href="{{URL::asset('css/metronic.css')}}">
 	<!--- SummerNote -->
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script> 
+  
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
   
@@ -46,11 +46,45 @@
 <!-- summernote script -->
 <script>
     $(document).ready(function() {
-		$('#summernote').summernote({
-		  height: 200,                 // set editor height
-		  minHeight: null,             // set minimum height of editor
-		  maxHeight: null,             // set maximum height of editor
-		});
+  		$('#summernote').summernote({
+        height: 100,
+  		  onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+        });
+  		
+    function sendFile(file, editor, welEditable) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            data: data,
+            type: 'POST',
+            xhr: function() {
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+                return myXhr;
+            },
+            url: 'upload-image.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(url) {
+                editor.insertImage(welEditable, url);
+            }
+        });
+}
+
+// update progress bar
+
+function progressHandlingFunction(e){
+    if(e.lengthComputable){
+        $('progress').attr({value:e.loaded, max:e.total});
+        // reset progress on complete
+        if (e.loaded == e.total) {
+            $('progress').attr('value','0.0');
+        }
+    }
+}
     });
 </script>
   
