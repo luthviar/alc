@@ -30,7 +30,6 @@
 				  <th>Slider</th>
 				  <th>Status</th>
 				  <th>Created_at</th>
-				  
 				</tr>
 			  </thead>
 			  <tbody>

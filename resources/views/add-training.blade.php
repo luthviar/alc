@@ -1,7 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 <script>
 $(function() {
     $('#Optionals').hide(); 
@@ -25,7 +24,7 @@ $(function() {
                         <div class="form-group">
                             <label for="module" class="col-md-4 control-label">Module</label>                                     
                             <div class="col-md-6">
-								<select name="module" id="MySelect" onchange="changeFunc();" class="selectpicker" >
+								<select name="module" id="MySelect" onchange="changeFunc();" class="form-control" >
 									@foreach($module as $modul)
                                     <option value="{{$modul->id}}">{{$modul->nama}}</option>
                                     @endforeach
@@ -46,22 +45,7 @@ $(function() {
                             <label for="description" class="col-md-4 control-label">Trainning Description</label>
 
                             <div class="col-md-6">
-								<?php   
-							                //Step 2: Create Editor object. 
-							               	$id  =Auth::user()->id;
-							                $editor=new CuteEditor();     
-							                //Step 3: Set a unique ID to Editor
-							                $editor->ID="content";
-											$editor->Width="auto";
-							                $editor->AutoConfigure="Simple";
-							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-							                //Step 4: Render Editor   
-							                $editor->Draw();   
-							            ?>
+								<textarea id="summernote" name="content" required></textarea>
                             </div>
                         </div>
 						
@@ -70,7 +54,7 @@ $(function() {
                         <div id="Optionals" class="form-group">
                             <label for="department" class="col-md-4 control-label">Select Departement</label>
 							<div class="col-md-6">
-								<select name="department" class="selectpicker" data-live-search="true">
+								<select name="department" class="form-control" data-live-search="true">
                                     
                                     @foreach($department as $dept)
 									<option value="{{$dept->id_department}}">{{$dept->nama_departmen}}</option>

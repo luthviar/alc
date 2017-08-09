@@ -1,11 +1,9 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 
 <button type="button" id="ajax" class="btn">Click me!</button>
 <p class="text">Replace me!!</p>
-
 <input type="hidden" name="" id="struktur" value="{{json_encode($struktur)}}">
 <input type="hidden" name="" id="listUnit" value="{{json_encode($unit)}}">
 <input type="hidden" name="" id="listDept" value="{{json_encode($department)}}">
@@ -106,7 +104,7 @@
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
 
                         <div class="col-md-6">
-                            <textarea rows="4" col="50" id="alamat" type="text" class="form-control" name="alamat" required style="resize: none;"></textarea>
+                            <textarea id="froala-editor" rows="4" col="50" id="alamat" type="text" class="form-control" name="alamat" required style="resize: none;"></textarea>
                         </div>
                     </div>
 

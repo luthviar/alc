@@ -5,15 +5,28 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#detailTable').DataTable();
+		  buttons: [
+        {
+            extend: 'pdf',
+            text: 'Save current page',
+            exportOptions: {
+                modifier: {
+                    page: 'current'
+                }
+            }
+        }
+    ]
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <div class="col-md-12">
-	<div class="panel panel-success">
-		<div class="panel-heading">
-	        <h4>Personnel List</h4>
-		</div>
-		<div class ="panel-body">
+   <div class ="portlet box">
+	<div class="portlet-title">
+       <div class="caption">
+			<i class="fa fa-globe"></i>User List </div>
+            <div class="tools"> </div>
+       </div>
+		<div class ="portlet-body">
 			<span class="pull-right" style="color: green;">
 				<a href="/personnel/create"><i class="glyphicon glyphicon-plus">New_User</i>
 				 </a>
