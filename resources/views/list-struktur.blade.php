@@ -55,7 +55,7 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 	$('.hasSub').click(function () {
-    $(this).parent().toggleClass('subactivated');
+    	$(this).parent().toggleClass('subactivated');
 		$(this).parent().children('ul:first').toggle();
     
     
@@ -83,6 +83,7 @@
     });
     
     $(".fordtreeview li:containsi('" + searchSplit + "')").each(function(e) {
+
       $(this).show();
     });
   });  

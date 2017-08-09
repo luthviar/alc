@@ -352,4 +352,23 @@ class PersonnelController extends Controller
         return redirect('/');
 
     }
+
+    public function change_photo(Request $request){
+        $personnel = Personnel::where('id_user', $request->id_user)->first();
+
+        $file = $request->file('photo');
+        if (empty($file)) {
+            return back();
+        }else{
+            $destinationPath = 'uploads';
+            $movea = $file->move($destinationPath,$file->getClientOriginalName());
+            $url = "uploads/{$file->getClientOriginalName()}";
+            
+            $personnel->photo = $url;
+            $personnel->save();    
+
+            return back();
+        }
+
+    }
 }
