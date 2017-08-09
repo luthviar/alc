@@ -6,10 +6,6 @@
     $(document).ready(function() {
         $('#detailTable').DataTable();
     });
-	$('#myTabs a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
-	});
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 

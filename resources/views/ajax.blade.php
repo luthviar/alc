@@ -4,7 +4,6 @@
 
 @section('section')
 
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>   
 <div class="col-md-12 ">
 	<div class="panel panel-success">
     	<div class="panel-heading">
