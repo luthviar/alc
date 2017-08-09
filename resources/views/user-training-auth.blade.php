@@ -6,21 +6,25 @@
     $(document).ready(function() {
         $('#detailTable').DataTable();
     });
+	$('#myTabs a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	});
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 
-
-<script>
-$(document).ready(function(){
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
-    });
-});
-</script>
 <div class="col-md-12 ">
+	<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#training" aria-controls="home" role="tab" data-toggle="tab">Training Request</a></li>
+    <li role="presentation"><a href="#password" aria-controls="profile" role="tab" data-toggle="tab">Password Request</a></li>
+</div>
+<br><br><br>
+<div class="col-md-12 ">
+	 <div class="tab-content">
+	 <div role="tabpanel" class="tab-pane active" id="training">
 	<div class="panel panel-success">
 	    <div class="panel-heading">
 	    	<h4>Training Request List</h4>
@@ -62,7 +66,8 @@ $(document).ready(function(){
 		</div>
 		</div>
 	</div>
-
+	</div>
+	<div role="tabpanel" class="tab-pane" id="password">
 	<div class="panel panel-success">
 	    <div class="panel-heading">
 	    	<h4>Request Password Reset List</h4>
@@ -112,6 +117,8 @@ $(document).ready(function(){
 			</table>
 		</div>
 		</div>
+		</div>
+	</div>
 	</div>
 </div>
 		

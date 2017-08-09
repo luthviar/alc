@@ -1,9 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
-
-    
         <div class="col-md-12">
             <div class="panel panel-success">
                 <div class="panel-heading">
@@ -47,7 +44,7 @@
 					<div class="form-group">
                         <label for="jenis_kelamin" class="col-md-4 control-label">Gender</label>                                     
                         <div class="col-md-6">
-                            <select name="jenis_kelamin" class="selectpicker">
+                            <select name="jenis_kelamin" class="form-control">
                                 @if($personnel->jenis_kelamin ==1)
                                 <option value="1" selected>Laki - Laki</option>
                                 <option value="0">Perempuan</option>
@@ -91,29 +88,14 @@
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
 
                         <div class="col-md-6">
-                            <?php   
-							                //Step 2: Create Editor object. 
-							               	$id  =Auth::user()->id;
-							                $editor=new CuteEditor();     
-							                //Step 3: Set a unique ID to Editor
-							                $editor->ID="content";
-											$editor->Width="auto";
-							                $editor->AutoConfigure="Simple";
-							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-							                //Step 4: Render Editor   
-							                $editor->Draw();   
-							            ?>
+							<textarea id="summernote" name="content"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="is_admin" class="col-md-4 control-label">User Category</label>                                     
                         <div class="col-md-6">
-                            <select name="is_admin" class="selectpicker">
+                            <select name="is_admin" class="form-control">
                                 @if($personnel['user']->is_admin == 1)
                                 <option value="1" selected>Admin</option>
                                 <option value="0">User</option>
@@ -146,7 +128,7 @@
                     <div class="form-group">
                         <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
                         <div class="col-md-6">
-                            <select name="level_position" class="selectpicker">
+                            <select name="level_position" class="form-control">
                             @if(empty($personnel['employee']))
                                 @foreach($level as $pos)
                                     <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
@@ -167,7 +149,7 @@
                     <div class="form-group">
                         <label for="department" class="col-md-4 control-label">Department</label>                                     
                         <div class="col-md-6">
-                            <select name="department" class="selectpicker">
+                            <select name="department" class="form-control">
                             @if(empty($personnel['struktur']) or empty($personnel['department']))
                                 <option value="">..</option>
                                 @foreach($department as $deps)
@@ -190,7 +172,7 @@
                     <div class="form-group">
                         <label for="unit" class="col-md-4 control-label">Unit</label>                                     
                         <div class="col-md-6">
-                            <select name="unit" class="selectpicker">
+                            <select name="unit" class="form-control">
                                 @if(empty($personnel['struktur']) or empty($personnel['unit']))
                                     <option value="">..</option>
                                     @foreach($unit as $unt)
@@ -212,7 +194,7 @@
                     <div class="form-group">
                         <label for="section" class="col-md-4 control-label">Section</label>                                     
                         <div class="col-md-6">
-                            <select name="section" class="selectpicker">
+                            <select name="section" class="form-control">
                                 @if(empty($personnel['struktur']) or empty($personnel['section']))
                                     <option value="">..</option>
                                     @foreach($section as $sect)
@@ -234,7 +216,7 @@
                     <div class="form-group">
                         <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                         <div class="col-md-6">
-                            <select name="divisi" class="selectpicker">
+                            <select name="divisi" class="form-control">
                                 <option value="">..</option>
                                 @foreach($divisi as $div)
                                 <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>

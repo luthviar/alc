@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2017 at 03:43 PM
+-- Generation Time: Aug 06, 2017 at 09:40 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -45,7 +45,7 @@ CREATE TABLE `beritas` (
   `id_user` int(10) UNSIGNED NOT NULL,
   `can_reply` tinyint(1) NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -56,13 +56,8 @@ CREATE TABLE `beritas` (
 --
 
 INSERT INTO `beritas` (`id`, `id_user`, `can_reply`, `title`, `content`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '“Aerofood Way” Training', 'May 24th, 2017 – Aerofood ACS Human Capital Division conducted 2-day training for its internal employees located in Garuda Maintenance Facility from 23rd – 24th of May 2017.  The training was conducted to make all Aerofood ACS employees have same mindset, attitude and behavior according to corporate culture in order to run the corporate business properly. This training is targeted to be applied in every line of business and will become the guidance in acting and doing responsibilities. This training was attended by 57 Aerofood ACS employees from several divisions.  Beside Jakarta, this training similarly was conducted in every unit of Aerofood ACS and facilitated by trained facilitators. The trainers are Managers and Executive Managers and they had passed Spiritual Management Training & Training for Trainers. They are expected to understand spiritual management that has become the core of Aerofood Way and to comprehend how to deliver spiritual management to all teams thus Aerofood ACS employees are encouraged to show gratitude, work sincere and always give their best to their work. Other than that, they are expected to be responsible leader in implementing values and core competencies.  Aerofood Way is a belief system illustrated as a strong building consists of foundation, pillars, wall and top roof as displayed below.', NULL, '2017-07-05 08:22:13', '2017-07-05 08:22:13'),
-(2, 1, 0, 'Malaysia Airlines Presented an Award for “Excellent On Time Performance in 2016”', 'Hamburg – Germany, April 6th 2017 Head In Flight Operations of Malaysia Airlines Bhd, Mrs Rahimah Farjan Ali delivered herself the award to Mr Bambang Sujatmiko, The President & CEO Of Aerofood ACS at WTCE 2017. Aerofood ACS for sure will consistently improve its products and services quality from time to time to achieve higher level of customer satisfaction.', NULL, '2017-07-05 08:47:21', '2017-07-05 08:47:21'),
-(3, 1, 1, 'Human Capital participation in Job Fair and Career Expo', 'May 30th, 2017 – Human Capital Division of Aerofood ACS conducted open recruitment by participating the 11th International Tourism And Hospitality Grand Recuitment 2017 event held at Sekolah Tinggi Pariwisata NHI Bandung from 23rd – 24th of May 2017. The purpose of the event is to recruit qualified candidates for company’s human resource regeneration. Hundreds of candidates applied to join Aerofood ACS during this two day event.  Despite Aerofood ACS, other companies such as airlines, property, tour and travel companies also joined the event. STP NHI is well – known as an education institution expert and excellent in providing quality education for its students. This was the second event participated by Aerofood ACS. Previously, Aerofood ACS participated in Indonesia Career Expo 2017 in Balai Kartini, Jakarta from the 5th – 6th of April 2017.', NULL, '2017-07-05 08:49:57', '2017-07-05 08:49:57'),
-(4, 1, 0, '“Signatura” Premium Banquet Service at Java Jazz Event 2017', 'Jakarta on March 19th, 2017 – In Indonesia, spesifically in Jakarta, there is a musical event so called “Java Jazz Festival” organized every year. Located in Jakarta Internationa Expo Kemayoran, Java Jazz Festival 2017 was held between 3rd – 5th of March 2017. Garuda Indonesia, as one of main sponsors for the event, opened their booth and lounges. There were two lounges provided by Garuda Indonesia for Garuda Indonesia Frequent Flyer and Java Jazz VIP visitors. One was located side by side with Garuda Indonesia booth and the other one on the 3rd floor between Hall D and E.  Aerofood ACS, as one of business unit of Garuda Indonesia Group, presented its premium banquet, Signatura, to support Garuda Indonesia Lounge service. Various food and beverages were served for lounge customers thus they could enjoy the food and drink while listening to the beautiful jazz music concerts. Types of food and beverages served such as cookies, beef rissoles, types of sushi, tofu with egg, apple, orange, martebe juice, etc. There were also tea and selected types of coffee served for customers. Signatura also brought its best servers to serve customers in these two different located lounges.', NULL, '2017-07-05 08:50:48', '2017-07-05 08:50:48'),
-(5, 1, 1, '“SIGNATURA” PREMIUM BANQUET SERVICE AT JAVA JAZZ EVENT 2017', 'Jakarta on March 19th, 2017 – In Indonesia, spesifically in Jakarta, there is a musical event so called “Java Jazz Festival” organized every year. Located in Jakarta Internationa Expo Kemayoran, Java Jazz Festival 2017 was held between 3rd – 5th of March 2017. Garuda Indonesia, as one of main sponsors for the event, opened their booth and lounges. There were two lounges provided by Garuda Indonesia for Garuda Indonesia Frequent Flyer and Java Jazz VIP visitors. One was located side by side with Garuda Indonesia booth and the other one on the 3rd floor between Hall D and E.  Aerofood ACS, as one of business unit of Garuda Indonesia Group, presented its premium banquet, Signatura, to support Garuda Indonesia Lounge service. Various food and beverages were served for lounge customers thus they could enjoy the food and drink while listening to the beautiful jazz music concerts. Types of food and beverages served such as cookies, beef rissoles, types of sushi, tofu with egg, apple, orange, martebe juice, etc. Ther', NULL, '2017-07-05 08:52:30', '2017-07-05 08:52:30'),
-(6, 1, 1, 'Aerofood ACS Chefs won Professional Culinary Salon Competition 2017', 'Jakarta, April 2017 – 22 Junior and Senior Chefs of Aerofood ACS won several classes in the 11th Indonesian Salon Culinary 2017 Competition held by the Association of Culinary Professional. The winners received 3 titles for various category of championships which are diploma, Bronze and Silver for canape appetizer menu, Japanese and Indonesian style menu, pastry, bakery and many more.  Over 750 chefs and cooks from local and overseas such as from Taiwan, Korea, Thailand and Malaysia gathered in the biggest cooking competition in Indonesia Food & Hotel Exhibition 2017 which took place from Wednesday – Saturday the 5th – 8th of April 2017 at JIEXPO Kemayoran, Central Jakarta.  Beside the national participants, international juries also attended the competition to assess and give competitive score for the participants’ creation. It is an honor to Aerofood ACS’ Chefs to participate and to win the prestigious medals.  Congratulations for the achievement.', NULL, '2017-07-05 11:41:13', '2017-07-05 11:41:13'),
-(7, 1, 1, 'Aerofood ACS Chefs won Professional Culinary Salon Competition 2017', 'Jakarta, April 2017 – 22 Junior and Senior Chefs of Aerofood ACS won several classes in the 11th Indonesian Salon Culinary 2017 Competition held by the Association of Culinary Professional. The winners received 3 titles for various category of championships which are diploma, Bronze and Silver for canape appetizer menu, Japanese and Indonesian style menu, pastry, bakery and many more.  Over 750 chefs and cooks from local and overseas such as from Taiwan, Korea, Thailand and Malaysia gathered in the biggest cooking competition in Indonesia Food & Hotel Exhibition 2017 which took place from Wednesday – Saturday the 5th – 8th of April 2017 at JIEXPO Kemayoran, Central Jakarta.  Beside the national participants, international juries also attended the competition to assess and give competitive score for the participants’ creation. It is an honor to Aerofood ACS’ Chefs to participate and to win the prestigious medals.  Congratulations for the achievement.', NULL, '2017-07-05 11:58:58', '2017-07-05 11:58:58');
+(1, 12, 1, 'Human Capital participation in Job Fair and Career Expo', 'May 30th, 2017 – Human Capital Division of Aerofood ACS conducted open recruitment by participating the 11th International Tourism And Hospitality Grand Recuitment 2017 event held at Sekolah Tinggi Pariwisata NHI Bandung from 23rd – 24th of May 2017. The purpose of the event is to recruit qualified candidates for company’s human resource regeneration. Hundreds of candidates applied to join Aerofood ACS during this two day event.\r\n\r\nDespite Aerofood ACS, other companies such as airlines, property, tour and travel companies also joined the event. STP NHI is well – known as an education institution expert and excellent in providing quality education for its students. This was the second event participated by Aerofood ACS. Previously, Aerofood ACS participated in Indonesia Career Expo 2017 in Balai Kartini, Jakarta from the 5th – 6th of April 2017.\r\n\r\nHuman resource is important element and asset in a company’s business. The availability and good quality of human resource are necessary for Aerofood ACS to ensure the company’s business run accordingly to achieve company’s mission and vision.', 'uploads/wolu.png', '2017-07-19 06:07:42', '2017-07-19 06:07:42'),
+(2, 12, 1, 'Headline News', 'Apa aja dehhhh', NULL, '2017-07-31 08:56:04', '2017-07-31 08:56:04');
 
 -- --------------------------------------------------------
 
@@ -73,6 +68,7 @@ INSERT INTO `beritas` (`id`, `id_user`, `can_reply`, `title`, `content`, `image`
 CREATE TABLE `content_learnings` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_section` int(10) UNSIGNED NOT NULL,
+  `file_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -101,7 +97,11 @@ CREATE TABLE `content_sliders` (
 
 INSERT INTO `content_sliders` (`id`, `id_forum`, `is_activ`, `title`, `content`, `image`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Mandatory Training 2017', 'Aerofood ACS demonstrates its commitment by delivering innovative and creative catering service through the implementation of ‘IFRESH’ (Integrity, Fast, Reliable, Effective & Efficient, Service Excellence and Hygiene). These five elements are a set of corporate value shared by our employees, which in turn has led to the company scoring numerous business accomplishments.', NULL, '2017-07-05 12:40:13', '2017-07-05 12:40:13'),
-(2, NULL, 1, 'Apakah Lorem Ipsum itu?', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, '2017-07-05 12:47:13', '2017-07-05 12:47:13');
+(2, NULL, 1, 'Apakah Lorem Ipsum itu?', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', NULL, '2017-07-05 12:47:13', '2017-07-05 12:47:13'),
+(3, NULL, 1, 'abcadasdsad', 'xjsfas sadasda sdsad asd as dsa d sad sad sad sad sad as dsa dsa dsa d sadasd asd asd sad sad sad', 'uploads/clouds-png-22.png', '2017-07-30 07:25:47', '2017-07-30 07:28:17'),
+(4, NULL, 1, 'dfqd dqwd qwdqwd qw d', 'hU SADASD fwef fwef ew f ewfusdcj fwhfbdsajcuyd fuefa dandbiadiasjn disdncsdbci csdcj', 'uploads/user.png', '2017-07-30 07:26:24', '2017-07-30 07:28:23'),
+(5, NULL, 0, 'we fwefiwf wef few fw e iwebfwef', 'kndsda w dasdasjd sadue fa duad ascbasc ascsdcjz x zxuca uewgfsd zxuc', 'uploads/ikemasui.png', '2017-07-30 07:27:07', '2017-07-30 07:27:07'),
+(6, NULL, 1, 'obo dasidvia adjasd', 'hf9ws cdscskdc 93 dscsai2easdsao dasdbaus 4bsdv sjsan 40 sdckhsa akadbowdgdc jkdscs iad adbn ascasncias dw', 'uploads/student2.jpg', '2017-07-30 07:28:10', '2017-07-30 07:28:28');
 
 -- --------------------------------------------------------
 
@@ -110,20 +110,20 @@ INSERT INTO `content_sliders` (`id`, `id_forum`, `is_activ`, `title`, `content`,
 --
 
 CREATE TABLE `departments` (
-  `id_department` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_departmen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_job_family` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_department` int(11) NOT NULL,
+  `nama_departmen` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`id_department`, `nama_departmen`, `id_job_family`, `created_at`, `updated_at`) VALUES
-('A123', 'Sales', 2, '2017-07-04 12:40:59', '2017-07-04 12:40:59'),
-('B123', 'Procurement', 3, '2017-07-05 07:08:08', '2017-07-05 07:08:08');
+INSERT INTO `departments` (`id_department`, `nama_departmen`, `created_at`, `updated_at`) VALUES
+(1, 'Quality & HSE', '2017-08-01 22:40:26', '2017-08-01 22:40:26'),
+(2, 'Security', '2017-08-01 22:41:57', '2017-08-01 22:41:57'),
+(3, 'Operation GA', '2017-08-01 22:41:58', '2017-08-01 22:41:58');
 
 -- --------------------------------------------------------
 
@@ -132,11 +132,20 @@ INSERT INTO `departments` (`id_department`, `nama_departmen`, `id_job_family`, `
 --
 
 CREATE TABLE `divisis` (
-  `id_divisi` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_divisi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_divisi` int(11) NOT NULL,
+  `nama_divisi` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `divisis`
+--
+
+INSERT INTO `divisis` (`id_divisi`, `nama_divisi`, `created_at`, `updated_at`) VALUES
+(1, 'Inflight', '2017-08-01 22:37:51', '2017-08-01 22:37:51'),
+(2, 'Finance', '2017-08-01 22:37:51', '2017-08-01 22:37:51'),
+(3, 'Business Process & System Integration', '2017-08-01 22:37:51', '2017-08-01 22:37:51');
 
 -- --------------------------------------------------------
 
@@ -147,12 +156,19 @@ CREATE TABLE `divisis` (
 CREATE TABLE `employees` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_personnel` int(10) UNSIGNED NOT NULL,
-  `nip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `struktur` int(10) UNSIGNED NOT NULL,
-  `level_position` int(10) UNSIGNED NOT NULL,
+  `nip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `struktur` int(10) UNSIGNED DEFAULT NULL,
+  `level_position` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `id_personnel`, `nip`, `struktur`, `level_position`, `created_at`, `updated_at`) VALUES
+(1, 13, '44234242', 2, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,6 +182,8 @@ CREATE TABLE `forums` (
   `can_reply` tinyint(1) NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_department` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_job_family` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -178,12 +196,13 @@ CREATE TABLE `forums` (
 
 CREATE TABLE `jawaban_trainees` (
   `id` int(10) UNSIGNED NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_question` int(10) UNSIGNED NOT NULL,
-  `isi_jawaban` int(10) UNSIGNED NOT NULL,
+  `isi_jawaban` int(10) UNSIGNED DEFAULT NULL,
   `skor` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -215,9 +234,26 @@ INSERT INTO `job_families` (`id`, `name`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `level_positions` (
   `id` int(10) UNSIGNED NOT NULL,
   `nama_level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `level_positions`
+--
+
+INSERT INTO `level_positions` (`id`, `nama_level`, `created_at`, `updated_at`) VALUES
+(1, 'Staff', '2017-07-11 15:15:04', '2017-07-11 15:15:04'),
+(2, 'Supervisor', '2017-07-11 15:15:04', '2017-07-11 15:15:04'),
+(3, 'Officer', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(4, 'Head Business Unit', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(5, 'Assistance Manager', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(6, 'Manager', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(7, 'Executif Manager', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(8, 'Senior Manager', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(9, 'General Manager', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(10, 'Vice President', '2017-07-11 15:15:05', '2017-07-11 15:15:05'),
+(11, 'Board of Director', '2017-07-11 15:15:05', '2017-07-11 15:15:05');
 
 -- --------------------------------------------------------
 
@@ -291,7 +327,9 @@ CREATE TABLE `modules` (
 INSERT INTO `modules` (`id`, `short_name`, `nama`, `description`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'Induction Training', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.', '2017-07-04 09:02:15', '2017-07-04 09:02:15'),
 (2, NULL, 'Mandatory Training', 'Ada banyak variasi tulisan Lorem Ipsum yang tersedia, tapi kebanyakan sudah mengalami perubahan bentuk, entah karena unsur humor atau kalimat yang diacak hingga nampak sangat tidak masuk akal. Jika anda ingin menggunakan tulisan Lorem Ipsum, anda harus yakin tidak ada bagian yang memalukan yang tersembunyi di tengah naskah tersebut. Semua generator Lorem Ipsum di internet cenderung untuk mengulang bagian-bagian tertentu. Karena itu inilah generator pertama yang sebenarnya di internet. Ia menggunakan kamus perbendaharaan yang terdiri dari 200 kata Latin, yang digabung dengan banyak contoh struktur kalimat untuk menghasilkan Lorem Ipsun yang nampak masuk akal. Karena itu Lorem Ipsun yang dihasilkan akan selalu bebas dari pengulangan, unsur humor yang sengaja dimasukkan, kata yang tidak sesuai dengan karakteristiknya dan lain sebagainya.', '2017-07-04 09:19:32', '2017-07-04 09:19:32'),
-(3, NULL, 'Functional Training', 'Sudah merupakan fakta bahwa seorang pembaca akan terpengaruh oleh isi tulisan dari sebuah halaman saat ia melihat tata letaknya. Maksud penggunaan Lorem Ipsum adalah karena ia kurang lebih memiliki penyebaran huruf yang normal, ketimbang menggunakan kalimat seperti \"Bagian isi disini, bagian isi disini\", sehingga ia seolah menjadi naskah Inggris yang bisa dibaca. Banyak paket Desktop Publishing dan editor situs web yang kini menggunakan Lorem Ipsum sebagai contoh teks. Karenanya pencarian terhadap kalimat \"Lorem Ipsum\" akan berujung pada banyak situs web yang masih dalam tahap pengembangan. Berbagai versi juga telah berubah dari tahun', '2017-07-04 11:47:35', '2017-07-04 11:47:35');
+(3, NULL, 'Functional Training', 'Sudah merupakan fakta bahwa seorang pembaca akan terpengaruh oleh isi tulisan dari sebuah halaman saat ia melihat tata letaknya. Maksud penggunaan Lorem Ipsum adalah karena ia kurang lebih memiliki penyebaran huruf yang normal, ketimbang menggunakan kalimat seperti \"Bagian isi disini, bagian isi disini\", sehingga ia seolah menjadi naskah Inggris yang bisa dibaca. Banyak paket Desktop Publishing dan editor situs web yang kini menggunakan Lorem Ipsum sebagai contoh teks. Karenanya pencarian terhadap kalimat \"Lorem Ipsum\" akan berujung pada banyak situs web yang masih dalam tahap pengembangan. Berbagai versi juga telah berubah dari tahun', '2017-07-04 11:47:35', '2017-07-04 11:47:35'),
+(4, NULL, 'Supporting Training', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid igitur, inquit, eos responsuros putas? Quamvis enim depravatae non sint, pravae tamen esse possunt. Ab his oratores, ab his imperatores ac rerum publicarum principes extiterunt. Eam tum adesse, cum dolor omnis absit; Duo Reges: constructio interrete. Quis enim potest ea, quae probabilia videantur ei, non probare?\r\n\r\nAn tu me de L. Sic enim maiores nostri labores non fugiendos tristissimo tamen verbo aerumnas etiam in deo nominaverunt. Quid enim possumus hoc agere divinius? Idemne potest esse dies saepius, qui semel fuit?', '2017-07-17 18:46:51', '2017-07-17 18:46:51'),
+(5, NULL, 'Development Training', 'adalah training untuk meningkatkan kemampuan karyawan..  Karyawan harus meminta izin telebih dahulu ketika ingin masuk pada training ini', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -304,7 +342,7 @@ CREATE TABLE `news_replies` (
   `id_user` int(10) UNSIGNED NOT NULL,
   `id_news` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -320,8 +358,8 @@ CREATE TABLE `opsi_jawabans` (
   `id_question` int(10) UNSIGNED NOT NULL,
   `isi_opsi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_true` tinyint(1) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -331,10 +369,13 @@ CREATE TABLE `opsi_jawabans` (
 --
 
 CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `is_process` int(11) NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -349,14 +390,23 @@ CREATE TABLE `personnels` (
   `fname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jenis_kelamin` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tanggal_lahir` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `personnels`
+--
+
+INSERT INTO `personnels` (`id`, `id_user`, `fname`, `lname`, `jenis_kelamin`, `email`, `alamat`, `no_hp`, `photo`, `tanggal_lahir`, `created_at`, `updated_at`) VALUES
+(11, 13, 'don', 'din', 1, 'd@d.d', 'Jl. 123 pagar', '09876246', NULL, '1999-12-12', NULL, NULL),
+(12, 12, 'Bon', 'Bin', 1, 'bon@bin.don', 'Jl. Apa aja deh', '0965789', NULL, '1997-12-08', NULL, NULL),
+(13, 16, 'qwe', 'rty', 0, 'qw2@TFT.COM', 'Jalan kehidupan yang indah', '7520353', NULL, '2017-07-02', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -367,11 +417,11 @@ CREATE TABLE `personnels` (
 CREATE TABLE `questions` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_test` int(10) UNSIGNED NOT NULL,
-  `no_soal` int(11) NOT NULL,
+  `no_soal` int(11) DEFAULT NULL,
   `pertanyaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `skor_maks` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -399,9 +449,10 @@ CREATE TABLE `replies` (
 CREATE TABLE `score_summaries` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_user` int(10) UNSIGNED NOT NULL,
-  `url_file_pdf` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `file_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url_file_pdf` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -411,11 +462,19 @@ CREATE TABLE `score_summaries` (
 --
 
 CREATE TABLE `sections` (
-  `id_section` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_section` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_section` int(11) NOT NULL,
+  `nama_section` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`id_section`, `nama_section`, `created_at`, `updated_at`) VALUES
+(1, 'Assembly GA', '2017-08-01 22:43:23', '2017-08-01 22:43:23'),
+(2, 'Handling GA', '2017-08-01 22:43:24', '2017-08-01 22:43:24');
 
 -- --------------------------------------------------------
 
@@ -427,9 +486,9 @@ CREATE TABLE `section_trainings` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_training` int(10) UNSIGNED NOT NULL,
   `id_type` int(10) UNSIGNED NOT NULL,
-  `sequence` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `sequence` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -441,10 +500,19 @@ CREATE TABLE `section_trainings` (
 CREATE TABLE `section_training_types` (
   `id` int(10) UNSIGNED NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `section_training_types`
+--
+
+INSERT INTO `section_training_types` (`id`, `nama`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Pre-Test', NULL, '2017-07-06 18:37:39', '2017-07-06 18:37:39'),
+(2, 'Modul', NULL, '2017-07-06 18:37:39', '2017-07-06 18:37:39'),
+(3, 'Post-Test', NULL, '2017-07-06 18:37:39', '2017-07-06 18:37:39');
 
 -- --------------------------------------------------------
 
@@ -468,14 +536,22 @@ CREATE TABLE `sessions` (
 --
 
 CREATE TABLE `struktur_organisasis` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_divisi` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_department` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_unit` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_section` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(11) NOT NULL,
+  `id_divisi` int(11) DEFAULT NULL,
+  `id_unit` int(11) DEFAULT NULL,
+  `id_department` int(11) DEFAULT NULL,
+  `id_section` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `struktur_organisasis`
+--
+
+INSERT INTO `struktur_organisasis` (`id`, `id_divisi`, `id_unit`, `id_department`, `id_section`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 3, NULL, '2017-08-02 07:11:01', '2017-08-02 07:11:01'),
+(2, 1, 3, 3, 1, '2017-08-02 07:13:06', '2017-08-02 07:13:06');
 
 -- --------------------------------------------------------
 
@@ -486,14 +562,14 @@ CREATE TABLE `struktur_organisasis` (
 CREATE TABLE `tests` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_section_training` int(10) UNSIGNED NOT NULL,
-  `time` time DEFAULT NULL,
-  `jumlah_soal` int(11) NOT NULL,
+  `time` int(11) DEFAULT NULL,
+  `jumlah_soal` int(11) DEFAULT NULL,
   `attemp` int(11) DEFAULT NULL,
   `question_per_page` int(11) DEFAULT NULL,
-  `publised` date NOT NULL,
+  `publised` int(11) DEFAULT NULL,
   `min_score` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -538,19 +614,10 @@ CREATE TABLE `trainings` (
   `enroll_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_job_family` int(10) UNSIGNED DEFAULT NULL,
   `id_department` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `is_publish` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `trainings`
---
-
-INSERT INTO `trainings` (`id`, `title`, `description`, `id_module`, `enroll_key`, `id_job_family`, `id_department`, `created_at`, `updated_at`) VALUES
-(1, 'Mandatory Training 2017', 'Tidak seperti anggapan banyak orang, Lorem Ipsum bukanlah teks-teks yang diacak. Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah mencapai lebih dari 2000 tahun. Richard McClintock, seorang professor Bahasa Latin dari Hampden-Sidney College di Virginia, mencoba mencari makna salah satu kata latin yang dianggap paling tidak jelas, yakni consectetur, yang diambil dari salah satu bagian Lorem Ipsum. Setelah ia mencari maknanya di di literatur klasik, ia mendapatkan sebuah sumber yang tidak bisa diragukan. Lorem Ipsum berasal dari bagian 1.10.32 dan 1.10.33 dari naskah \"de Finibus Bonorum et Malorum\" (Sisi Ekstrim dari Kebaikan dan Kejahatan) karya Cicero, yang ditulis pada tahun 45 sebelum masehi. BUku ini adalah risalah dari teori etika yang sangat terkenal pada masa Renaissance. Baris pertama dari Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", berasal dari sebuah baris di bagian 1.10.32.', 2, NULL, NULL, '0', '2017-07-04 11:56:30', '2017-07-04 11:56:30'),
-(2, 'Marketing Training', 'Bagian standar dari teks Lorem Ipsum yang digunakan sejak tahun 1500an kini di reproduksi kembali di bawah ini untuk mereka yang tertarik. Bagian 1.10.32 dan 1.10.33 dari \"de Finibus Bonorum et Malorum\" karya Cicero juga di reproduksi persis seperti bentuk aslinya, diikuti oleh versi bahasa Inggris yang berasal dari terjemahan tahun 1914 oleh H. Rackham.', 3, NULL, 2, 'A123', '2017-07-04 12:15:39', '2017-07-04 12:15:39'),
-(3, 'Sales Training', 'klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah mencapai lebih dari 2000 tahun. Richard McClintock, seorang professor Bahasa Latin dari Hampden-Sidney College di Virginia, mencoba mencari makna salah satu kata latin yang dianggap paling tidak jelas, yakni consectetur, yang diambil dari salah', 3, NULL, 2, 'A123', '2017-07-04 13:18:30', '2017-07-04 13:18:30'),
-(4, 'Procurement Training', 'orem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia', 3, NULL, 3, 'B123', '2017-07-05 07:08:59', '2017-07-05 07:08:59');
 
 -- --------------------------------------------------------
 
@@ -559,11 +626,20 @@ INSERT INTO `trainings` (`id`, `title`, `description`, `id_module`, `enroll_key`
 --
 
 CREATE TABLE `units` (
-  `id_unit` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_unit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_unit` int(11) NOT NULL,
+  `nama_unit` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id_unit`, `nama_unit`, `created_at`, `updated_at`) VALUES
+(1, 'ACS Cengkareng', '2017-08-01 22:38:59', '2017-08-01 22:38:59'),
+(2, 'ACS Yogyakarta', '2017-08-01 22:38:59', '2017-08-01 22:38:59'),
+(3, 'ACS Denpasar', '2017-08-01 22:38:59', '2017-08-01 22:38:59');
 
 -- --------------------------------------------------------
 
@@ -575,6 +651,8 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_admin` tinyint(1) NOT NULL,
+  `is_aktif` int(11) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -584,9 +662,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$hdpp1pjA8.Z2FJ4DcTp/o.V5pY6hwG73T6Tevq..VEgNbJoEkjqqC', 'WQVkSs6xN74Yt0Upja1m20QblDMZrVTkMGbBZFYvKTw2uPuFesDJpgC2mSTk', '2017-07-04 08:13:22', '2017-07-04 08:13:22'),
-(2, '123', '$2y$10$RTX9h0PXRC74cNjuFdC/YOsJL9.p6xGNq7Y3.8hkZ2EQhKDm63L46', '3pQcMA8kB4D2KHj0IC0dP5ziigIh5ZHs05HjnPEsphxKGpPL84NUPrdzv28L', '2017-07-04 08:19:34', '2017-07-04 08:19:34');
+INSERT INTO `users` (`id`, `username`, `password`, `is_admin`, `is_aktif`, `remember_token`, `created_at`, `updated_at`) VALUES
+(12, 'admin', '$2y$10$O.k6qROzKNUXPRbXGSf.ce/ZyzCBewN4jfeAO1LQ1.sqT6iAJ4FDi', 1, 1, '9jIHRU8PUusf0tGoxQmUIGT90nSlvLGaBa4zk7DOhhUdqboNIRyjOJilqedY', NULL, '2017-07-31 13:01:07'),
+(13, '123123', '$2y$10$ck4hjTa71twXhheQ/4K9b.gOj9cTkSYXwAL4PGKnYIlrgQX5N./Fy', 1, 1, 'A31qc7SJimbn8MFVEScj1DaIykuTsP5mFpEtgkUTT64zAH1LfpoZPp1ZjswZ', NULL, '2017-07-31 13:29:32'),
+(14, 'qwerty', '$2y$10$aNtkPUwcNbIgsWFCKi4qIeot0pVXA8RjLZoOJczSJOW37iL3ympuG', 0, 1, NULL, NULL, NULL),
+(15, 'qwerty', '$2y$10$TBXTM2jtbLT30Nmo7lk06evJQxJLplupi0NZPhaCES3YrlxssMAeC', 0, 1, NULL, NULL, NULL),
+(16, 'qwerty', '$2y$10$mGUNGRZr/jCXubvdXVH4eut.Ppg.2vYYk8.Jm67M0HDc3PG5XGQCS', 0, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -597,13 +678,14 @@ INSERT INTO `users` (`id`, `username`, `password`, `remember_token`, `created_at
 CREATE TABLE `user_tests` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_user` int(10) UNSIGNED NOT NULL,
+  `id_training` int(11) NOT NULL,
   `id_pre_test` int(10) UNSIGNED NOT NULL,
-  `id_post_test` int(10) UNSIGNED NOT NULL,
+  `id_post_test` int(10) UNSIGNED DEFAULT NULL,
   `pre_test_score` int(11) DEFAULT NULL,
   `post_test_score` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -656,8 +738,7 @@ ALTER TABLE `content_sliders`
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
-  ADD PRIMARY KEY (`id_department`),
-  ADD KEY `departments_id_job_family_foreign` (`id_job_family`);
+  ADD PRIMARY KEY (`id_department`);
 
 --
 -- Indexes for table `divisis`
@@ -729,6 +810,12 @@ ALTER TABLE `opsi_jawabans`
   ADD KEY `opsi_jawabans_id_question_foreign` (`id_question`);
 
 --
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `personnels`
 --
 ALTER TABLE `personnels`
@@ -781,11 +868,7 @@ ALTER TABLE `section_training_types`
 -- Indexes for table `struktur_organisasis`
 --
 ALTER TABLE `struktur_organisasis`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `struktur_organisasis_id_divisi_foreign` (`id_divisi`),
-  ADD KEY `struktur_organisasis_id_department_foreign` (`id_department`),
-  ADD KEY `struktur_organisasis_id_unit_foreign` (`id_unit`),
-  ADD KEY `struktur_organisasis_id_section_foreign` (`id_section`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tests`
@@ -860,7 +943,7 @@ ALTER TABLE `activity_logs`
 -- AUTO_INCREMENT for table `beritas`
 --
 ALTER TABLE `beritas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `content_learnings`
 --
@@ -870,12 +953,22 @@ ALTER TABLE `content_learnings`
 -- AUTO_INCREMENT for table `content_sliders`
 --
 ALTER TABLE `content_sliders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id_department` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `divisis`
+--
+ALTER TABLE `divisis`
+  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `forums`
 --
@@ -895,7 +988,7 @@ ALTER TABLE `job_families`
 -- AUTO_INCREMENT for table `level_positions`
 --
 ALTER TABLE `level_positions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -905,7 +998,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `news_replies`
 --
@@ -917,10 +1010,15 @@ ALTER TABLE `news_replies`
 ALTER TABLE `opsi_jawabans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `personnels`
 --
 ALTER TABLE `personnels`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `questions`
 --
@@ -937,6 +1035,11 @@ ALTER TABLE `replies`
 ALTER TABLE `score_summaries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `sections`
+--
+ALTER TABLE `sections`
+  MODIFY `id_section` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `section_trainings`
 --
 ALTER TABLE `section_trainings`
@@ -945,12 +1048,12 @@ ALTER TABLE `section_trainings`
 -- AUTO_INCREMENT for table `section_training_types`
 --
 ALTER TABLE `section_training_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `struktur_organisasis`
 --
 ALTER TABLE `struktur_organisasis`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tests`
 --
@@ -970,12 +1073,17 @@ ALTER TABLE `trainer_trainings`
 -- AUTO_INCREMENT for table `trainings`
 --
 ALTER TABLE `trainings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
+  MODIFY `id_unit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user_tests`
 --
@@ -1015,18 +1123,11 @@ ALTER TABLE `content_sliders`
   ADD CONSTRAINT `content_sliders_id_forum_foreign` FOREIGN KEY (`id_forum`) REFERENCES `forums` (`id`);
 
 --
--- Constraints for table `departments`
---
-ALTER TABLE `departments`
-  ADD CONSTRAINT `departments_id_job_family_foreign` FOREIGN KEY (`id_job_family`) REFERENCES `job_families` (`id`);
-
---
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
   ADD CONSTRAINT `employees_id_personnel_foreign` FOREIGN KEY (`id_personnel`) REFERENCES `personnels` (`id`),
-  ADD CONSTRAINT `employees_level_position_foreign` FOREIGN KEY (`level_position`) REFERENCES `level_positions` (`id`),
-  ADD CONSTRAINT `employees_struktur_foreign` FOREIGN KEY (`struktur`) REFERENCES `struktur_organisasis` (`id`);
+  ADD CONSTRAINT `employees_level_position_foreign` FOREIGN KEY (`level_position`) REFERENCES `level_positions` (`id`);
 
 --
 -- Constraints for table `forums`
@@ -1085,15 +1186,6 @@ ALTER TABLE `score_summaries`
 ALTER TABLE `section_trainings`
   ADD CONSTRAINT `section_trainings_id_training_foreign` FOREIGN KEY (`id_training`) REFERENCES `trainings` (`id`),
   ADD CONSTRAINT `section_trainings_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `section_training_types` (`id`);
-
---
--- Constraints for table `struktur_organisasis`
---
-ALTER TABLE `struktur_organisasis`
-  ADD CONSTRAINT `struktur_organisasis_id_department_foreign` FOREIGN KEY (`id_department`) REFERENCES `departments` (`id_department`),
-  ADD CONSTRAINT `struktur_organisasis_id_divisi_foreign` FOREIGN KEY (`id_divisi`) REFERENCES `divisis` (`id_divisi`),
-  ADD CONSTRAINT `struktur_organisasis_id_section_foreign` FOREIGN KEY (`id_section`) REFERENCES `sections` (`id_section`),
-  ADD CONSTRAINT `struktur_organisasis_id_unit_foreign` FOREIGN KEY (`id_unit`) REFERENCES `units` (`id_unit`);
 
 --
 -- Constraints for table `tests`

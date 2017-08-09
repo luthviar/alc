@@ -21,12 +21,6 @@
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/iCheck/all.css')}}">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.css')}}">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css')}}">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/select2/select2.min.css')}}">
-   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{URL::asset('AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/dist/css/AdminLTE.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -34,21 +28,34 @@
   <link rel="stylesheet" href="{{URL::asset('AdminLTE/dist/css/skins/_all-skins.min.css')}}">
    <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <!-- ./wrapper -->
-	
+   <!-- ./wrapper -->	
 	<!-- SlimScroll 1.3.0 -->
-	<script src="{{URL::asset('AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+  <script src="{{URL::asset('AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 	<!-- iCheck 1.0.1 -->
-	<script src="{{URL::asset('AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
+  <script src="{{URL::asset('AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
 	<!-- FastClick -->
-	<script src="{{URL::asset('AdminLTE/plugins/fastclick/fastclick.js')}}"></script>
+  <script src="{{URL::asset('AdminLTE/plugins/fastclick/fastclick.js')}}"></script>
 	
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
+  <link rel="stylesheet" href="{{URL::asset('css/metronic.css')}}">
+	<!--- SummerNote -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script> 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
+  
+  
+<!-- summernote script -->
+<script>
+    $(document).ready(function() {
+		$('#summernote').summernote({
+		  height: 200,                 // set editor height
+		  minHeight: null,             // set minimum height of editor
+		  maxHeight: null,             // set maximum height of editor
+		});
+    });
+</script>
+  
+  
 <style type="text/css">
 /**
  * Override feedback icon position

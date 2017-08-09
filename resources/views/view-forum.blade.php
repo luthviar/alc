@@ -7,7 +7,7 @@
 
         <section id="main">
             <div class="block-advice">
-                <div class = "text-center">
+                <div class = "text-left">
                     <div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
                             <li class="active">
