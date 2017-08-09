@@ -49,7 +49,11 @@
 
 		.subactivated,
 		.fordtreeview > li:not(:first-child):hover{
-			background-color: lightgreen;
+			background-color: #deeed4;
+		}
+
+		.list-group-item {
+			border: 1px solid #828282;
 		}
 	</style>
 	<script type="text/javascript">
@@ -102,44 +106,52 @@
 			<ul class="fordtreeview list-group col-md-2">
 				<li class="list-group-item">
 					<label for="ORGSearch">Organization Structure Search</label>
-					<input type="text" name="ORGSearch" id="FAQSearch" /><input type="submit" id="SearchFAQ" value="search" />
+					{{--<input type="text" name="ORGSearch" id="FAQSearch" /><input type="submit" id="SearchFAQ" value="search" />--}}
 					<input type="text" class="form-control menufilter" placeholder="Search..."/>
 				</li>
 				@foreach($divisi as $org_struk)
 					<li class="list-group-item">
-						<form class="hasSub" action="/struktur/{{$org_struk->id_divisi}}/edit" method="get">
+
 						<span class="hasSub">
 							<i class="glyphicon glyphicon-globe"></i>
 							Divisi {{$org_struk->nama_divisi. ' ' . $org_struk->id_divisi}}
-
-
-							<input value="divisi" name="name" hidden>
 								<button
-										onclick="window.location.href='/struktur/{{$org_struk->id_divisi}}/edit'"
-										class="pull-right text-right"
+										onclick="window.location.href='/struktur/{{$org_struk->id_divisi}}/edit?name=divisi'"
+										class="text-right"
 										type="submit">
 											<i class="glyphicon glyphicon-globe"></i>
 											edit Divisi
 								</button>
+								<button
+									onclick="window.location.href='/struktur/create?name=unit'"
+									class="text-right"
+									type="submit">
+											<i class="fa fa-plus-circle" aria-hidden="true"></i>
+											add Unit
+								</button>
 						</span>
-						</form>
+
 						<ul class="list-group">
 							@foreach($org_struk['unit'] as $value)
 								<li class="list-group-item">
 									@foreach($units as $unit)
 										@if($value->id_unit == $unit->id_unit)
-											<form class="hasSub" action="/struktur/{{$unit->id_unit}}/edit" method="get">
 											<span class="hasSub"><i class="glyphicon glyphicon-map-marker"></i> Unit {{$unit->nama_unit}}
-												<input value="unit" name="name" hidden>
 												<button
 														onclick="window.location.href='/struktur/{{$unit->id_unit}}/edit'"
-														class="pull-right text-right"
+														class="text-right"
 														type="submit">
 													<i class="glyphicon glyphicon-map-marker"></i>
 													edit Unit
 												</button>
+												<button
+														onclick="window.location.href='/struktur/create?name=department'"
+														class="text-right"
+														type="submit">
+													<i class="fa fa-plus-circle" aria-hidden="true"></i>
+															add Department
+												</button>
 											</span>
-											</form>
 										@endif
 									@endforeach
 									<ul class="list-group">
@@ -147,24 +159,63 @@
 											<li class="list-group-item">
 												@foreach($departments as $deps)
 													@if($deps->id_department == $department->id_department)
-														<form class="hasSub" action="/struktur/{{$deps->id_department}}/edit" method="get">
-														<span class="hasSub"><i class="glyphicon glyphicon-adjust"></i> Department {{$deps->nama_departmen}}
-															<input value="dept" name="name" hidden>
-															<button
-																	onclick="window.location.href='/struktur/{{$deps->id_department}}/edit'"
-																	class="pull-right text-right"
-																	type="submit">
-																<i class="glyphicon glyphicon-adjust"></i>
-																edit Department
-															</button>
-														</span>
-														</form>
+															<span class="hasSub"><i class="glyphicon glyphicon-adjust"></i> Department {{$deps->nama_departmen}}
+																<input value="department" name="name" hidden>
+																<button
+																		onclick="window.location.href='/struktur/{{$deps->id_department}}/edit'"
+																		class="text-right"
+																		type="submit">
+																	<i class="glyphicon glyphicon-adjust"></i>
+																	edit Department
+																</button>
+																<button
+																		onclick="window.location.href='/struktur/create?name=section'"
+																		class="text-right"
+																		type="submit">
+																	<i class="fa fa-plus-circle" aria-hidden="true"></i>
+																			add Section
+																</button>
+															</span>
+
 													@endif
 												@endforeach
+
+												<!-- List of section -->
 												<ul class="list-group">
-													<li class="list-group-item"><i class="glyphicon glyphicon-tint"></i> Section A2a1</li>
-													<li class="list-group-item"><i class="glyphicon glyphicon-tint"></i> Section A2a2</li>
+													@foreach($department['section'] as $section)
+														@if(!empty($section))
+															@foreach($sections as $sect)
+																@if($sect->id_section == $section->id_section)
+																	<form action="/struktur/{{$sect->id_section}}/edit" method="get">
+																		<li class="list-group-item">
+																			<i class="glyphicon glyphicon-tint"></i>
+																			{{$sect->nama_section}}
+																			<input value="section" name="name" hidden>
+																			<button
+																					onclick="window.location.href='/struktur/{{$sect->id_section}}/edit'"
+																					class="text-right"
+																					type="submit">
+																				<i class="glyphicon glyphicon-tint"></i>
+																				edit Section
+																			</button>
+																		</li>
+																	</form>
+																	{{--<button type="button" class="list-group-item">--}}
+																		{{--{{$sect->nama_section}}</button>--}}
+																@endif
+															@endforeach
+														@elseif(empty($section))
+																	<li class="list-group-item">
+																		tidak memiliki section
+																	</li>
+														@endif
+													@endforeach
 												</ul>
+
+												{{--<ul class="list-group">--}}
+													{{--<li class="list-group-item"><i class="glyphicon glyphicon-tint"></i> Section A2a1</li>--}}
+													{{--<li class="list-group-item"><i class="glyphicon glyphicon-tint"></i> Section A2a2</li>--}}
+												{{--</ul>--}}
 											</li>
 										@endforeach
 									</ul>
