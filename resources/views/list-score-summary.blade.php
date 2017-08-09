@@ -25,7 +25,7 @@
 				  <tbody>
 					@foreach($employee as $personnel)
 					<tr>
-					  <td><strong><a href="/personnel/{{$personnel->id}}">{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</a></strong></td>
+					  <td><strong><a href="/personnel/{{$personnel->id_personnel}}">{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</a></strong></td>
 					  @if(empty($personnel['score']))
 					  <td>-</td>
 					  @else
@@ -103,4 +103,6 @@
 		</div>
 	</div>
 </div>
+</div>
+
 @endsection

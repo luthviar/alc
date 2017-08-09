@@ -14,7 +14,7 @@
 
 		.fordtreeview{
 			width: 100%;
-			border-color: 1px solid green;
+			/*border-color: 1px solid green;*/
 		}
 		.fordtreeview ul{
 			display:none;
@@ -114,9 +114,9 @@
 
 						<span class="hasSub">
 							<i class="glyphicon glyphicon-globe"></i>
-							Divisi {{$org_struk->nama_divisi. ' ' . $org_struk->id_divisi}}
+							Divisi {{$org_struk->nama_divisi}}
 								<button
-										onclick="window.location.href='/struktur/{{$org_struk->id_divisi}}/edit?name=divisi'"
+										onclick="msg('{{ $org_struk->id_divisi}}','divisi','{{$org_struk->nama_divisi}}');"
 										class="text-right"
 										type="submit">
 											<i class="glyphicon glyphicon-globe"></i>
@@ -138,7 +138,7 @@
 										@if($value->id_unit == $unit->id_unit)
 											<span class="hasSub"><i class="glyphicon glyphicon-map-marker"></i> Unit {{$unit->nama_unit}}
 												<button
-														onclick="window.location.href='/struktur/{{$unit->id_unit}}/edit'"
+														onclick="msg('{{ $unit->id_unit}}','unit','{{$unit->nama_unit}}');"
 														class="text-right"
 														type="submit">
 													<i class="glyphicon glyphicon-map-marker"></i>
@@ -162,7 +162,7 @@
 															<span class="hasSub"><i class="glyphicon glyphicon-adjust"></i> Department {{$deps->nama_departmen}}
 																<input value="department" name="name" hidden>
 																<button
-																		onclick="window.location.href='/struktur/{{$deps->id_department}}/edit'"
+																		onclick="msg('{{ $deps->id_department}}','department','{{$deps->nama_departmen}}');"
 																		class="text-right"
 																		type="submit">
 																	<i class="glyphicon glyphicon-adjust"></i>
@@ -186,20 +186,20 @@
 														@if(!empty($section))
 															@foreach($sections as $sect)
 																@if($sect->id_section == $section->id_section)
-																	<form action="/struktur/{{$sect->id_section}}/edit" method="get">
+
 																		<li class="list-group-item">
 																			<i class="glyphicon glyphicon-tint"></i>
 																			{{$sect->nama_section}}
 																			<input value="section" name="name" hidden>
 																			<button
-																					onclick="window.location.href='/struktur/{{$sect->id_section}}/edit'"
+																					onclick="msg('{{ $sect->id_section}}','section','{{$sect->nama_section}}');"
 																					class="text-right"
 																					type="submit">
 																				<i class="glyphicon glyphicon-tint"></i>
 																				edit Section
 																			</button>
 																		</li>
-																	</form>
+																	
 																	{{--<button type="button" class="list-group-item">--}}
 																		{{--{{$sect->nama_section}}</button>--}}
 																@endif
@@ -228,7 +228,54 @@
 		</div>
 	</div>
 
+	{{-- start modal --}}
+	<script type="text/javascript">
+        function msg($id,$type,$nametype) {
+            $("#id_type").val($id);
+            $("#type").val($type);
+            $("#nametype").val($nametype);
+            document.getElementById('type').innerHTML = 'Nama ' +$type;
+            $('#modal').modal("show");
+        }
+	</script>
+	<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script><link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+	<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 
+
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Edit</h4>
+				</div>
+				<div class="modal-body">
+					<form id="myform" class="form-horizontal" role="form" method="POST" action="/struktur/update" enctype="multipart/form-data">
+						{{ csrf_field() }}
+
+						<input type="hidden" class="form-control" id="id_type" name="id_type">
+
+						<div class="form-group">
+							<label for="nametype" class="col-md-4 control-label" id="type">Nama </label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="nametype">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary">
+										Update
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		{{-- end of modal --}}
 	{{--<script>--}}
 	{{--$('#SearchFAQ').click(function () {--}}
 	{{--$('#FAQ').children('div.TopicContents').hide().children('div.Answer').hide();--}}
