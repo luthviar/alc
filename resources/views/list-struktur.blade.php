@@ -52,42 +52,42 @@
   background-color: lightgreen;
 }
 </style>
-<script type="text/javascript">
-	$(document).ready(function () {
-	$('.hasSub').click(function () {
-    $(this).parent().toggleClass('subactivated');
-		$(this).parent().children('ul:first').toggle();
-    
-    
-	}); 
-  
-  $(".menufilter").keyup(function () {
-     //$(this).addClass('hidden');
-  
-    var searchTerm = $(".menufilter").val();
-    var listItem = $('.fordtreeview').children('li');
-  
-    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-    
-      //extends :contains to be case insensitive
-  $.extend($.expr[':'], {
-  'containsi': function(elem, i, match, array)
-  {
-    return (elem.textContent || elem.innerText || '').toLowerCase()
-    .indexOf((match[3] || "").toLowerCase()) >= 0;
-  }
-});
-    
-    $(".fordtreeview li").not(":containsi('" + searchSplit + "')").each(function(e)   {
-      $(this).hide()
-    });
-    
-    $(".fordtreeview li:containsi('" + searchSplit + "')").each(function(e) {
-      $(this).show();
-    });
-  });  
-});
-</script>
+{{--<script type="text/javascript">--}}
+	{{--$(document).ready(function () {--}}
+	{{--$('.hasSub').click(function () {--}}
+    {{--$(this).parent().toggleClass('subactivated');--}}
+		{{--$(this).parent().children('ul:first').toggle();--}}
+    {{----}}
+    {{----}}
+	{{--}); --}}
+  {{----}}
+  {{--$(".menufilter").keyup(function () {--}}
+     {{--//$(this).addClass('hidden');--}}
+  {{----}}
+    {{--var searchTerm = $(".menufilter").val();--}}
+    {{--var listItem = $('.fordtreeview').children('li');--}}
+  {{----}}
+    {{--var searchSplit = searchTerm.replace(/ /g, "'):containsi('")--}}
+    {{----}}
+      {{--//extends :contains to be case insensitive--}}
+  {{--$.extend($.expr[':'], {--}}
+  {{--'containsi': function(elem, i, match, array)--}}
+  {{--{--}}
+    {{--return (elem.textContent || elem.innerText || '').toLowerCase()--}}
+    {{--.indexOf((match[3] || "").toLowerCase()) >= 0;--}}
+  {{--}--}}
+{{--});--}}
+    {{----}}
+    {{--$(".fordtreeview li").not(":containsi('" + searchSplit + "')").each(function(e)   {--}}
+      {{--$(this).hide()--}}
+    {{--});--}}
+    {{----}}
+    {{--$(".fordtreeview li:containsi('" + searchSplit + "')").each(function(e) {--}}
+      {{--$(this).show();--}}
+    {{--});--}}
+  {{--});  --}}
+{{--});--}}
+{{--</script>--}}
 
 
 <div class="col-md-12 ">
@@ -262,6 +262,8 @@
 </div>
 <ul class="fordtreeview list-group col-md-2">
 	<li class="list-group-item">
+		<label for="ORGSearch">Organization Structure Search</label>
+		<input type="text" name="ORGSearch" id="FAQSearch" /><input type="submit" id="SearchFAQ" value="search" />
 		<input type="text" class="form-control menufilter" placeholder="Search..."/>
 	</li>
 	@foreach($divisi as $org_struk)
@@ -297,5 +299,29 @@
     @endforeach
 </ul>
 
+	<script>
+        $('#SearchFAQ').click(function () {
+            $('#FAQ').children('div.TopicContents').hide().children('div.Answer').hide();
+            if ($('#FAQSearch').val() != '') {
+                $('div.Answer:Contains(' + $('#FAQSearch').val().toUpperCase() + ')').show().parent().show(300);
+                try {
+                    $('.highlight').removeClass("highlight");
+                    $('div.Answer:Contains(' + $('#FAQSearch').val().toUpperCase() + ')').each(function () {
+                        $(this).html(
+                            $(this).html().replace(
+                                new RegExp($('#FAQSearch').val(), "ig"),
+                                function(match) {
+                                    return '<span class="highlight">' + match + '</span>';
+                                }
+                            )
+                        )
+                    });
+                }
+                catch (err) {
+                }
+            }
+            return false;
+        });
+	</script>
 
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use User;
+use App\ContentSlider;
 use Datatables;
 
 class DatatablesController extends Controller
@@ -14,7 +16,7 @@ class DatatablesController extends Controller
 	 */
 	public function index()
 	{
-	    return view('datatables.index');
+		return view('datatables.index');
 	}
 
 	/**
@@ -24,6 +26,6 @@ class DatatablesController extends Controller
 	 */
 	public function anyData()
 	{
-	    return Datatables::of(User::query())->make(true);
+		return Datatables::of(ContentSlider::query())->make(true);
 	}
 }
