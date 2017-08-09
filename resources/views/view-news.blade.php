@@ -1,4 +1,5 @@
 @include('layouts.head')
+
 <style>
 p.big {
     line-height: 300%;
@@ -23,8 +24,14 @@ p.big {
 					@endif
 					<hr class="style14"> 
 					<p align="justify" class="big">
-						{{ strip_tags($news['content']) }}
-					</p><br>
+						{!! html_entity_decode($news['content']) !!}
+					</p>
+					<div class='pull-right'>
+						1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
+						2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
+						3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf
+					</div>
+					<br><br><br><br>
 
 					@if($news->can_reply == 1)
 						<div class="block-advice">
@@ -37,6 +44,10 @@ p.big {
 									<div class="panel-body">
 
 											{!! html_entity_decode($reply['content']) !!}
+											<br>
+											<div class ="pull-right">
+												1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
+											</div>
  
 									</div>
 								</div>
@@ -65,9 +76,31 @@ p.big {
 					                    <label for="content" class="col-md-2 control-label">Content</label>
 
 					                    <div class="col-md-8">
-											<textarea id ="summernote" name ="content"></textarea>
-										</div>
+											<textarea id="summernote" name="content"></textarea>
+					                    </div>
 					                </div>
+									
+									<div class="form-group">
+										<label for="image" class="col-md-2 control-label">Upload attachment</label>
+
+										<div class="col-md-8">
+											 <div class="input-group">
+												<span class="input-group-btn">
+													<span class="btn btn-default btn-file">
+														Browse… <input type="file" id="imgInp" name="image"/>
+													</span>
+												</span>
+												<input type="text" class="form-control" readonly>
+											</div></br>
+											<div class='file-uploaded'>
+												1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
+												2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
+												3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+											</div>
+										</div>
+									</div>
+
+									
 					                <div class="form-group">
 					                    <div class="col-md-6 col-md-offset-4">
 					                        <button type="submit" class="btn btn-info">

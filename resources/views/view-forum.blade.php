@@ -1,5 +1,4 @@
 @include('layouts.head')
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
 <body>
 <div id="wrapper">
     <div class="wrapper-holder">
@@ -7,7 +6,7 @@
 
         <section id="main">
             <div class="block-advice">
-                <div class = "text-left">
+                <div class = "text-center">
                     <div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
                             <li class="active">
@@ -33,8 +32,8 @@
                                 <tr>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
-                                    <th>replies</th>
-                                    <th>last post</th>
+                                    <th>Replies</th>
+                                    <th>Last Post</th>
                                 </tr>
                                 </thead>
                                     <tbody>
@@ -197,24 +196,10 @@
                     </div>
 
                     <div class="form-group" >
-                        <label for="content" class="col-md-6 control-label">Content</label>
+                        <label for="content" class="col-md-3 control-label">Content</label>
                         
-                        <div class="col-md-10 col-xs-offset-1" name="content">
-							<?php   
-							                //Step 2: Create Editor object. 
-							               	$id  =Auth::user()->id;
-							                $editor=new CuteEditor();     
-							                //Step 3: Set a unique ID to Editor
-							                $editor->ID="content";    
-							                $editor->AutoConfigure="Simple";
-							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-							                //Step 4: Render Editor   
-							                $editor->Draw();   
-							?>
+                        <div class="col-md-6" name="content">
+							<textarea id="summernote" name="content"></textarea>
                         </div>
                     </div>
 
@@ -274,21 +259,7 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
                           <div class="col-md-10 col-xs-offset-1">
-							<?php   
-                                            //Step 2: Create Editor object. 
-                                            $id  =Auth::user()->id;
-                                            $editor=new CuteEditor();     
-                                            //Step 3: Set a unique ID to Editor
-                                            $editor->ID="content3";    
-                                            $editor->AutoConfigure="Simple";
-                                            $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-                                            //Step 4: Render Editor   
-                                            $editor->Draw();   
-                            ?>
+							<textarea id="summernote" name="content3"></textarea>
                         </div>
                     </div>
 
@@ -347,21 +318,7 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
 						<div class="col-md-10 col-xs-offset-1">
-							<?php   
-                                            //Step 2: Create Editor object. 
-                                            $id  =Auth::user()->id;
-                                            $editor=new CuteEditor();     
-                                            //Step 3: Set a unique ID to Editor
-                                            $editor->ID="content2";    
-                                            $editor->AutoConfigure="Simple";
-                                            $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-                                            $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-                                            //Step 4: Render Editor   
-                                            $editor->Draw();   
-                            ?>
+							<textarea id="summernote" name="content2"></textarea>
                         </div>
                     </div>
 

@@ -22,6 +22,8 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script> 
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
+    <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+    <script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
   
   
 <!-- summernote script -->
@@ -31,9 +33,12 @@
 		  height: 200,                 // set editor height
 		  minHeight: null,             // set minimum height of editor
 		  maxHeight: null,             // set maximum height of editor
+		  
 		});
+		
     });
 </script>
+  
 
  <style>
 .card a img {
