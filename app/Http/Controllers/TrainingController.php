@@ -114,6 +114,7 @@ class TrainingController extends Controller
     {
         $module = Module::all();
         $training = Training::find($id);
+
         $section = SectionTraining::where('id_training',$id)->where('id_type','1')->first();
 
         $id_user = Auth::user()->id;
@@ -176,7 +177,13 @@ class TrainingController extends Controller
                 }
             }
         }
-        
+        $all_section = SectionTraining::where('id_training',$id)->get();
+        if (count($all_section) == 1) {
+            $section = SectionTraining::where('id_training',$id)->where('id_type','2')->first();    
+            
+            return view('training')->with('training',$training)->with('module',$module)->with('next_section',$section);
+            
+        }
         return view('training')->with('training',$training)->with('module',$module)->with('next_section',$section);
     }
 

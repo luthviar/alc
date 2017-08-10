@@ -64,7 +64,7 @@ class ScoreSummaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
         
 
@@ -74,7 +74,7 @@ class ScoreSummaryController extends Controller
         $url = "/ViewerJS/index.html#../raports/{$file->getClientOriginalName()}";
 
         $score = new ScoreSummary;
-        $score->id_user = $id;
+        $score->id_user = $request->id_user;
         $score->file_name = $file->getClientOriginalName();
         $score->url_file_pdf = $url;
         $score->save();

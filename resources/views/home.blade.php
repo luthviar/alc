@@ -6,7 +6,7 @@
             @include('layouts.header')
         
             <!-- Slider -->
-			<hr class="style13">
+            <hr class="style13">
             <section class="promo">
                 <ul class="slider">
                     @foreach ($slider as $slide)
@@ -78,9 +78,9 @@
                                     <img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; ">
                                     @endif</a>
                                     <div class="card-block">
-    									<div  style="height:15vh; width:100%;">
+                                        <div  style="height:15vh; width:100%;">
                                             <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
-        									<p class="card-text" align="justify">{{strip_tags(str_limit($news->content, $limit = 150, $end = '...')) }}</p>
+                                            <p class="card-text" align="justify">{{strip_tags(str_limit($news->content, $limit = 150, $end = '...')) }}</p>
                                         </div>
                                         <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p><br>
                                     </div>
@@ -104,4 +104,3 @@
     @include('layouts.script')
 </body>
 </html>
-

@@ -55,7 +55,7 @@ Route::post('berita/submit', 'BeritaController@update');
 
 Route::post('question/submit', 'QuestionController@update');
 
-Route::post('raport/submit/{id}', 'ScoreSummaryController@store');
+Route::post('raport/submit', 'ScoreSummaryController@store');
 
 Route::resource('news-reply', 'NewsReplieController');
 
@@ -140,6 +140,9 @@ Route::post('process-access/submit', 'UserTrainingAuthController@process_submit'
 Route::post('/get-slider-ajax', 'ContentSliderController@get_slider_ajax');
 
 Route::post('/change-photo', 'PersonnelController@change_photo');
+
+
+Route::get('/news_attachment_delete/{id}', 'BeritaController@delete_attachment');
 
 Route::get('Trainning', function () {
     return view('IModul');

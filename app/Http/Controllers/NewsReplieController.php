@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\NewsReplie;
+use App\FileNewsReplie;
 use Illuminate\Http\Request;
 
 class NewsReplieController extends Controller
@@ -41,18 +43,41 @@ class NewsReplieController extends Controller
      */
     public function store(Request $request)
     {
-        $reply = new NewsReplie;
-        $reply->id_news = $request->id_news;
-        $reply->id_user = $request->id_user;
-        $reply->title = $request->title;
+        $id_news_reply = 0;
         if (empty($request->content)) {
-            $reply->content = "";
+           $id_news_reply = DB::table('news_replies')-> insertGetId(array(
+                'id_news' => $request->id_news,
+                'id_user' => $request->id_user,
+                'title' => $request->title,
+                'content' => "",
+               
+            ));
         }else{
-            $reply->content = $request->content;
+            $id_news_reply = DB::table('news_replies')-> insertGetId(array(
+                'id_news' => $request->id_news,
+                'id_user' => $request->id_user,
+                'title' => $request->title,
+                'content' => $request->content,
+               
+            ));
         }
-        $reply->save();
+        
 
+        $file_pendukung = $request->file('file_pendukung');
+        if (!empty($file_pendukung)) {
 
+            foreach ($file_pendukung as $key => $file) {
+                $destinationPath = 'Uploads';
+                $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                $new_file_pendukung = new FileNewsReplie;
+                $new_file_pendukung->id_news_reply = $id_news_reply;
+                $new_file_pendukung->name = $file->getClientOriginalName();
+                $new_file_pendukung->url = $url_file;
+                $new_file_pendukung->save();
+            }
+        }
         return redirect()->action(
             'BeritaController@show', ['id' => $request->id_news]
         );

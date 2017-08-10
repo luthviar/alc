@@ -64,6 +64,12 @@ class SectionTrainingController extends Controller
         $module  = Module::all();
         $section = SectionTraining::find($id);
         $type = SectionTrainingType::find($section->id_type);
+
+        //get all section training
+        $all_section = SectionTraining::where('id_training', $section->id_training)->get();
+        foreach ($all_section as $key => $value) {
+            $value['type'] = SectionTrainingType::find($value->id_type);
+        }
         //check user jika pernah masuk training ini
         $user = Auth::user()->id;
         $check_user = UserTest::where('id_user',$user)->where('id_training',$section->id_training)->first();
@@ -77,7 +83,7 @@ class SectionTrainingController extends Controller
 
                 }
                 $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
-                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('next_section',$next_section);
+                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('next_section',$next_section)->with('all_section',$all_section);
             }elseif($type->id == 2){
                 $module = Module::all();
                 $content = ContentLearning::where('id_section',$id)->get();
@@ -85,9 +91,9 @@ class SectionTrainingController extends Controller
                 $training = Training::find($section->id_training);
                 $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
                 if (empty($check_user->id_post_test)) {
-                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section);
+                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section)->with('all_section',$all_section);
                 }else{
-                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section)->with('logout',true);
+                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section)->with('logout',true)->with('all_section',$all_section);
                 }
                 
             }else{
@@ -97,13 +103,14 @@ class SectionTrainingController extends Controller
                     $opsi = OpsiJawaban::where('id_question',$value->id)->get();
                     $value['opsi'] = $opsi;
                 }
-                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions);
+                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('all_section',$all_section);
             }
         }else{
             $module = Module::all();
             $training = Training::find($section->id_training);
             $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
-            return view('test-result')->with('module',$module)->with('training',$training)->with('skor_post_test',$check_user->post_test_score)->with('skor_pre_test',$check_user->pre_test_score)->with('next_section', $next_section);
+            
+            return view('test-result')->with('module',$module)->with('training',$training)->with('skor_post_test',$check_user->post_test_score)->with('skor_pre_test',$check_user->pre_test_score)->with('next_section', $next_section)->with('all_section',$all_section);;
         
         }
         

@@ -1,4 +1,17 @@
 @include('layouts.head')
+
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+          height: 200,                 // set editor height
+          minHeight: null,             // set minimum height of editor
+          maxHeight: null,             // set maximum height of editor
+          
+        });
+        
+    });
+</script>
+
 <body>
 <div id="wrapper">
     <div class="wrapper-holder">
@@ -81,7 +94,7 @@
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
-                                            @if($forum['replie'] == null)
+                                            @if(count($forum['replie']) == 0)
                                             <td>-</td>
                                             @else
                                             <td>{{$forum['last_reply_personnel']['fname']}} {{$forum['last_reply_personnel']['lname']}}, {{ \Carbon\Carbon::parse($forum['last_reply'][0]->created_at)->format('l jS \\of F Y')}}</td>
@@ -146,7 +159,7 @@
 
 @include('layouts.script')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
@@ -188,7 +201,7 @@
                         <label for="can_repl
 						y" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" class="selectpicker">
+                            <select name="can_reply" >
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -198,8 +211,8 @@
                     <div class="form-group" >
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-                        <div class="col-md-6" name="content">
-							<textarea id="summernote" name="content"></textarea>
+                        <div class="col-md-10" name="content">
+							<textarea class="summernote" name="content"></textarea>
                         </div>
                     </div>
 
@@ -248,7 +261,7 @@
                     <div class="form-group">
                         <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" class="selectpicker">
+                            <select name="can_reply">
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -259,7 +272,7 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
                           <div class="col-md-10 col-xs-offset-1">
-							<textarea id="summernote" name="content3"></textarea>
+							<textarea class="summernote" name="content3"></textarea>
                         </div>
                     </div>
 
@@ -307,7 +320,7 @@
                     <div class="form-group">
                         <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" class="selectpicker">
+                            <select name="can_reply" >
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -318,7 +331,7 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
 						<div class="col-md-10 col-xs-offset-1">
-							<textarea id="summernote" name="content2"></textarea>
+							<textarea class="summernote" name="content2"></textarea>
                         </div>
                     </div>
 

@@ -66,6 +66,7 @@
         </thead>
         <tbody>
          @foreach($forums as $el)
+         <tr>
          <td>{{$el['personnel']->fname}} {{$el['personnel']->lname}}</td>
          <td>{{$el->title}}</td>
          <td>{{$el->created_at}}</td>
@@ -77,6 +78,7 @@
        @endif
          <td><form class="forms" action="/delete-forum" method="post">{{ csrf_field() }}<input type="hidden" name="id_forum" value="{{$el->id}}"><input type="hidden" name="id_category" value="'+1+'"><button class="btnsub" type="submit">delete</button></form></td>
          @endforeach
+         </tr>
         </tbody>
      </table>
     </div>
@@ -124,8 +126,8 @@ $(document).ready(function(){
      });
      jQuery('#detailTable').dataTable().fnDestroy(); 
         $('#detailTable').DataTable( {
-         paging: false,
-         searching: false,
+         paging: true,
+         searching: true,
          retrieve : true,
       destroy : true,
             "processing": true,
@@ -193,8 +195,8 @@ $(document).ready(function(){
     });
     jQuery('#detailTable').dataTable().fnDestroy(); 
        $('#detailTable').DataTable( {
-        paging: false,
-     searching: false,
+        paging: true,
+     searching: true,
      retrieve : true,
      destroy : true,
            "processing": true,
@@ -253,8 +255,8 @@ $(document).ready(function(){
     });
     jQuery('#detailTable').dataTable().fnDestroy(); 
        $('#detailTable').DataTable( {
-        paging: false,
-     searching: false,
+        paging: true,
+     searching: true,
      retrieve : true,
      destroy : true,
            "processing": true,

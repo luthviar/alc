@@ -27,10 +27,12 @@ p.big {
 						{!! html_entity_decode($news['content']) !!}
 
 					</p>
+					<hr class="style14"> 
 					<div class='pull-right'>
-						1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
-						2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
-						3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf
+						Attachments : <br>
+						@foreach($news['file_pendukung'] as $file)
+							<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
+						@endforeach
 					</div>
 					<br><br><br><br>
 
@@ -47,7 +49,10 @@ p.big {
 											{!! html_entity_decode($reply['content']) !!}
 											<br>
 											<div class ="pull-right">
-												1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
+												Attachments : <br>
+												@foreach($reply['file_pendukung'] as $file)
+												 <a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}}</a><br>
+												@endforeach
 											</div>
  
 									</div>
@@ -62,7 +67,7 @@ p.big {
 						@else
 
 							<div class="block-advice">
-								<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('NewsReplieController@store') }}">
+								<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('NewsReplieController@store') }}" enctype="multipart/form-data">
 		                        	{{ csrf_field() }}
 		                        	<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
 		                        	<input type="hidden" name="id_news" value="{{$news->id}}">
@@ -88,7 +93,7 @@ p.big {
 											 <div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Browse… <input type="file" id="imgInp" name="image"/>
+														Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>

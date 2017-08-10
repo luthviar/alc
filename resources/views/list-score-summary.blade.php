@@ -13,7 +13,7 @@
 	    </div>
 	    <div class="panel-body">
 			<div class = "main-table">
-				<table id= "detailTable" class="table table-striped">
+				<table id="detailTable" class="table table-striped">
 				  <thead>
 					<tr>
 					  <th>Name</th>
@@ -32,7 +32,7 @@
 					  <td><a href="{{URL::asset($personnel['score']->url_file_pdf)}}">{{$personnel['score']->file_name}}</a></td>
 					  @endif
 					  <td>{{ \Carbon\Carbon::parse($personnel['score']['created_at'])->format('l jS \\of F Y')}}</td>
-					  <td><input type="button" class="btn btn-default btn-flat" value="Edit" onclick="msg({{$personnel['personnel']->id}})">
+					  <td><input type="button" class="btn btn-default btn-flat" value="Edit" onclick="msg({{$personnel['personnel']->id_user}})">
 					  </td>
 					</tr>
 					@endforeach
@@ -49,7 +49,10 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
-        var companyTable = $('#detailTable').DataTable();
+        var companyTable = $('#detailTable').DataTable({
+        	
+            }
+        });
 
     });
     
@@ -72,7 +75,7 @@
 				<h4 class="modal-title">Add New Raport</h4>
 		  	</div>
 			<div class="modal-body">
-				<form id="myform" class="form-horizontal" role="form" method="POST" action="/raport/submit/{{$personnel['personnel']->id_user}}" enctype="multipart/form-data">
+				<form id="myform" class="form-horizontal" role="form" method="POST" action="/raport/submit" enctype="multipart/form-data">
 					{{ csrf_field() }}
 
 				<input type="hidden" class="form-control" id="id_user" name="id_user">

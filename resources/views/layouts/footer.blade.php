@@ -8,7 +8,7 @@
                             <h3>About us</h3>
                         </div>
                         <p>PT Aerofood Indonesia, is the holding company of Aerowisata Group which is also a holding company of Garuda Indonesia Group. 
-						Aerofood is a company that serves the procurement of products and logistics needs in flight with domestic and international sizes.</p>
+                        Aerofood is a company that serves the procurement of products and logistics needs in flight with domestic and international sizes.</p>
                     </div>
                     <div class="col">
                         <div class="heading">
@@ -16,11 +16,11 @@
                         </div>
                         <address>
                             <p><strong>Head Office:</strong></p>
-								<p>Aerowisata Park</p>
-								<p>Jl. Prof. DR. Soepomo No. 45 Tebet</p>
-								<p>Jakarta 12810</p>
-								<p>P: +62 21 8370 5076 / F: +62 21 8370 5012</p>
-								<p>E:<a href="mailto:info@aerofood.co.id"> info@aerofood.co.id</a></p>
+                                <p>Aerowisata Park</p>
+                                <p>Jl. Prof. DR. Soepomo No. 45 Tebet</p>
+                                <p>Jakarta 12810</p>
+                                <p>P: +62 21 8370 5076 / F: +62 21 8370 5012</p>
+                                <p>E:<a href="mailto:info@aerofood.co.id"> info@aerofood.co.id</a></p>
                         </address>
                       
                     </div>
