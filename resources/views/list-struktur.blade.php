@@ -109,6 +109,26 @@
 					{{--<input type="text" name="ORGSearch" id="FAQSearch" /><input type="submit" id="SearchFAQ" value="search" />--}}
 					<input type="text" class="form-control menufilter" placeholder="Search..."/>
 				</li>
+
+				<li class="list-group-item" style="cursor:default;">
+					<div class="row">
+						<div class="col-lg-12">
+							<button
+									onclick="msg2(
+											null,
+											null,
+											null,
+											null,
+											'divisi');"
+									class="btn btn-info btn-lg"
+									type="submit">
+								<i class="glyphicon glyphicon-plus"></i>
+								<i class="glyphicon glyphicon-globe"></i>
+								add divisi
+							</button>
+						</div>
+					</div>
+				</li>
 				@foreach($divisi as $org_struk)
 					<li class="list-group-item">
 
@@ -123,7 +143,12 @@
 											edit Divisi
 								</button>
 								<button
-									onclick="window.location.href='/struktur/create?name=unit'"
+									onclick="msg2(
+									    	'{{ $org_struk->id_divisi }}',
+											null,
+											null,
+											null,
+											'unit');"
 									class="text-right"
 									type="submit">
 											<i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -145,7 +170,12 @@
 													edit Unit
 												</button>
 												<button
-														onclick="window.location.href='/struktur/create?name=department'"
+														onclick="msg2(
+																'{{ $org_struk->id_divisi }}',
+																'{{ $unit->id_unit}}',
+																null,
+																null,
+																'department');"
 														class="text-right"
 														type="submit">
 													<i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -169,7 +199,12 @@
 																	edit Department
 																</button>
 																<button
-																		onclick="window.location.href='/struktur/create?name=section'"
+																		onclick="msg2(
+																				'{{ $org_struk->id_divisi }}',
+																				'{{ $value->id_unit}}',
+																				'{{ $deps->id_department}}',
+																				null,
+																				'section');"
 																		class="text-right"
 																		type="submit">
 																	<i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -199,7 +234,7 @@
 																				edit Section
 																			</button>
 																		</li>
-																	
+
 																	{{--<button type="button" class="list-group-item">--}}
 																		{{--{{$sect->nama_section}}</button>--}}
 																@endif
@@ -234,8 +269,20 @@
             $("#id_type").val($id);
             $("#type").val($type);
             $("#nametype").val($nametype);
-            document.getElementById('type').innerHTML = 'Nama ' +$type;
+            document.getElementById('type2').innerHTML = 'Nama ' +$type;
             $('#modal').modal("show");
+        }
+
+        function msg2($iddiv,$idunit,$iddept,$idsect,$type) {
+            $("#iddiv").val($iddiv);
+            $("#idunit").val($idunit);
+            $("#iddept").val($iddept);
+            $("#idsect").val($idsect);
+
+            $("#typeadd").val($type);
+
+            document.getElementById('typeaddname').innerHTML = 'Nama ' +$type;
+            $('#modaladd').modal("show");
         }
 	</script>
 	<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script><link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
@@ -254,11 +301,12 @@
 						{{ csrf_field() }}
 
 						<input type="hidden" class="form-control" id="id_type" name="id_type">
+						<input type="hidden" class="form-control" id="type" name="type">
 
 						<div class="form-group">
-							<label for="nametype" class="col-md-4 control-label" id="type">Nama </label>
+							<label for="nametype" class="col-md-4 control-label" id="type2">Nama </label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" id="nametype">
+								<input type="text" class="form-control" id="nametype" name="nametype" required>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -276,6 +324,46 @@
 		</div>
 	</div>
 		{{-- end of modal --}}
+
+	{{--start modaladd--}}
+	<div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add new</h4>
+				</div>
+				<div class="modal-body">
+					<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ action('StrukturOrganisasiController@store') }}" enctype="multipart/form-data">
+						{{ csrf_field() }}
+
+						<input type="hidden" class="form-control" id="iddiv" name="iddiv">
+						<input type="hidden" class="form-control" id="idunit" name="idunit">
+						<input type="hidden" class="form-control" id="iddept" name="iddept">
+						<input type="hidden" class="form-control" id="idsect" name="idsect">
+						<input type="hidden" class="form-control" id="typeadd" name="typeadd">
+
+						<div class="form-group">
+							<label for="nametype" class="col-md-4 control-label" id="typeaddname">Nama </label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="nametypeadd" name="nametypeadd" required>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary">
+										Add
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{--end of modal2--}}
 	{{--<script>--}}
 	{{--$('#SearchFAQ').click(function () {--}}
 	{{--$('#FAQ').children('div.TopicContents').hide().children('div.Answer').hide();--}}
