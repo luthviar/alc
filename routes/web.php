@@ -27,6 +27,8 @@ Route::resource('training', 'TrainingController');
 
 Route::resource('struktur', 'StrukturOrganisasiController');
 
+Route::post('struktur/update','StrukturOrganisasiController@update');
+
 Route::resource('job-family', 'JobFamilyController');
 
 Route::resource('department', 'DepartmentController');
