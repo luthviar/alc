@@ -4,7 +4,7 @@
  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#detailTable').DataTable();
+        $('.detailTable').DataTable();
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
@@ -27,7 +27,7 @@
 	    </div>
 	    <div class="panel-body">
 		<div class = "main-table">
-			<table id= "detailTable" class="table table-striped">
+			<table  class="table table-striped detailTable">
 			  <thead>
 				<tr>
 				  <th>Name</th>
@@ -70,7 +70,7 @@
 	    </div>
 	    <div class="panel-body">
 		<div class = "main-table">
-			<table id= "detailTable" class="table table-striped">
+			<table  class="table table-striped detailTable">
 			  <thead>
 				<tr>
 				  <th>Username</th>

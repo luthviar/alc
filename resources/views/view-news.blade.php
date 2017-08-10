@@ -99,9 +99,7 @@ p.big {
 												<input type="text" class="form-control" readonly>
 											</div></br>
 											<div class='file-uploaded'>
-												1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
-												2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
-												3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+												
 											</div>
 										</div>
 									</div>

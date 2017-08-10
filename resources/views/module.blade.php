@@ -78,10 +78,11 @@
 										@else
 										<a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class ="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a>
 										@endif 
-									@endforeach 
+									
 									</h4>
 								  </div>
 								</div>
+								@endforeach 
 					  </div>
       				@else
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

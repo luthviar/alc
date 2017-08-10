@@ -269,6 +269,7 @@
             $("#id_type").val($id);
             $("#type").val($type);
             $("#nametype").val($nametype);
+            
             document.getElementById('type2').innerHTML = 'Nama ' +$type;
             $('#modal').modal("show");
         }
@@ -278,7 +279,9 @@
             $("#idunit").val($idunit);
             $("#iddept").val($iddept);
             $("#idsect").val($idsect);
-
+            if($type.valueOf() != "department") {
+            	$('#job_family').hide();
+            }
             $("#typeadd").val($type);
 
             document.getElementById('typeaddname').innerHTML = 'Nama ' +$type;
@@ -309,6 +312,9 @@
 								<input type="text" class="form-control" id="nametype" name="nametype" required>
 							</div>
 						</div>
+
+						
+						
 						<div class="modal-footer">
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
@@ -347,6 +353,17 @@
 							<label for="nametype" class="col-md-4 control-label" id="typeaddname">Nama </label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" id="nametypeadd" name="nametypeadd" required>
+							</div>
+						</div>
+						<div class="form-group" id="job_family">
+							<label for="nametype" class="col-md-4 control-label" id="type2">Job Family </label>
+							<div class="col-md-6">
+								<select name="id_job_family" class="form-control">
+	                                @foreach($job_family as $jobs)
+	                                <option value="{{$jobs->id}}">{{$jobs->name}}</option>
+	                                @endforeach
+	                                
+	                            </select><br>
 							</div>
 						</div>
 						<div class="modal-footer">

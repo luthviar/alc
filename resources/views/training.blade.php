@@ -28,9 +28,9 @@
 								</h2>
 								<h1 class="brand-name">{{ $training['title'] }}</h1>
 								<hr class="tagline-divider">
-								<h4 align="justify">
+								<h4 align="justify" style="text-align: center;">
 									<strong>
-										{{ $training['description'] }}
+										{!! html_entity_decode($training['description']) !!}
 									</strong>	
 								</h4><br>
 								<h6>

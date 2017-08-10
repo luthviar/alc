@@ -40,6 +40,9 @@
 									</div>
 								  <div class="panel-body">
 									<h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
+									<span class="pull-right">
+										<a href="/reset-password">reset_password</a>
+									</span>
 								  </div>
 								<div class="panel-body">
 								<div class="row">

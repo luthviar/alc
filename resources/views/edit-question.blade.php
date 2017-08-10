@@ -11,10 +11,10 @@
 <!-- Form for Edit Question  -->
 <div class="row">
     <div class="col-md-12 ">
-        <div class="panel panel-default">
+        <div class="panel panel-success">
             <div class="panel-heading">Edit Question</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="/question/submit">
+                    <form class="form-horizontal" role="form" method="POST" action="/question/edit/submit">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="id_question" value="{{$question->id}} ">
@@ -24,22 +24,7 @@
 							<label for="question" class="col-md-4 control-label">Question</label>
 					
 							<div class="col-md-6">
-								<?php   
-							                //Step 2: Create Editor object. 
-							               	$id  =Auth::user()->id;
-							                $editor=new CuteEditor();     
-							                //Step 3: Set a unique ID to Editor
-							                $editor->ID="content";
-											$editor->Width="auto";
-							                $editor->AutoConfigure="Simple";
-							                $editor->ImageGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->MediaGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FlashGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->FilesGalleryPath= sprintf("/Uploads/%s",$id);
-							                $editor->TemplateGalleryPath= sprintf("/Uploads/%s",$id);
-							                //Step 4: Render Editor   
-							                $editor->Draw();   
-							            ?>
+								<textarea id="summernote" name="question" required="true">{{$question->pertanyaan}}</textarea>
 							</div>
 						</div>
 								

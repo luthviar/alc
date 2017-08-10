@@ -109,6 +109,8 @@ Route::post('/content-learning/add-content','ContentLearningController@add_conte
 
 Route::post('/question/submit','QuestionController@submit');
 
+Route::post('/question/edit/submit','QuestionController@update');
+
 Route::post('/get-unit','StrukturOrganisasiController@get_unit');
 
 Route::post('/get-department','StrukturOrganisasiController@get_department');

@@ -96,7 +96,7 @@ $(document).ready(function() {
                             </tr>
                             <tr>
                                 <td>Description</td>
-                                <td>{{strip_tags($training->description)}}</td>
+                                <td>{!! html_entity_decode($training->description) !!}</td>
                             </tr>
                         </tbody>
                     </table>

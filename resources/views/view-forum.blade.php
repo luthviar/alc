@@ -168,15 +168,13 @@
     });
 </script>
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-</body>
-</html>
 
 <!-- New Thread Umum -->
 <div class="modal fade" id="modal_umum" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New Thread</h4>
@@ -193,18 +191,19 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name="title">
+                            <input type="text" name="title">
                         </div>
                     </div>
                             
                     <div class="form-group">
                         <label for="can_repl
-						y" class="col-md-3 control-label">Can Reply</label>                                     
+                        y" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" >
+                            <select name="can_reply" class="form-control">
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
-                            </select>
+                            </select><br>
+                            
                         </div>
                     </div>
 
@@ -212,7 +211,25 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
                         <div class="col-md-10" name="content">
-							<textarea class="summernote" name="content"></textarea>
+                            <textarea class="summernote" name="content"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+                                
+                            </div>
                         </div>
                     </div>
 
@@ -237,7 +254,7 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New Thread</h4>
@@ -254,7 +271,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name="title"/>
+                            <input type="text" name="title"/>
                         </div>
                     </div>
                             
@@ -272,7 +289,24 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
                           <div class="col-md-10 col-xs-offset-1">
-							<textarea class="summernote" name="content3"></textarea>
+                            <textarea class="summernote" name="content3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+                                
+                            </div>
                         </div>
                     </div>
 
@@ -296,7 +330,7 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New Thread</h4>
@@ -313,7 +347,7 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name="title"/>
+                            <input type="text" name="title"/>
                         </div>
                     </div>
                             
@@ -330,8 +364,25 @@
                     <div class="form-group">
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-						<div class="col-md-10 col-xs-offset-1">
-							<textarea class="summernote" name="content2"></textarea>
+                        <div class="col-md-10 col-xs-offset-1">
+                            <textarea class="summernote" name="content2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+                                
+                            </div>
                         </div>
                     </div>
 
@@ -349,3 +400,7 @@
         </div>   
     </div>
 </div>
+
+</body>
+</html>
+

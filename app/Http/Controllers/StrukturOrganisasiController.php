@@ -6,6 +6,7 @@ use App\StrukturOrganisasi;
 use App\Department;
 use App\Section;
 use App\Unit;
+use App\JobFamily;
 use App\Divisi;
 use DB;
 use Illuminate\Http\Request;
@@ -47,6 +48,7 @@ class StrukturOrganisasiController extends Controller
         $units = Unit::all();
         $departments = Department::all();
         $sections = Section::all();
+        $job_family = JobFamily::all();
 
 
         // foreach ($struktur as $key => $value) {
@@ -62,7 +64,8 @@ class StrukturOrganisasiController extends Controller
             ->with('divisi',$divisi)
             ->with('units', $units)
             ->with('departments', $departments)
-            ->with('sections', $sections);
+            ->with('sections', $sections)
+            ->with('job_family', $job_family);
     }
 
     /**
@@ -126,6 +129,7 @@ class StrukturOrganisasiController extends Controller
             } elseif ($request->typeadd == 'department') {
                 $storedept= new Department();
                 $storedept->nama_departmen = $request->nametypeadd;
+                $storedept->id_job_family = $request->id_job_family;
                 $storedept->save();
 
                 $idlast = DB::table('departments')->orderBy('id_department','desc')->first();
