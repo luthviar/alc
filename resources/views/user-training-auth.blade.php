@@ -94,7 +94,13 @@
 					  <td><a class="btn btn-default btn-flat" disabled="true">process</a></td>
 					  @else
 					  <td style="opacity: 0.5">no action</td>
-					  <td><a href="/access-process/{{$password['user']->id}}" class="btn btn-default btn-flat">process</a></td>
+					  <td>
+						  <form role="form" method="POST" action="/process-access/submit">
+							  {{ csrf_field() }}
+							  <input type="hidden" class="form-control" name="id_user" value="{{$password->user->id}}" >
+							  <button type="submit" class="btn btn-default btn-flat">process</button>
+						  </form>
+					  </td>
 					  @endif
 				  
 				  @else
