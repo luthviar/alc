@@ -83,7 +83,14 @@ class SectionTrainingController extends Controller
 
                 }
                 $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
-                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('next_section',$next_section)->with('all_section',$all_section);
+                return view('test-quiz')
+                    ->with('section',$section)
+                    ->with('type',$type)
+                    ->with('test',$test)
+                    ->with('module',$module)
+                    ->with('questions',$questions)
+                    ->with('next_section',$next_section)
+                    ->with('all_section',$all_section);
             }elseif($type->id == 2){
                 $module = Module::all();
                 $content = ContentLearning::where('id_section',$id)->get();
@@ -91,9 +98,20 @@ class SectionTrainingController extends Controller
                 $training = Training::find($section->id_training);
                 $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
                 if (empty($check_user->id_post_test)) {
-                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section)->with('all_section',$all_section);
+                    return view('content-learning')
+                        ->with('module',$module)
+                        ->with('content',$content)
+                        ->with('training',$training)
+                        ->with('next_section',$next_section)
+                        ->with('all_section',$all_section);
                 }else{
-                    return view('content-learning')->with('module',$module)->with('content',$content)->with('training',$training)->with('next_section',$next_section)->with('logout',true)->with('all_section',$all_section);
+                    return view('content-learning')
+                        ->with('module',$module)
+                        ->with('content',$content)
+                        ->with('training',$training)
+                        ->with('next_section',$next_section)
+                        ->with('logout',true)
+                        ->with('all_section',$all_section);
                 }
                 
             }else{
@@ -103,7 +121,13 @@ class SectionTrainingController extends Controller
                     $opsi = OpsiJawaban::where('id_question',$value->id)->get();
                     $value['opsi'] = $opsi;
                 }
-                return view('test-quiz')->with('section',$section)->with('type',$type)->with('test',$test)->with('module',$module)->with('questions',$questions)->with('all_section',$all_section);
+                return view('test-quiz')
+                    ->with('section',$section)
+                    ->with('type',$type)
+                    ->with('test',$test)
+                    ->with('module',$module)
+                    ->with('questions',$questions)
+                    ->with('all_section',$all_section);
             }
         }else{
             $module = Module::all();

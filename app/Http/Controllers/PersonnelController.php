@@ -19,6 +19,7 @@ use App\LevelPosition;
 use App\Module;
 use App\StrukturOrganisasi;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class PersonnelController extends Controller
 {
@@ -351,6 +352,26 @@ class PersonnelController extends Controller
 
         return redirect('/');
 
+    }
+
+    /**
+     * Displays datatables front end view
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getIndex()
+    {
+        return view('datatables.index');
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        return Datatables::of(Personnel::query())->make(true);
     }
 
     public function change_photo(Request $request){
