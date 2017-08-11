@@ -117,6 +117,8 @@
 
     Route::post('/get-section','StrukturOrganisasiController@get_section');
 
+    Route::post('/get-content-preview','ContentLearningController@get_content_preview');
+
     Route::get('/forum/list', 'ForumController@list_forum');
 
     Route::post('/get-forum', 'ForumController@get_forum');

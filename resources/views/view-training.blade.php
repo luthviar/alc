@@ -256,7 +256,7 @@ $(document).ready(function() {
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-                                            <th>View</th>
+                                            <th>Preview</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
@@ -265,7 +265,7 @@ $(document).ready(function() {
                                             @foreach($training['content'] as $content)
                                             <tr>
                                                 <td>{{$content->file_name}}</td>
-                                                <td><a href="{{URL::asset($content->url)}}"><span class="glyphicon glyphicon-fullscreen"></span> View </a></td>
+                                                <td><a class="btn btn-flat" onclick="get_preview({{$content->id}})" ><span class="glyphicon glyphicon-fullscreen"></span> Preview </a></td>
                                                 <td><a href="/content-learning/delete/{{$content->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
                                             </tr>
                                             @endforeach
@@ -522,6 +522,25 @@ $(document).ready(function() {
     </div>
 </div>
 
+<!-- .....................preview..................... -->
+<div class="modal fade" id="previewmodal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    <form class="form-horizontal" role="form" method="POST" action="/content-learning/add-content" enctype="multipart/form-data"">
+        <!-- Modal content-->
+      <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="previewtitle"></h4>
+            </div>
+            <div class="modal-body">                                       
+                <p id="descriptionpreview"></p>
+                <a id="previewfile" href="" >file content</a>
+                
+            </div>
+        </form>            
+    </div>
+</div>
+
 <!-- MODAL - Add Content Learning -->
 <div class="modal fade" id="add-content" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -537,14 +556,21 @@ $(document).ready(function() {
                 <input type="hidden" name="id_training" value="{{$training->id}}">
                             
                 <div class="form-group">
-                    <label for="file_name" class="col-md-4 control-label">Content Title</label>
-                    <div class="col-md-6">
+                    <label for="file_name" class="col-md-2 control-label">Content Title</label>
+                    <div class="col-md-8">
                         <input id="file_name" type="text" class="form-control" placeholder="Content Learning Title" name="file_name"  required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="file_name" class="col-md-2 control-label">Description</label>
+                    <div class="col-md-8">
+                        <textarea id="summernote" name="description"></textarea>
                     </div>
                 </div>
                             
                 <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-md-8 col-md-offset-2">
                         <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
@@ -572,6 +598,37 @@ $(document).ready(function() {
 
 
 
+
+<script type="text/javascript">
+    function get_preview($id_content){
+        var id_content = $id_content;
+        $.ajax({
+            type:"POST",
+            url:"/get-content-preview",
+            dataType: 'json',
+            data:{id_content:id_content,_token: '{{csrf_token()}}'},
+            beforeSend: function (xhr) {
+                  var token = $('meta[name="csrf_token"]').attr('content');
+
+                  if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                  }
+              },
+            success: function(content) {
+                
+                $('#previewtitle').html(content['content']['file_name']);
+                $('#descriptionpreview').html(content['content']['description']);
+                $('#previewfile').attr('href',content['content']['url']);
+                
+                $("#previewmodal").modal('show');
+            },
+            error: function(content){
+                console.log(JSON.stringify(content));
+            },
+        });
+    }
+</script>
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
@@ -585,6 +642,12 @@ $(document).ready(function(){
     });
 });
 </script>
+
+
+
+
+
+
 
 
 

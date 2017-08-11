@@ -171,6 +171,7 @@ class ContentLearningController extends Controller
         $content                = new ContentLearning;
         $content->id_section    = $section->id;
         $content->file_name     = $request->file_name;
+        $content->description   = $request->description;
         $content->url           = $url;
         $content->save();
 
@@ -178,4 +179,12 @@ class ContentLearningController extends Controller
                 'TrainingController@view', ['id' => $training->id]
             );
     }
+
+    public function get_content_preview(Request $request){
+
+        $content_learning = ContentLearning::find($request->id_content);
+        return response()->json(['content'=>$content_learning]);
+    }
+
+
 }
