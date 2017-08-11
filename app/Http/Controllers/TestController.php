@@ -121,16 +121,50 @@ class TestController extends Controller
         //
     }
 
+    // function for change time pre test and post test
     public function change_time (Request $request){
 
-        $test       = Test::find($request->id_test);
-        $test->time = $request->time;
-        $test->save();
+        if ($request->id_test == null) {
+            $section = SectionTraining::where('id_training', $request->id_training)->where('id_type', $request->id_type)->first();
 
-        $section = SectionTraining::find($test->id_section_training);
+            //if section training not create, create section training
+            if (empty($section)) {
+                $newsection                = new SectionTraining;
+                $newsection->id_training   = $request->id_training;
+                $newsection->id_type       = $request->id_type;
+                $newsection->save();
 
-        return redirect()->action(
+                $section = $newsection;
+            }
+
+            // add test to section training
+            $test                       = new Test;
+            $test->id_section_training  = $section->id;
+            $test->time                 = $request->time;
+            $test->jumlah_soal          = 0;
+            $test->attemp               = 1;
+            $test->publised             = 1;
+            $test->save();
+
+            
+
+            return redirect()->action(
                 'TrainingController@view', ['id' => $section->id_training]
             );
+            
+        }else{
+
+            // find test and change time
+            $test       = Test::find($request->id_test);
+            $test->time = $request->time;
+            $test->save();
+
+            $section = SectionTraining::find($test->id_section_training);
+
+            return redirect()->action(
+                'TrainingController@view', ['id' => $section->id_training]
+            );
+        }
+        
     }
 }

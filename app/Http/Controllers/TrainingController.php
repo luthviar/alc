@@ -95,7 +95,8 @@ class TrainingController extends Controller
         }
 
         
-        return view('add-question')->with('id_training',$id_training)->with('time',0)->with('questions',null);
+        //return view('add-question')->with('id_training',$id_training)->with('time',0)->with('questions',null);
+        return redirect('/training/view/'.$id_training);
     }
 
     public function add_post_test($id_training)

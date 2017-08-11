@@ -161,7 +161,7 @@
 								  <tbody>
 									@foreach($personnel['training'] as $training)
 									<tr>
-									  <td><a href="/training/{{$training->id}}">{{$training['info']->title}}</a></td>
+									  <td><a href="/training/{{$training['info']->id}}">{{$training['info']->title}}</a></td>
 									  <td>{{$training->pre_test_score}}</td>
 									  <td>{{$training->post_test_score}}</td>
 									  <td>{{ \Carbon\Carbon::parse($training->created_at)->format('l jS \\of F Y')}}</td>

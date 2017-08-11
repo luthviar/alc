@@ -117,12 +117,12 @@ $(document).ready(function() {
                                 <tbody>
                                     <tr>
                                         <td>Tot. Questions</td>
-                                        <td>{{$training['pretest']->jumlah_soal}}</td>
+                                        <td>{{$training['pretest']->jumlah_soal or '0'}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Time (minutes)</td>
-                                        <td>{{$training['pretest']->time}} minutes</td>
+                                        <td>{{$training['pretest']->time or '-'}} minutes </td>
                                         <td><a href="" data-toggle="modal" data-target="#time-pre-test"><span class="glyphicon glyphicon-edit"></span> Edit </a></td>
                                     </tr>
                                 </tbody>
@@ -132,10 +132,14 @@ $(document).ready(function() {
                                     <strong>Question List</strong>
                                 </div>
 
-                                <div class="col-md-6 col-lg-6" style="text-align: right; ">
-                                    <a href="" data-toggle="modal" data-target="#add-question-pretest"><span class="glyphicon glyphicon-plus"></span> new_question </a>
-                                </div>
+                                <!-- if test time not null, question show-->
+                                @if(!empty($training['pretest']->time))
+                                    <div class="col-md-6 col-lg-6" style="text-align: right; ">
+                                        <a href="" data-toggle="modal" data-target="#add-question-pretest"><span class="glyphicon glyphicon-plus"></span> new_question </a>
+                                    </div>
+                                @endif
                             </div><br>
+                            
                             
                             <div class = "main-table">
                                 <table  class="table table-striped detailTable">
@@ -148,21 +152,25 @@ $(document).ready(function() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($training['pretest-question'] as $question)
-                                        <tr>
-                                            <td>{{$question->pertanyaan}}</td>
-                                            @foreach($question['opsi'] as $opsi)
-                                                @if($opsi->is_true ==1)
-                                                <td>{{$opsi->isi_opsi}}</td>
-                                                @endif
+                                        @if(!empty($training['pretest-question']))
+
+                                            @foreach($training['pretest-question'] as $question)
+                                            <tr>
+                                                <td>{{$question->pertanyaan}}</td>
+                                                @foreach($question['opsi'] as $opsi)
+                                                    @if($opsi->is_true ==1)
+                                                    <td>{{$opsi->isi_opsi}}</td>
+                                                    @endif
+                                                @endforeach
+                                                <td><a href="/question/{{$question->id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit </a></td>
+                                                <td><a href="/question/delete/{{$question->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
+                                            </tr>
                                             @endforeach
-                                            <td><a href="/question/{{$question->id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit </a></td>
-                                            <td><a href="/question/delete/{{$question->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
-                                        </tr>
-                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -179,12 +187,12 @@ $(document).ready(function() {
                                 <tbody>
                                     <tr>
                                         <td>Tot. Questions</td>
-                                        <td>{{$training['posttest']->jumlah_soal}}</td>
+                                        <td>{{$training['posttest']->jumlah_soal or '0'}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Time (minutes)</td>
-                                        <td>{{$training['posttest']->time}} minutes</td>
+                                        <td>{{$training['posttest']->time or '-'}} minutes</td>
                                         <td><a href="" data-toggle="modal" data-target="#time-post-test"><span class="glyphicon glyphicon-edit"></span> Edit </a></td>
                                     </tr>
                                 </tbody>
@@ -193,10 +201,13 @@ $(document).ready(function() {
                                 <div class="col-md-6 col-lg-6">
                                     <strong>Question List</strong>
                                 </div>
-
-                                <div class="col-md-6 col-lg-6" style="text-align: right; ">
-                                    <a href="" data-toggle="modal" data-target="#add-question-posttest"><span class="glyphicon glyphicon-plus"></span> new_question </a>
-                                </div>
+                                
+                                <!-- if test time not null, question show-->
+                                @if(!empty($training['posttest']->time))
+                                    <div class="col-md-6 col-lg-6" style="text-align: right; ">
+                                        <a href="" data-toggle="modal" data-target="#add-question-posttest"><span class="glyphicon glyphicon-plus"></span> new_question </a>
+                                    </div>
+                                @endif
                             </div><br>
                             <div class = "main-table">
                                 <table  class="table table-striped detailTable">
@@ -209,18 +220,20 @@ $(document).ready(function() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($training['posttest-question'] as $question)
-                                        <tr>
-                                            <td>{{$question->pertanyaan}}</td>
-                                            @foreach($question['opsi'] as $opsi)
-                                                @if($opsi->is_true ==1)
-                                                <td>{{$opsi->isi_opsi}}</td>
-                                                @endif
+                                        @if(!empty($training['posttest-question']))
+                                            @foreach($training['posttest-question'] as $question)
+                                            <tr>
+                                                <td>{{$question->pertanyaan}}</td>
+                                                @foreach($question['opsi'] as $opsi)
+                                                    @if($opsi->is_true ==1)
+                                                    <td>{{$opsi->isi_opsi}}</td>
+                                                    @endif
+                                                @endforeach
+                                                <td><a href="/question/{{$question->id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit </a></td>
+                                                <td><a href="/question/delete/{{$question->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
+                                            </tr>
                                             @endforeach
-                                            <td><a href="/question/{{$question->id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit </a></td>
-                                            <td><a href="/question/delete/{{$question->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
-                                        </tr>
-                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -248,13 +261,15 @@ $(document).ready(function() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($training['content'] as $content)
-                                        <tr>
-                                            <td>{{$content->file_name}}</td>
-                                            <td><a href="{{URL::asset($content->url)}}"><span class="glyphicon glyphicon-fullscreen"></span> View </a></td>
-                                            <td><a href="/content-learning/delete/{{$content->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
-                                        </tr>
-                                        @endforeach
+                                        @if(!empty($training['content']))
+                                            @foreach($training['content'] as $content)
+                                            <tr>
+                                                <td>{{$content->file_name}}</td>
+                                                <td><a href="{{URL::asset($content->url)}}"><span class="glyphicon glyphicon-fullscreen"></span> View </a></td>
+                                                <td><a href="/content-learning/delete/{{$content->id}}"><span class="glyphicon glyphicon-trash"></span> Delete </a></td>
+                                            </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -284,7 +299,7 @@ $(document).ready(function() {
                     {{ csrf_field() }}
 
                     <input type="hidden" name="id_training" value="{{$training->id}}">
-                    <input type="hidden" name="id_test" value="{{$training['pretest']->id}}">
+                    <input type="hidden" name="id_test" value="{{$training['pretest']->id or null}}">
                             
                             
                     <div class="form-group">
@@ -359,7 +374,7 @@ $(document).ready(function() {
                     {{ csrf_field() }}
 
                     <input type="hidden" name="id_training" value="{{$training->id}}">
-                    <input type="hidden" name="id_test" value="{{$training['posttest']->id}}">
+                    <input type="hidden" name="id_test" value="{{$training['posttest']->id or null}}">
                             
                             
                     <div class="form-group">
@@ -434,13 +449,15 @@ $(document).ready(function() {
                             
                     {{ csrf_field() }}
 
-                    <input type="hidden" name="id_test" value="{{$training['pretest']->id}}">        
+                    <input type="hidden" name="id_test" value="{{$training['pretest']->id or null}}">        
+                    <input type="hidden" name="id_training" value="{{$training->id}}">
+                    <input type="hidden" name="id_type" value="1">        
                             
                     <div class="form-group">
                         <label for="question" class="col-md-5 control-label">Test Time (minutes) </label>
                 
                         <div class="col-md-4">
-                               <input class="form-control" type="number" name="time" value="{{$training['pretest']->time}}" placeholder="in minutes" min=0 >
+                               <input class="form-control" type="number" name="time" value="{{$training['pretest']->time or null}}" placeholder="in minutes" min=0 >
                         </div>
                     </div>
                     
@@ -477,13 +494,15 @@ $(document).ready(function() {
                             
                     {{ csrf_field() }}
 
-                    <input type="hidden" name="id_test" value="{{$training['posttest']->id}}">        
+                    <input type="hidden" name="id_training" value="{{$training->id}}">
+                    <input type="hidden" name="id_test" value="{{$training['posttest']->id or null}}">        
+                    <input type="hidden" name="id_type" value="3">        
                             
                     <div class="form-group">
                         <label for="question" class="col-md-5 control-label">Test Time (minutes) </label>
                 
                         <div class="col-md-4">
-                               <input class="form-control" type="number" name="time" value="{{$training['posttest']->time}}" placeholder="in minutes" min=0 >
+                               <input class="form-control" type="number" name="time" value="{{$training['posttest']->time or null}}" placeholder="in minutes" min=0 >
                         </div>
                     </div>
                     
