@@ -52,6 +52,10 @@
 			background-color: #deeed4;
 		}
 
+		.highlight {
+			color: yellow;
+		}
+
 		.list-group-item {
 			border: 1px solid #828282;
 		}
@@ -83,12 +87,18 @@
                 });
 
                 $(".fordtreeview li").not(":containsi('" + searchSplit + "')").each(function(e)   {
-                    $(this).hide()
+                    $(this).hide();
+//                    $(this).show().children('ul:first').toggle(false);
+//                    $(this).show().parent('li:first').toggle();
                 });
 
                 $(".fordtreeview li:containsi('" + searchSplit + "')").each(function(e) {
                     $(this).show();
+//                    $(this).show().toggleClass('subactivated').toggle();
+
+//                    $(this).show().children('ul:first').toggle();
                 });
+
             });
         });
 	</script>
@@ -103,7 +113,7 @@
 
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1">
-			<ul class="fordtreeview list-group col-md-2">
+			<ul class="fordtreeview list-group col-md-2 semula">
 				<li class="list-group-item">
 					<label for="ORGSearch">Organization Structure Search</label>
 					{{--<input type="text" name="ORGSearch" id="FAQSearch" /><input type="submit" id="SearchFAQ" value="search" />--}}

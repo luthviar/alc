@@ -121,7 +121,7 @@ class ForumController extends Controller
             'can_reply' => $request->can_reply,
             'id_department' => $request->id_department,
             'id_job_family' => $request->id_job_family,
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now('Asia/Jakarta'),
         ));
 
         $file_pendukung = $request->file('file_pendukung');

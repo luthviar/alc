@@ -39,9 +39,10 @@
                                 <p>forum ini ditujukan untuk seluruh karyawan PT Aerofood Indonesia</p>
                                 <button  class="btn btn-info" data-toggle="modal" data-target="#modal_umum">New Thread</button><br><br>
 
-                                <table  class="table table-striped detailTable">
+                                <table  class="table table-striped detailTable text-left">
                                 <thead>
                                 <tr>
+                                    <th>Created At</th>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
                                     <th>Replies</th>
@@ -52,6 +53,7 @@
 
                                         @foreach($forum_umum as $forum)
                                         <tr>
+                                            <td>{{ $forum->created_at }}</td>
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -76,20 +78,21 @@
                                 <p>forum ini ditujukan untuk karyawan {{$job_family->name}} PT Aerofood Indonesia</p>
                                 <button  class="btn btn-info" data-toggle="modal" data-target="#modal_job_family">New Thread</button><br><br>
 
-                                <table  class="table table-striped detailTable">
+                                <table  class="table table-striped detailTable text-left">
                                 <thead>
                                 <tr>
+                                    <th>Created At</th>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
                                     <th>replies</th>
                                     <th>last post</th>
-                                    
                                 </tr>
                                 </thead>
                                     <tbody>
 
                                         @foreach($forum_job_family as $forum)
                                         <tr>
+                                            <td>{{ $forum->created_at }}</td>
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -114,9 +117,10 @@
                                 <p>forum ini ditujukan untuk karyawan {{$department->nama_departmen}} PT Aerofood Indonesia</p>
                                 <button  class="btn btn-info" data-toggle="modal" data-target="#modal_department">New Thread</button><br><br>
 
-                                <table  class="table table-striped detailTable">
+                                <table  class="table table-striped detailTable text-left">
                                 <thead>
                                 <tr>
+                                    <th>Created At</th>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
                                     <th>replies</th>
@@ -128,6 +132,7 @@
 
                                         @foreach($forum_department as $forum)
                                         <tr>
+                                            <td>{{ $forum->created_at }}</td>
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -163,7 +168,9 @@
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.detailTable').DataTable();
+        $('.detailTable').DataTable({
+            "order": [[ 0, "desc" ]]
+        });
     });
 </script>
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
