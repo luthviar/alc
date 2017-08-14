@@ -7,6 +7,23 @@
         $('.detailTable').DataTable();
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#passwordTable').DataTable({
+        	"processing": true,
+            "serverSide": true,
+            "ajax":{
+                url :"ajax_datatables/list_password_access.php", // json datasource
+                type: "post",  // method  , by default get
+                dataType: "json",
+                error: function(){  // error handling
+                    $("#detailTable").html("");
+                    
+                }
+            }
+        });
+    });
+</script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
@@ -70,7 +87,7 @@
 	    </div>
 	    <div class="panel-body">
 		<div class = "main-table">
-			<table  class="table table-striped detailTable">
+			<table  id="passwordTable" class="table table-striped">
 			  <thead>
 				<tr>
 				  <th>Username</th>

@@ -36,15 +36,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $training = Training::all();
-        foreach ($training as $key => $value) {
-            $value['module'] = Module::find($value->id_module);
-            $value['department'] = null;
-            if ($value->id_module == 3) {
-                $value['department'] = Department::where('id_department',$value->id_department)->first();
-            }
-        }
-        return view('list-training')->with('training',$training);
+        //server side
+        return view('list-training');
     }
 
     /**

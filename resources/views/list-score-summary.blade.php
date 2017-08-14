@@ -5,6 +5,26 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detailTable').DataTable({
+        	"processing": true,
+            "serverSide": true,
+            "ajax":{
+                url :"ajax_datatables/list_score_summary.php", // json datasource
+                type: "post",  // method  , by default get
+                dataType: "json",
+                error: function(){  // error handling
+                    $("#detailTable").html("");
+                    
+                }
+            }
+        });
+    });
+</script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
 
 <div class="col-md-12 ">
 	<div class="panel panel-success">
@@ -22,22 +42,7 @@
 					  <th>Update Raport</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					@foreach($employee as $personnel)
-					<tr>
-					  <td><strong><a href="/personnel/{{$personnel->id_personnel}}">{{$personnel['personnel']->fname}} {{$personnel['personnel']->lname}}</a></strong></td>
-					  @if(empty($personnel['score']))
-					  <td>-</td>
-					  @else
-					  <td><a href="{{URL::asset($personnel['score']->url_file_pdf)}}">{{$personnel['score']->file_name}}</a></td>
-					  @endif
-					  <td>{{ \Carbon\Carbon::parse($personnel['score']['created_at'])->format('l jS \\of F Y')}}</td>
-					  <td><input type="button" class="btn btn-default btn-flat" value="Edit" onclick="msg({{$personnel['personnel']->id_user}})">
-					  </td>
-					</tr>
-					@endforeach
-					
-				  </tbody>
+				  
 				</table>
 			</div>
 		</div>
@@ -46,25 +51,14 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script type="text/javascript">
-    $(document).ready(function() {
-        var companyTable = $('#detailTable').DataTable({
-        	
-            }
-        });
 
-    });
-    
-</script>
+
 <script type="text/javascript">
 	function msg($id) {
 	    $("#id_user").val($id);
 	    $('#modal').modal("show");
 	}
 </script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script><link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

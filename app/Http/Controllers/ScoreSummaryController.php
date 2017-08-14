@@ -34,18 +34,8 @@ class ScoreSummaryController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
-        foreach ($employee as $key => $value) {
-            //get personnel information
-            $value['personnel'] = Personnel::find($value->id_personnel);
-
-            //get score summary of employee
-            $value['score'] = ScoreSummary::where('id_user',$value['personnel']->id_user)->orderBy('id', 'desc')->first();
-            
-            
-
-        }
-        return view('list-score-summary')->with('employee',$employee);
+        //server side
+        return view('list-score-summary');
     }
 
     /**

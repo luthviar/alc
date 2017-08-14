@@ -27,7 +27,7 @@
 	    </div>
 	    <div class="panel-body">
 	    	<span class="pull-right" style="color: green;">
-					<a href="/berita/create"><i class="glyphicon glyphicon-plus">New_News</i>
+					<a href="/news/create"><i class="glyphicon glyphicon-plus">New_News</i>
 					 </a>
 				</span><br><br>
 			

@@ -11,27 +11,30 @@ $requestData= $_REQUEST;
 
 $columns = array( 
 // datatable column index  => database column name
-	0 =>'name', 
-	1 =>'score', 
-	2 =>'created_at', 
-	3 =>'name', 
-	
+	0 =>'title', 
+	1 => 'nama_module',
+	2 =>'nama_deps', 
+	3 => 'created_at',
+	4 => 'is_publish',
+	5 => 'is_publish'
 );
 
 // getting total number records without any search
-$sql = "SELECT concat(fname,' ', lname) as name, p.id as id_personnel, s.file_name as score, s.url_file_pdf as url, s.created_at as created_at ";
-$sql.=" FROM employees e join personnels p on e.id_personnel = p.id join users u on p.id_user = u.id left outer join score_summaries s on s.id_user = u.id ";
+$sql = "SELECT t.id as id , t.title as title, m.nama as nama_module, d.nama_departmen as nama_deps, t.created_at as created_at, t.is_publish as is_publish ";
+$sql.=" FROM trainings t join  modules m on t.id_module = m.id left outer join departments d on t.id_department = d.id_department";
 $query=mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT concat(fname,' ',lname) as name , p.id as id_personnel, s.file_name as score, s.url_file_pdf as url, s.created_at as created_at ";
-$sql.=" FROM  employees e join personnels p on e.id_personnel = p.id join users u on p.id_user = u.id left outer join score_summaries s on s.id_user = u.id WHERE 1=1 ";
-if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-	$sql.=" AND ( 	fname 		LIKE '%".$requestData['search']['value']."%' 	";    
-	$sql.=" OR 		lname 		LIKE '%".$requestData['search']['value']."%' 	";
-	$sql.=" OR 		file_name 	LIKE '%".$requestData['search']['value']."%' )	";
+$sql = "SELECT t.id as id , t.title as title, m.nama as nama_module, d.nama_departmen as nama_deps, t.created_at as created_at, t.is_publish as is_publish ";
+$sql.=" FROM trainings t join  modules m on t.id_module = m.id left outer join departments d on t.id_department = d.id_department WHERE 1=1";
+if( !empty($requestData['search']['value']) and strlen($requestData['search']['value']) > 3) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+	$sql.=" AND ( 	title 			LIKE '%".$requestData['search']['value']."%' 	";    
+	$sql.=" OR 		m.nama 			LIKE '%".$requestData['search']['value']."%' 	";
+	$sql.=" OR 		nama_departmen 	LIKE '%".$requestData['search']['value']."%' 	";
+	$sql.=" OR 		t.created_at 	LIKE '%".$requestData['search']['value']."%' 	";
+	$sql.=" OR 		is_publish 		LIKE '%".$requestData['search']['value']."%' )	";
 	
 }
 $query=mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
@@ -45,17 +48,22 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData=array(); 
 
 	
-	$nestedData[] = "<strong><a href='/personnel/".$row['id_personnel']."'>".$row['name']."</a></strong>";
-	if(empty($row['score'])){
-	  $nestedData[] = "-";
+	$nestedData[] = "<a href='/training/view/".$row['id']."'>".$row['title']."</a>";
+	$nestedData[] = $row['nama_module'];
+	if(empty($row['nama_deps'])){
+		$nestedData[] = "-";
 	}else{
-	  $nestedData[]="<a href='".$row['url']."'>".$row['score']."</a>";
+		$nestedData[] = $row['nama_deps'];
+		
 	}
-	
 	$nestedData[] = $row['created_at'];
-	$nestedData[] = "<input type='button' class='btn btn-default btn-flat' value='Edit' onclick='msg(".$row['id_personnel'].")'>";
-	
-	
+	if($row['is_publish'] == 1){
+		$nestedData[]="<td><div class='text-center'><i class='fa fa-check' aria-hidden='true' style='color:green;''></i></div></td>"; 
+		$nestedData[]="<td><a href='/training/deactive/".$row['id']."'>Deactive</a></td>"; 
+	}else{
+		$nestedData[]="<td><div class='text-center'><i class='fa fa-times' aria-hidden='true' style='color:red;''></i></div></td>"; 
+		$nestedData[]="<td><a href='/training/publish/".$row['id']."'>Publish Now</a></td>"; 
+	}
 	$data[] = $nestedData;
 }
 

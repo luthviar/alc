@@ -42,21 +42,21 @@ $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData=array(); 
 
-	$nestedData[] = "<a href='/berita/".$row["id"]."'>".$row["title"]."</a>";
+	$nestedData[] = "<a href='/news/".$row["id"]."'>".$row["title"]."</a>";
 	if ($row["can_reply"] == 1) {
-		$nestedData[] = "Yes <span><a class='btn btn-danger' href='/berita/".$row["id"]."/nonactive'>Deactive</a></span>";
+		$nestedData[] = "Yes <span><a class='btn btn-danger' href='/news/".$row["id"]."/nonactive'>Deactive</a></span>";
 		$sql2 = "SELECT id ";
 		$sql2.="FROM news_replies where id_news = ".$row["id"]."";
 		$query2=mysqli_query($conn, $sql2);
 		$totalData2 = mysqli_num_rows($query2);
 		$nestedData[] = $totalData2;
 	}else{
-		$nestedData[] = "<span style='opacity: 0.5;''>No </span><span><a class='btn btn-warning' href='/berita/".$row["id"]."/active'>Activicate</a></span>";
+		$nestedData[] = "<span style='opacity: 0.5;''>No </span><span><a class='btn btn-warning' href='/news/".$row["id"]."/active'>Activicate</a></span>";
 		$nestedData[] = "-";
 	}
 
 	$nestedData[] = $row['created_at'];
-	$nestedData[] = "<a class='btn btn-default' href='/berita/".$row["id"]."/edit'>edit</a></span>";
+	$nestedData[] = "<a class='btn btn-default' href='/news/".$row["id"]."/edit'>edit</a></span>";
 	
 	$data[] = $nestedData;
 }

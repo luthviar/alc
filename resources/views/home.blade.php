@@ -79,10 +79,10 @@
                                     @endif</a>
                                     <div class="card-block">
                                         <div  style="height:15vh; width:100%;">
-                                            <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
+                                            <h4 class="card-title"><a href="/news/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
                                             <p class="card-text" align="justify">{{strip_tags(str_limit($news->content, $limit = 150, $end = '...')) }}</p>
                                         </div>
-                                        <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p><br>
+                                        <p class="text-right" ><a href="/news/{{$news->id}}">Read more </a></p><br>
                                     </div>
                                 </div>
                             </div>

@@ -126,7 +126,7 @@ class BeritaController extends Controller
 
         }
         
-        return redirect('berita');
+        return redirect('news');
     }
 
     /**
@@ -239,7 +239,7 @@ class BeritaController extends Controller
         }
         
 
-        return redirect('berita');
+        return redirect('news');
     }
 
     /**
@@ -258,7 +258,7 @@ class BeritaController extends Controller
         $berita->can_reply = 1;
         $berita->save();
 
-        return redirect('berita');
+        return redirect('news');
     }
 
     public function nonactive($id){
@@ -266,7 +266,7 @@ class BeritaController extends Controller
         $berita->can_reply = 0;
         $berita->save();
 
-        return redirect('berita');
+        return redirect('news');
     }
 
     public function delete_attachment($id){

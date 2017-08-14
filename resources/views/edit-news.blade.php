@@ -8,7 +8,7 @@
                 <div class="panel-heading">Edit News</div>
                 <div class="panel-body">
                 
-                    <form id="myform" class="form-horizontal" role="form" method="POST" action="/berita/submit" enctype="multipart/form-data">
+                    <form id="myform" class="form-horizontal" role="form" method="POST" action="/news/submit" enctype="multipart/form-data">
                         {{ csrf_field() }}
                     
                     <input type="hidden" class="form-control" name="id_news" value="{{$news->id}}" required autofocus>

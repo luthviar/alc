@@ -58,7 +58,7 @@
           </a>
         </li>
 		    <li>
-          <a href="/berita">
+          <a href="/news">
             <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>News</span>
           </a>
         </li>

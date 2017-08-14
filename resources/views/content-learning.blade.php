@@ -35,18 +35,18 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading" role="tab" id="headingOne">
 						      <h4 class="panel-title">
-						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{$materi->id}}" aria-expanded="false" aria-controls="collapseOne">
-						          {{$materi->file_name}}
-						        </a>
-						      </h4>
+						      		{{$materi->file_name}}<br>
+						      	</h4>
 						    </div>
-						    <div id="collapseOne{{$materi->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-
-						      <div class="panel-body">							  
-						        <iframe id="viewer" src = "{{URL::to($materi->url)}}" width='100%' height='600' allowfullscreen webkitallowfullscreen></iframe> 
-						      </div>
-						    </div>
+						    <div>
+						      	<p>{!! html_entity_decode($materi->description) !!}</p>
+						      	<div class="row">
+						      		<a href="{{URL::asset($materi->url)}}">File_Materi</a>
+						      	</div>
+						      	
+						    </div>  
 						  </div>
+						  
 						  @endforeach
 						</div>
 							

@@ -33,7 +33,7 @@
 
     Route::resource('department', 'DepartmentController');
 
-    Route::resource('berita', 'BeritaController');
+    Route::resource('news', 'BeritaController');
 
     Route::resource('slider', 'ContentSliderController');
 
@@ -53,7 +53,7 @@
 
     Route::post('slider/submit', 'ContentSliderController@update');
 
-    Route::post('berita/submit', 'BeritaController@update');
+    Route::post('news/submit', 'BeritaController@update');
 
     Route::post('question/submit', 'QuestionController@update');
 
@@ -73,9 +73,9 @@
 
     Route::get('/access/{id}/nonactive', 'UserTrainingAuthController@nonactive');
 
-    Route::get('/berita/{id}/active', 'BeritaController@active');
+    Route::get('/news/{id}/active', 'BeritaController@active');
 
-    Route::get('/berita/{id}/nonactive', 'BeritaController@nonactive');
+    Route::get('/news/{id}/nonactive', 'BeritaController@nonactive');
 
     Route::get('/content-learning/{id}', 'ContentLearningController@add_content_learning');
 

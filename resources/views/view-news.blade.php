@@ -124,7 +124,7 @@ p.big {
 						<h4>Recent Post</h4>
 						<hr class="style14">
 						@foreach($beritas as $brt)
-							<a href="/berita/{{$brt->id}}"><p>{{$brt->title}}</p></a>
+							<a href="/news/{{$brt->id}}"><p>{{$brt->title}}</p></a>
 						@endforeach
 						<br>
 					</div>
