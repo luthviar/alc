@@ -49,7 +49,7 @@
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->
             <!-- END RESPONSIVE MENU TOGGLER -->
             <!-- BEGIN TOP NAVIGATION MENU -->
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right" style="cursor: pointer;">
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 @if (Auth::guest()) 
                     <li><a style="margin-top:10px;" class="btn btn-small btn-sm pull-right hijau-muda" href="{{ route('login') }}">Login <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </a></li>
@@ -64,16 +64,22 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li class="login">
+                                @if(Auth::user()->is_admin == 1)
+                                    <a href="/personnel">
+                                        Acting As Admin
+                                    </a>
+                                @endif
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                                             document.getElementById('logout-form').submit();"
+                                    style="
+                                    :hover{
+                                        background-color: red;
+                                    }"
+                                >
                                     Logout
                                 </a>
-                                @if(Auth::user()->is_admin == 1)
-                                <a href="/personnel">
-                                    Acting As Admin
-                                </a>
-                                @endif
+
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
