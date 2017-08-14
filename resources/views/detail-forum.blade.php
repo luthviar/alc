@@ -6,14 +6,13 @@ p.big {
 	font-size : 15px;
 }
 </style>
-<body>
-    <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
+<body class="page-header-fixed page-full-width">
+
             @include('layouts.header')
-                 
-            <section id="main">
-				<div class ="col-lg-8 col-md-8 col-sm-8">
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
+				<div class ="col-md-8">
 					<div class="row">
 						<h3>{{ $forum['title'] }}</h3>
 						<h6>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}, {{ \Carbon\Carbon::parse($forum->create_at)->format('l jS \\of F Y')}}</h6> 
@@ -115,8 +114,8 @@ p.big {
 						@endforeach
 						<br>
 					</div>
+				 </div>
 				</div>
-            </section>
         </div>
         <!-- Footer -->
         @include('layouts.footer')

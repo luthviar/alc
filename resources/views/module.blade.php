@@ -80,7 +80,7 @@
 									</h4>
 								  </div>
 								</div>
-								@endforeach 
+							@endforeach 
 					  </div>
       				@else
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -90,10 +90,11 @@
 									  <h4 class="panel-title">
 								      <a href="/training/{{$trains->id}}">{{$trains->title}}</a></h4></div>
 							</div>
-							@endforeach		
-					@endif
+							@endforeach	
 						
 					</div>
+						
+					@endif
                 </div>
             </div>
             
