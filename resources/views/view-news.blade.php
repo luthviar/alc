@@ -25,6 +25,7 @@ p.big {
 					<hr class="style14"> 
 					<p align="justify" class="big">
 						{!! html_entity_decode($news['content']) !!}
+
 					</p>
 					<div class='pull-right'>
 						1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>

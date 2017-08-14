@@ -8,16 +8,17 @@
     <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab">Employee Status</a></li>
 </div>
 <br><br><br>
-	
+	   <form id="myform" class="form-horizontal" role="form" method="POST" action="/personnel/submit">
         <div class="col-md-12 ">
 		 <div class="tab-content">
 		  <div role="tabpanel" class="tab-pane active" id="info">
+
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4>General Info</h4>
                 </div>
                 <div class="panel-body">
-                    <form id="myform" class="form-horizontal" role="form" method="POST" action="/personnel/submit">
+                    
                         {{ csrf_field() }}
                     
                     <input type="hidden" class="form-control" name="id_personnel" value="{{$personnel->id}}" required autofocus>
@@ -93,7 +94,7 @@
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
 
                         <div class="col-md-6">
-							<textarea id="summernote" name="content"></textarea>
+							<textarea id="summernote" name="alamat">{{$personnel->alamat}}</textarea>
                         </div>
                     </div>
 
@@ -111,14 +112,8 @@
                             </select><br>
                         </div>
                     </div>
-					<div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Edit User
-                            </button>
-                        </div>
-                    </div>
-                    </form>
+
+
                    </div>
 				  </div>
                 </div>
@@ -129,118 +124,115 @@
 							<h4>Employee status</h4>
 						</div>
 						<div class="panel-body">
-							<form id="myform" class="form-horizontal" role="form" method="POST" action="/personnel/submit">
-								{{ csrf_field() }}
+							
 							<div class="form-group">
-								<label for="nik" class="col-md-4 control-label">Employee Number</label>
+                        <label for="nik" class="col-md-4 control-label">Employee Number</label>
 
-								<div class="col-md-6">
-									@if(empty($personnel['employee']) or empty($personnel['employee']->nip))
-									<input id="nik" type="text" class="form-control" name="nik" >
-									@else
-									<input id="nik" type="text" class="form-control" name="nik" value="{{$personnel['employee']->nip}}">
-									@endif
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
-								<div class="col-md-6">
-									<select name="level_position" class="form-control">
-									@if(empty($personnel['employee']))
-										@foreach($level as $pos)
-											<option value="{{$pos->id}}">{{$pos->nama_level}}</option>
-										@endforeach
-									@else
-										@foreach($level as $pos)
-											@if($pos->id == $personnel['level']->id)
-												<option value="{{$pos->id}}" selected>{{$pos->nama_level}}</option>
-											@else
-												<option value="{{$pos->id}}">{{$pos->nama_level}}</option>
-											@endif
-										@endforeach
-									@endif
-										
-									</select><br>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="department" class="col-md-4 control-label">Department</label>                                     
-								<div class="col-md-6">
-									<select name="department" class="form-control">
-									@if(empty($personnel['struktur']) or empty($personnel['department']))
-										<option value="">..</option>
-										@foreach($department as $deps)
-										<option value="{{$deps->id_department}}">{{$deps->nama_departmen}}</option>
-										@endforeach
-									@else
-										<option value="">..</option>
-										@foreach($department as $deps)
-											@if($deps->id == $personnel['department']->id)
-												<option value="{{$deps->id_department}}" selected>{{$deps->nama_departmen}}</option>
-											@else
-												<option value="{{$deps->id_department}}">{{$deps->nama_departmen}}</option>
-											@endif
-										@endforeach
-									@endif
-										
-									</select><br>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="unit" class="col-md-4 control-label">Unit</label>                                     
-								<div class="col-md-6">
-									<select name="unit" class="form-control">
-										@if(empty($personnel['struktur']) or empty($personnel['unit']))
-											<option value="">..</option>
-											@foreach($unit as $unt)
-											<option value="{{$unt->id_unit}}">{{$unt->nama_unit}}</option>
-											@endforeach
-										@else
-											<option value="">..</option>
-											@foreach($unit as $unt)
-												@if($deps->id == $personnel['department']->id)
-													<option value="{{$unt->id_unit}}" selected>{{$unt->nama_unit}}</option>
-												@else
-													<option value="{{$unt->id_unit}}">{{$unt->nama_unit}}</option>
-												@endif
-											@endforeach
-										@endif
-									</select><br>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="section" class="col-md-4 control-label">Section</label>                                     
-								<div class="col-md-6">
-									<select name="section" class="form-control">
-										@if(empty($personnel['struktur']) or empty($personnel['section']))
-											<option value="">..</option>
-											@foreach($section as $sect)
-											<option value="{{$sect->id_section}}">{{$sect->nama_section}}</option>
-											@endforeach
-										@else
-											<option value="">..</option>
-											@foreach($section as $sect)
-												@if($deps->id == $personnel['department']->id)
-													<option value="{{$sect->id_section}}" selected>{{$sect->nama_section}}</option>
-												@else
-													<option value="{{$sect->id_section}}">{{$sect->nama_section}}</option>
-												@endif
-											@endforeach
-										@endif
-									</select><br>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="divisi" class="col-md-4 control-label">Divition</label>                                     
-								<div class="col-md-6">
-									<select name="divisi" class="form-control">
-										<option value="">..</option>
-										@foreach($divisi as $div)
-										<option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
-										@endforeach
-									</select><br>
-								</div>
-							</div>
+                        <div class="col-md-6">
+                            @if(empty($personnel['employee']) or empty($personnel['employee']->nip))
+                            <input id="nik" type="text" class="form-control" name="nik" >
+                            @else
+                            <input id="nik" type="text" class="form-control" name="nik" value="{{$personnel['employee']->nip}}">
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
+                        <div class="col-md-6">
+                            <select name="level_position" class="form-control">
+                            @if(empty($personnel['employee']))
+                                @foreach($level as $pos)
+                                    <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
+                                @endforeach
+                            @else
+                                @foreach($level as $pos)
+                                    @if($pos->id == $personnel['level']->id)
+                                        <option value="{{$pos->id}}" selected>{{$pos->nama_level}}</option>
+                                    @else
+                                        <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
+                                    @endif
+                                @endforeach
+                            @endif
+                                
+                            </select><br>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
+                        <div class="col-md-6">
+                            <select name="divisi" class="form-control" id="MyDivisi">
+                                @if(empty($personnel['struktur']) or empty($personnel['divisi']))
+                                    <option value="">..</option>
+                                    @foreach($divisi as $div)
+                                    <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
+                                    @endforeach
+                                @else
+                                    <option value="">..</option>
+                                    @foreach($divisi as $div)
+                                        @if($div->id == $personnel['unit']->id)
+                                        <option value="{{$div->id_divisi}}" selected>{{$div->nama_divisi}}</option>
+                                        @else
+                                            @foreach($divisi as $div)
+                                            <option value="{{$div->id_divisi}}">{{$div->nama_divisi}}</option>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unit" class="col-md-4 control-label">Unit</label>                                     
+                        <div class="col-md-6">
+                            <select name="unit" class="form-control" id="MyUnit">
+                                @if(empty($personnel['struktur']) or empty($personnel['unit']))
+                                    
+                                @else
+                                    @foreach($unit as $unt)
+                                        @if($unt->id == $personnel['unit']->id)
+                                            <option value="{{$unt->id_unit}}" selected>{{$unt->nama_unit}}</option>
+                                        
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="department" class="col-md-4 control-label">Department</label>                                     
+                        <div class="col-md-6">
+                            <select name="department" class="form-control" id="MyDepartment">
+                            @if(empty($personnel['struktur']) or empty($personnel['department']))
+                                
+                            @else
+                                @foreach($department as $deps)
+                                    @if($deps->id == $personnel['department']->id)
+                                        <option value="{{$deps->id_department}}" selected>{{$deps->nama_departmen}}</option>
+                                    @endif
+                                @endforeach
+                            @endif
+                                
+                            </select><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="section" class="col-md-4 control-label">Section</label>                                     
+                        <div class="col-md-6">
+                            <select name="section" class="form-control" id="MySection">
+                                @if(empty($personnel['struktur']) or empty($personnel['section']))
+                                    
+                                @else
+                                    @foreach($section as $sect)
+                                        @if($deps->id == $personnel['department']->id)
+                                            <option value="{{$sect->id_section}}" selected>{{$sect->nama_section}}</option>
+                                        
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select><br>
+                        </div>
+                    </div>
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
 									<button type="submit" class="btn btn-primary">
@@ -256,6 +248,127 @@
 				
             </div>
         </div>
+
+        <script type="text/javascript">
+
+    $('#MyDivisi').click(function() {
+      var id_divisi = $('#MyDivisi').val();
+      $.ajax({
+        type:"POST",
+        url:"/get-unit",
+        dataType: 'json',
+        data:{id_divisi:id_divisi,_token: '{{csrf_token()}}'},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(units) {
+            var html = '';
+            $.each(units.units, function(key, value){
+                html += '<option value="'+value.id_unit+'">'+value.nama_unit+'</option>';               
+                
+            });
+            $('#MyUnit').html(html);        
+            
+            
+        },
+        error: function(data){
+            console.log(data);
+        },
+      });
+      
+    });
+
+</script>
+
+<script type="text/javascript">
+
+
+    $('#MyUnit').click(function() {
+      var id_divisi = $('#MyDivisi').val();
+      var id_unit = $('#MyUnit').val();
+      $.ajax({
+        type:"POST",
+        url:"/get-department",
+        dataType: 'json',
+        data:{id_unit:id_unit,id_divisi:id_divisi,_token: '{{csrf_token()}}'},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(departments) {
+            var html = '';
+            $.each(departments.departments, function(key, value){               
+                html += '<option value="'+value.id_department+'">'+value.nama_departmen+'</option>';
+                
+            });
+            $('#MyDepartment').html(html);  
+                
+            
+            
+        },
+        error: function(data){
+            console.log(data);
+        },
+      });
+      
+    });
+
+
+    
+    
+
+</script>
+
+<script type="text/javascript">
+
+
+    $('#MyDepartment').click(function() {
+      var id_divisi = $('#MyDivisi').val();
+      var id_unit = $('#MyUnit').val();
+      var id_department = $('#MyDepartment').val();
+      $.ajax({
+        type:"POST",
+        url:"/get-section",
+        dataType: 'json',
+        data:{id_department:id_department,id_unit:id_unit,id_divisi:id_divisi,_token: '{{csrf_token()}}'},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(sections) {
+            var html = '';
+            $.each(sections.sections, function(key, value){             
+                html += '<option value="'+value.id_section+'">'+value.nama_section+'</option>';
+                
+            });
+            $('#MySection').html(html); 
+                
+            
+            
+        },
+        error: function(data){
+            console.log(data);
+        },
+      });
+      
+    });
+
+
+    
+    
+
+</script>
+
 
 @endsection
 

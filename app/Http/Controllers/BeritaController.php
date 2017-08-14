@@ -67,11 +67,12 @@ class BeritaController extends Controller
             'id_user' => 'required',
             'can_reply' => 'required',
         ]);
-        if (empty($request->file('image'))) {
+        $file = $request->file('image');
+        if (!empty($file)) {
             $file = $request->file('image');
-            $destinationPath = 'uploads';
+            $destinationPath = 'Uploads';
             $movea = $file->move($destinationPath,$file->getClientOriginalName());
-            $url = "uploads/{$file->getClientOriginalName()}";
+            $url = "Uploads/{$file->getClientOriginalName()}";
             $berita = new Berita;
             $berita->id_user = $request->id_user;
             $berita->title = $request->title;

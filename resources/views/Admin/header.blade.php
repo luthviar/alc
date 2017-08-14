@@ -2,7 +2,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a  class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LC</span>
       <!-- logo for regular state and mobile devices -->
@@ -30,7 +30,11 @@
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{URL::asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                @if(Auth::user()->get_photo() == null)
+                <img src="{{URL::asset('photo.jpg')}}" class="img-circle" alt="User Image">
+                @else
+                <img src="{{URL::asset(Auth::user()->get_photo())}}" class="img-circle" alt="User Image">
+                @endif
 
                 <p>
                   ACS - CKG

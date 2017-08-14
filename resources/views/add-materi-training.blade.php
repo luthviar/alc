@@ -46,7 +46,7 @@
 
 
 <!-- MODAL - Add Content Learning -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">
     <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ContentLearningController@store') }}" enctype="multipart/form-data"">
         <!-- Modal content-->

@@ -46,4 +46,9 @@ class User extends Authenticatable
         $personnel = Personnel::where('id_user',$this->id)->first();
         return sprintf(" %s %s ",$personnel->fname,$personnel->lname);
     }
+
+    public function get_photo(){
+        $personnel = Personnel::where('id_user',$this->id)->first();
+        return $personnel->photo;
+    }
 }
