@@ -55,15 +55,20 @@
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" multiple="multiple" name="file_pendukung[]" />
+                                       Browse..
+                                            <input type="file"
+                                                   id="file"
+                                                   onchange="javascript:updateList()"
+                                                   name="file_pendukung[]"
+                                                   multiple/>
+                                            </span>
                                     </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
+                                 <input type="text" class="form-control" value="select file(s)" readonly>
                             </div></br>
                             <div class='file-uploaded'>
-								1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
-								2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
-								3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+                                <p>
+                                    <div id="fileList"></div>
+                                </p>
 							</div>
                         </div>
                     </div>
@@ -81,7 +86,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
-                                Add News
+                                Create News
                             </button>
                         </div>
                     </div>
@@ -137,4 +142,18 @@ $(document).ready(function() {
 
     
 });
+</script>
+
+<script>
+    updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
+
+        output.innerHTML = 'Selected file(s) <br><ul>';
+        for (var i = 0; i < input.files.length; ++i) {
+            output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+        }
+        output.innerHTML += '</ul>';
+    }
 </script>

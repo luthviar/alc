@@ -6,14 +6,13 @@ p.big {
 	font-size : 15px;
 }
 </style>
-<body>
+<body class="page-header-fixed page-full-width">
     <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
-            @include('layouts.header')
-                 
-            <section id="main">
-				<div class ="col-lg-8 col-md-8 col-sm-8">
+	@include('layouts.header')
+	<div class="page-container" id="wrapper">
+        <div class="page-content-wrapper">
+		  <div class="page-content" >
+				<div class ="col-md-8">
 					<h3>{{ $news['title'] }}</h3>
 					<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('l jS \\of F Y')}}</h6>
 					<hr class="style14">
@@ -60,13 +59,9 @@ p.big {
 								<br>
 							@endforeach
 
-							
-						</div>
 						@if(Auth::user() == null)
 						
 						@else
-
-							<div class="block-advice">
 								<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('NewsReplieController@store') }}" enctype="multipart/form-data">
 		                        	{{ csrf_field() }}
 		                        	<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
@@ -93,13 +88,20 @@ p.big {
 											 <div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
-													</span>
+														Browse..
+														<input type="file"
+															   id="file"
+															   onchange="javascript:updateList()"
+															   name="file_pendukung[]"
+															   multiple/>
+														</span>
 												</span>
-												<input type="text" class="form-control" readonly>
+												<input type="text" class="form-control" value="select file(s)" readonly>
 											</div></br>
 											<div class='file-uploaded'>
-												
+												<p>
+													<div id="fileList"></div>
+												</p>
 											</div>
 										</div>
 									</div>
@@ -121,7 +123,7 @@ p.big {
 				
 				<div class="col-lg-4  col-md-4 col-sm-12">
 					<div class="well">
-						<h4>Recent Post</h4>
+						<h4>Recent News</h4>
 						<hr class="style14">
 						@foreach($beritas as $brt)
 							<a href="/news/{{$brt->id}}"><p>{{$brt->title}}</p></a>
@@ -129,12 +131,26 @@ p.big {
 						<br>
 					</div>
 				</div>
-            </section>
+            </div>
         </div>
         <!-- Footer -->
         @include('layouts.footer')
     </div>
 
     @include('layouts.script')
+
+	<script>
+        updateList = function() {
+            var input = document.getElementById('file');
+            var output = document.getElementById('fileList');
+
+            output.innerHTML = 'Selected file(s) <br><ul>';
+            for (var i = 0; i < input.files.length; ++i) {
+                output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+            }
+            output.innerHTML += '</ul>';
+        }
+	</script>
 </body>
 </html>

@@ -98,41 +98,7 @@
 				  <th>Action</th>
 				</tr>
 			  </thead>
-			  <tbody>
-			  	@foreach($password_auth as $password)
-				<tr>
-				  <td>{{$password->username}}</td>
-				  <td>{{$password->email}}</td>
-				  <td>{{$password->created_at}}</td>
-				  @if($password['valid'] == 1)
-				  <td>valid account</td>
-					  @if($password->is_process == 1)
-					  <td>success</td>
-					  <td><a class="btn btn-default btn-flat" disabled="true">process</a></td>
-					  @else
-					  <td style="opacity: 0.5">no action</td>
-					  <td>
-						  <form role="form" method="POST" action="/process-access/submit">
-							  {{ csrf_field() }}
-							  <input type="hidden" class="form-control" name="id_user" value="{{$password->user->id}}" >
-							  <button type="submit" class="btn btn-default btn-flat">process</button>
-						  </form>
-					  </td>
-					  @endif
-				  
-				  @else
-				  <td>non valid accout</td>
-				  	  @if($password->is_process == 1)
-					  <td>success</td>
-					  @else
-					  <td style="opacity: 0.5">no action</td>
-					  @endif
-				  <td><a class="btn btn-default btn-flat" disabled="true">process</a></td>
-				  @endif
-				</tr>
-				@endforeach
-				
-			  </tbody>
+			  
 			</table>
 		</div>
 		</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use Auth;
+use Carbon\Carbon;
 use DB;
 use App\Module;
 use App\Personnel;
@@ -120,6 +121,7 @@ class ForumController extends Controller
             'can_reply' => $request->can_reply,
             'id_department' => $request->id_department,
             'id_job_family' => $request->id_job_family,
+            'created_at' => Carbon::now()
         ));
 
         $file_pendukung = $request->file('file_pendukung');

@@ -76,18 +76,27 @@
                     </div>
 
 					<div class="form-group">
-                        <label for="image" class="col-md-4 control-label">Add attachment</label>
+                        <label for="image" class="col-md-4 control-label">Attachment(s)</label>
 
                         <div class="col-md-6">
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                       Browse..
+                                            <input type="file"
+                                                   id="file"
+                                                   onchange="javascript:updateList()"
+                                                   name="file_pendukung[]"
+                                                   multiple/>
+                                            </span>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
+                                 <input type="text" class="form-control" value="select file(s)" readonly>
                             </div></br>
                             <div class='file-uploaded'>
+                                <p>
+                                    <div id="fileList"></div>
+                                </p>
                                 @foreach($news['file_pendukung'] as $file)
 								<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>  {{$file->name}}</a>       <span><a href="/news_attachment_delete/{{$file->id}}" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i>delete</a></span><br>
 								@endforeach
@@ -98,7 +107,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
-                                Edit News
+                                Update News
                             </button>
                         </div>
                     </div>
@@ -111,3 +120,18 @@
         </div>
     </div>
 @endsection
+
+
+<script>
+    updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
+
+        output.innerHTML = 'Selected file(s) <br><ul>';
+        for (var i = 0; i < input.files.length; ++i) {
+            output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+        }
+        output.innerHTML += '</ul>';
+    }
+</script>

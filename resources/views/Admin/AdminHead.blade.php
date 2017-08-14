@@ -35,10 +35,12 @@
   <script src="{{URL::asset('AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
 	<!-- FastClick -->
   <script src="{{URL::asset('AdminLTE/plugins/fastclick/fastclick.js')}}"></script>
-	
+  <script src="{{URL::asset('AdminLTE/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+   
+      
+  
   <link rel="stylesheet" href="{{URL::asset('css/metronic.css')}}">
 	<!--- SummerNote -->
-  
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
   
@@ -105,5 +107,5 @@ function progressHandlingFunction(e){
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  
+
 </head>

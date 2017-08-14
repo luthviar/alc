@@ -1,14 +1,12 @@
 @include('layouts.head')
-<body>
 
-	<!-- Header -->
-	<div id="wrapper">
-		<div class="wrapper-holder">
-			 @include('layouts.header')
-			
-	@if(empty($next_section))
+<body class="page-header-fixed page-full-width">
 
-		<section id="main">
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+	   	@if(empty($next_section))
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
 			<div class="container">
 				<div class="row">
 				
@@ -60,11 +58,11 @@
 						
 					</div>
 				</div>
-		</section>
+		</div>
 
 	@else
 		
-		<section id="main">
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
 			<div class="container">
 				<div class="row">
 				
@@ -116,7 +114,7 @@
 						
 					</div>
 				</div>
-		</section>		
+		</div>		
 		
 	@endif
 				

@@ -6,14 +6,13 @@ p.big {
 	font-size : 15px;
 }
 </style>
-<body>
-    <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
+<body class="page-header-fixed page-full-width">
+
             @include('layouts.header')
-                 
-            <section id="main">
-				<div class ="col-lg-8 col-md-8 col-sm-8">
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" >		
+				<div class ="col-md-8">
 					<div class="row">
 						<h3>{{ $forum['title'] }}</h3>
 						<h6>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}, {{ \Carbon\Carbon::parse($forum->create_at)->format('l jS \\of F Y')}}</h6> 
@@ -22,7 +21,6 @@ p.big {
 							{!! html_entity_decode($forum['content']) !!}
 
 						</p><br>
-						<hr class="style14"> 
 						<div class='pull-right'>
 							Attachments : <br>
 							@foreach($forum['file_pendukung'] as $file)
@@ -30,6 +28,7 @@ p.big {
 							@endforeach
 						</div>
 					</div>
+					<br>
 								
 					@if($forum->can_reply == 1)
 						<div class="block-advice">
@@ -54,9 +53,6 @@ p.big {
 
 							@if(Auth::user() == null)
 							@else
-						</div>
-
-						<div class="block-advice">
 							<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('ReplieController@store') }}" enctype="multipart/form-data">
 	                        	{{ csrf_field() }}
 	                        	<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
@@ -82,20 +78,27 @@ p.big {
 			                             <div class="input-group">
 			                                <span class="input-group-btn">
 			                                    <span class="btn btn-default btn-file">
-			                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+			                                        Browse..
+													<input type="file"
+														   id="file"
+														   onchange="javascript:updateList()"
+														   name="file_pendukung[]"
+														   multiple/>
 			                                    </span>
 			                                </span>
-			                                <input type="text" class="form-control" readonly>
+											 <input type="text" class="form-control" value="select file(s)" readonly>
 			                            </div></br>
-			                            <div class='file-uploaded'>
-			                                
-			                            </div>
+											<div class='file-uploaded'>
+												<p>
+													<div id="fileList"></div>
+												</p>
+											</div>
 			                        </div>
 			                    </div>
 				                <div class="form-group">
 				                    <div class="col-md-8 col-md-offset-2">
 				                        <button type="submit" class="btn btn-info">
-				                            Comment
+				                            Send Comment
 				                        </button>
 				                    </div>
 				                </div>
@@ -115,13 +118,26 @@ p.big {
 						@endforeach
 						<br>
 					</div>
+				 </div>
 				</div>
-            </section>
         </div>
         <!-- Footer -->
         @include('layouts.footer')
     </div>
 
     @include('layouts.script')
+	<script>
+        updateList = function() {
+            var input = document.getElementById('file');
+            var output = document.getElementById('fileList');
+
+            output.innerHTML = 'Selected file(s) <br><ul>';
+            for (var i = 0; i < input.files.length; ++i) {
+                output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+            }
+            output.innerHTML += '</ul>';
+        }
+	</script>
 </body>
 </html>

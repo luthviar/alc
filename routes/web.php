@@ -43,6 +43,11 @@
 
     Route::resource('personnel', 'PersonnelController');
 
+//    Route::controller('personnel/datatables', 'PersonnelController', [
+//        'anyData'  => 'personnel.data',
+//        'getIndex' => 'personnel',
+//    ]);
+
     Route::resource('raport', 'ScoreSummaryController');
 
     Route::resource('test', 'TestController');

@@ -7,16 +7,12 @@
     });
 </script>
 
-<body>
+<body class="page-header-fixed page-full-width">
 
-    <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
             @include('layouts.header')
-        
-            <br>
-            
-            <section id="main">
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">			
 
 					<div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
@@ -31,7 +27,7 @@
                             </li>
                         </ul>
 						<br><br>
-						
+						<div class ="col-md-10 col-md-offset-1">
 						<div class="tab-content">
 							<div class="tab-pane active" id="myprofile">
 								<div class="panel panel-success">
@@ -201,11 +197,12 @@
 								  </div>
 								</div>
 						</div>
+						</div>
 					  
 					</div>
 
                 
-            </section>
+            </div>
             
             
             

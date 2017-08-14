@@ -1,15 +1,12 @@
-@include('layouts.head')
+@include('layouts.head')z
+<body class="page-header-fixed page-full-width">
 
-<body>
-
-    <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
-			@include('layouts.header')
-		</div>
-	
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
 			@if(empty($logout))
-            <section id="main">
+            
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
             <div class="container">
 				<div class="row">
 				
@@ -63,13 +60,14 @@
 					</div>
 				</div>
                 
-            </section>
+            </div>
             
 			
 	@else
 
 
-			<section id="main">
+			
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
             <div class="container">
 				<div class="row">
 				
@@ -137,11 +135,11 @@
 					</div>
 				</div>
                 
-            </section>
+            </div>
             
 				
 			@endif
-	
+		</div>
 	   <!-- Footer -->
         @include('layouts.footer')
     </div>

@@ -1,59 +1,90 @@
-<header id="header">
-	<span class ="Logo"><a href="/"><img src="{{URL::asset('Elegantic/images/ALS.jpg')}}" width="20%" height="100%" ></a></span>
-	<ul class="nav navbar-right">
-		@if (Auth::guest())
-			<br>
-            <button class="btn btn-success btn-lg"><li><a style="color:white;" href="{{ route('login') }}"><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a></li></button>
-        @else
-			<li class="dropdown">
-				<br><br>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>  {{Auth::user()->get_nama()}} <span class="caret"></span>
-                </a>
-
-                <ul class="dropdown-menu" role="menu">
-                    <li class="login">
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        @if(Auth::user()->is_admin == 1)
-                        <a href="/personnel">
-                            Acting As Admin
-                        </a>
-                        @endif
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
-            </li>
-        @endif
-	</ul>
-	<hr class = "style14">
-	<div class="bar-holder">
-		<a class="menu_trigger" href="#">menu</a>
-		<nav id="nav">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/news-board">News</a></li>
-				@if(Auth::user())
-				<li><a href="{{url('/forum')}}">Forum</a></li>
-				<div class="dropdown">
-					<li><a class="dropbtn">My Modules</a></li>
-					<div class="dropdown-content">
-					@foreach ($module as $modul)
+ <!-- Header -->
+    <div class="header navbar navbar-fixed-top mega-menu">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="header-inner">
+            <!-- BEGIN LOGO -->
+            <a class="navbar-brand" href="index.html">
+                <img src="{{URL::asset('Elegantic/images/ALS-logo.jpg')}}"  class="img-responsive"/>
+            </a>
+            <!-- END LOGO -->
+            <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- <img src="assets/img/menu-toggler.png" alt=""/> -->
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- BEGIN HORIZANTAL MENU -->
+            <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
+                 
+				<ul class="nav navbar-nav">
+					<li class="classic-menu-dropdown active">
+						<a href="/">
+							 Home
+							<span class="selected">
+							</span>
+						</a>
+					</li>
+					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
+					@if(Auth::user())
+					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
+					<li class="classic-menu-dropdown">
+						<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+							My Modules <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							@foreach ($module as $modul)
+								<li>
+									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+								</li>
+							@endforeach
+						</ul>
+					 
+					</li>
 						
-                            <a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-                        
-					@endforeach
-					</div>
-				</div>
-				<li><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
-				@endif
-			</ul>
-		</nav>
-	</div>
-</header>
+					 
+					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+					@endif
+				</ul>
+			 
+            </div>
+            <!-- END HORIZANTAL MENU -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav navbar-nav pull-right">
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                @if (Auth::guest()) 
+                    <li><a style="margin-top:10px;" class="btn btn-small btn-sm pull-right hijau-muda" href="{{ route('login') }}">Login <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </a></li>
+                @else
+                    <li class="dropdown user">
+                         
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" src="assets/img/avatar1_small.jpg"/>
+                            <span class="username hidden-1024">{{Auth::user()->get_nama()}}</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="login">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                @if(Auth::user()->is_admin == 1)
+                                <a href="/personnel">
+                                    Acting As Admin
+                                </a>
+                                @endif
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+	<div class="clearfix"></div>

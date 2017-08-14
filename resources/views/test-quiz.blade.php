@@ -1,14 +1,13 @@
 @include('layouts.head')
 
 
-<body>
 
-  <!-- Header -->
-  <div id="wrapper">
-    <div class="wrapper-holder">
-      @include('layouts.header')
-      
-    <section id="main">
+<body class="page-header-fixed page-full-width">
+
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
       <div class="container">
         <div class="row">
         <h2>Training</h2>
@@ -98,7 +97,7 @@
 
           </div>
         </div>
-    </section>
+    </div>
 
         
 

@@ -76,7 +76,18 @@
        @else
         <td>-</td>
        @endif
-         <td><form class="forms" action="/delete-forum" method="post">{{ csrf_field() }}<input type="hidden" name="id_forum" value="{{$el->id}}"><input type="hidden" name="id_category" value="'+1+'"><button class="btnsub" type="submit">delete</button></form></td>
+         <td>
+             <form
+                     class="forms"
+                     action="/delete-forum" method="post">
+
+                 {{ csrf_field() }}
+                 <input type="hidden" name="id_forum" value="{{$el->id}}">
+                 <input type="hidden" name="id_category" value="'+1+'">
+                 <button class="btnsub" type="submit">delete</button>
+
+             </form>
+         </td>
          @endforeach
          </tr>
         </tbody>
