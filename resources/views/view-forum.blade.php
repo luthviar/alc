@@ -168,238 +168,302 @@
 </script>
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
-<!-- New Thread Umum -->
-<div class="modal fade" id="modal_umum" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
-        <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">New Thread</h4>
-                </div>
-                    
-                <div class="modal-body">
-                    {{ csrf_field() }}
-
-                    <input type="hidden" name="id_department" value="">
-                    <input type="hidden" name="id_job_family" value="">
-                            
-                            
-                    <div class="form-group">
-                        <label for="title" class="col-md-3 control-label">Title</label>
-                
-                        <div class="col-md-6">
-                            <input type="text" name="title">
+        <!-- New Thread Umum -->
+        <div class="modal fade" id="modal_umum" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">New Thread</h4>
                         </div>
-                    </div>
-                            
-                    <div class="form-group">
-                        <label for="can_repl
-                        y" class="col-md-3 control-label">Can Reply</label>                                     
-                        <div class="col-md-6">
-                            <select name="can_reply" class="form-control">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select><br>
-                            
-                        </div>
-                    </div>
 
-                    <div class="form-group" >
-                        <label for="content" class="col-md-3 control-label">Content</label>
-                        
-                        <div class="col-md-10" name="content">
-                            <textarea class="summernote" name="content"></textarea>
-                        </div>
-                    </div>
+                        <div class="modal-body">
+                            {{ csrf_field() }}
 
-                    <div class="form-group">
-                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+                            <input type="hidden" name="id_department" value="">
+                            <input type="hidden" name="id_job_family" value="">
 
-                        <div class="col-md-6">
-                             <div class="input-group">
+
+                            <div class="form-group">
+                                <label for="title" class="col-md-3 control-label">Title</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" name="title">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="can_repl
+                        y" class="col-md-3 control-label">Can Reply</label>
+                                <div class="col-md-6">
+                                    <select name="can_reply" class="form-control">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select><br>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group" >
+                                <label for="content" class="col-md-3 control-label">Content</label>
+
+                                <div class="col-md-10" name="content">
+                                    <textarea class="summernote" name="content"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                        Browse..
+                                        <input type="file"
+                                               id="file"
+                                               onchange="javascript:updateList()"
+                                               name="file_pendukung[]"
+                                               multiple/>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
-                            </div></br>
-                            <div class='file-uploaded'>
-                                
+                                        <input type="text" class="form-control" value="select file(s)" readonly>
+                                    </div></br>
+                                    <div class='file-uploaded'>
+                                        <p>
+                                        <div id="fileList"></div>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
+            </div>
+        </div>
+
+
+        <!-- New Thread Department -->
+        <div class="modal fade" id="modal_department" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">New Thread</h4>
                         </div>
-                    </div>
-                </div>
-            </form>
-        </div>   
-    </div>
-</div>
+
+                        <div class="modal-body">
+                            {{ csrf_field() }}
+
+                            <input type="hidden" name="id_department" value="{{$department->id_department}}">
+                            <input type="hidden" name="id_job_family" value="">
 
 
-<!-- New Thread Department -->
-<div class="modal fade" id="modal_department" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
-        <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">New Thread</h4>
-                </div>
-                    
-                <div class="modal-body">
-                    {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="title" class="col-md-3 control-label">Title</label>
 
-                    <input type="hidden" name="id_department" value="{{$department->id_department}}">
-                    <input type="hidden" name="id_job_family" value="">
-                            
-                            
-                    <div class="form-group">
-                        <label for="title" class="col-md-3 control-label">Title</label>
-                
-                        <div class="col-md-6">
-                            <input type="text" name="title"/>
-                        </div>
-                    </div>
-                            
-                    <div class="form-group">
-                        <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
-                        <div class="col-md-6">
-                            <select name="can_reply">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
-                    </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="title"/>
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="content" class="col-md-3 control-label">Content</label>
-                        
-                          <div class="col-md-10 col-xs-offset-1">
-                            <textarea class="summernote" name="content3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+                            <div class="form-group">
+                                <label for="can_reply" class="col-md-3 control-label">Can Reply</label>
+                                <div class="col-md-6">
+                                    <select name="can_reply">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                        <div class="col-md-6">
-                             <div class="input-group">
+                            <div class="form-group">
+                                <label for="content" class="col-md-3 control-label">Content</label>
+
+                                <div class="col-md-10 col-xs-offset-1">
+                                    <textarea class="summernote" name="content3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                        Browse..
+                                        <input type="file"
+                                               id="filedua"
+                                               onchange="javascript:updateList2()"
+                                               name="file_pendukung[]"
+                                               multiple/>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
-                            </div></br>
-                            <div class='file-uploaded'>
-                                
+                                        <input type="text" class="form-control" value="select file(s)" readonly>
+                                    </div></br>
+                                    <div class='file-uploaded'>
+                                        <p>
+                                        <div id="fileListdua">
+
+                                        </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>   
-    </div>
-</div>
+            </div>
+        </div>
 
-<!-- New Thread Job Family -->
-<div class="modal fade" id="modal_job_family" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
-        <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">New Thread</h4>
-                </div>
-                    
-                <div class="modal-body">
-                    {{ csrf_field() }}
-
-                    <input type="hidden" name="id_department" value="">
-                    <input type="hidden" name="id_job_family" value="{{$job_family->id}}">
-                            
-                            
-                    <div class="form-group">
-                        <label for="title" class="col-md-3 control-label">Title</label>
-                
-                        <div class="col-md-6">
-                            <input type="text" name="title"/>
+        <!-- New Thread Job Family -->
+        <div class="modal fade" id="modal_job_family" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">New Thread</h4>
                         </div>
-                    </div>
-                            
-                    <div class="form-group">
-                        <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
-                        <div class="col-md-6">
-                            <select name="can_reply" >
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="content" class="col-md-3 control-label">Content</label>
-                        
-                        <div class="col-md-10 col-xs-offset-1">
-                            <textarea class="summernote" name="content2"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+                        <div class="modal-body">
+                            {{ csrf_field() }}
 
-                        <div class="col-md-6">
-                             <div class="input-group">
+                            <input type="hidden" name="id_department" value="">
+                            <input type="hidden" name="id_job_family" value="{{$job_family->id}}">
+
+
+                            <div class="form-group">
+                                <label for="title" class="col-md-3 control-label">Title</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" name="title"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="can_reply" class="col-md-3 control-label">Can Reply</label>
+                                <div class="col-md-6">
+                                    <select name="can_reply" >
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content" class="col-md-3 control-label">Content</label>
+
+                                <div class="col-md-10 col-xs-offset-1">
+                                    <textarea class="summernote" name="content2"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                        Browse..
+                                        <input type="file"
+                                               id="filetiga"
+                                               onchange="javascript:updateList3()"
+                                               name="file_pendukung[]"
+                                               multiple/>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
-                            </div></br>
-                            <div class='file-uploaded'>
-                                
+                                        <input type="text" class="form-control" value="select file(s)" readonly>
+                                    </div></br>
+                                    <div class='file-uploaded'>
+                                        <p>
+                                        <div id="fileListtiga">
+
+                                        </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>   
-    </div>
-</div>
+            </div>
+        </div>
 
+        <script>
+            updateList = function() {
+                var input = document.getElementById('file');
+                var output = document.getElementById('fileList');
+
+                output.innerHTML = 'Selected file(s) <br><ul>';
+                for (var i = 0; i < input.files.length; ++i) {
+                    output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+                }
+                output.innerHTML += '</ul>';
+            }
+
+            updateList2 = function() {
+                var input = document.getElementById('filedua');
+                var output = document.getElementById('fileListdua');
+
+                output.innerHTML = 'Selected file(s) <br><ul>';
+                for (var i = 0; i < input.files.length; ++i) {
+                    output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+                }
+                output.innerHTML += '</ul>';
+            }
+
+            updateList3 = function() {
+                var input = document.getElementById('filetiga');
+                var output = document.getElementById('fileListtiga');
+
+                output.innerHTML = 'Selected file(s) <br><ul>';
+                for (var i = 0; i < input.files.length; ++i) {
+                    output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+                }
+                output.innerHTML += '</ul>';
+            }
+        </script>
 </body>
 </html>
 

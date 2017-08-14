@@ -32,7 +32,7 @@
 
                 <div class="blog-page">
                     <div class="row">
-                        <div class="col-md-8 col-sm-6 article-block">
+                        <div class="col-md-offset-1 col-md-6 col-sm-6 article-block">
                             <p class="border-panel-title-wrap"> 
                                 <!-- <div class="panel-title-wrap"> -->
                                     <span class="panel-title-text">News</span>
@@ -58,16 +58,7 @@
                                     </ul>
                                     <ul class="list-inline blog-tags">
                                         <li>
-                                            <i class="fa fa-tags"></i>
-                                            <a href="#">
-                                                 Technology
-                                            </a>
-                                            <a href="#">
-                                                 Education
-                                            </a>
-                                            <a href="#">
-                                                 Internet
-                                            </a>
+                                           <i class="fa fa-pencil" aria-hidden="true"></i> Posted By Admin 1
                                         </li>
                                     </ul>
                                 </div>
@@ -89,49 +80,12 @@
                             @endforeach
                      
                             <ul class="pagination pull-right">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-left"></i>
+                                 <a class="btn hijau-muda" href="page_blog_item.html">
+                                         More News <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                         1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                         2
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                         3
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                         4
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                         5
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                         6
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
-                        <div class="col-md-4 col-sm-6 article-block">
+                        <div class="col-md-3 col-sm-6 article-block">
                             <p class="border-panel-title-wrap"> 
                                 <span class="panel-title-text">Links</span>    
                             </p>
