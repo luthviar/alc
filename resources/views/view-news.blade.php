@@ -12,7 +12,7 @@ p.big {
         <div class="wrapper-holder">
             @include('layouts.header')
                  
-            <section id="main">
+            <section id="main" style="margin-top: 100px;">
 				<div class ="col-lg-8 col-md-8 col-sm-8">
 					<h3>{{ $news['title'] }}</h3>
 					<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('l jS \\of F Y')}}</h6>
@@ -93,13 +93,20 @@ p.big {
 											 <div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
-													</span>
+														Browse..
+														<input type="file"
+															   id="file"
+															   onchange="javascript:updateList()"
+															   name="file_pendukung[]"
+															   multiple/>
+														</span>
 												</span>
-												<input type="text" class="form-control" readonly>
+												<input type="text" class="form-control" value="select file(s)" readonly>
 											</div></br>
 											<div class='file-uploaded'>
-												
+												<p>
+													<div id="fileList"></div>
+												</p>
 											</div>
 										</div>
 									</div>
@@ -108,7 +115,7 @@ p.big {
 					                <div class="form-group">
 					                    <div class="col-md-6 col-md-offset-4">
 					                        <button type="submit" class="btn btn-info">
-					                            Comment
+					                            Send Comment
 					                        </button>
 					                    </div>
 					                </div>
@@ -121,7 +128,7 @@ p.big {
 				
 				<div class="col-lg-4  col-md-4 col-sm-12">
 					<div class="well">
-						<h4>Recent Post</h4>
+						<h4>Recent News</h4>
 						<hr class="style14">
 						@foreach($beritas as $brt)
 							<a href="/berita/{{$brt->id}}"><p>{{$brt->title}}</p></a>
@@ -136,5 +143,19 @@ p.big {
     </div>
 
     @include('layouts.script')
+
+	<script>
+        updateList = function() {
+            var input = document.getElementById('file');
+            var output = document.getElementById('fileList');
+
+            output.innerHTML = 'Selected file(s) <br><ul>';
+            for (var i = 0; i < input.files.length; ++i) {
+                output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+            }
+            output.innerHTML += '</ul>';
+        }
+	</script>
 </body>
 </html>

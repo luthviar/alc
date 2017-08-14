@@ -12,7 +12,7 @@ p.big {
         <div class="wrapper-holder">
             @include('layouts.header')
                  
-            <section id="main">
+            <section id="main" style="margin-top: 100px;">
 				<div class ="col-lg-8 col-md-8 col-sm-8">
 					<div class="row">
 						<h3>{{ $forum['title'] }}</h3>
