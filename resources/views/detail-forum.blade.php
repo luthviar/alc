@@ -82,14 +82,21 @@ p.big {
 			                             <div class="input-group">
 			                                <span class="input-group-btn">
 			                                    <span class="btn btn-default btn-file">
-			                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+			                                        Browse..
+													<input type="file"
+														   id="file"
+														   onchange="javascript:updateList()"
+														   name="file_pendukung[]"
+														   multiple/>
 			                                    </span>
 			                                </span>
-			                                <input type="text" class="form-control" readonly>
+											 <input type="text" class="form-control" value="select file(s)" readonly>
 			                            </div></br>
-			                            <div class='file-uploaded'>
-			                                
-			                            </div>
+											<div class='file-uploaded'>
+												<p>
+													<div id="fileList"></div>
+												</p>
+											</div>
 			                        </div>
 			                    </div>
 				                <div class="form-group">
@@ -123,5 +130,18 @@ p.big {
     </div>
 
     @include('layouts.script')
+	<script>
+        updateList = function() {
+            var input = document.getElementById('file');
+            var output = document.getElementById('fileList');
+
+            output.innerHTML = 'Selected file(s) <br><ul>';
+            for (var i = 0; i < input.files.length; ++i) {
+                output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+            }
+            output.innerHTML += '</ul>';
+        }
+	</script>
 </body>
 </html>
