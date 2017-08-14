@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">Edit News</div>
                 <div class="panel-body">
                 
@@ -57,32 +57,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="image" class="col-md-4 control-label">Image</label>
-
-                        <div class="col-md-6">
-                            @if($news->image ==null)
-                                Tidak ada image
-                            @else
-                             <img src="{{URL::asset($news->image)}}" style="width: 100%;height: 100%;">
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="image" class="col-md-4 control-label">Upload New Image</label>
-
-                        <div class="col-md-6">
-                             <div class="input-group">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image" accept="image/gif, image/jpeg, image/png"/>
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
-                            </div></br>
-                            <img id='img-upload'/>
-                        </div>
-                    </div>
+                    
 
 
                     <div class="form-group">
@@ -101,21 +76,21 @@
                     </div>
 
 					<div class="form-group">
-                        <label for="image" class="col-md-4 control-label">Upload attachment</label>
+                        <label for="image" class="col-md-4 control-label">Add attachment</label>
 
                         <div class="col-md-6">
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image"/>
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div></br>
                             <div class='file-uploaded'>
-								1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
-								2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
-								3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+                                @foreach($news['file_pendukung'] as $file)
+								<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>  {{$file->name}}</a>       <span><a href="/news_attachment_delete/{{$file->id}}" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i>delete</a></span><br>
+								@endforeach
 							</div>
                         </div>
                     </div>

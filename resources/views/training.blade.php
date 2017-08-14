@@ -1,9 +1,11 @@
 @include('layouts.head')
-<body>
 
-	<!-- Header -->
-	<div id="wrapper">
-		<div class="wrapper-holder">
+<body class="page-header-fixed page-full-width">
+
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
 			@include('layouts.header')
 			
 				<section id="main">
@@ -28,9 +30,9 @@
 								</h2>
 								<h1 class="brand-name">{{ $training['title'] }}</h1>
 								<hr class="tagline-divider">
-								<h4 align="justify">
+								<h4 align="justify" style="text-align: center;">
 									<strong>
-										{{ $training['description'] }}
+										{!! html_entity_decode($training['description']) !!}
 									</strong>	
 								</h4><br>
 								<h6>
@@ -44,7 +46,7 @@
 								</h6>
 							</div>
 						</div>
-				</section>
+				</div>
 			</div>
 	
 		<!-- Modul -->

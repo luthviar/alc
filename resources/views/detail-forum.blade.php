@@ -14,12 +14,22 @@ p.big {
                  
             <section id="main">
 				<div class ="col-lg-8 col-md-8 col-sm-8">
-					<h3>{{ $forum['title'] }}</h3>
-					<h6>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}, {{ \Carbon\Carbon::parse($forum->create_at)->format('l jS \\of F Y')}}</h6> 
-					<hr class="style14"> 
-					<p align="justify" class="big">
-						{{ strip_tags($forum['content']) }}
-					</p><br>
+					<div class="row">
+						<h3>{{ $forum['title'] }}</h3>
+						<h6>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}, {{ \Carbon\Carbon::parse($forum->create_at)->format('l jS \\of F Y')}}</h6> 
+						<hr class="style14"> 
+						<p align="justify" class="big">
+							{!! html_entity_decode($forum['content']) !!}
+
+						</p><br>
+						<hr class="style14"> 
+						<div class='pull-right'>
+							Attachments : <br>
+							@foreach($forum['file_pendukung'] as $file)
+								<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
+							@endforeach
+						</div>
+					</div>
 								
 					@if($forum->can_reply == 1)
 						<div class="block-advice">
@@ -32,6 +42,12 @@ p.big {
 									<div class="panel-body">
 											{!! html_entity_decode($reply['content']) !!}
 									</div>
+									<div class='pull-right'>
+										Attachments : <br>
+										@foreach($reply['file_pendukung'] as $file)
+											<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
+										@endforeach
+									</div>
 								</div>
 								<br>
 							@endforeach
@@ -41,26 +57,43 @@ p.big {
 						</div>
 
 						<div class="block-advice">
-							<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('ReplieController@store') }}">
+							<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('ReplieController@store') }}" enctype="multipart/form-data">
 	                        	{{ csrf_field() }}
 	                        	<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
 	                        	<input type="hidden" name="id_forum" value="{{$forum->id}}">
 	                        	<div class="form-group">
-				                    <label for="title" class="col-md-4 control-label">Title</label>
+				                    <label for="title" class="col-md-2 control-label">Title</label>
 
-				                    <div class="col-md-6">
+				                    <div class="col-md-8">
 				                        <input id="title" type="text" class="form-control" name="title" required  value="[RE:] {{$forum['title']}}">
 				                    </div>
 				                </div>
 				                <div class="form-group">
-				                    <label for="content" class="col-md-4 control-label">Content</label>
+				                    <label for="content" class="col-md-2 control-label">Content</label>
 
-				                    <div class="col-md-6">
-				                        <textarea id="content" type="text" class="form-control" name="content" required  style="resize: none;"></textarea>
+				                    <div class="col-md-8">
+				                        <textarea id="summernote" type="text" class="form-control" name="content" required  style="resize: none;"></textarea>
 				                    </div>
 				                </div>
 				                <div class="form-group">
-				                    <div class="col-md-6 col-md-offset-4">
+			                        <label for="image" class="col-md-2 control-label">Upload attachment</label>
+
+			                        <div class="col-md-8">
+			                             <div class="input-group">
+			                                <span class="input-group-btn">
+			                                    <span class="btn btn-default btn-file">
+			                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+			                                    </span>
+			                                </span>
+			                                <input type="text" class="form-control" readonly>
+			                            </div></br>
+			                            <div class='file-uploaded'>
+			                                
+			                            </div>
+			                        </div>
+			                    </div>
+				                <div class="form-group">
+				                    <div class="col-md-8 col-md-offset-2">
 				                        <button type="submit" class="btn btn-info">
 				                            Comment
 				                        </button>

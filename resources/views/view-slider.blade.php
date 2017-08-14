@@ -1,13 +1,12 @@
 @include('layouts.head')
 <body>
+<body class="page-header-fixed page-full-width">
 
-	<!-- Header -->
-	<div id="wrapper">
-		<div class="wrapper-holder">
-			@include('layouts.header')
-			
-				<section id="main">
-					
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
+
 					<div class="block-advice">
 							
 							<h3>{{ $slider['title'] }}</h3>
@@ -16,7 +15,7 @@
 								{{ strip_tags($slider['content']) }}
 							</p><br>
 					</div>
-				</section>
+				</div>
 			</div>
 	
 		<!-- Modul -->

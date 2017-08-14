@@ -228,6 +228,8 @@ input[type=submit],
 	text-align: center;
 	border: none;
 	padding: 0;
+	width: 182px;
+	height: 40px;
 	background: #578c36;
 	color: #fff;
 	font: 14px/40px 'novecento_sans_widemedium', Arial, Helvetica, sans-serif;
@@ -270,7 +272,7 @@ body{
 	background: #fff;
 	margin:0;
 	color:#6e6e6e;
-	font:18px Arial, Helvetica, sans-serif;
+	font:18px "open sans", Arial, Helvetica, sans-serif;
 }
 img{border-style:none; vertical-align: top;}
 a{text-decoration:none; color:#6e6e6e;}
@@ -368,7 +370,7 @@ a:hover{text-decoration:underline;}
 .promo {
 	width: 100%;
 	position: relative;
-	margin: 0 0 40px;
+	margin: 0 0 0px;
 }
 .bg {
 	position: absolute;
@@ -399,7 +401,7 @@ a:hover{text-decoration:underline;}
 	display: table-cell;
 	height: 100%;
 	vertical-align: middle;
-	background-color: #86f442;
+	background-color: rgba(0,0,0,0.4);
 	padding-left: 20px;
 	padding-bottom: 20px;
 	padding-top: 20px;
@@ -407,13 +409,13 @@ a:hover{text-decoration:underline;}
 	border-radius: 10%;
 }
 .slide-info  h1 {
-	font:bold 60px/72px 'novecentosanswide', Arial, Helvetica, sans-serif;
-	margin: 0 0 50px;
-	color: darkgreen;
+    font: bold 34px 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 0 0 50px;
+    color: #fff;
 }
 .slide-info p {
 	margin: 0 0 66px;
-	color: darkgreen;
+	color: #fff;
 }
 .promo .bx-pager {
 	position: absolute;
@@ -967,7 +969,7 @@ hr.style2 {
     width:100%;
     overflow:hidden;
     display:table-footer-group;
-    background:#578c36;
+    background:#13B795 ;
 }
 #footer .footer-holder {
     height:1%;
@@ -996,13 +998,14 @@ hr.style2 {
 #footer .col .heading {
 	text-align: center;
 	margin: 0 0 32px;
-	background: url(../images/bg_footer_line.gif) repeat-x 0 50%;
+	/*background: url(../images/bg_footer_line.gif) repeat-x 0 50%;*/
 }
 #footer .col p {
-	margin: 0 0 24px;
-	color: #fff;
+    margin: 0 0 24px;
+    color: #f1f1f1;
+    font-size: 13px;
+    font-family: "open sans";
 }
-
 #footer .col address {
 	margin: 0 0 25px;
 }
@@ -1011,7 +1014,7 @@ hr.style2 {
 	color: #fff;
 	padding: 0 15px;
 	display: inline-block;
-	background: #578c36;
+	background: #12AC8D;
 	font: 18px/22px 'novecento_sans_widemedium', Arial, Helvetica, sans-serif;
 }
 .social {
@@ -1041,15 +1044,15 @@ hr.style2 {
 }
 .footer-bottom {
 	width: 100%;
-	background: #4b7c2c;
+	background: #12AC8D;
 	color: #fff;
 	text-align: center;
 }
 .footer-bottom .holder {
 	max-width: 1170px;
 	margin: 0 auto;
-	padding: 20px 20px;
-	font-size: 14px;
+	padding: 10px 20px;
+	font-size: 12px;
 	line-height: 16px;
 }
 @media (-webkit-min-device-pixel-ratio:2) ,(min--moz-device-pixel-ratio:2),(-o-min-device-pixel-ratio:2/1),(min-device-pixel-ratio:2),(min-resolution:192dpi),(min-resolution:2dppx){

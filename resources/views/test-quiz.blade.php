@@ -1,29 +1,28 @@
 @include('layouts.head')
 
 
-<body>
 
-  <!-- Header -->
-  <div id="wrapper">
-    <div class="wrapper-holder">
-      @include('layouts.header')
-      
-    <section id="main">
+<body class="page-header-fixed page-full-width">
+
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
       <div class="container">
         <div class="row">
         <h2>Training</h2>
           <div class="btn-group btn-breadcrumb">
-            <a href="#" class="btn btn-default">Introduction</i></a>
+            <a  class="btn btn-default">Introduction</i></a>
             @if($type->id==1)
-            <a href="#" class="btn btn-success">Pre-Test</a>
+            <a  class="btn btn-success">Pre-Test</a>
             @elseif($type->id==3)
-            <a href="#" class="btn btn-default">Pre-Test</a>
+            <a  class="btn btn-default">Pre-Test</a>
             @endif
-            <a href="#" class="btn btn-default">Modul</a>
+            <a  class="btn btn-default">Modul</a>
             @if($type->id==1)
-            <a href="#" class="btn btn-default">Post-Test</a>
+            <a  class="btn btn-default">Post-Test</a>
             @elseif($type->id==3)
-            <a href="#" class="btn btn-success">Post-Test</a>
+            <a  class="btn btn-success">Post-Test</a>
             @endif
             
           </div>
@@ -98,7 +97,7 @@
 
           </div>
         </div>
-    </section>
+    </div>
 
         
 

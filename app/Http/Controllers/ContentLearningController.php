@@ -66,7 +66,7 @@ class ContentLearningController extends Controller
     {
         
         $file = $request->file('file');
-        $destinationPath = '/contents';
+        $destinationPath = 'contents';
         $movea = $file->move($destinationPath,$file->getClientOriginalName());
         $url = "/ViewerJS/index.html#../contents/{$file->getClientOriginalName()}";
         $content = new ContentLearning;
@@ -148,22 +148,43 @@ class ContentLearningController extends Controller
     }
 
     public function add_content (Request $request){
-        $training = Training::find($request->id_training);
-        $section = SectionTraining::where('id_training', $request->id_training)->where('id_type', 2)->first();
+        $training   = Training::find($request->id_training);
+        $section    = SectionTraining::where('id_training', $request->id_training)->where('id_type', 2)->first();
 
-        $file = $request->file('file');
-        $destinationPath = 'contents';
-        $movea = $file->move($destinationPath,$file->getClientOriginalName());
-        $url = "/ViewerJS/index.html#../contents/{$file->getClientOriginalName()}";
+        // check if section empty
+        if (empty($section)) {
+            $new_section                = new SectionTraining;
+            $new_section->id_training   = $request->id_training;
+            $new_section->id_type       = 2;
+            $new_section->save();
+
+            $section = $new_section;
+        }
+
+        // upload file to path
+        $file                   = $request->file('file');
+        $destinationPath        = 'contents';
+        $movea                  = $file->move($destinationPath,$file->getClientOriginalName());
+        $url                    = "/ViewerJS/index.html#../contents/{$file->getClientOriginalName()}";
         
-        $content = new ContentLearning;
-        $content->id_section = $section->id;
-        $content->file_name = $request->file_name;
-        $content->url = $url;
+        // add content learning
+        $content                = new ContentLearning;
+        $content->id_section    = $section->id;
+        $content->file_name     = $request->file_name;
+        $content->description   = $request->description;
+        $content->url           = $url;
         $content->save();
 
         return redirect()->action(
                 'TrainingController@view', ['id' => $training->id]
             );
     }
+
+    public function get_content_preview(Request $request){
+
+        $content_learning = ContentLearning::find($request->id_content);
+        return response()->json(['content'=>$content_learning]);
+    }
+
+
 }

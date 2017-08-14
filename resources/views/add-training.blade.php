@@ -45,7 +45,7 @@ $(function() {
                             <label for="description" class="col-md-4 control-label">Trainning Description</label>
 
                             <div class="col-md-6">
-								<textarea id="summernote" name="content" required></textarea>
+								<textarea id="summernote" name="description" required></textarea>
                             </div>
                         </div>
 						

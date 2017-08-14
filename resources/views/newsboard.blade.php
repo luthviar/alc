@@ -2,14 +2,13 @@
 <style>
 	.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
 </style>
-<body>
-                    
-			
-<div id="wrapper">
-    <div class="wrapper-holder">
-        @include('layouts.header')
-        <!-- News Board -->
-        <section id="main">
+<body class="page-header-fixed page-full-width">
+
+            @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">			
+
             <div class="block-advice">
                 <div class = "text-center">
                     <h1 class="brand-name">News</h1>
@@ -31,7 +30,7 @@
                                     <div class="card-block">
                                         <div  style="height:15vh; width:100%;">
                                             <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
-                                            <p class="card-text" align="justify">{{ str_limit($news->content, $limit = 150, $end = '...') }}</p>
+                                            <p class="card-text" align="justify">{!! html_entity_decode(str_limit($news->content, $limit = 150, $end = '...')) !!}</p>
                                         </div>
                                             <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p>
                                             <br>
@@ -50,7 +49,7 @@
                         </ul>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
 		
         

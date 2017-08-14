@@ -55,7 +55,7 @@
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" />
+                                        Browse… <input type="file" id="imgInp" multiple="multiple" name="file_pendukung[]" />
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
-                                Add Slider
+                                Add News
                             </button>
                         </div>
                     </div>

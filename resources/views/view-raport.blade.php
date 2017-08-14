@@ -7,16 +7,12 @@
     });
 </script>
 
-<body>
+<body class="page-header-fixed page-full-width">
 
-    <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
             @include('layouts.header')
-        
-            <br>
-            
-            <section id="main">
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">			
 
 					<div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
@@ -31,7 +27,7 @@
                             </li>
                         </ul>
 						<br><br>
-						
+						<div class ="col-md-10 col-md-offset-1">
 						<div class="tab-content">
 							<div class="tab-pane active" id="myprofile">
 								<div class="panel panel-success">
@@ -40,6 +36,9 @@
 									</div>
 								  <div class="panel-body">
 									<h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
+									<span class="pull-right">
+										<a href="/reset-password">reset_password</a>
+									</span>
 								  </div>
 								<div class="panel-body">
 								<div class="row">
@@ -158,7 +157,7 @@
 								  <tbody>
 									@foreach($personnel['training'] as $training)
 									<tr>
-									  <td><a href="/training/{{$training->id}}">{{$training['info']->title}}</a></td>
+									  <td><a href="/training/{{$training['info']->id}}">{{$training['info']->title}}</a></td>
 									  <td>{{$training->pre_test_score}}</td>
 									  <td>{{$training->post_test_score}}</td>
 									  <td>{{ \Carbon\Carbon::parse($training->created_at)->format('l jS \\of F Y')}}</td>
@@ -198,11 +197,12 @@
 								  </div>
 								</div>
 						</div>
+						</div>
 					  
 					</div>
 
                 
-            </section>
+            </div>
             
             
             

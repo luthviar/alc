@@ -1,14 +1,12 @@
 @include('layouts.head')
 
-<body>
+<body class="page-header-fixed page-full-width">
 
-    <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
             @include('layouts.header')
-        
-            <!-- Main Content -->
-            <section id="main">
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">			
+
                 <div class="block-advice">
                     <div class = "text-center">
                     <h2 class="brand-before">
@@ -78,10 +76,11 @@
 										@else
 										<a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class ="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a>
 										@endif 
-									@endforeach 
+									
 									</h4>
 								  </div>
 								</div>
+								@endforeach 
 					  </div>
       				@else
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -96,9 +95,9 @@
 						
 					</div>
                 </div>
-            </section>
+            </div>
             
-            
+                </div>
             
             
             

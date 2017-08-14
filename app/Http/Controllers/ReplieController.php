@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Replie;
+use App\FileReplie;
 use Illuminate\Http\Request;
 
 class ReplieController extends Controller
@@ -35,12 +37,30 @@ class ReplieController extends Controller
      */
     public function store(Request $request)
     {
-        $reply = new Replie;
-        $reply->id_forum = $request->id_forum;
-        $reply->id_user = $request->id_user;
-        $reply->title = $request->title;
-        $reply->content = $request->content;
-        $reply->save();
+        
+
+        $id_reply = DB::table('replies')-> insertGetId(array(
+            'id_user' => $request->id_user,
+            'id_forum' => $request->id_forum,
+            'title' => $request->title,
+            'content' => $request->content,
+        ));
+
+        $file_pendukung = $request->file('file_pendukung');
+        if (!empty($file_pendukung)) {
+
+            foreach ($file_pendukung as $key => $file) {
+                $destinationPath = 'Uploads';
+                $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                $new_file_pendukung = new FileReplie;
+                $new_file_pendukung->id_reply = $id_reply;
+                $new_file_pendukung->name = $file->getClientOriginalName();
+                $new_file_pendukung->url = $url_file;
+                $new_file_pendukung->save();
+            }
+        }
 
 
         return redirect()->action(

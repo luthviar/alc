@@ -1,10 +1,22 @@
 @include('layouts.head')
-<body>
-<div id="wrapper">
-    <div class="wrapper-holder">
-        @include('layouts.header')
 
-        <section id="main">
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+          height: 200,                 // set editor height
+          minHeight: null,             // set minimum height of editor
+          maxHeight: null,             // set maximum height of editor
+          
+        });
+        
+    });
+</script>
+
+<body class="page-header-fixed page-full-width">
+        @include('layouts.header')
+	<div class="page-container" id="wrapper">
+       <div class="page-content-wrapper"> 
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">
             <div class="block-advice">
                 <div class = "text-center">
                     <div id="exTab1">
@@ -81,7 +93,7 @@
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
-                                            @if($forum['replie'] == null)
+                                            @if(count($forum['replie']) == 0)
                                             <td>-</td>
                                             @else
                                             <td>{{$forum['last_reply_personnel']['fname']}} {{$forum['last_reply_personnel']['lname']}}, {{ \Carbon\Carbon::parse($forum['last_reply'][0]->created_at)->format('l jS \\of F Y')}}</td>
@@ -137,7 +149,7 @@
 
 
             </div>
-        </section>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -146,7 +158,7 @@
 
 @include('layouts.script')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
@@ -155,15 +167,13 @@
     });
 </script>
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-</body>
-</html>
 
 <!-- New Thread Umum -->
 <div class="modal fade" id="modal_umum" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New Thread</h4>
@@ -180,26 +190,45 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name="title">
+                            <input type="text" name="title">
                         </div>
                     </div>
                             
                     <div class="form-group">
                         <label for="can_repl
-						y" class="col-md-3 control-label">Can Reply</label>                                     
+                        y" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" class="selectpicker">
+                            <select name="can_reply" class="form-control">
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
-                            </select>
+                            </select><br>
+                            
                         </div>
                     </div>
 
                     <div class="form-group" >
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-                        <div class="col-md-6" name="content">
-							<textarea id="summernote" name="content"></textarea>
+                        <div class="col-md-10" name="content">
+                            <textarea class="summernote" name="content"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+                                
+                            </div>
                         </div>
                     </div>
 
@@ -224,7 +253,7 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New Thread</h4>
@@ -241,14 +270,14 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name="title"/>
+                            <input type="text" name="title"/>
                         </div>
                     </div>
                             
                     <div class="form-group">
                         <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" class="selectpicker">
+                            <select name="can_reply">
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -259,7 +288,24 @@
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
                           <div class="col-md-10 col-xs-offset-1">
-							<textarea id="summernote" name="content3"></textarea>
+                            <textarea class="summernote" name="content3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+                                
+                            </div>
                         </div>
                     </div>
 
@@ -283,7 +329,7 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content" >
-            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('ForumController@store') }}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New Thread</h4>
@@ -300,14 +346,14 @@
                         <label for="title" class="col-md-3 control-label">Title</label>
                 
                         <div class="col-md-6">
-							<input type="text" name="title"/>
+                            <input type="text" name="title"/>
                         </div>
                     </div>
                             
                     <div class="form-group">
                         <label for="can_reply" class="col-md-3 control-label">Can Reply</label>                                     
                         <div class="col-md-6">
-                            <select name="can_reply" class="selectpicker">
+                            <select name="can_reply" >
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -317,8 +363,25 @@
                     <div class="form-group">
                         <label for="content" class="col-md-3 control-label">Content</label>
                         
-						<div class="col-md-10 col-xs-offset-1">
-							<textarea id="summernote" name="content2"></textarea>
+                        <div class="col-md-10 col-xs-offset-1">
+                            <textarea class="summernote" name="content2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                        <div class="col-md-6">
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="file_pendukung[]" multiple="multiple" />
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div></br>
+                            <div class='file-uploaded'>
+                                
+                            </div>
                         </div>
                     </div>
 
@@ -336,3 +399,7 @@
         </div>   
     </div>
 </div>
+
+</body>
+</html>
+

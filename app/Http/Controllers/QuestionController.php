@@ -80,9 +80,17 @@ class QuestionController extends Controller
         }
         $section = SectionTraining::find($test->id_section_training);
         if ($section->id_type == 1) {
-            return view('add-question')->with('id_test', $id_test)->with('questions',$question)->with('time',$request->time)->with('id_training',$request->id_training);
+            return view('add-question')
+                ->with('id_test', $id_test)
+                ->with('questions',$question)
+                ->with('time',$request->time)
+                ->with('id_training',$request->id_training);
         }else{
-            return view('add-question-post-test')->with('id_test', $id_test)->with('questions',$question)->with('time',$request->time)->with('id_training',$request->id_training);
+            return view('add-question-post-test')
+                ->with('id_test', $id_test)
+                ->with('questions',$question)
+                ->with('time',$request->time)
+                ->with('id_training',$request->id_training);
         }
         
 
@@ -122,6 +130,8 @@ class QuestionController extends Controller
     public function update(Request $request)
     {
         $question = Question::find($request->id_question);
+        dd($question);
+        $question->pertanyaan = $request->id_test;
         $question->pertanyaan = $request->question;
         $question->save();
 
@@ -197,6 +207,7 @@ class QuestionController extends Controller
 
     public function submit (Request $request){
         $training       = Training::find($request->id_training);
+        dd('rohmat');
         $id_test        = $request->id_test;
         $id_question    = DB::table('questions')-> insertGetId(array(
             'id_test' => $request->id_test,

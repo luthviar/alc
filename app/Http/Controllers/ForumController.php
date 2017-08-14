@@ -7,11 +7,13 @@ use Auth;
 use DB;
 use App\Module;
 use App\Personnel;
+use App\FileForum;
 use App\JobFamily;
 use App\Employee;
 use App\Replie;
 use App\StrukturOrganisasi;
 use App\Department;
+use App\FileReplie;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -101,20 +103,40 @@ class ForumController extends Controller
     public function store(Request $request)
     {
         $id_user = Auth::user()->id;
-        $new_forum = new Forum;
-        $new_forum->id_user = $id_user;
-        $new_forum->can_reply = $request->can_reply;
-        $new_forum->title = $request->title;
+        
+        $content = "";
         if ($request->id_department != null) {
-            $new_forum->content = $request->content3;
+            $content = $request->content3;
         }elseif($request->id_job_family != null){
-            $new_forum->content = $request->content2;
+            $content = $request->content2;
         }else{
-            $new_forum->content = $request->content;
+            $content = $request->content;
         }
-        $new_forum->id_department = $request->id_department;
-        $new_forum->id_job_family = $request->id_job_family;
-        $new_forum->save();
+        
+        $id_forum = DB::table('forums')-> insertGetId(array(
+            'id_user' => $id_user,
+            'title' => $request->title,
+            'content' => $content,
+            'can_reply' => $request->can_reply,
+            'id_department' => $request->id_department,
+            'id_job_family' => $request->id_job_family,
+        ));
+
+        $file_pendukung = $request->file('file_pendukung');
+        if (!empty($file_pendukung)) {
+
+            foreach ($file_pendukung as $key => $file) {
+                $destinationPath = 'Uploads';
+                $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                $new_file_pendukung = new FileForum;
+                $new_file_pendukung->id_forum = $id_forum;
+                $new_file_pendukung->name = $file->getClientOriginalName();
+                $new_file_pendukung->url = $url_file;
+                $new_file_pendukung->save();
+            }
+        }
 
         return redirect('forum');
     }
@@ -132,8 +154,10 @@ class ForumController extends Controller
         $forum['replie'] = Replie::where('id_forum',$id_forum)->get();
         foreach ($forum['replie'] as $key => $value) {
             $value['personnel'] = Personnel::where('id_user',$value->id_user)->first();
+            $value['file_pendukung'] = FileReplie::where('id_reply', $value->id)->get();
         }
         $recent = DB::table('forums')->where('id_department',$forum->id_department)->where('id_job_family',$forum->id_job_family)->orderBy('id', 'desc')->take(6)->get();
+        $forum['file_pendukung'] = FileForum::where('id_forum', $id_forum)->get();
         $module = Module::all();
         return view('detail-forum')->with('forum',$forum)->with('recent',$recent)->with('module',$module);
     }

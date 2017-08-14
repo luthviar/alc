@@ -12,272 +12,280 @@
 */
 
 //DocumentViewer Library
-Route::any('ViewerJS/{all?}', function(){
+    Route::any('ViewerJS/{all?}', function(){
 
-    return View::make('ViewerJS.index');
-});
+        return View::make('ViewerJS.index');
+    });
 
-Auth::routes();
+    Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('module', 'ModuleController');
+    Route::resource('module', 'ModuleController');
 
-Route::resource('training', 'TrainingController');
+    Route::resource('training', 'TrainingController');
 
-Route::resource('struktur', 'StrukturOrganisasiController');
+    Route::resource('struktur', 'StrukturOrganisasiController');
 
-Route::resource('job-family', 'JobFamilyController');
+    Route::post('struktur/update','StrukturOrganisasiController@update');
 
-Route::resource('department', 'DepartmentController');
+    Route::resource('job-family', 'JobFamilyController');
 
-Route::resource('berita', 'BeritaController');
+    Route::resource('department', 'DepartmentController');
 
-Route::resource('slider', 'ContentSliderController');
+    Route::resource('berita', 'BeritaController');
 
-Route::resource('section-training', 'SectionTrainingController');
+    Route::resource('slider', 'ContentSliderController');
 
-Route::resource('jawaban', 'JawabanTraineeController');
+    Route::resource('section-training', 'SectionTrainingController');
 
-Route::resource('personnel', 'PersonnelController');
+    Route::resource('jawaban', 'JawabanTraineeController');
 
-Route::resource('raport', 'ScoreSummaryController');
+    Route::resource('personnel', 'PersonnelController');
 
-Route::resource('test', 'TestController');
+    Route::resource('raport', 'ScoreSummaryController');
 
-Route::resource('question', 'QuestionController');
+    Route::resource('test', 'TestController');
 
-Route::post('personnel/submit', 'PersonnelController@update');
+    Route::resource('question', 'QuestionController');
 
-Route::post('slider/submit', 'ContentSliderController@update');
+    Route::post('personnel/submit', 'PersonnelController@update');
 
-Route::post('berita/submit', 'BeritaController@update');
+    Route::post('slider/submit', 'ContentSliderController@update');
 
-Route::post('question/submit', 'QuestionController@update');
+    Route::post('berita/submit', 'BeritaController@update');
 
-Route::post('raport/submit/{id}', 'ScoreSummaryController@store');
+    Route::post('question/submit', 'QuestionController@update');
 
-Route::resource('news-reply', 'NewsReplieController');
+    Route::post('raport/submit', 'ScoreSummaryController@store');
 
-Route::resource('forum-reply', 'ReplieController');
+    Route::resource('news-reply', 'NewsReplieController');
 
-Route::resource('access', 'UserTrainingAuthController');
+    Route::resource('forum-reply', 'ReplieController');
 
-Route::get('/slider/{id}/active', 'ContentSliderController@active');
+    Route::resource('access', 'UserTrainingAuthController');
 
-Route::get('/slider/{id}/nonactive', 'ContentSliderController@nonactive');
+    Route::get('/slider/{id}/active', 'ContentSliderController@active');
 
-Route::get('/access/{id}/active', 'UserTrainingAuthController@active');
+    Route::get('/slider/{id}/nonactive', 'ContentSliderController@nonactive');
 
-Route::get('/access/{id}/nonactive', 'UserTrainingAuthController@nonactive');
+    Route::get('/access/{id}/active', 'UserTrainingAuthController@active');
 
-Route::get('/berita/{id}/active', 'BeritaController@active');
+    Route::get('/access/{id}/nonactive', 'UserTrainingAuthController@nonactive');
 
-Route::get('/berita/{id}/nonactive', 'BeritaController@nonactive');
+    Route::get('/berita/{id}/active', 'BeritaController@active');
 
-Route::get('/content-learning/{id}', 'ContentLearningController@add_content_learning');
+    Route::get('/berita/{id}/nonactive', 'BeritaController@nonactive');
 
-Route::post('/content-learning/submit', 'ContentLearningController@store');
+    Route::get('/content-learning/{id}', 'ContentLearningController@add_content_learning');
 
-Route::post('/training/update', 'TrainingController@update');
+    Route::post('/content-learning/submit', 'ContentLearningController@store');
 
-Route::get('/get-content-learning/{id}', 'ContentLearningController@get_content_learning');
+    Route::post('/training/update', 'TrainingController@update');
 
-Route::get('/add-post-test/{id}', 'TrainingController@add_post_test');
+    Route::get('/get-content-learning/{id}', 'ContentLearningController@get_content_learning');
 
-Route::post('/post-test/submit', 'TestController@store_post_test');
+    Route::get('/add-post-test/{id}', 'TrainingController@add_post_test');
 
-Route::get('news-board', 'BeritaController@readMore');
+    Route::post('/post-test/submit', 'TestController@store_post_test');
 
-Route::get('/request-access/{id_training}', 'UserTrainingAuthController@request_access');
+    Route::get('news-board', 'BeritaController@readMore');
 
-Route::get('/training/publish/{id}','TrainingController@publish');
+    Route::get('/request-access/{id_training}', 'UserTrainingAuthController@request_access');
 
-Route::get('/training/deactive/{id}','TrainingController@deactive');
+    Route::get('/training/publish/{id}','TrainingController@publish');
 
-Route::get('/training/view/{id}','TrainingController@view');
+    Route::get('/training/deactive/{id}','TrainingController@deactive');
 
-Route::get('/question/delete/{id}','QuestionController@destroy');
+    Route::get('/training/view/{id}','TrainingController@view');
 
-Route::get('/content-learning/delete/{id}','ContentLearningController@destroy');
+    Route::get('/question/delete/{id}','QuestionController@destroy');
 
-Route::post('/change-time','TestController@change_time');
+    Route::get('/content-learning/delete/{id}','ContentLearningController@destroy');
 
-Route::post('/content-learning/add-content','ContentLearningController@add_content');
+    Route::post('/change-time','TestController@change_time');
 
-Route::post('/question/submit','QuestionController@submit');
+    Route::post('/content-learning/add-content','ContentLearningController@add_content');
 
-Route::post('/get-unit','StrukturOrganisasiController@get_unit');
+    Route::post('/question/submit','QuestionController@submit');
 
-Route::post('/get-department','StrukturOrganisasiController@get_department');
+    Route::post('/question/edit/submit','QuestionController@update');
 
-Route::post('/get-section','StrukturOrganisasiController@get_section');
+    Route::post('/get-unit','StrukturOrganisasiController@get_unit');
 
-Route::get('/forum/list', 'ForumController@list_forum');
+    Route::post('/get-department','StrukturOrganisasiController@get_department');
 
-Route::post('/get-forum', 'ForumController@get_forum');
+    Route::post('/get-section','StrukturOrganisasiController@get_section');
 
-Route::post('/delete-forum', 'ForumController@delete_forum');
+    Route::post('/get-content-preview','ContentLearningController@get_content_preview');
 
-Route::get('/personnel/nonactive/{id}', 'PersonnelController@nonactive');
+    Route::get('/forum/list', 'ForumController@list_forum');
 
-Route::get('/personnel/active/{id}', 'PersonnelController@active');
+    Route::post('/get-forum', 'ForumController@get_forum');
 
-Route::get('/reset-password', 'PersonnelController@reset');
+    Route::post('/delete-forum', 'ForumController@delete_forum');
 
-Route::post('/reset-password', 'PersonnelController@reset_password');
+    Route::get('/personnel/nonactive/{id}', 'PersonnelController@nonactive');
 
-Route::post('/request-reset-password', 'PersonnelController@request_reset');
+    Route::get('/personnel/active/{id}', 'PersonnelController@active');
 
-Route::get('/request-reset', function () {
-    return view('RequestPasswordForm');
-});
+    Route::get('/reset-password', 'PersonnelController@reset');
 
-Route::get('/access-process/{id}', 'UserTrainingAuthController@process');
+    Route::post('/reset-password', 'PersonnelController@reset_password');
 
-Route::post('process-access/submit', 'UserTrainingAuthController@process_submit');
+    Route::post('/request-reset-password', 'PersonnelController@request_reset');
 
-Route::post('/get-slider-ajax', 'ContentSliderController@get_slider_ajax');
+    Route::get('/request-reset', function () {
+        return view('RequestPasswordForm');
+    });
 
-Route::post('/change-photo', 'PersonnelController@change_photo');
+    Route::get('/access-process/{id}', 'UserTrainingAuthController@process');
 
-Route::get('Trainning', function () {
-    return view('IModul');
-});
+    Route::post('process-access/submit', 'UserTrainingAuthController@process_submit');
 
-Route::resource('datatables', 'DatatablesController', [
-    'anyData'  => 'datatables.data',
-    'getIndex' => 'datatables',
-]);
+    Route::post('/get-slider-ajax', 'ContentSliderController@get_slider_ajax');
 
-Route::post('abc', 'DatatablesController@anyData');
+    Route::post('/change-photo', 'PersonnelController@change_photo');
 
 
-Route::get('Modul', function () {
-    return view('module');
-});
+    Route::get('/news_attachment_delete/{id}', 'BeritaController@delete_attachment');
 
-Route::get('Pre-Test', function () {
-    return view('PreTest');
-});
+    Route::get('Trainning', function () {
+        return view('IModul');
+    });
 
-Route::get('EditPreTest', function () {
-    return view('Admin.EditPreTest');
-});
+    Route::resource('datatables', 'DatatablesController', [
+        'anyData'  => 'datatables.data',
+        'getIndex' => 'datatables',
+    ]);
 
-Route::resource('content-learning', 'ContentLearningController');
+    Route::post('abc', 'DatatablesController@anyData');
 
 
+    Route::get('Modul', function () {
+        return view('module');
+    });
 
-Route::get('UserList', function () {
-    return view('Admin(new).UserList');
-});
+    Route::get('Pre-Test', function () {
+        return view('PreTest');
+    });
 
+    Route::get('EditPreTest', function () {
+        return view('Admin.EditPreTest');
+    });
 
-Route::get('Employee', function () {
-    return view('Admin.EmployeeList');
-});
+    Route::resource('content-learning', 'ContentLearningController');
 
 
-Route::get('Tests', function () {
-    return view('Quiz');
-});
 
+    Route::get('UserList', function () {
+        return view('Admin(new).UserList');
+    });
 
 
+    Route::get('Employee', function () {
+        return view('Admin.EmployeeList');
+    });
 
-Route::get('/CreateDepartement', function () {
-    return view('Admin.CreateDept');
-});
 
-Route::get('Materi', function () {
-    return view('Materi');
-});
+    Route::get('Tests', function () {
+        return view('Quiz');
+    });
 
-Route::get('AddUser', function () {
-    return view('Admin.AddUser');
-});
 
-Route::get('UserInfo', function () {
-    return view('Admin.UserInfo');
-});
 
-Route::get('TrainningInfo', function () {
-    return view('Admin.TrainningInfo');
-});
 
+    Route::get('/CreateDepartement', function () {
+        return view('Admin.CreateDept');
+    });
 
-Route::get('CreateTrainning', function () {
-    return view('Admin.CreateTrainning2');
-});
+    Route::get('Materi', function () {
+        return view('Materi');
+    });
 
-Route::get('EditProfile', function () {
-    return view('Admin.EditProfile');
-});
+    Route::get('AddUser', function () {
+        return view('Admin.AddUser');
+    });
 
-Route::get('UserList', function () {
-    return view('Admin.UserList');
-});
+    Route::get('UserInfo', function () {
+        return view('Admin.UserInfo');
+    });
 
-Route::get('CreateNews', function () {
-    return view('Admin.CreateNews');
-});
+    Route::get('TrainningInfo', function () {
+        return view('Admin.TrainningInfo');
+    });
 
-Route::get('ListTrainning', function () {
-    return view('Admin.ListTrainning');
-});
 
+    Route::get('CreateTrainning', function () {
+        return view('Admin.CreateTrainning2');
+    });
 
-Route::get('lol', function () {
-    return view('Admin.Template');
-});
+    Route::get('EditProfile', function () {
+        return view('Admin.EditProfile');
+    });
 
+    Route::get('UserList', function () {
+        return view('Admin.UserList');
+    });
 
-Route::get('QuestionList', function () {
-    return view('Admin1.QuestionList');
-});
+    Route::get('CreateNews', function () {
+        return view('Admin.CreateNews');
+    });
 
-Route::get('CreatePreTest', function () {
-    return view('Admin.CreatePreTest');
-});
+    Route::get('ListTrainning', function () {
+        return view('Admin.ListTrainning');
+    });
 
-Route::get('CreateTrainningMateri', function () {
-    return view('Admin.CreateTrainningMateri');
-});
 
-Route::get('AddMateri', function () {
-    return view('Admin.AddMateri');
-});
+    Route::get('lol', function () {
+        return view('Admin.Template');
+    });
 
-Route::get('Upload', function () {
-    return view('Admin.UploadImage');
-});
 
-Route::get('CreateTrainning2', function () {
-    return view('Admin.CreateTrainning2');
-});
+    Route::get('QuestionList', function () {
+        return view('Admin1.QuestionList');
+    });
 
-Route::get('404', function () {
-    return view('404');
-});
+    Route::get('CreatePreTest', function () {
+        return view('Admin.CreatePreTest');
+    });
 
-Route::get('NewsBoard', function () {
-    return view('newsboard');
-});
+    Route::get('CreateTrainningMateri', function () {
+        return view('Admin.CreateTrainningMateri');
+    });
 
-Route::resource('forum', 'ForumController');
+    Route::get('AddMateri', function () {
+        return view('Admin.AddMateri');
+    });
 
+    Route::get('Upload', function () {
+        return view('Admin.UploadImage');
+    });
 
-Route::get('RequestBoard', function () {
-    return view('Admin.RequestBoard');
-});
+    Route::get('CreateTrainning2', function () {
+        return view('Admin.CreateTrainning2');
+    });
 
-Route::get('ResetPassword', function () {
-    return view('ResetPassword');
-});
+    Route::get('404', function () {
+        return view('404');
+    });
 
-Route::get('editor', function () {
-    return view('editor');
-});
+    Route::get('NewsBoard', function () {
+        return view('newsboard');
+    });
 
+    Route::resource('forum', 'ForumController');
+
+
+    Route::get('RequestBoard', function () {
+        return view('Admin.RequestBoard');
+    });
+
+    Route::get('ResetPassword', function () {
+        return view('ResetPassword');
+    });
+
+    Route::get('editor', function () {
+        return view('editor');
+    });
 

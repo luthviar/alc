@@ -7,6 +7,8 @@ use DB;
 use App\Berita;
 use App\Personnel;
 use App\NewsReplie;
+use App\FileNewsReplie;
+use App\FileBerita;
 use App\Module;
 use Illuminate\Http\Request;
 
@@ -73,21 +75,54 @@ class BeritaController extends Controller
             $destinationPath = 'Uploads';
             $movea = $file->move($destinationPath,$file->getClientOriginalName());
             $url = "Uploads/{$file->getClientOriginalName()}";
-            $berita = new Berita;
-            $berita->id_user = $request->id_user;
-            $berita->title = $request->title;
-            $berita->content = $request->content;
-            $berita->can_reply = $request->can_reply;
-            $berita->image = $url;
-            $berita->save();
+
+            $id_news = DB::table('beritas')-> insertGetId(array(
+                'id_user' => $request->id_user,
+                'title' => $request->title,
+                'content' => $request->content,
+                'can_reply' => $request->can_reply,
+                'image' => $url,
+            ));
+
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath = 'Uploads';
+                    $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung = new FileBerita;
+                    $new_file_pendukung->id_berita = $id_news;
+                    $new_file_pendukung->name = $file->getClientOriginalName();
+                    $new_file_pendukung->url = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
         }else{
-            $berita = new Berita;
-            $berita->id_user = $request->id_user;
-            $berita->title = $request->title;
-            $berita->content = $request->content;
-            $berita->can_reply = $request->can_reply;
-            $berita->image = null;
-            $berita->save();
+            $id_news = DB::table('beritas')-> insertGetId(array(
+                'id_user' => $request->id_user,
+                'title' => $request->title,
+                'content' => $request->content,
+                'can_reply' => $request->can_reply,
+                'image' => null,
+            ));
+
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath = 'Uploads';
+                    $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung = new FileBerita;
+                    $new_file_pendukung->id_berita = $id_news;
+                    $new_file_pendukung->name = $file->getClientOriginalName();
+                    $new_file_pendukung->url = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
 
         }
         
@@ -112,9 +147,11 @@ class BeritaController extends Controller
             }else{
                 foreach ($replies as $key => $value) {
                     $value['user'] = Personnel::where('id_user',$value->id_user)->first();
+                    $value['file_pendukung'] = FileNewsReplie::where('id_news_reply', $value->id)->get();
                 }
             }
         }
+        $berita['file_pendukung'] = FileBerita::where('id_berita', $id_berita)->get();
         $recent = DB::table('beritas')->orderBy('id', 'desc')->take(6)->get();
         $module = Module::all();
         return view('view-news')->with('module',$module)->with('news',$berita)->with('replies',$replies)->with('beritas',$recent);
@@ -129,6 +166,7 @@ class BeritaController extends Controller
     public function edit($id_berita)
     {
         $berita = Berita::find($id_berita);
+        $berita['file_pendukung'] = FileBerita::where('id_berita', $id_berita)->get();
         return view('edit-news')->with('news',$berita);
     }
 
@@ -154,6 +192,22 @@ class BeritaController extends Controller
             $berita->content = $request->content;
             $berita->can_reply = $request->can_reply;    
             $berita->save();
+
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath = 'Uploads';
+                    $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung = new FileBerita;
+                    $new_file_pendukung->id_berita = $request->id_news;
+                    $new_file_pendukung->name = $file->getClientOriginalName();
+                    $new_file_pendukung->url = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
         }else{
             $destinationPath = 'uploads';
             $movea = $file->move($destinationPath,$file->getClientOriginalName());
@@ -166,6 +220,22 @@ class BeritaController extends Controller
             $berita->can_reply = $request->can_reply;
             $berita->image = $url;    
             $berita->save();    
+
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath = 'Uploads';
+                    $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung = new FileBerita;
+                    $new_file_pendukung->id_berita = $request->id_news;
+                    $new_file_pendukung->name = $file->getClientOriginalName();
+                    $new_file_pendukung->url = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
         }
         
 
@@ -197,5 +267,12 @@ class BeritaController extends Controller
         $berita->save();
 
         return redirect('berita');
+    }
+
+    public function delete_attachment($id){
+        $news_attachment = FileBerita::find($id);
+        $news_attachment->delete();
+
+        return back();
     }
 }

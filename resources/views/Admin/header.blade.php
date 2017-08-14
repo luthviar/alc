@@ -37,8 +37,8 @@
                 @endif
 
                 <p>
-                  ACS - CKG
-                  <small>Member since Nov. 2012</small>
+                  {{Auth::user()->get_structure()}}
+                  <small>Member since {{Auth::user()->get_join()}}</small>
                 </p>
               </li>        
               <!-- Menu Footer-->

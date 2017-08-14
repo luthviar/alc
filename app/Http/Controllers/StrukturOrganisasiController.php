@@ -6,6 +6,7 @@ use App\StrukturOrganisasi;
 use App\Department;
 use App\Section;
 use App\Unit;
+use App\JobFamily;
 use App\Divisi;
 use DB;
 use Illuminate\Http\Request;
@@ -47,6 +48,8 @@ class StrukturOrganisasiController extends Controller
         $units = Unit::all();
         $departments = Department::all();
         $sections = Section::all();
+        $job_family = JobFamily::all();
+
 
         // foreach ($struktur as $key => $value) {
 
@@ -56,7 +59,13 @@ class StrukturOrganisasiController extends Controller
         //     $value['section']       = Section::where('id_section',$value->id_section)->first();
             
         // }
-        return view('list-struktur')->with('struktur',$struktur)->with('divisi',$divisi)->with('units', $units)->with('departments', $departments)->with('sections', $sections);
+        return view('list-struktur')
+            ->with('struktur',$struktur)
+            ->with('divisi',$divisi)
+            ->with('units', $units)
+            ->with('departments', $departments)
+            ->with('sections', $sections)
+            ->with('job_family', $job_family);
     }
 
     /**
@@ -71,7 +80,11 @@ class StrukturOrganisasiController extends Controller
         $department = Department::all();
         $section    = Section::all();
 
-        return view('add-struktur')->with('divisi', $divisi)->with('unit',$unit)->with('department',$department)->with('section', $section);
+        return view('add-struktur')
+            ->with('divisi', $divisi)
+            ->with('unit',$unit)
+            ->with('department',$department)
+            ->with('section', $section);
     }
 
     /**
@@ -82,15 +95,121 @@ class StrukturOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-        $struktur = StrukturOrganisasi::where('id_divisi', $request->id_divisi)->where('id_unit', $request->id_unit)->where('id_department', $request->id_department)->where('id_section', $request->id_section)->first();
-        if (empty($struktur)) {
-            $new_struktur               = new StrukturOrganisasi;
-            $new_struktur->id_divisi    = $request->id_divisi;
-            $new_struktur->id_unit      = $request->id_unit;
-            $new_struktur->id_department= $request->id_department;
-            $new_struktur->id_section   = $request->id_section;
-            $new_struktur->save();
-        }
+        //        list of variable : typeadd , iddiv , idunit , iddept , idsect , nametypeadd
+//        $struktur = StrukturOrganisasi::where('id_divisi', $request->id_divisi)->where('id_unit', $request->id_unit)->where('id_department', $request->id_department)->where('id_section', $request->id_section)->first();
+
+
+
+            if ($request->typeadd == 'unit') {
+                $storeunit= new Unit();
+                $storeunit->nama_unit = $request->nametypeadd;
+                $storeunit->save();
+
+                $idlast = DB::table('units')->orderBy('id_unit','desc')->first();
+                $checkunit = DB::table('struktur_organisasis')
+                    ->orderBy('id','desc')
+                    ->where('id_divisi',$request->iddiv)
+                    ->where('id_unit',null)
+                    ->get()->count();
+                if($checkunit==0) {
+                    $storeorg = new StrukturOrganisasi();
+                    $storeorg->id_divisi = $request->iddiv;
+                    $storeorg->id_unit = $idlast->id_unit;
+                    $storeorg->save();
+                } else {
+                    DB::table('struktur_organisasis')
+                        ->where('id_divisi', $request->iddiv)
+                        ->update(
+                            [
+                                'id_unit' => $idlast->id_unit
+                            ]
+                        );
+                }
+
+            } elseif ($request->typeadd == 'department') {
+                $storedept= new Department();
+                $storedept->nama_departmen = $request->nametypeadd;
+                $storedept->id_job_family = $request->id_job_family;
+                $storedept->save();
+
+                $idlast = DB::table('departments')->orderBy('id_department','desc')->first();
+                $checkdept = DB::table('struktur_organisasis')
+                    ->orderBy('id','desc')
+                    ->where('id_divisi',$request->iddiv)
+                    ->where('id_unit',$request->idunit)
+                    ->where('id_department', null)
+                    ->get()->count();
+
+                if($checkdept==0) {
+                    $storeorg = new StrukturOrganisasi();
+                    $storeorg->id_divisi = $request->iddiv;
+                    $storeorg->id_unit = $request->idunit;
+                    $storeorg->id_department = $idlast->id_department;
+                    $storeorg->save();
+                } else {
+                    DB::table('struktur_organisasis')
+                        ->where('id_divisi', $request->iddiv)
+                        ->where('id_unit',$request->idunit)
+                        ->update(
+                            [
+                                'id_department' => $idlast->id_department
+                            ]
+                        );
+                }
+            } elseif ($request->typeadd == 'section') {
+
+                $storesect = new Section();
+                $storesect->nama_section = $request->nametypeadd;
+                $storesect->save();
+
+                $idlast = DB::table('sections')->orderBy('id_section','desc')->first();
+                $checksect = DB::table('struktur_organisasis')
+                    ->orderBy('id','desc')
+                    ->where('id_divisi',$request->iddiv)
+                    ->where('id_unit',$request->idunit)
+                    ->where('id_department',$request->iddept)
+                    ->where('id_section',null)
+                    ->get()->count();
+
+                if($checksect==0) {
+                    $storeorg = new StrukturOrganisasi();
+                    $storeorg->id_divisi = $request->iddiv;
+                    $storeorg->id_unit = $request->idunit;
+                    $storeorg->id_department = $request->iddept;
+                    $storeorg->id_section = $idlast->id_section;
+                    $storeorg->save();
+                }  else {
+                    DB::table('struktur_organisasis')
+                        ->where('id_divisi', $request->iddiv)
+                        ->where('id_unit',$request->idunit)
+                        ->where('id_department',$request->iddept)
+                        ->update(
+                            [
+                                'id_section' => $idlast->id_section
+                            ]
+                        );
+                }
+            } elseif ($request->typeadd == 'divisi') {
+
+                $storediv = new Divisi();
+                $storediv->nama_divisi = $request->nametypeadd;
+                $storediv->save();
+
+                $idlast = DB::table('divisis')->orderBy('id_divisi','desc')->first();
+
+                    $storeorg = new StrukturOrganisasi();
+                    $storeorg->id_divisi = $idlast->id_divisi;
+                    $storeorg->save();
+
+            }
+
+//            $new_struktur               = new StrukturOrganisasi;
+//            $new_struktur->id_divisi    = $request->id_divisi;
+//            $new_struktur->id_unit      = $request->id_unit;
+//            $new_struktur->id_department= $request->id_department;
+//            $new_struktur->id_section   = $request->id_section;
+//            $new_struktur->save();
+
         return redirect('struktur');
     }
 
@@ -124,10 +243,45 @@ class StrukturOrganisasiController extends Controller
      * @param  \App\StrukturOrganisasi  $strukturOrganisasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StrukturOrganisasi $strukturOrganisasi)
+    public function update(Request $request)
     {
-        dd($request->divisi);
-        return 'berhasil';
+        if (!empty($request->nametype)) {
+            if ($request->type == 'divisi') {
+                DB::table('divisis')
+                    ->where('id_divisi', $request->id_type)
+                    ->update(
+                        [
+                            'nama_divisi' => $request->nametype
+                        ]
+                    );
+            } elseif ($request->type == 'unit') {
+                DB::table('units')
+                    ->where('id_unit', $request->id_type)
+                    ->update(
+                        [
+                            'nama_unit' => $request->nametype
+                        ]
+                    );
+            } elseif ($request->type == 'department') {
+                DB::table('departments')
+                    ->where('id_department', $request->id_type)
+                    ->update(
+                        [
+                            'nama_departmen' => $request->nametype
+                        ]
+                    );
+            } elseif ($request->type == 'section') {
+                DB::table('sections')
+                    ->where('id_section', $request->id_type)
+                    ->update(
+                        [
+                            'nama_section' => $request->nametype
+                        ]
+                    );
+            }
+
+        }
+        return redirect('struktur');
     }
 
     /**
