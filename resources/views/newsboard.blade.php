@@ -23,15 +23,12 @@
                         <input type='hidden' id='current_page' />
                         <input type='hidden' id='show_per_page' />
                         @foreach ($berita as $news)
-                            <div class="col-lg-4 col-sm-6 portfolio-item" style="
-                              height: 400px;">
+                            <div class="col-lg-4 col-sm-6 portfolio-item" style="height: 400px;">
                                 <div class="card h-100">
                                     <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; "></a>
                                     <div class="card-block">
-                                        <div  style="height:15vh; width:100%;">
                                             <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
                                             <p class="card-text" align="justify">{!! html_entity_decode(str_limit($news->content, $limit = 150, $end = '...')) !!}</p>
-                                        </div>
                                             <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p>
                                             <br>
                                     </div>
@@ -51,7 +48,7 @@
                 </div>
             </div>
         </div>
-		
+		</div>
         
         <!-- Footer -->
         @include('layouts.footer')

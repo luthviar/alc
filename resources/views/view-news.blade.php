@@ -6,14 +6,13 @@ p.big {
 	font-size : 15px;
 }
 </style>
-<body>
+<body class="page-header-fixed page-full-width">
     <!-- Header -->
-    <div id="wrapper">
-        <div class="wrapper-holder">
-            @include('layouts.header')
-                 
-            <section id="main" style="margin-top: 100px;">
-				<div class ="col-lg-8 col-md-8 col-sm-8">
+	@include('layouts.header')
+	<div class="page-container" id="wrapper">
+        <div class="page-content-wrapper">
+		  <div class="page-content" >
+				<div class ="col-md-8">
 					<h3>{{ $news['title'] }}</h3>
 					<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('l jS \\of F Y')}}</h6>
 					<hr class="style14">
@@ -60,13 +59,9 @@ p.big {
 								<br>
 							@endforeach
 
-							
-						</div>
 						@if(Auth::user() == null)
 						
 						@else
-
-							<div class="block-advice">
 								<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('NewsReplieController@store') }}" enctype="multipart/form-data">
 		                        	{{ csrf_field() }}
 		                        	<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
@@ -115,7 +110,7 @@ p.big {
 					                <div class="form-group">
 					                    <div class="col-md-6 col-md-offset-4">
 					                        <button type="submit" class="btn btn-info">
-					                            Send Comment
+					                            Comment
 					                        </button>
 					                    </div>
 					                </div>
@@ -136,7 +131,7 @@ p.big {
 						<br>
 					</div>
 				</div>
-            </section>
+            </div>
         </div>
         <!-- Footer -->
         @include('layouts.footer')

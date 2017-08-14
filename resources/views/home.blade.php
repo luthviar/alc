@@ -16,7 +16,7 @@
                             <div class="slide-holder">
                                 <div class="slide-info">
                                     <h1>{{$slide->title}}</h1>
-                                    <p>{{strip_tags(str_limit($slide->content, $limit = 150, $end = '...')) }}</p>
+                                    <p>{!! html_entity_decode(str_limit($slide->content, $limit = 150, $end = '...')) !!}</p>
                                     <a class="btn btn-ghost"  href="/slider/{{$slide->id}}">Read More</a>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                     </a>
                                     </h3>
                                     <p>
-                                         {{strip_tags(str_limit($news->content, $limit = 250, $end = '...')) }}
+                                         {!! html_entity_decode(str_limit($news->content, $limit = 250, $end = '...')) !!}
                                     </p>
                                     <a class="btn hijau-muda" href="page_blog_item.html">
                                          Read more <i class="m-icon-swapright m-icon-white"></i>
