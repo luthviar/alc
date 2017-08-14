@@ -82,7 +82,7 @@
                     </div>
 					
 					<div class="form-group">
-                        <label for="datePicker" class="col-md-4 control-label">Birth Date</label>
+                            <label for="datePicker" class="col-md-4 control-label">Birth Date</label>
                         <div class="col-md-6 date">
                             <div class="input-group input-append date" id="datePicker">
                                 <input type="text" class="form-control" name="tanggal_lahir" />
@@ -95,7 +95,7 @@
 					<div class="form-group">
                         <label for="alamat" class="col-md-4 control-label">Adrress</label>
                         <div class="col-md-6" >
-                           <textarea name="alamat" id="summernote"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" rows="3"></textarea>
                         </div>
                     </div>
 
@@ -308,49 +308,55 @@
 	
 
 </script>
-<script>
-$(document).ready(function() {
-    $('#datePicker')
-        .datepicker({
-            format: 'yyyy-mm-dd'
-        })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#eventForm').formValidation('revalidateField', 'date');
+{{--<script>--}}
+{{--$(document).ready(function() {--}}
+    {{--$('#datePicker')--}}
+        {{--.datepicker({--}}
+            {{--format: 'yyyy-mm-dd'--}}
+        {{--})--}}
+        {{--.on('changeDate', function(e) {--}}
+            {{--// Revalidate the date field--}}
+            {{--$('#eventForm').formValidation('revalidateField', 'date');--}}
+        {{--});--}}
+
+    {{--$('#eventForm').formValidation({--}}
+        {{--framework: 'bootstrap',--}}
+        {{--icon: {--}}
+            {{--valid: 'glyphicon glyphicon-ok',--}}
+            {{--invalid: 'glyphicon glyphicon-remove',--}}
+            {{--validating: 'glyphicon glyphicon-refresh'--}}
+        {{--},--}}
+        {{--fields: {--}}
+            {{--name: {--}}
+                {{--validators: {--}}
+                    {{--notEmpty: {--}}
+                        {{--message: 'The name is required'--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--},--}}
+            {{--date: {--}}
+                {{--validators: {--}}
+                    {{--notEmpty: {--}}
+                        {{--message: 'The date is required'--}}
+                    {{--},--}}
+                    {{--date: {--}}
+                        {{--format: 'YYYY-MM-DD',--}}
+                        {{--message: 'The date is not a valid'--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--}--}}
+        {{--}--}}
+    {{--});--}}
+
+
+    {{----}}
+{{--});--}}
+{{--</script>--}}
+
+    <script src="{{URL::asset('js/bootstrap-datepicker.min.js')}}"></script>
+    <script>
+        $('#datePicker').find('input').datepicker({
         });
-
-    $('#eventForm').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'The name is required'
-                    }
-                }
-            },
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'The date is required'
-                    },
-                    date: {
-                        format: 'YYYY-MM-DD',
-                        message: 'The date is not a valid'
-                    }
-                }
-            }
-        }
-    });
-
-
-    
-});
-</script>
+    </script>
 
 @endsection
