@@ -7,8 +7,32 @@ p.big {
 }
 </style>
 <body class="page-header-fixed page-full-width">
+	    @extends('layouts.header')
+	@section('navbar')
+					<li><a href="/">Home</a></li>
+					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
+					@if(Auth::user())
+					<li class="classic-menu-dropdown active"><a href="{{url('/forum')}}">Forum</a><span class="selected">
+							</span></li>
+					<li class="classic-menu-dropdown">
+						<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+							My Modules <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							@foreach ($module as $modul)
+								<li>
+									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+								</li>
+							@endforeach
+						</ul>
+					 
+					</li>
+						
+					 
+					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+					@endif
+	@endsection
 
-            @include('layouts.header')
 	<div class="page-container" id="wrapper">
        <div class="page-content-wrapper"> 
         <div class="page-content" >		
@@ -42,7 +66,6 @@ p.big {
 											{!! html_entity_decode($reply['content']) !!}
 									</div>
 									<div class='pull-right'>
-										Attachments : <br>
 										@foreach($reply['file_pendukung'] as $file)
 											<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
 										@endforeach

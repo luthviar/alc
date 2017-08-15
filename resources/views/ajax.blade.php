@@ -20,12 +20,9 @@
     	</div>
         	<div class="panel-body">
             	<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('PersonnelController@store') }}" novalidate>
-        			
         			{{ csrf_field() }}
-
             		<div class="form-group">
                     	<label for="username" class="col-md-4 control-label">Username</label>
-
                     	<div class="col-md-6">
                         	<input id="username" type="text" class="form-control" name="username" required autofocus>
                     	</div>
