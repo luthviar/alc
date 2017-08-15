@@ -9,7 +9,7 @@ p.big {
 <body class="page-header-fixed page-full-width">
     <!-- Header -->
 	    @extends('layouts.header')
-	@section('navbar')
+		@section('navbar')
 					<li><a href="/">Home</a></li>
 					<li class="classic-menu-dropdown active"><a href="/news-board">News</a><span class="selected">
 							</span></li>
