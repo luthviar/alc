@@ -137,7 +137,7 @@
 	                    <div class="form-group">
 	                        <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
 	                        <div class="col-md-6">
-	                            <select name="level_position" class="form-control">
+	                            <select name="level_position" class="form-control" id="level">
 									<option value="">.....</option>
 	                                @foreach($level as $pos)
 	                                <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
@@ -146,7 +146,7 @@
 	                        </div>
 	                    </div>
                 
-                        <div class="form-group">
+                        <div class="form-group" id="Divisi">
                             <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                             <div class="col-md-6">
                                 <select name="id_divisi" class="form-control" id="MyDivisi">
@@ -175,7 +175,7 @@
                             </div>
                              
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="Section">
                             <label for="section" class="col-md-4 control-label">Section</label>                                     
                             <div class="col-md-6">
                                 <select name="id_section" class="form-control" id="MySection">
@@ -198,8 +198,30 @@
 </form>
 
 
-	
 <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#Unit').hide();
+        $('#Department').hide();
+        $('#Section').hide();
+    });
+        
+</script>
+<script type="text/javascript">
+    $('#level').change(function(){
+        var level = $('#level').val();
+        if (level == 11) {
+            $('#Divisi').hide();
+            $('#Unit').hide();
+            $('#Department').hide();
+            $('#Section').hide();
+        }else{
+            $('#Divisi').show();
+        }
+    });
+</script>
+<script type="text/javascript">
+    
 
 	$('#MyDivisi').click(function() {
 	  var id_divisi = $('#MyDivisi').val();
@@ -222,7 +244,7 @@
 	    		
 	    	});
 	    	$('#MyUnit').html(html);		
-	    	
+	    	$('#Unit').show();
 	    	
 	    },
 	    error: function(data){
@@ -259,7 +281,7 @@
 	    		
 	    	});
 	    	$('#MyDepartment').html(html);	
-	    		
+	    	$('#Department').show();
 	    	
 	    	
 	    },
@@ -302,7 +324,7 @@
 	    		
 	    	});
 	    	$('#MySection').html(html);	
-	    		
+	    	$('#Section').show();
 	    	
 	    	
 	    },

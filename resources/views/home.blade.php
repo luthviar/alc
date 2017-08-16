@@ -86,11 +86,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <ul class="list-inline blog-tags">
-                                        <li>
-                                           <i class="fa fa-pencil" aria-hidden="true"></i> Posted By Admin 1
-                                        </li>
-                                    </ul>
+                                    
                                 </div>
                                 <div class="col-md-8 blog-article">
                                     <h3>
@@ -99,7 +95,7 @@
                                         </a>
                                     </h3>
                                     <p>
-                                         {{ strip_tags(str_limit($news->content, $limit = 250, $end = '...')) }}
+                                         {{ strip_tags(str_limit($news->content, $limit = 360, $end = '...')) }}
                                     </p>
                                     <a href="/news/{{$news->id}}" class="btn hijau-muda">
                                          Read more <i class="m-icon-swapright m-icon-white"></i>
