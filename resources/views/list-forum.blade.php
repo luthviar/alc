@@ -70,7 +70,7 @@
          @foreach($forums as $el)
          <tr>
          <td>{{$el['personnel']->fname}} {{$el['personnel']->lname}}</td>
-         <td>{{$el->title}}</td>
+         <td><a href="/forum/{{$el->id}}">{{$el->title}}</a></td>
          <td>{{$el->created_at}}</td>
          <td>{{count($el->reply)}}</td>
          @if (count($el->reply) > 0)
@@ -127,7 +127,7 @@ $(document).ready(function(){
 
      var data = jQuery.map(forums.forums, function(el, i) {
       var name = el.personnel.fname + ' ' + el.personnel.lname;
-      var title = el.title;
+      var title = '<a href="/forum/'+el.id+'">'+el.title+'</a>';
       var create = el.created_at;
       var count_reply = el.replie.length;
       var last_reply = '-';
@@ -197,7 +197,7 @@ $(document).ready(function(){
 
     var data = jQuery.map(forums.forums, function(el, i) {
      var name = el.personnel.fname + ' ' + el.personnel.lname;
-     var title = el.title;
+     var title = '<a href="/forum/'+el.id+'">'+el.title+'</a>';
      var create = el.created_at;
      var count_reply = el.replie.length;
      var last_reply = '-';
@@ -258,7 +258,7 @@ $(document).ready(function(){
 
     var data = jQuery.map(forums.forums, function(el, i) {
      var name = el.personnel.fname + ' ' + el.personnel.lname;
-     var title = el.title;
+     var title = '<a href="/forum/'+el.id+'">'+el.title+'</a>';
      var create = el.created_at;
      var count_reply = el.replie.length;
      var last_reply = '-';

@@ -1,130 +1,143 @@
 @include('layouts.head')
 
 <body class="page-header-fixed page-full-width">
-
     	<!--header -->
     @extends('layouts.header')
 	@section('navbar')
-					<li class="classic-menu-dropdown"><a href="/">Home</a></li>
-					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
-					@if(Auth::user())
-					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
-					<li class="classic-menu-dropdown">
-						<li class="classic-menu-dropdown active"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
-							My Modules <i class="fa fa-angle-down"></i>
-							<span class="selected">
-							</span>
-						</a>
-						<ul class="dropdown-menu">
-							@foreach ($module as $modul)
-								<li>
-									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-								</li>
-							@endforeach
-						</ul>
-					 
+		<li class="classic-menu-dropdown"><a href="/">Home</a></li>
+		<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
+		@if(Auth::user())
+		<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
+		<li class="classic-menu-dropdown">
+			<li class="classic-menu-dropdown active"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+				My Modules <i class="fa fa-angle-down"></i>
+				<span class="selected">
+				</span>
+			</a>
+			<ul class="dropdown-menu">
+				@foreach ($module as $modul)
+					<li>
+						<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
 					</li>
-						
-					 
-					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
-					@endif
+				@endforeach
+			</ul>
+		 
+		</li>
+			
+		 
+		<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+		@endif
 	@endsection
-	<div class="page-container" id="wrapper">
-       <div class="page-content-wrapper"> 
-        <div class="page-content">			
 
+	<div class="page-container" id="wrapper">
+       	<div class="page-content-wrapper"> 
+        	<div class="page-content">			
                 <div class="block-advice">
                     <div class = "text-center">
-                    <h2 class="brand-before">
+                    	<h2 class="brand-before">
                             <small>Welcome to</small>
                         </h2>
-                        <h1 class="brand-name">{{ $modul['nama'] }}</h1>
+                        <h1 class="brand-name">{{ $aktif_modul->nama }}</h1>
+                        
                         <hr class="tagline-divider">
-                        <p align="justify">
-                            
-                                {{ $modul['description'] }}
-                                    
+                        <p align="justify">    
+                                {{ $aktif_modul['description'] }}
                         </p>   
-
-
                     </div>
                     <div class="row">
-		                    <hr class="style3">
+		                <hr class="style3">
 		            </div>
 		            <div class="row">
 
-                    <h2>Training Modul {{$modul->nama}}</h2>
-                    <br>
+                    	<h2>Training Modul {{$aktif_modul->nama}}</h2>
+                    	<br>
 					
-					@if($modul->id == 3)
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					  @foreach($department as $dep)
-					  <div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-						  <h4 class="panel-title">
-							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1{{$dep->id_department}}" aria-expanded="true" aria-controls="#collapse1{{$dep->id_department}}">
-							  {{ $dep->nama_departmen}}<span class="pull-right"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
-							</a>
-						  </h4>
-						</div>
-						<div id="collapse1{{$dep->id_department}}" class="panel-collapse collapse">
-							  <div class="panel-body">
-								<ul class="list-group">
-									@foreach($training as $trains)
-										@if($trains->id_department == $dep->id_department)
-											@if($trains['open'] == 1)
-											<li class ="list-group-item"><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class="pull-right">  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true"></span></i></h5></a></li>
-											@else
-											<li class ="list-group-item"><a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a></li>
-											@endif
-										@endif
-									@endforeach
-								</ul>
-							  </div>
-							</div>
-						  </div>
+						@if($aktif_modul->id == 3)
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  		@foreach($department as $dep)
+					  		<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+						  			<h4 class="panel-title">
+										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1{{$dep->id_department}}" aria-expanded="true" aria-controls="#collapse1{{$dep->id_department}}">
+								  		{{ $dep->nama_departmen}}
+								  			<span class="pull-right">
+								  				<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+								  			</span>
+										</a>
+						  			</h4>
+								</div>
+								
+								<div id="collapse1{{$dep->id_department}}" class="panel-collapse collapse">
+							  		<div class="panel-body">
+										<ul class="list-group">
+											@foreach($training as $trains)
+												@if($trains->id_department == $dep->id_department)
+													@if($trains['open'] == 1)
+														<li class ="list-group-item">
+															<a href="/training/{{$trains->id}}">
+																<h5>{{$trains->title}}
+																	<span class="pull-right">  
+																		<i class="fa fa-check-square-o" style="color:green;" aria-hidden="true"></i>
+																	</span>
+																</h5>
+															</a>
+														</li>
+													@else
+														<li class ="list-group-item">
+															<a href="/training/{{$trains->id}}">
+																<h5>{{$trains->title}}
+																	<span class="pull-right">  
+																		<i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></i>
+																	</span>
+																</h5>
+															</a>
+														</li>
+													@endif
+												@endif
+											@endforeach
+										</ul>
+							  		</div>
+								</div>
+						  	</div>
 						  	@endforeach
-					</div>
+						</div>
 					
-					@elseif($modul->id == 4 or $modul->id == 5)
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-							@foreach($training as $trains)
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="headingOne">
-									  <h4 class="panel-title">
+						@elseif($aktif_modul->id == 4 or $modul->id == 5)
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								@foreach($training as $trains)
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="headingOne">
+									  		<h4 class="panel-title">
 									
-										@if($trains['open'] == 1)
+											@if($trains['open'] == 1)
 												<a href="/training/{{$trains->id}}">
 													{{$trains->title}}
 													<span class ="pull-right">  <i class="fa fa-check-square-o" style="color:green;" aria-hidden="true">
 													</i></span>
 												</a>
-										@else
-										<a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class ="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a>
-										@endif 
-									
-									</h4>
-								  </div>
-								</div>
-							@endforeach 
-					  </div>
-      				@else
-						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-							@foreach($training as $trains)
-							<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="headingOne">
-									  <h4 class="panel-title">
-								      <a href="/training/{{$trains->id}}">{{$trains->title}}</a></h4></div>
+											@else
+												<a href="/training/{{$trains->id}}"><h5>{{$trains->title}}<span class ="pull-right">  <i class="fa fa-window-close-o" style="color:red;" aria-hidden="true"></span></i></h5></a>
+											@endif 									
+											</h4>
+								  		</div>
+									</div>
+								@endforeach 
+					  		</div>
+      					@else
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								@foreach($training as $trains)
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="headingOne">
+										  	<h4 class="panel-title">
+									     	<a href="/training/{{$trains->id}}">{{$trains->title}}</a></h4>
+									    </div>
+									</div>
+								@endforeach						
 							</div>
-							@endforeach	
-						
-					</div>
-						
-					@endif
-                </div>
+						@endif
+                	</div>
+            	</div>
             </div>
-            
-                </div>
             
             
             
