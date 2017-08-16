@@ -126,19 +126,19 @@
 						    <div id="collapseOne{{$materi->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 
 						      <div class="panel-body">
-								  <iframe src="http://localhost:8000/Uploads/Situs%20Resmi%20PT.pdf?page=hsn#toolbar=0"
-										  width="720" height="600" style="border: none;" type="text/html">
-								  </iframe>
+								  {{--<iframe src="http://localhost:8000/Uploads/Situs%20Resmi%20PT.pdf?page=hsn#toolbar=0"--}}
+										  {{--width="720" height="600" style="border: none;" type="text/html">--}}
+								  {{--</iframe>--}}
 								  {{--<iframe--}}
 
 										  {{--src="http://docs.google.com/gview?url=http://localhost:8000/Uploads/Situs%20Resmi%20PT.pdf&embedded=true"--}}
 										  {{--style="width:100%; height:1000px;" frameborder="0"></iframe>--}}
-						        {{--<iframe id="viewer"--}}
-										{{--src = "{{URL::to($materi->url)}}"--}}
-										{{--width='100%'--}}
-										{{--height='600'--}}
-										{{--allowfullscreen webkitallowfullscreen>--}}
-								{{--</iframe>--}}
+						        <iframe id="viewer"
+										src = "{{URL::to($materi->url)}}"
+										width='100%'
+										height='600'
+										allowfullscreen webkitallowfullscreen>
+								</iframe>
 
 						      </div>
 						    </div>

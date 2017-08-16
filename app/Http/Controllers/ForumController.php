@@ -81,7 +81,13 @@ class ForumController extends Controller
         }
 
         $module = Module::all();
-        return view('view-forum')->with('module',$module)->with('forum_umum', $forum_umum)->with('forum_department',$forum_department)->with('forum_job_family',$forum_job_family)->with('department',$department)->with('job_family',$job_family);
+        return view('view-forum')
+            ->with('module',$module)
+            ->with('forum_umum', $forum_umum)
+            ->with('forum_department',$forum_department)
+            ->with('forum_job_family',$forum_job_family)
+            ->with('department',$department)
+            ->with('job_family',$job_family);
     }
 
     /**
@@ -175,6 +181,10 @@ class ForumController extends Controller
         //
     }
 
+    public function editUser($id_forum) {
+
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -182,9 +192,25 @@ class ForumController extends Controller
      * @param  \App\Forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Forum $forum)
+    public function update($id_forum)
     {
         //
+    }
+
+    public function updateUser(Request $request) {
+        dd($request);
+        DB::table('forums')
+            ->where('id', $request->id_forum_edit)
+            ->update(
+                [
+                    'title' => $request->title,
+                    'can_reply' => $request->can_reply,
+                    'content' => $request->content_edit,
+                    'updated_at' => Carbon::now('Asia/Jakarta')
+                ]
+            );
+
+        return redirect('forum');
     }
 
     /**

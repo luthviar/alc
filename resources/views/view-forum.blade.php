@@ -67,19 +67,21 @@
                                 <table  class="table table-striped detailTable text-left">
                                 <thead>
                                 <tr>
-                                    <th>Created At</th>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
                                     <th>Replies</th>
                                     <th>Last Post</th>
+                                    <th>Created At</th>
                                 </tr>
                                 </thead>
                                     <tbody>
 
                                         @foreach($forum_umum as $forum)
                                         <tr>
-                                            <td>{{ $forum->created_at }}</td>
-                                            <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
+
+                                            <td>
+                                                <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
+                                            </td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
                                             @if(count($forum['replie']) == 0)
@@ -87,7 +89,7 @@
                                             @else
                                             <td>{{$forum['last_reply_personnel']['fname']}} {{$forum['last_reply_personnel']['lname']}}, {{ \Carbon\Carbon::parse($forum['last_reply'][0]->created_at)->format('l jS \\of F Y')}}</td>
                                             @endif
-                                            
+                                            <td>{{ $forum->created_at }}</td>
                                         </tr>
                                         @endforeach
                                     
@@ -106,19 +108,33 @@
                                 <table  class="table table-striped detailTable text-left">
                                 <thead>
                                 <tr>
-                                    <th>Created At</th>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
-                                    <th>replies</th>
-                                    <th>last post</th>
+                                    <th>Replies</th>
+                                    <th>Last Post</th>
+                                    <th>Created At</th>
                                 </tr>
                                 </thead>
                                     <tbody>
 
                                         @foreach($forum_job_family as $forum)
                                         <tr>
-                                            <td>{{ $forum->created_at }}</td>
-                                            <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
+                                            <td>
+                                                <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
+                                                <button
+                                                        class="btn btn-warning btn-sm"
+                                                        type="submit"
+                                                        onclick="editForum(
+                                                                '{{$forum->id}}',
+                                                                '{{ $forum->title }}',
+                                                                '{{ $forum->can_reply }}',
+                                                                '{{ $forum->content }}',
+                                                                '{{ $forum->attachments }}'
+                                                                );"
+                                                >
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
                                             @if(count($forum['replie']) == 0)
@@ -126,7 +142,7 @@
                                             @else
                                             <td>{{$forum['last_reply_personnel']['fname']}} {{$forum['last_reply_personnel']['lname']}}, {{ \Carbon\Carbon::parse($forum['last_reply'][0]->created_at)->format('l jS \\of F Y')}}</td>
                                             @endif
-                                            
+                                            <td>{{ $forum->created_at }}</td>
                                         </tr>
                                         @endforeach
                                     
@@ -145,19 +161,17 @@
                                 <table  class="table table-striped detailTable text-left">
                                 <thead>
                                 <tr>
-                                    <th>Created At</th>
                                     <th>Topic Discussion</th>
                                     <th>Started By</th>
-                                    <th>replies</th>
-                                    <th>last post</th>
-                                    
+                                    <th>Replies</th>
+                                    <th>Last Post</th>
+                                    <th>Created At</th>
                                 </tr>
                                 </thead>
                                     <tbody>
 
                                         @foreach($forum_department as $forum)
                                         <tr>
-                                            <td>{{ $forum->created_at }}</td>
                                             <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -166,7 +180,7 @@
                                             @else
                                             <td></td>
                                             @endif
-                                            
+                                            <td>{{ $forum->created_at }}</td>
                                         </tr>
                                         @endforeach
                                     
@@ -199,6 +213,94 @@
     });
 </script>
 <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+            {{-- modal edit forum --}}
+            <div class="modal fade" id="modal_edit_forum" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content" >
+                        <form
+                                class="form-horizontal"
+                                role="form" method="POST"
+                                action="/forum/user/update"
+                                enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Edit Your Thread</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                {{ csrf_field() }}
+
+                                <input type="hidden" name="id_forum_edit">
+
+                                <div class="form-group">
+                                    <label for="title" class="col-md-3 control-label">Title</label>
+
+                                    <div class="col-md-6">
+                                        <input type="text" id="title_edit" name="title"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="can_reply" id="can_reply_edit" class="col-md-3 control-label">Can Reply</label>
+                                    <div class="col-md-6">
+                                        <select name="can_reply" >
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="content" class="col-md-3 control-label">Content</label>
+
+                                    <div class="col-md-10 col-xs-offset-1">
+                                        <textarea class="summernote" name="content_edit"><div id="content_edit"></div></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image" class="col-md-3 control-label">Upload attachment</label>
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse..
+                                        <input type="file"
+                                               id="filetiga"
+                                               onchange="javascript:updateList3()"
+                                               name="file_pendukung[]"
+                                               multiple/>
+                                    </span>
+                                </span>
+                                            <input type="text" class="form-control" value="select file(s)" readonly>
+                                        </div></br>
+                                        <div class='file-uploaded'>
+                                            <p id="attachments_edit">
+
+                                            </p>
+                                            <p>
+                                            <div id="fileListtiga">
+
+                                            </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-4">
+                                        <input type="submit" class="btn btn-primary" value="Update">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
         <!-- New Thread Umum -->
         <div class="modal fade" id="modal_umum" role="dialog">
@@ -459,6 +561,10 @@
             </div>
         </div>
 
+
+            {{--modal edit forum--}}
+
+
         <script>
             updateList = function() {
                 var input = document.getElementById('file');
@@ -494,6 +600,19 @@
 
                 }
                 output.innerHTML += '</ul>';
+            }
+        </script>
+
+            {{--edit forum script--}}
+        <script>
+            function editForum($id,$title,$can_reply,$content,$attachments) {
+                $("#id_forum_edit").val($id);
+                $("#title_edit").val($title);
+                $("#can_reply_edit").val($can_reply);
+                $("#content_edit").html($content);
+                $("#attachments_edit").html($attachments);
+
+                $('#modal_edit_forum').modal("show");
             }
         </script>
 </body>
