@@ -83,8 +83,8 @@
                                                 <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
                                                 @if($forum->id_user === Auth::user()->id)
                                                     <a
-                                                            class="btn btn-warning btn-sm"
                                                             href="forum/{{$forum->id}}/user/edit"
+                                                            data-toggle="tooltip" data-placement="top" title="Edit Your Thread"
                                                     >
 
                                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -133,11 +133,11 @@
                                                 <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
                                                 @if($forum->id_user === Auth::user()->id)
                                                     <a
-                                                            class="btn btn-warning btn-sm"
                                                             href="forum/{{$forum->id}}/user/edit"
+                                                            data-toggle="tooltip" data-placement="top" title="Edit Your Thread"
                                                     >
 
-                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 
                                                     </a>
                                                 @endif
@@ -183,8 +183,8 @@
                                                     {{$forum->title}}
                                                     @if($forum->id_user === Auth::user()->id)
                                                         <a
-                                                                class="btn btn-warning btn-sm"
                                                                 href="forum/{{$forum->id}}/user/edit"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit Your Thread"
                                                         >
 
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
