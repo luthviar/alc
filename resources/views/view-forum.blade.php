@@ -148,6 +148,16 @@
 
                                             <td>
                                                 <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
+                                                @if($forum->id_user === Auth::user()->id)
+                                                    <a
+                                                            href="forum/{{$forum->id}}/user/edit"
+                                                            data-toggle="tooltip" data-placement="top" title="Edit Your Thread"
+                                                    >
+
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                                                    </a>
+                                                @endif
                                             </td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -190,11 +200,11 @@
                                                 <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
                                                 @if($forum->id_user === Auth::user()->id)
                                                     <a
-                                                            class="btn btn-warning btn-sm"
                                                             href="forum/{{$forum->id}}/user/edit"
+                                                            data-toggle="tooltip" data-placement="top" title="Edit Your Thread"
                                                     >
 
-                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 
                                                     </a>
                                                 @endif
@@ -236,7 +246,20 @@
 
                                         @foreach($forum_department as $forum)
                                         <tr>
-                                            <td><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></td>
+                                            <td><a href="/forum/{{$forum->id}}">
+                                                    {{$forum->title}}
+                                                    @if($forum->id_user === Auth::user()->id)
+                                                        <a
+                                                                href="forum/{{$forum->id}}/user/edit"
+                                                                data-toggle="tooltip" data-placement="top" title="Edit Your Thread"
+                                                        >
+
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                                                        </a>
+                                                    @endif
+                                                </a>
+                                            </td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
                                             @if($forum['replie'] == null)
