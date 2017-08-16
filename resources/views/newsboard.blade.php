@@ -7,7 +7,7 @@
     	<!--header -->
     @extends('layouts.header')
 	@section('navbar')
-					<li><a href="/">Home</a></li>
+					<li class="classic-menu-dropdown"><a href="/">Home</a></li>
 					<li class="classic-menu-dropdown active"><a href="/news-board">News</a><span class="selected"></span></li>
 					@if(Auth::user())
 					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>

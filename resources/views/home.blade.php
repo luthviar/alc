@@ -115,6 +115,7 @@
                                     </a>
                             </ul>
                         </div>
+
                         <div class="col-md-3 col-sm-6 article-block">
                             <p class="border-panel-title-wrap"> 
                                 <span class="panel-title-text">Links</span>    
@@ -149,6 +150,7 @@
                             </div>
                         </div>
                     </div>
+					<!-- end Div links-->
                    
                 </div>
             

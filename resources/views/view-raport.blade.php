@@ -10,7 +10,7 @@
 
     @extends('layouts.header')
 	@section('navbar')
-					<li><a href="/">Home</a></li>
+					<li class="classic-menu-dropdown"><a href="/">Home</a></li>
 					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
 					@if(Auth::user())
 					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
@@ -29,7 +29,7 @@
 					</li>
 						
 					 
-					<li class="classic-menu-dropdown active"><a href="/raport/{{Auth::user()->id}}">My Profile</a><span class="selected">
+					<li class="classic-menu-dropdown  active"><a href="/raport/{{Auth::user()->id}}">My Profile</a><span class="selected">
 							</span></li>
 					@endif
 	@endsection
@@ -83,7 +83,7 @@
                         <input type="submit" class="btn btn-flat">
                       </form>
                     </div>
-                    <div class="col-lg-9 col-md-9" style="height: 400px;">
+                    <div class="col-lg-9 col-md-9">
 									  <table class="table table-user-information">
 										<tbody>
 										  <tr>
@@ -155,7 +155,7 @@
 										  </tr>
 										</tbody>
 									  </table>
-                    </div>
+									</div>
 								  </div>  
 							   </div>
 							</div>
@@ -232,7 +232,7 @@
             
             
             
-            
+            <div class="clearfix"></div>
         </div>
         
         <!-- Footer -->

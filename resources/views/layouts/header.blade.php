@@ -11,15 +11,7 @@
                 <!-- <img src="assets/img/menu-toggler.png" alt=""/> -->
                 <i class="fa fa-bars"></i>
             </a>
-            <!-- BEGIN HORIZANTAL MENU -->
-            <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
-                 
-				<ul class="nav navbar-nav">
-					@yield('navbar')
-				</ul>
-			 
-            </div>
-            <!-- END HORIZANTAL MENU -->
+			<!-- END HORIZANTAL MENU -->
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->
             <!-- END RESPONSIVE MENU TOGGLER -->
             <!-- BEGIN TOP NAVIGATION MENU -->
@@ -64,6 +56,14 @@
                 @endif
             </ul>
             <!-- END TOP NAVIGATION MENU -->
+            <!-- BEGIN HORIZANTAL MENU -->
+            <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
+                 
+				<ul class="nav navbar-nav">
+					@yield('navbar')
+				</ul>
+			 
+            </div>
         </div>
         <!-- END TOP NAVIGATION BAR -->
     </div>
