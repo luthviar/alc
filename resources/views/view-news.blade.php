@@ -28,10 +28,12 @@ p.big {
 					</p>
 					<hr class="style14"> 
 					<div class='pull-right'>
-						Attachments : <br>
-						@foreach($news['file_pendukung'] as $file)
-							<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
-						@endforeach
+						@if(!empty($news['file_pendukung'][0]))
+							Attachments : <br>
+							@foreach($news['file_pendukung'] as $file)
+								<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
+							@endforeach
+						@endif
 					</div>
 					<br><br><br><br>
 
@@ -48,10 +50,12 @@ p.big {
 											{!! html_entity_decode($reply['content']) !!}
 											<br>
 											<div class ="pull-right">
-												Attachments : <br>
-												@foreach($reply['file_pendukung'] as $file)
-												 <a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}}</a><br>
-												@endforeach
+												@if(!empty($reply['file_pendukung'][0]))
+													Attachments : <br>
+													@foreach($reply['file_pendukung'] as $file)
+													 <a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}}</a><br>
+													@endforeach
+												@endif
 											</div>
  
 									</div>

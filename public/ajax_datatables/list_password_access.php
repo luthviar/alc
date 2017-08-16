@@ -71,16 +71,16 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row['email'];
 	$nestedData[] = $row['created_at'];
 	if (!empty($row['username_valid']) and !empty($row['email_valid'])) {
-		$nestedData[] = "valid accout";
+		$nestedData[] = "valid account";
 		if ($row['is_process'] == 1) {
 			$nestedData[] = "success";
 			$nestedData[] = "<a class='btn btn-default btn-flat' disabled='true'>process</a>";
 		}else{
 			$nestedData[] = "<span style='opacity: 0.5'>no action</span>";
-			$nestedData[] = "<form role='form' method='POST' action='/process-access/submit'>".csrf_field()."<input type='hidden' class='form-control' name='id_user' value='".$row['user_id']."' ><button type='submit' class='btn btn-default btn-flat'>process</button></form>";
+			$nestedData[] = "<a href='/process-access/submit/".$row['user_id']."' class='btn btn-default btn-flat'>process</a>";
 		}
 	}else{
-		$nestedData[] = "non valid accout";
+		$nestedData[] = "non valid account";
 		$nestedData[] = "<span style='opacity: 0.5'>no action</span>";
 		$nestedData[] = "<a class='btn btn-default btn-flat' disabled='true'>process</a>";
 	}

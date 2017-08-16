@@ -4,12 +4,26 @@
  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.detailTable').DataTable();
+        $('#tableTraining').DataTable({
+        	"order": [[ 4, "desc" ]],
+        	"processing": true,
+            "serverSide": true,
+            "ajax":{
+                url :"ajax_datatables/list_request_training.php", // json datasource
+                type: "post",  // method  , by default get
+                dataType: "json",
+                error: function(){  // error handling
+                    $("#detailTable").html("");
+                    
+                }
+            }
+        });
     });
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#passwordTable').DataTable({
+        	"order": [[ 2, "desc" ]],
         	"processing": true,
             "serverSide": true,
             "ajax":{
@@ -44,7 +58,7 @@
 	    </div>
 	    <div class="panel-body">
 		<div class = "main-table">
-			<table  class="table table-striped detailTable">
+			<table id="tableTraining" class="table table-striped">
 			  <thead>
 				<tr>
 				  <th>Name</th>

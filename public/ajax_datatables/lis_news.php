@@ -15,19 +15,20 @@ $columns = array(
 	1 => 'can_reply',
 	2 =>'replies_count', 
 	3 => 'created_at',
-	4 => 'edit'
+	4 => 'flag_aktif',
+	5 => 'edit'
 );
 
 // getting total number records without any search
 $sql = "SELECT * ";
-$sql.=" FROM beritas ";
+$sql.=" FROM beritas  ";
 $query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
 $sql = "SELECT * ";
-$sql.=" FROM beritas WHERE 1=1";
+$sql.=" FROM beritas WHERE 1=1 ";
 if( !empty($requestData['search']['value']) and strlen($requestData['search']['value']) > 3) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" AND ( title LIKE '%".$requestData['search']['value']."%' )";    
 	
@@ -56,6 +57,11 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	}
 
 	$nestedData[] = $row['created_at'];
+	if ($row['flag_aktif'] == 1) {
+		$nestedData[] = "aktif <span><a href='/berita/".$row['id']."/nonactive' class='btn btn-default btn-flat'>nonactive</a></span>";
+	}else{
+		$nestedData[] = "non aktif <span><a href='/berita/".$row['id']."/active' class='btn btn-success btn-flat'>active</a></span>";
+	}
 	$nestedData[] = "<a class='btn btn-default' href='/news/".$row["id"]."/edit'>edit</a></span>";
 	
 	$data[] = $nestedData;

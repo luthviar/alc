@@ -34,7 +34,7 @@ class BeritaController extends Controller
 
     public function readMore()
     {
-        $news = Berita::all();
+        $news = Berita::where('flag_aktif', 1)->get();
         $module = Module::all();
         return view('newsboard')->with('berita',$news)->with('module',$module);
     }
@@ -274,5 +274,21 @@ class BeritaController extends Controller
         $news_attachment->delete();
 
         return back();
+    }
+
+    public function status_active($id){
+        $berita = Berita::find($id);
+        $berita->flag_aktif = 1;
+        $berita->save();
+
+        return redirect('news');
+    }
+
+    public function status_nonactive($id){
+        $berita = Berita::find($id);
+        $berita->flag_aktif = 0;
+        $berita->save();
+
+        return redirect('news');
     }
 }

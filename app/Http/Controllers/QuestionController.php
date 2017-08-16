@@ -130,7 +130,6 @@ class QuestionController extends Controller
     public function update(Request $request)
     {
         $question = Question::find($request->id_question);
-        dd($question);
         $question->pertanyaan = $request->id_test;
         $question->pertanyaan = $request->question;
         $question->save();
@@ -207,7 +206,6 @@ class QuestionController extends Controller
 
     public function submit (Request $request){
         $training       = Training::find($request->id_training);
-        dd('rohmat');
         $id_test        = $request->id_test;
         $id_question    = DB::table('questions')-> insertGetId(array(
             'id_test' => $request->id_test,

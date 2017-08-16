@@ -62,12 +62,16 @@ $(document).ready(function() {
 </script>
 
 
+
+
 	<div class="col-md-12">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Trainning Overview</h4>
         </div>
         <div class="panel-body">
+
+        
             
                 <!-- Info training -->
                 <div class=" col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 "> 
@@ -277,7 +281,24 @@ $(document).ready(function() {
                     </div>
                 </div>
 
-            
+            <!-- .....................preview..................... -->
+<div class="modal fade" id="previewmodal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    <form class="form-horizontal" role="form" method="POST" action="/content-learning/add-content" enctype="multipart/form-data"">
+        <!-- Modal content-->
+      <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="previewtitle"></h4>
+            </div>
+            <div class="modal-body">                                       
+                <p id="descriptionpreview"></p>
+                <a id="previewfile" href="" >file content</a>
+                
+            </div>
+        </form>            
+    </div>
+</div>
         </div>
     </div>
 
@@ -522,25 +543,6 @@ $(document).ready(function() {
     </div>
 </div>
 
-<!-- .....................preview..................... -->
-<div class="modal fade" id="previewmodal" role="dialog">
-    <div class="modal-dialog modal-lg">
-    <form class="form-horizontal" role="form" method="POST" action="/content-learning/add-content" enctype="multipart/form-data"">
-        <!-- Modal content-->
-      <div class="modal-content" >
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="previewtitle"></h4>
-            </div>
-            <div class="modal-body">                                       
-                <p id="descriptionpreview"></p>
-                <a id="previewfile" href="" >file content</a>
-                
-            </div>
-        </form>            
-    </div>
-</div>
-
 <!-- MODAL - Add Content Learning -->
 <div class="modal fade" id="add-content" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -594,6 +596,10 @@ $(document).ready(function() {
         </form>            
     </div>
 </div>
+
+
+
+
 
 
 

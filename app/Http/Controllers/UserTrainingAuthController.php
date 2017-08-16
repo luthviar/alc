@@ -169,7 +169,7 @@ class UserTrainingAuthController extends Controller
         return view('process-access')->with('user', $user);
     }
 
-    public function process_submit(Request $request){
+    public function process_submit($id_user){
 
         $pinrandom = mt_rand(100, 999)
              . mt_rand(100, 999);
@@ -177,7 +177,7 @@ class UserTrainingAuthController extends Controller
         $newpass = str_shuffle($pinrandom);
 
 
-        $user = User::find($request->id_user);
+        $user = User::find($id_user);
         $user->password = bcrypt($newpass);
         $user->save();
 

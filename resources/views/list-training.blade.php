@@ -5,6 +5,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#detailTable').DataTable({
+        	"order": [[ 3, "desc" ]],
         	"processing": true,
             "serverSide": true,
             "ajax":{

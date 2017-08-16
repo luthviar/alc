@@ -65,14 +65,14 @@
                                 </div>
                                 <div class="col-md-8 blog-article">
                                     <h3>
-                                    <a href="/berita/{{$news->id}}">
-                                        {{ str_limit($news->title, $limit = 50, $end = '...') }}
-                                    </a>
+                                        <a href="/news/{{$news->id}}">
+                                            {{ str_limit($news->title, $limit = 50, $end = '...') }}
+                                        </a>
                                     </h3>
                                     <p>
-                                         {!! html_entity_decode(str_limit($news->content, $limit = 250, $end = '...')) !!}
+                                         {{ strip_tags(str_limit($news->content, $limit = 250, $end = '...')) }}
                                     </p>
-                                    <a class="btn hijau-muda" href="page_blog_item.html">
+                                    <a href="/news/{{$news->id}}" class="btn hijau-muda">
                                          Read more <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
                                 </div>
@@ -81,7 +81,7 @@
                             @endforeach
                      
                             <ul class="pagination pull-right">
-                                 <a class="btn hijau-muda" href="page_blog_item.html">
+                                 <a href="/news-board" class="btn hijau-muda" href="page_blog_item.html">
                                          More News <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
                             </ul>

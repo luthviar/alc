@@ -11,10 +11,10 @@ $requestData= $_REQUEST;
 
 $columns = array( 
 // datatable column index  => database column name
-	0 =>'id', 
-	1 => 'username',
-	2 =>'password', 
-	3 => 'created_at'
+	0 =>'title', 
+	1 => 'is_activ',
+	2 =>'created_at', 
+	3 => 'id'
 );
 
 // getting total number records without any search

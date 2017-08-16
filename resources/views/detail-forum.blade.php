@@ -22,10 +22,12 @@ p.big {
 
 						</p><br>
 						<div class='pull-right'>
-							Attachments : <br>
-							@foreach($forum['file_pendukung'] as $file)
-								<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
-							@endforeach
+							@if(!empty($forum['file_pendukung'][0]))
+								Attachments : <br>
+								@foreach($forum['file_pendukung'] as $file)
+									<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
+								@endforeach
+							@endif
 						</div>
 					</div>
 					<br>
@@ -42,10 +44,12 @@ p.big {
 											{!! html_entity_decode($reply['content']) !!}
 									</div>
 									<div class='pull-right'>
-										Attachments : <br>
-										@foreach($reply['file_pendukung'] as $file)
-											<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
-										@endforeach
+										@if(!empty($reply['file_pendukung'][0]))
+											Attachments : <br>
+											@foreach($reply['file_pendukung'] as $file)
+												<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
+											@endforeach
+										@endif
 									</div>
 								</div>
 								<br>

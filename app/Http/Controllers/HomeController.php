@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $module = Module::all();
-        $berita = DB::table('beritas')->orderBy('id', 'desc')->take(6)->get();
+        $berita = DB::table('beritas')->where('flag_aktif',1)->orderBy('id', 'desc')->take(6)->get();
         $slider = ContentSlider::where('is_activ',1)->get();
         return view('home')->with('module',$module)->with('berita',$berita)->with('slider',$slider);
     }

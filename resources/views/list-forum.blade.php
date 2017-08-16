@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#detailTable').DataTable();
+        $('#detailTable').DataTable({
+          "order": [[ 2, "desc" ]],
+        });
     });
 </script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
@@ -137,6 +139,7 @@ $(document).ready(function(){
      });
      jQuery('#detailTable').dataTable().fnDestroy(); 
         $('#detailTable').DataTable( {
+          "order": [[ 2, "desc" ]],
          paging: true,
          searching: true,
          retrieve : true,
@@ -206,6 +209,7 @@ $(document).ready(function(){
     });
     jQuery('#detailTable').dataTable().fnDestroy(); 
        $('#detailTable').DataTable( {
+        "order": [[ 2, "desc" ]],
         paging: true,
      searching: true,
      retrieve : true,
@@ -266,6 +270,7 @@ $(document).ready(function(){
     });
     jQuery('#detailTable').dataTable().fnDestroy(); 
        $('#detailTable').DataTable( {
+        "order": [[ 2, "desc" ]],
         paging: true,
      searching: true,
      retrieve : true,

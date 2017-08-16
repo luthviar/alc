@@ -5,6 +5,7 @@
 <script type="text/javascript" language="javascript" >
             $(document).ready(function() {
                 var dataTable = $('#detailTable').DataTable( {
+                	"order": [[ 3, "desc" ]],
                     "processing": true,
                     "serverSide": true,
                     "ajax":{
@@ -39,6 +40,7 @@
 				  <th>Can Reply</th>
 				  <th>Replies Count</th>
 				  <th>Created At</th>
+				  <th>Status</th>
 				  <th>Edit</th>
 				</tr>
 			  </thead>

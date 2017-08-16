@@ -74,6 +74,10 @@
 
     Route::get('/slider/{id}/nonactive', 'ContentSliderController@nonactive');
 
+    Route::get('/berita/{id}/active', 'BeritaController@status_active');
+
+    Route::get('/berita/{id}/nonactive', 'BeritaController@status_nonactive');
+
     Route::get('/access/{id}/active', 'UserTrainingAuthController@active');
 
     Route::get('/access/{id}/nonactive', 'UserTrainingAuthController@nonactive');
@@ -146,7 +150,7 @@
 
     Route::get('/access-process/{id}', 'UserTrainingAuthController@process');
 
-    Route::post('process-access/submit', 'UserTrainingAuthController@process_submit');
+    Route::get('process-access/submit/{id}', 'UserTrainingAuthController@process_submit');
 
     Route::post('/get-slider-ajax', 'ContentSliderController@get_slider_ajax');
 

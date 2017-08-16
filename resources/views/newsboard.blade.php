@@ -28,7 +28,7 @@
                                     <a href="#"><img class="card-img-top img-fluid" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="border: 1px solid green; border-radius:5%; "></a>
                                     <div class="card-block">
                                             <h4 class="card-title"><a href="/berita/{{$news->id}}">{{ str_limit($news->title, $limit = 20, $end = '...') }}</a></h4>
-                                            <p class="card-text" align="justify">{!! html_entity_decode(str_limit($news->content, $limit = 150, $end = '...')) !!}</p>
+                                            <p class="card-text" align="justify">{{ strip_tags(str_limit($news->content, $limit = 150, $end = '...')) }}</p>
                                             <p class="text-right" ><a href="/berita/{{$news->id}}">Read more </a></p>
                                             <br>
                                     </div>
