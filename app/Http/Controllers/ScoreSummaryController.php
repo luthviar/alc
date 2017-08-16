@@ -10,6 +10,7 @@ use App\Department;
 use App\Divisi;
 use App\Section;
 use App\Unit;
+use App\JobFamily;
 use App\LevelPosition;
 use App\UserTest;
 use App\Training;
@@ -96,6 +97,7 @@ class ScoreSummaryController extends Controller
             $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
             $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
             $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+            $personnel['job_family'] = JobFamily::find($personnel['department']->id_job_family);
         }
         $personnel['score'] = ScoreSummary::where('id_user',$personnel->id_user)->get();
         $personnel['training'] = UserTest::where('id_user',$personnel->id_user)->get();

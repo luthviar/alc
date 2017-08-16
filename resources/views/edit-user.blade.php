@@ -139,7 +139,7 @@
                     <div class="form-group">
                         <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
                         <div class="col-md-6">
-                            <select name="level_position" class="form-control">
+                            <select name="level_position" class="form-control" id="level">
                             @if(empty($personnel['employee']))
 								<option value="">.....</option>
                                 @foreach($level as $pos)
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" id="Divisi">
                         <label for="divisi" class="col-md-4 control-label">Divition</label>                                     
                         <div class="col-md-6">
                             <select name="divisi" class="form-control" id="MyDivisi">
@@ -183,7 +183,7 @@
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="Unit">
                         <label for="unit" class="col-md-4 control-label">Unit</label>                                     
                         <div class="col-md-6">
                             <select name="unit" class="form-control" id="MyUnit">
@@ -200,7 +200,7 @@
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="Department">
                         <label for="department" class="col-md-4 control-label">Department</label>                                     
                         <div class="col-md-6">
                             <select name="department" class="form-control" id="MyDepartment">
@@ -217,7 +217,7 @@
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="Section">
                         <label for="section" class="col-md-4 control-label">Section</label>                                     
                         <div class="col-md-6">
                             <select name="section" class="form-control" id="MySection">
@@ -249,8 +249,30 @@
 							</div>
         </div>
 	</form>
-		
-        <script type="text/javascript">
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#Unit').hide();
+        $('#Department').hide();
+        $('#Section').hide();
+    });
+        
+</script>
+<script type="text/javascript">
+    $('#level').change(function(){
+        var level = $('#level').val();
+        if (level == 11) {
+            $('#Divisi').hide();
+            $('#Unit').hide();
+            $('#Department').hide();
+            $('#Section').hide();
+        }else{
+            $('#Divisi').show();
+        }
+    });
+</script>		
+<script type="text/javascript">
 
     $('#MyDivisi').click(function() {
       var id_divisi = $('#MyDivisi').val();
@@ -273,6 +295,7 @@
                 
             });
             $('#MyUnit').html(html);        
+            $('#Unit').show();
             
             
         },
@@ -310,7 +333,8 @@
                 
             });
             $('#MyDepartment').html(html);  
-                
+            $('#Department').show();
+            
             
             
         },
@@ -353,7 +377,7 @@
                 
             });
             $('#MySection').html(html); 
-                
+            $('#Section').show();
             
             
         },

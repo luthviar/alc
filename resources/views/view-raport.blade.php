@@ -142,6 +142,14 @@
 											@endif
 										  </tr>
 										  <tr>
+											<td>Job Family</td>
+											@if(empty($personnel->struktur) or empty($personnel['job_family']))
+											<td>-</td>
+											@else
+											<td>{{$personnel['job_family']->name}}</td>
+											@endif
+										  </tr>
+										  <tr>
 											<td>Date of Birth</td>
 											<td>{{$personnel->tanggal_lahir}}</td>
 										  </tr>

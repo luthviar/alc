@@ -34,7 +34,7 @@ class BeritaController extends Controller
 
     public function readMore()
     {
-        $news = Berita::where('flag_aktif', 1)->get();
+        $news = Berita::where('flag_aktif', 1)->orderBy('created_at', 'desc')->get();
         $module = Module::all();
         return view('newsboard')->with('berita',$news)->with('module',$module);
     }
