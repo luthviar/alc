@@ -160,15 +160,13 @@
                                             {{ str_limit($news->title, $limit = 50, $end = '...') }}
                                         </a>
                                     </h3>
-                                    <p style ="height:100px;">
+                                    <p>
                                          {{ strip_tags(str_limit($news->content, $limit = 360, $end = '...')) }}
                                     </p>
-										<div class="pull-right" >
 											<a href="/news/{{$news->id}}" class="btn hijau-muda">
 												 Read more <i class="m-icon-swapright m-icon-white"></i>
 											</a>
-										</div>
-                                </div>
+	                               </div>
                             </div>
                             <hr>
                             @endforeach

@@ -11,7 +11,7 @@
 				<div class="row">
 				
 					<div class="btn-group btn-breadcrumb">
-						<a class="btn btn-default">Training</i></a>
+						<a class="btn btn-default">Training</a>
 						<a class="btn btn-danger">Test Result</a>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 				<div class="row">
 				
 					<div class="btn-group btn-breadcrumb">
-						<a class="btn btn-default">Training</i></a>
+						<a class="btn btn-default">Training</a>
 						<a class="btn btn-danger">Test Result</a>
 					</div>
 				</div>
