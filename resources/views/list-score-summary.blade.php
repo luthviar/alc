@@ -3,8 +3,8 @@
 
 @section('section')
 
-<link rel="stylesheet" href="{{ URL::asset('css/Upload2.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg2.js')}}"></script>
+<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function() {

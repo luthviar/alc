@@ -252,7 +252,7 @@
                                 <div class="form-group">
                                     <label for="content" class="col-md-3 control-label">Content</label>
 
-                                    <div class="col-md-10 col-xs-offset-1">
+                                    <div class="col-md-10">
                                         <textarea class="summernote" id="summernote_edit" name="content_edit"></textarea>
                                     </div>
                                 </div>
@@ -326,10 +326,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="can_repl
-                        y" class="col-md-3 control-label">Can Reply</label>
+                                <label for="can_reply" class="col-md-3 control-label">Can Reply</label>
                                 <div class="col-md-6">
-                                    <select name="can_reply" class="form-control">
+                                    <select name="can_reply" class="form-control pull-left">
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
                                     </select><br>
@@ -340,7 +339,7 @@
                             <div class="form-group" >
                                 <label for="content" class="col-md-3 control-label">Content</label>
 
-                                <div class="col-md-10" name="content">
+                                <div class="col-md-8" name="content">
                                     <textarea class="summernote" name="content"></textarea>
                                 </div>
                             </div>
@@ -427,7 +426,7 @@
                             <div class="form-group">
                                 <label for="content" class="col-md-3 control-label">Content</label>
 
-                                <div class="col-md-10 col-xs-offset-1">
+                                <div class="col-md-8">
                                     <textarea class="summernote" name="content3"></textarea>
                                 </div>
                             </div>
@@ -512,7 +511,7 @@
                             <div class="form-group">
                                 <label for="content" class="col-md-3 control-label">Content</label>
 
-                                <div class="col-md-10 col-xs-offset-1">
+                                <div class="col-md-8">
                                     <textarea class="summernote" name="content2"></textarea>
                                 </div>
                             </div>

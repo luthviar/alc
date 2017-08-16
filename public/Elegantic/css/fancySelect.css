@@ -3,7 +3,7 @@ div.fancy-select {
 	font:14px/16px 'novecento_sans_widemedium', Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 	color: #46565D;
-	float: right;
+	float: left;
 	width: 93px;
 	text-align: left;
 }
