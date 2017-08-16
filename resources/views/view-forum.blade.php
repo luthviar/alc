@@ -121,19 +121,16 @@
                                         <tr>
                                             <td>
                                                 <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
-                                                <button
-                                                        class="btn btn-warning btn-sm"
-                                                        type="submit"
-                                                        onclick="editForum(
-                                                                '{{$forum->id}}',
-                                                                '{{ $forum->title }}',
-                                                                '{{ $forum->can_reply }}',
-                                                                '{{ $forum->content }}',
-                                                                '{{ $forum->attachments }}'
-                                                                );"
-                                                >
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                </button>
+                                                @if($forum->id_user === Auth::user()->id)
+                                                    <a
+                                                            class="btn btn-warning btn-sm"
+                                                            href="forum/{{$forum->id}}/user/edit"
+                                                    >
+
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                                                    </a>
+                                                @endif
                                             </td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -232,7 +229,7 @@
                             <div class="modal-body">
                                 {{ csrf_field() }}
 
-                                <input type="hidden" name="id_forum_edit">
+                                <input type="hidden" id="id_forum_edit" name="id_forum_edit">
 
                                 <div class="form-group">
                                     <label for="title" class="col-md-3 control-label">Title</label>
@@ -256,7 +253,7 @@
                                     <label for="content" class="col-md-3 control-label">Content</label>
 
                                     <div class="col-md-10 col-xs-offset-1">
-                                        <textarea class="summernote" name="content_edit"><div id="content_edit"></div></textarea>
+                                        <textarea class="summernote" id="summernote_edit" name="content_edit"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -269,7 +266,7 @@
                                         Browse..
                                         <input type="file"
                                                id="filetiga"
-                                               onchange="javascript:updateList3()"
+                                               onchange="javascript:updateList4()"
                                                name="file_pendukung[]"
                                                multiple/>
                                     </span>
@@ -601,15 +598,31 @@
                 }
                 output.innerHTML += '</ul>';
             }
+
+            updateList4 = function() {
+                var input = document.getElementById('filetiga');
+                var output = document.getElementById('fileListtiga');
+
+                output.innerHTML = 'Selected file(s) <br><ul>';
+                for (var i = 0; i < input.files.length; ++i) {
+                    output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+                }
+                output.innerHTML += '</ul>';
+            }
         </script>
 
             {{--edit forum script--}}
         <script>
-            function editForum($id,$title,$can_reply,$content,$attachments) {
-                $("#id_forum_edit").val($id);
+            function editForum($id_edit,$title,$can_reply,$content,$attachments) {
+                window.location.href = '...';
+                $("#id_forum_edit").val($id_edit);
                 $("#title_edit").val($title);
                 $("#can_reply_edit").val($can_reply);
-                $("#content_edit").html($content);
+
+                $("#summernote_edit").summernote("code", $content);
+//                $("#content_edit").html($content);
+
                 $("#attachments_edit").html($attachments);
 
                 $('#modal_edit_forum').modal("show");

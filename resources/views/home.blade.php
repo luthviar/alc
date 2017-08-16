@@ -36,25 +36,24 @@
             <div class="page-content" class="wrapper-holder" style="margin-bottom: -109px;">
                 <!-- Slider -->
     			<!-- <hr class="style13"> -->
-                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div class="promo" >
                     <ul class="slider">
                         @foreach ($slider as $slide)
 
-                        <li>
-							<img class="img-responsive" src="{{$slide->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="width:100%;height:150px;">
+                        <li style="background: url({{$slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 100% 100%; width:100% !important;">
+
                             <div class="slide-holder">
                                 <div class="slide-info">
                                     <h1>{{$slide->title}}</h1>
                                     <p>{!! html_entity_decode(str_limit($slide->content, $limit = 150, $end = '...')) !!}</p>
 									<div class="top-left">
-                                    <a class="btn btn-ghost"  href="/slider/{{$slide->id}}">Read More</a>
+										<a class="btn btn-ghost"  href="/slider/{{$slide->id}}">Read More</a>
+									</div>
                                 </div>
                             </div>
                         </li>
                         @endforeach
                     </ul>
-                    
-                </div>
             </div>
             <div class="clearfix"></div>
              <!-- NEWS -->

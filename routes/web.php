@@ -285,6 +285,9 @@
 
     Route::resource('forum', 'ForumController');
 
+    Route::get('forum/{id_forum}/user/edit','ForumController@editUser');
+
+    Route::post('forum/user/update','ForumController@updateUser');
 
     Route::get('RequestBoard', function () {
         return view('Admin.RequestBoard');
