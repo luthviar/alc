@@ -82,9 +82,7 @@ class PersonnelController extends Controller
             'is_admin' => $request->is_admin,
             'is_aktif' => 1,
         ));
-        $path = public_path().'/Uploads/' . $id_user;
-        $result = File::makeDirectory(sprintf($path, $mode=0777, true));
-
+        
         $id_personnel = DB::table('personnels')-> insertGetId(array(
             'id_user' => $id_user,
             'fname' => $request->fname,
@@ -113,6 +111,7 @@ class PersonnelController extends Controller
             }else{
                 $id_struktur = $struktur->id;
             }
+
             $id_employee = DB::table('employees')-> insertGetId(array(
                 'id_personnel' => $id_personnel,
                 'nip' => $request->nik,
@@ -142,13 +141,17 @@ class PersonnelController extends Controller
             $personnel['struktur'] = null;
         }else{
             $struktur = StrukturOrganisasi::find($employee->struktur);
-            $personnel['struktur'] = $struktur;
-            $personnel['level'] = LevelPosition::find($employee->level_position);
-            $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
-            $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
-            $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
-            $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
-            $personnel['job_family'] = JobFamily::find($personnel['department']->id_job_family);
+            if (empty($struktur)) {
+                $personnel['struktur'] = null;
+            }else{
+                $personnel['struktur'] = $struktur;
+                $personnel['level'] = LevelPosition::find($employee->level_position);
+                $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
+                $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
+                $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
+                $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+                $personnel['job_family'] = JobFamily::find($personnel['department']->id_job_family);
+            }
         }
         $personnel['score'] = ScoreSummary::where('id_user',$personnel->id_user)->get();
         $personnel['training'] = UserTest::where('id_user',$personnel->id_user)->get();
@@ -226,7 +229,7 @@ class PersonnelController extends Controller
             }else{
                 if (empty($employee)) {
                     $id_employee = DB::table('employees')-> insertGetId(array(
-                        'id_personnel' => $id_personnel,
+                        'id_personnel' => $request->id_personnel,
                         'nip' => $request->nik,
                         'level_position' => $request->level_position,
                     ));   
