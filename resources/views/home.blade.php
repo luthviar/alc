@@ -36,16 +36,17 @@
             <div class="page-content" class="wrapper-holder" style="margin-bottom: -109px;">
                 <!-- Slider -->
     			<!-- <hr class="style13"> -->
-                <div class="promo" >
+                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ul class="slider">
                         @foreach ($slider as $slide)
 
-                        <li style="background: url({{$slide->image or 'Elegantic/images/ALS.jpg'}}) no-repeat 100% 100%; width:100% !important;">
-
+                        <li>
+							<img class="img-responsive" src="{{$slide->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="width:100%;height:150px;">
                             <div class="slide-holder">
                                 <div class="slide-info">
                                     <h1>{{$slide->title}}</h1>
                                     <p>{!! html_entity_decode(str_limit($slide->content, $limit = 150, $end = '...')) !!}</p>
+									<div class="top-left">
                                     <a class="btn btn-ghost"  href="/slider/{{$slide->id}}">Read More</a>
                                 </div>
                             </div>
@@ -70,13 +71,13 @@
                             </p>
                            
                             @foreach ($berita as $news)
-                            <div class="row">
+                            <div class="row" >
                                 <div class="col-md-4 blog-img blog-tag-data">
                                     @if(empty($news->image))
 
-                                        <img class="img-responsive" src="/Elegantic/images/ALS.jpg" alt="">
+                                        <img class="img-responsive" src="/Elegantic/images/ALS.jpg" alt="" style="width:100%;height:150px;">
                                         @else
-                                        <img class="img-responsive" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="">
+                                        <img class="img-responsive" src="{{$news->image or 'Elegantic/images/ALS.jpg'}}" alt="" style="width:100%;height:150px;">
                                     @endif
                                     <ul class="list-inline">
                                         <li>
@@ -94,12 +95,14 @@
                                             {{ str_limit($news->title, $limit = 50, $end = '...') }}
                                         </a>
                                     </h3>
-                                    <p>
+                                    <p style ="height:100px;">
                                          {{ strip_tags(str_limit($news->content, $limit = 360, $end = '...')) }}
                                     </p>
-                                    <a href="/news/{{$news->id}}" class="btn hijau-muda">
-                                         Read more <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
+										<div class="pull-right" >
+											<a href="/news/{{$news->id}}" class="btn hijau-muda">
+												 Read more <i class="m-icon-swapright m-icon-white"></i>
+											</a>
+										</div>
                                 </div>
                             </div>
                             <hr>
