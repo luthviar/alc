@@ -203,6 +203,7 @@ p.big {
 				</div>
             </div>
         </div>
+		
         <!-- Footer -->
         @include('layouts.footer')
     </div>

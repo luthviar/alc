@@ -138,6 +138,8 @@ p.big {
 				</div>
 				
 				<div class="col-lg-4  col-md-4 col-sm-12">
+				<div id="navWrap">
+					<nav>
 				  <div class ="fixedpositiion">	
 					<div class="well">
 						<h4>Recent Forum</h4>
@@ -181,9 +183,14 @@ p.big {
                             </div>
                      </div>
 				</div>
+			</div>
+			
         </div>
+		
         <!-- Footer -->
         @include('layouts.footer')
+		
+		<div id="stopHere"></div>
     </div>
 
     @include('layouts.script')
@@ -199,6 +206,35 @@ p.big {
             }
             output.innerHTML += '</ul>';
         }
+		
+		var navWrap = $('#navWrap'),
+        nav = $('nav'),
+        startPosition = navWrap.offset().top,
+        stopPosition = $('#stopHere').offset().top - nav.outerHeight();
+    
+    $(document).scroll(function () {
+        //stick nav to top of page
+        var y = $(this).scrollTop()
+        
+        if (y > startPosition) {
+            nav.addClass('sticky');
+            if (y > stopPosition) {
+                nav.css('top', stopPosition - y);
+            } else {
+                nav.css('top', 80);
+            }
+        } else {
+            nav.removeClass('sticky');
+        } 
+    });
 	</script>
+	
+<style>
+.sticky {
+    position: fixed;
+    top:200px;
+}
+
+</style>
 </body>
 </html>
