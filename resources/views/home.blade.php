@@ -1,7 +1,7 @@
 @include('layouts.head')
 <body class="page-header-fixed page-full-width">
     <!-- Header -->
-	   <div class="header navbar navbar-fixed-top mega-menu">
+	<div class="header navbar navbar-fixed-top mega-menu">
         <!-- BEGIN TOP NAVIGATION BAR -->
         <div class="header-inner">
             <!-- BEGIN LOGO -->
@@ -60,10 +60,8 @@
             <!-- END TOP NAVIGATION MENU -->
             <!-- BEGIN HORIZANTAL MENU -->
             <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
-                 
 				<ul class="nav navbar-nav">
-
-	<li class="classic-menu-dropdown active">
+                    <li class="classic-menu-dropdown active">
 						<a href="/">
 							 Home
 							<span class="selected">
@@ -84,12 +82,10 @@
 								</li>
 							@endforeach
 						</ul>
-					 
 					</li>
 					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
 					@endif
-					</ul>
-			 
+				</ul>
             </div>
         </div>
         <!-- END TOP NAVIGATION BAR -->

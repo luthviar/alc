@@ -91,13 +91,15 @@ class ScoreSummaryController extends Controller
             $personnel['struktur'] = null;
         }else{
             $struktur = StrukturOrganisasi::find($employee->struktur);
-            $personnel['struktur'] = $struktur;
-            $personnel['level'] = LevelPosition::find($employee->level_position);
-            $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
-            $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
-            $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
-            $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
-            $personnel['job_family'] = JobFamily::find($personnel['department']->id_job_family);
+            if (!empty($struktur)) {
+                $personnel['struktur'] = $struktur;
+                $personnel['level'] = LevelPosition::find($employee->level_position);
+                $personnel['divisi'] = Divisi::where('id_divisi',$struktur->id_divisi)->first();
+                $personnel['section'] = Section::where('id_section',$struktur->id_section)->first();
+                $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
+                $personnel['unit'] = Unit::where('id_unit',$struktur->id_unit)->first();
+                $personnel['job_family'] = JobFamily::find($personnel['department']->id_job_family);
+            }
         }
         $personnel['score'] = ScoreSummary::where('id_user',$personnel->id_user)->get();
         $personnel['training'] = UserTest::where('id_user',$personnel->id_user)->get();

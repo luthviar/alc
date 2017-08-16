@@ -75,31 +75,33 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        $module = Module::all();
-        $modul = Module::find($id);
-        $department = Department::all();
-        $training = Training::where('id_module',$id)->where('is_publish', 1)->get();
+        $module             = Module::all();
+        $modul              = Module::find($id);
+        $department         = Department::all();
+        $training           = Training::where('id_module',$id)->where('is_publish', 1)->get();
+
         //get user information
-        $id_user = Auth::user()->id;
-        $personnel = Personnel::where('id_user',$id_user)->first();
-        $employee = Employee::where('id_personnel',$personnel->id)->first();
-        $job_family_user = null;
+        $id_user            = Auth::user()->id;
+        $personnel          = Personnel::where('id_user',$id_user)->first();
+        $employee           = Employee::where('id_personnel',$personnel->id)->first();
+        $job_family_user    = null;
+
         if (empty($employee)) {
             
         }else{
             $struktur = StrukturOrganisasi::find($employee->struktur);
+
             if (!empty($struktur)) {
                 $department_user = Department::where('id_department',$struktur->id_department)->first();
                 $job_family_user = JobFamily::find($department_user->id_job_family);
             }
         }
+
         foreach ($training as $key => $value) {
             if (empty($value->id_job_family)) {
                 if ($value->id_module == 4 ) {
                     $user_auth = UserTrainingAuth::where('id_training',$value->id)->where('id_user',$id_user)->first();
-                    if($employee->level_position == 11){
-                        $value['open'] = 1;
-                    }elseif ($employee->level_position >= 6) {
+                    if ($employee->level_position >= 6) {
                         $value['open'] = 1;
                     }else{
                         if (empty($user_auth)) {
@@ -114,9 +116,7 @@ class ModuleController extends Controller
                     }
                 }elseif ($value->id_module == 5) {
                     $user_auth = UserTrainingAuth::where('id_training',$value->id)->where('id_user',$id_user)->first();
-                    if($employee->level_position == 11){
-                        $value['open'] = 1;
-                    }elseif (empty($user_auth)) {
+                    if (empty($user_auth)) {
                         $value['open'] = 0;
                     }else{
                         if($user_auth->auth == 1){
@@ -149,7 +149,7 @@ class ModuleController extends Controller
                 }
             }
         }
-        return view('module')->with('module',$module)->with('modul',$modul)->with('department',$department)->with('training',$training);
+        return view('module')->with('module',$module)->with('aktif_modul',$modul)->with('department',$department)->with('training',$training);
     }
 
     /**
