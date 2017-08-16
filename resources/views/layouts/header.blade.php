@@ -11,41 +11,7 @@
                 <!-- <img src="assets/img/menu-toggler.png" alt=""/> -->
                 <i class="fa fa-bars"></i>
             </a>
-            <!-- BEGIN HORIZANTAL MENU -->
-            <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
-                 
-				<ul class="nav navbar-nav">
-					<li class="classic-menu-dropdown active">
-						<a href="/">
-							 Home
-							<span class="selected">
-							</span>
-						</a>
-					</li>
-					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
-					@if(Auth::user())
-					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
-					<li class="classic-menu-dropdown">
-						<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
-							My Modules <i class="fa fa-angle-down"></i>
-						</a>
-						<ul class="dropdown-menu">
-							@foreach ($module as $modul)
-								<li>
-									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-								</li>
-							@endforeach
-						</ul>
-					 
-					</li>
-						
-					 
-					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
-					@endif
-				</ul>
-			 
-            </div>
-            <!-- END HORIZANTAL MENU -->
+			<!-- END HORIZANTAL MENU -->
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->
             <!-- END RESPONSIVE MENU TOGGLER -->
             <!-- BEGIN TOP NAVIGATION MENU -->
@@ -90,6 +56,14 @@
                 @endif
             </ul>
             <!-- END TOP NAVIGATION MENU -->
+            <!-- BEGIN HORIZANTAL MENU -->
+            <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
+                 
+				<ul class="nav navbar-nav">
+					@yield('navbar')
+				</ul>
+			 
+            </div>
         </div>
         <!-- END TOP NAVIGATION BAR -->
     </div>

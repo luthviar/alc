@@ -1317,4 +1317,7 @@ hr.style13 {
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
 
-
+.fixedpositiion{
+	 position: fixed;
+	 z-index :-1;
+}

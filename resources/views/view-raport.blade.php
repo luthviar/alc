@@ -17,13 +17,36 @@
     });
     
 </script>
-
 <body class="page-header-fixed page-full-width">
 
-            @include('layouts.header')
+    @extends('layouts.header')
+	@section('navbar')
+					<li class="classic-menu-dropdown"><a href="/">Home</a></li>
+					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
+					@if(Auth::user())
+					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
+					<li class="classic-menu-dropdown">
+						<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+							My Modules <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							@foreach ($module as $modul)
+								<li>
+									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+								</li>
+							@endforeach
+						</ul>
+					 
+					</li>
+						
+					 
+					<li class="classic-menu-dropdown  active"><a href="/raport/{{Auth::user()->id}}">My Profile</a><span class="selected">
+							</span></li>
+					@endif
+	@endsection
 	<div class="page-container" id="wrapper">
        <div class="page-content-wrapper"> 
-        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">			
+        <div class="page-content">			
 
 					<div id="exTab1">
                         <ul  class="nav nav-tabs nav-justified">
@@ -71,7 +94,7 @@
                         <input type="submit" class="btn btn-flat">
                       </form>
                     </div>
-                    <div class="col-lg-9 col-md-9" style="height: 400px;">
+                    <div class="col-lg-9 col-md-9">
 									  <table class="table table-user-information">
 										<tbody>
 										  <tr>
@@ -143,7 +166,7 @@
 										  </tr>
 										</tbody>
 									  </table>
-                    </div>
+									</div>
 								  </div>  
 							   </div>
 							</div>
@@ -220,7 +243,7 @@
             
             
             
-            
+            <div class="clearfix"></div>
         </div>
         
         <!-- Footer -->

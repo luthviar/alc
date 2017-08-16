@@ -5,18 +5,24 @@
 @section('section')
 
 <div class="col-md-12 ">
-	<div class="panel panel-success">
+	<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">General info</a></li>
+    <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab">Employee Status</a></li>
+</div>
+<br><br><br>
+<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('PersonnelController@store') }}" novalidate>
+	<div class="col-md-12 ">
+	<div class="tab-content">
+		  <div role="tabpanel" class="tab-pane active" id="info">
+		<div class="panel panel-success">
     	<div class="panel-heading">
     		<h4>Add New Personnel</h4>
     	</div>
         	<div class="panel-body">
             	<form id="myform" class="form-horizontal" role="form" method="POST" action="{{ URL::action('PersonnelController@store') }}" novalidate>
-        			
         			{{ csrf_field() }}
-
             		<div class="form-group">
                     	<label for="username" class="col-md-4 control-label">Username</label>
-
                     	<div class="col-md-6">
                         	<input id="username" type="text" class="form-control" name="username" required autofocus>
                     	</div>
@@ -108,14 +114,18 @@
                             </select><br>
                         </div>
                 	</div>
+					
+                   </div>
+				  </div>
+                </div>
 
                     <!-- Data Karyawan-->
-                    <div class="container">
-                        <div class="row">
-                            <h3>Data Karyawan</h3>
-                        </div>
-                    </div>
-                    <div>
+               <div role="tabpanel" class="tab-pane" id="status">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4>Employee status</h4>
+						</div>
+						<div class="panel-body">
 	                    <div class="form-group">
 	                        <label for="nik" class="col-md-4 control-label">Employee Number</label>
 
@@ -128,6 +138,7 @@
 	                        <label for="level_position" class="col-md-4 control-label">Level Position</label>                                     
 	                        <div class="col-md-6">
 	                            <select name="level_position" class="form-control">
+									<option value="">.....</option>
 	                                @foreach($level as $pos)
 	                                <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
 	                                @endforeach
@@ -173,19 +184,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                		<div class="col-md-6 col-md-offset-4">
-                    		<button type="submit" class="btn btn-primary">
-                        		Submit
-                    		</button>
-                		</div>
-            		</div>
-            	
-            	</form>
+					</div>
         	</div>
     	</div>
+		<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary">
+										Add User
+									</button>
+								</div>
+							</div>
 	</div>
-	
+</form>
 
 
 	
@@ -314,7 +324,8 @@
   
     //Date picker
     $('#datepicker').datepicker({
-      autoclose: true
+      autoclose: true,
+	   format: 'yyyy-mm-dd'
     });
 
   

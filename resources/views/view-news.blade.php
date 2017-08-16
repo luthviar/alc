@@ -8,10 +8,34 @@ p.big {
 </style>
 <body class="page-header-fixed page-full-width">
     <!-- Header -->
-	@include('layouts.header')
+	    @extends('layouts.header')
+		@section('navbar')
+					<li><a href="/">Home</a></li>
+					<li class="classic-menu-dropdown active"><a href="/news-board">News</a><span class="selected">
+							</span></li>
+					@if(Auth::user())
+					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
+					<li class="classic-menu-dropdown">
+						<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+							My Modules <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							@foreach ($module as $modul)
+								<li>
+									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+								</li>
+							@endforeach
+						</ul>
+					 
+					</li>
+						
+					 
+					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+					@endif
+	@endsection
+
 	<div class="page-container" id="wrapper">
-        <div class="page-content-wrapper">
-		  <div class="page-content" >
+        <div class="page-content-wrapper" style="padding:30px">
 				<div class ="col-md-8">
 					<h3>{{ $news['title'] }}</h3>
 					<h6>{{ \Carbon\Carbon::parse($news->create_at)->format('l jS \\of F Y')}}</h6>
@@ -34,6 +58,7 @@ p.big {
 								<a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}} </a><br>
 							@endforeach
 						@endif
+\
 					</div>
 					<br><br><br><br>
 
@@ -50,12 +75,14 @@ p.big {
 											{!! html_entity_decode($reply['content']) !!}
 											<br>
 											<div class ="pull-right">
+
 												@if(!empty($reply['file_pendukung'][0]))
 													Attachments : <br>
 													@foreach($reply['file_pendukung'] as $file)
 													 <a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}}</a><br>
 													@endforeach
 												@endif
+
 											</div>
  
 									</div>
@@ -126,6 +153,7 @@ p.big {
 				</div>
 				
 				<div class="col-lg-4  col-md-4 col-sm-12">
+				 <div class ="fixedpositiion">
 					<div class="well">
 						<h4>Recent News</h4>
 						<hr class="style14">
@@ -134,6 +162,38 @@ p.big {
 						@endforeach
 						<br>
 					</div>
+					<!--links-->
+					<p class="border-panel-title-wrap"> 
+                                <span class="panel-title-text">Links</span>    
+                            </p>
+                            <div class="row">
+                                <div class="col-md-12 clearfix">            
+                                    <a href="#" class="btn btn-lg default" style="margin:5px 1px">
+                                         IMS 
+                                    </a>
+                                    <a href="#" class="btn btn-lg red" style="margin:5px 1px">
+                                         IMS  
+                                    </a>
+                                    <a href="#" class="btn btn-lg blue" style="margin:5px 1px">
+                                         IMS
+                                    </a>
+                                    <a href="#" class="btn btn-lg green" style="margin:5px 1px">
+                                         IMS  
+                                    </a>
+                                    <a href="#" class="btn btn-lg yellow" style="margin:5px 1px">
+                                         IMS  
+                                    </a>
+                                    <a href="#" class="btn btn-lg purple" style="margin:5px 1px">
+                                        IMS
+                                    </a>
+                                    <a href="#" class="btn btn-lg green" style="margin:5px 1px">
+                                         IMS  
+                                    </a>
+                                    <a href="#" class="btn btn-lg dark" style="margin:5px 1px">
+                                         IMS  
+                                    </a>
+                                </div>
+                            </div>
 				</div>
             </div>
         </div>

@@ -141,6 +141,7 @@
                         <div class="col-md-6">
                             <select name="level_position" class="form-control">
                             @if(empty($personnel['employee']))
+								<option value="">.....</option>
                                 @foreach($level as $pos)
                                     <option value="{{$pos->id}}">{{$pos->nama_level}}</option>
                                 @endforeach
@@ -233,22 +234,22 @@
                             </select><br>
                         </div>
                     </div>
-							<div class="form-group">
-								<div class="col-md-6 col-md-offset-4">
-									<button type="submit" class="btn btn-primary">
-										Edit User
-									</button>
-								</div>
-							</div>
-							</form>
 						   </div>
 						  </div>
 						</div>
 								
 				
             </div>
+				<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary">
+										Edit User
+									</button>
+								</div>
+							</div>
         </div>
-
+	</form>
+		
         <script type="text/javascript">
 
     $('#MyDivisi').click(function() {

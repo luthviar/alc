@@ -41,37 +41,8 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        $personnels = Personnel::all();
-        $position =  LevelPosition::all();
-        $divisi = Divisi::all();
-        foreach ($personnels as $key => $personnel) {
-            $employee = Employee::where('id_personnel',$personnel->id)->first();
-            $personnel['employee'] = $employee;
-            $personnel['user'] = User::find($personnel->id_user);
-            if (empty($employee)) {
-                $personnel['position'] = "-";
-                $personnel['divisi'] = "-";
-                $personnel['department'] = "-";
-            }else{
-                foreach ($position as $key => $value) {
-                    if ($value->id == $employee->level_position) {
-                        $personnel['position'] = $value->nama_level;
-                    }
-                }
-                $struktur = StrukturOrganisasi::find($employee->struktur);
-                if (empty($struktur->id_divisi)) {
-                    $personnel['divisi'] = "-";
-                }else{
-                    foreach ($divisi as $key => $value) {
-                        if ($value->id_divisi == $struktur->id_divisi) {
-                            $personnel['divisi'] = $value->nama_divisi;
-                        }
-                    }    
-                }
-                $personnel['department'] = Department::where('id_department',$struktur->id_department)->first();
-            }
-        }
-        return view('list-user')->with('personnels',$personnels);
+        
+        return view('list-user');
     }
 
     /**

@@ -35,7 +35,7 @@
                     </div>
 					
 					<div class="form-group">
-                        <label for="image" class="col-md-4 control-label">Upload Slider Image</label>
+                        <label for="image" class="col-md-4 control-label">Upload News Image</label>
                         <div class="col-md-6">
                              <div class="input-group">
                                 <span class="input-group-btn">
