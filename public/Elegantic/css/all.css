@@ -972,6 +972,7 @@ hr.style2 {
 #footer .footer-holder {
     height:1%;
     display:table-row;
+	
 }
 #footer .footer-frame { display:table-cell;}
 .footer-content {
@@ -1319,5 +1320,5 @@ hr.style13 {
 
 .fixedpositiion{
 	 position: fixed;
-	 z-index :-1;
+	 z-index :;
 }

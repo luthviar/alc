@@ -61,7 +61,7 @@
 
                 <div class="blog-page">
                     <div class="row">
-                        <div class="col-md-offset-1 col-md-6 col-sm-6 article-block">
+                        <div class="col-md-8 col-sm-6 article-block" style="padding-left:3%;">
                             <p class="border-panel-title-wrap"> 
                                 <!-- <div class="panel-title-wrap"> -->
                                     <span class="panel-title-text">News</span>
@@ -112,7 +112,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 article-block">
+                        <div class="col-md-4 col-sm-6 article-block">
                             <p class="border-panel-title-wrap"> 
                                 <span class="panel-title-text">Links</span>    
                             </p>
