@@ -1059,6 +1059,10 @@ hr.style2 {
 		background:url(../images/logo@x2.png) no-repeat;
 		background-size:cover;
 	}
+	.sticky {
+		position: fixed;
+		top:500px;
+		}
 	.tools-nav .login {
 		background: url(../images/ico_login@x2.png) no-repeat 0 50%;
 		background-size:16px 19px;
@@ -1318,7 +1322,3 @@ hr.style13 {
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
 
-.fixedpositiion{
-	 position: fixed;
-	 z-index :;
-}

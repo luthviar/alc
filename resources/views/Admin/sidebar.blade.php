@@ -30,7 +30,7 @@
         </li>
 		    <li>
           <a href="/training">
-            <i class="fa fa-book" aria-hidden="true"></i></i> <span>Trainning</span>
+            <i class="fa fa-book" aria-hidden="true"></i></i> <span>Training</span>
           </a>
         </li>
 		    <li>

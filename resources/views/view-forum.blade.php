@@ -13,31 +13,98 @@
 </script>
 
 <body class="page-header-fixed page-full-width">
-            @extends('layouts.header')
-	@section('navbar')
-					<li><a href="/">Home</a></li>
-					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
-					@if(Auth::user())
-					<li class="classic-menu-dropdown active"><a href="{{url('/forum')}}">Forum</a><span class="selected">
-							</span></li>
-					<li class="classic-menu-dropdown">
-						<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
-							My Modules <i class="fa fa-angle-down"></i>
-						</a>
-						<ul class="dropdown-menu">
-							@foreach ($module as $modul)
-								<li>
-									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-								</li>
-							@endforeach
-						</ul>
-					 
-					</li>
-						
-					 
-					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
-					@endif
-	@endsection
+           <!-- Header -->
+    <div class="header navbar navbar-fixed-top mega-menu">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="header-inner">
+            <!-- BEGIN LOGO -->
+            <a class="navbar-brand" href="/">
+                <img src="{{URL::asset('Elegantic/images/ALS-logo.jpg')}}"  class="img-responsive"/>
+            </a>
+            <!-- END LOGO -->
+            <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- <img src="assets/img/menu-toggler.png" alt=""/> -->
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- END HORIZANTAL MENU -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav navbar-nav pull-right" style="cursor: pointer;">
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                @if (Auth::guest()) 
+                    <li><a style="margin-top:10px;" class="btn btn-small btn-sm pull-right hijau-muda" href="{{ route('login') }}">Login <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </a></li>
+                @else
+                    <li class="dropdown user">
+                         
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" src="assets/img/avatar1_small.jpg"/>
+                            <span class="username hidden-1024">{{Auth::user()->get_nama()}}</span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="login">
+                                @if(Auth::user()->is_admin == 1)
+                                    <a href="/personnel">
+                                        Acting As Admin
+                                    </a>
+                                @endif
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"
+                                    style="
+                                    :hover{
+                                        background-color: red;
+                                    }"
+                                >
+                                    Logout
+                                </a>
+
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->
+            <!-- BEGIN HORIZANTAL MENU -->
+            <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="classic-menu-dropdown">
+                        <a href="/">
+                             Home
+                        </a>
+                    </li>
+                    <li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
+                    @if(Auth::user())
+                    <li class="classic-menu-dropdown active"><a href="{{url('/forum')}}">Forum
+                        <span class="selected">
+                            </span>
+                    </a></li>
+                    <li class="classic-menu-dropdown ">
+                        <li class="classic-menu-dropdown"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+                            My Modules <i class="fa fa-angle-down"></i>
+                        </a></li>
+                        <ul class="dropdown-menu">
+                            @foreach ($module as $modul)
+                                <li>
+                                    <a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="classic-menu-dropdown "><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <div class="clearfix"></div>
 
 	<div class="page-container" id="wrapper">
        <div class="page-content-wrapper"> 
@@ -121,19 +188,16 @@
                                         <tr>
                                             <td>
                                                 <a href="/forum/{{$forum->id}}">{{$forum->title}}</a>
-                                                <button
-                                                        class="btn btn-warning btn-sm"
-                                                        type="submit"
-                                                        onclick="editForum(
-                                                                '{{$forum->id}}',
-                                                                '{{ $forum->title }}',
-                                                                '{{ $forum->can_reply }}',
-                                                                '{{ $forum->content }}',
-                                                                '{{ $forum->attachments }}'
-                                                                );"
-                                                >
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                </button>
+                                                @if($forum->id_user === Auth::user()->id)
+                                                    <a
+                                                            class="btn btn-warning btn-sm"
+                                                            href="forum/{{$forum->id}}/user/edit"
+                                                    >
+
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                                                    </a>
+                                                @endif
                                             </td>
                                             <td>{{$forum['personnel']->fname}} {{$forum['personnel']->lname}}</td>
                                             <td>{{count($forum['replie'])}}</td>
@@ -232,7 +296,7 @@
                             <div class="modal-body">
                                 {{ csrf_field() }}
 
-                                <input type="hidden" name="id_forum_edit">
+                                <input type="hidden" id="id_forum_edit" name="id_forum_edit">
 
                                 <div class="form-group">
                                     <label for="title" class="col-md-3 control-label">Title</label>
@@ -256,7 +320,7 @@
                                     <label for="content" class="col-md-3 control-label">Content</label>
 
                                     <div class="col-md-10 col-xs-offset-1">
-                                        <textarea class="summernote" name="content_edit"><div id="content_edit"></div></textarea>
+                                        <textarea class="summernote" id="summernote_edit" name="content_edit"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -269,7 +333,7 @@
                                         Browse..
                                         <input type="file"
                                                id="filetiga"
-                                               onchange="javascript:updateList3()"
+                                               onchange="javascript:updateList4()"
                                                name="file_pendukung[]"
                                                multiple/>
                                     </span>
@@ -601,15 +665,31 @@
                 }
                 output.innerHTML += '</ul>';
             }
+
+            updateList4 = function() {
+                var input = document.getElementById('filetiga');
+                var output = document.getElementById('fileListtiga');
+
+                output.innerHTML = 'Selected file(s) <br><ul>';
+                for (var i = 0; i < input.files.length; ++i) {
+                    output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
+                }
+                output.innerHTML += '</ul>';
+            }
         </script>
 
             {{--edit forum script--}}
         <script>
-            function editForum($id,$title,$can_reply,$content,$attachments) {
-                $("#id_forum_edit").val($id);
+            function editForum($id_edit,$title,$can_reply,$content,$attachments) {
+                window.location.href = '...';
+                $("#id_forum_edit").val($id_edit);
                 $("#title_edit").val($title);
                 $("#can_reply_edit").val($can_reply);
-                $("#content_edit").html($content);
+
+                $("#summernote_edit").summernote("code", $content);
+//                $("#content_edit").html($content);
+
                 $("#attachments_edit").html($attachments);
 
                 $('#modal_edit_forum').modal("show");

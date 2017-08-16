@@ -26,7 +26,7 @@ class ForumController extends Controller
         ]]);
 
         $this->middleware('checkRole', ['except' => [
-            'index','show', 'create', 'store'
+            'editUser','updateUser','index','show', 'create', 'store'
         ]]);
     }
     /**
@@ -182,7 +182,13 @@ class ForumController extends Controller
     }
 
     public function editUser($id_forum) {
+        $module = Module::all();
+        $forum = Forum::find($id_forum);
+        $forum['file_pendukung'] = FileForum::where('id_forum', $id_forum)->get();
 
+        return view('edit-forum')
+            ->with('module',$module)
+            ->with('forum',$forum);
     }
 
     /**
@@ -198,7 +204,69 @@ class ForumController extends Controller
     }
 
     public function updateUser(Request $request) {
-        dd($request);
+        $this -> validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        $file = $request->file('image');
+        if (empty($file)) {
+            $forum = Forum::find($request->id_forum);
+            $forum->title = $request->title;
+            $forum->content = $request->content;
+            $forum->can_reply = $request->can_reply;
+            $forum->save();
+
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath = 'Uploads';
+                    $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung = new FileForum();
+                    $new_file_pendukung->id_forum = $request->id_forum;
+                    $new_file_pendukung->name = $file->getClientOriginalName();
+                    $new_file_pendukung->url = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
+        }else{
+            $destinationPath = 'uploads';
+            $movea = $file->move($destinationPath,$file->getClientOriginalName());
+            $url = "uploads/{$file->getClientOriginalName()}";
+
+            $forum = Forum::find($request->id_forum);
+            $forum->title = $request->title;
+            $forum->content = $request->content;
+            $forum->can_reply = $request->can_reply;
+            $forum->image = $url;
+            $forum->save();
+
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath = 'Uploads';
+                    $movea = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung = new FileForum();
+                    $new_file_pendukung->id_forum = $request->id_forum;
+                    $new_file_pendukung->name = $file->getClientOriginalName();
+                    $new_file_pendukung->url = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
+        }
+
+
+        return redirect('forum');
+    }
+
+    public function updateUser2(Request $request) {
+
         DB::table('forums')
             ->where('id', $request->id_forum_edit)
             ->update(
