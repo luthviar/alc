@@ -1,18 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- <style>
-	hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-
- </style>
- 
- 
 	<div class="container">     
 		<div class="card">
 		<div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" style="text-align:center;">
@@ -77,3 +62,16 @@
                     </div>  
         </div>
     </div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style>
+	hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+ </style>

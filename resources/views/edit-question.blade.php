@@ -5,10 +5,6 @@
 @php
 	$count = 0
 @endphp
-
-
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
-<!-- Form for Edit Question  -->
 <div class="row">
     <div class="col-md-12 ">
         <div class="panel panel-success">

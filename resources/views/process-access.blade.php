@@ -1,6 +1,4 @@
-
 @include('Admin.AdminHead')
-
 @extends('Admin.Template')
 @section('section')
 

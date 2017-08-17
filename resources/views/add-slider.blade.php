@@ -1,17 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
-
-
-<script>
-$(document).ready(function(){
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
-    });
-});
-</script>
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Add New Slider</div>
@@ -93,7 +82,15 @@ $(document).ready(function(){
         </div>
 
 @endsection
-
+<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
+</script>
 <script>
 $(document).ready(function() {
     $('#datePicker')

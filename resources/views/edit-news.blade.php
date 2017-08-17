@@ -1,8 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
         <div class="col-md-12">
             <div class="panel panel-success">
                 <div class="panel-heading">Edit News</div>
@@ -121,7 +119,8 @@
     </div>
 @endsection
 
-
+<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 <script>
     updateList = function() {
         var input = document.getElementById('file');

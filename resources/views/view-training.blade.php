@@ -2,68 +2,6 @@
 @extends('Admin.Template')
 @section('section')
 
-<!--Detail Trainning-->
-<link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
-<script type="text/javascript" src="js/EditProfile.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.detailTable').DataTable({
-            "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false
-        });
-    });
-</script>
-<script>
-$(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper_pre         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button_pre      = $(".add_field_button"); //Add button ID
-    var wrapper_post         = $(".input_fields_wrap_post"); //Fields wrapper
-    var add_button_post      = $(".add_field_button_post"); //Add button ID
-    var count_pre            = 2;
-    var count_post            = 2;
-
-    var x_pre = 1; //initlal text box count
-    var x_post = 1; //initlal text box count
-    $(add_button_pre).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x_pre < max_fields){ //max input box allowed
-            x_pre++; //text box increment
-            $(wrapper_pre).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+count_pre+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
-            count_pre+=1;
-        }
-
-    });
-    
-    $(wrapper_pre).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x_pre--;
-        count_pre-=1;
-    });
-
-    $(add_button_post).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x_post < max_fields){ //max input box allowed
-            x_post++; //text box increment
-            $(wrapper_post).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+count_post+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
-            count_post+=1;
-        }
-
-    });
-    
-    $(wrapper_post).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x_post--;
-        count_post-=1;
-    });
-
-});
-</script>
-
-
-
-
 	<div class="col-md-12">
     <div class="panel panel-success">
         <div class="panel-heading">
@@ -596,6 +534,67 @@ $(document).ready(function() {
         </form>            
     </div>
 </div>
+<!--Detail Trainning-->
+<link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
+<script type="text/javascript" src="js/EditProfile.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.detailTable').DataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false
+        });
+    });
+</script>
+<script>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper_pre         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button_pre      = $(".add_field_button"); //Add button ID
+    var wrapper_post         = $(".input_fields_wrap_post"); //Fields wrapper
+    var add_button_post      = $(".add_field_button_post"); //Add button ID
+    var count_pre            = 2;
+    var count_post            = 2;
+
+    var x_pre = 1; //initlal text box count
+    var x_post = 1; //initlal text box count
+    $(add_button_pre).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x_pre < max_fields){ //max input box allowed
+            x_pre++; //text box increment
+            $(wrapper_pre).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+count_pre+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
+            count_pre+=1;
+        }
+
+    });
+    
+    $(wrapper_pre).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x_pre--;
+        count_pre-=1;
+    });
+
+    $(add_button_post).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x_post < max_fields){ //max input box allowed
+            x_post++; //text box increment
+            $(wrapper_post).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+count_post+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
+            count_post+=1;
+        }
+
+    });
+    
+    $(wrapper_post).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x_post--;
+        count_post-=1;
+    });
+
+});
+</script>
+
+
+
 
 
 

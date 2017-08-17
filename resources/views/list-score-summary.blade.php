@@ -1,31 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
-
 @section('section')
-
-<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
-<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#detailTable').DataTable({
-        	"processing": true,
-            "serverSide": true,
-            "ajax":{
-                url :"ajax_datatables/list_score_summary.php", // json datasource
-                type: "post",  // method  , by default get
-                dataType: "json",
-                error: function(){  // error handling
-                    $("#detailTable").html("");
-                    
-                }
-            }
-        });
-    });
-</script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-
-
 <div class="col-md-12 ">
 	<div class="panel panel-success">
 	    <div class="panel-heading">
@@ -48,19 +23,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-<script type="text/javascript">
-	function msg($id) {
-	    $("#id_user").val($id);
-	    $('#modal').modal("show");
-	}
-</script>
-
-
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -102,4 +64,33 @@
 </div>
 </div>
 
+
+
+<link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
+<script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detailTable').DataTable({
+        	"processing": true,
+            "serverSide": true,
+            "ajax":{
+                url :"ajax_datatables/list_score_summary.php", // json datasource
+                type: "post",  // method  , by default get
+                dataType: "json",
+                error: function(){  // error handling
+                    $("#detailTable").html("");
+                    
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+	function msg($id) {
+	    $("#id_user").val($id);
+	    $('#modal').modal("show");
+	}
+</script>
 @endsection

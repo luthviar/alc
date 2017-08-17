@@ -72,11 +72,12 @@
 					@if(Auth::user())
 					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
 					<li class="classic-menu-dropdown active">
-						<li class="classic-menu-dropdown active"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+							<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
 							My Modules <i class="fa fa-angle-down"></i>
 							<span class="selected">
 							</span>
-						</a></li>
+							</a>
+						
 						<ul class="dropdown-menu">
 							@foreach ($module as $modul)
 								<li>

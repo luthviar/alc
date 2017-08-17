@@ -1,17 +1,4 @@
 @include('layouts.head')
-
-<script>
-    $(document).ready(function() {
-        $('.summernote').summernote({
-          height: 200,                 // set editor height
-          minHeight: null,             // set minimum height of editor
-          maxHeight: null,             // set maximum height of editor
-          
-        });
-        
-    });
-</script>
-
 <body class="page-header-fixed page-full-width">
            <!-- Header -->
     <div class="header navbar navbar-fixed-top mega-menu">
@@ -75,31 +62,31 @@
             <div class="hor-menu hidden-sm hidden-xs navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="classic-menu-dropdown">
-                        <a href="/">
-                             Home
-                        </a>
-                    </li>
-                    <li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
-                    @if(Auth::user())
-                    <li class="classic-menu-dropdown active"><a href="{{url('/forum')}}">Forum
-                        <span class="selected">
-                            </span>
-                    </a></li>
-                    <li class="classic-menu-dropdown ">
-                        <li class="classic-menu-dropdown"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
-                            My Modules <i class="fa fa-angle-down"></i>
-                        </a></li>
-                        <ul class="dropdown-menu">
-                            @foreach ($module as $modul)
-                                <li>
-                                    <a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="classic-menu-dropdown "><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
-                    @endif
-                </ul>
+						<a href="/">
+							 Home
+						</a>
+					</li>
+					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
+					@if(Auth::user())
+					<li class="classic-menu-dropdown active"><a href="{{url('/forum')}}">Forum</a></li>
+					<li class="classic-menu-dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+							My Modules <i class="fa fa-angle-down"></i>
+							<span class="selected">
+							</span>
+							</a>
+						
+						<ul class="dropdown-menu">
+							@foreach ($module as $modul)
+								<li>
+									<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+								</li>
+							@endforeach
+						</ul>
+					</li>
+					<li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+					@endif
+				</ul>
             </div>
         </div>
         <!-- END TOP NAVIGATION BAR -->
@@ -717,6 +704,20 @@
                 $('#modal_edit_forum').modal("show");
             }
         </script>
+		
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+          height: 200,                 // set editor height
+          minHeight: null,             // set minimum height of editor
+          maxHeight: null,             // set maximum height of editor
+          
+        });
+        
+    });
+</script>
+
+
 </body>
 </html>
 

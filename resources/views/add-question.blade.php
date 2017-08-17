@@ -1,59 +1,9 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-
 @php
 	$count = 0
 @endphp
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#detailTable').DataTable();
-    });
-</script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script>
-$(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
-    var count           = 2;
-    
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+count+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
-            count+=1;
-        }
-
-    });
-    
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
-        count-=1;
-    });
-
-    $('#addedit_field_button').click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $('#input_fields_wrapper_edit').append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+{{$count}}+'"/>  <a href="#" class="remove_field_edit"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
-            
-        }
-        
-        
-    });
-    
-    $('#input_fields_wrapper_edit').on("click",".remove_field_edit", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
-       
-       
-    });
-});
-</script>
-		
 <!-- Form for PreTest's Time  -->
 	<div class = "col-md-12">
         <div class="panel panel-default">
@@ -324,3 +274,52 @@ $(document).ready(function() {
 
 
 @endsection
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detailTable').DataTable();
+    });
+</script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    var count           = 2;
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+count+'"/>  <a href="#" class="remove_field"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
+            count+=1;
+        }
+
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+        count-=1;
+    });
+
+    $('#addedit_field_button').click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $('#input_fields_wrapper_edit').append('<div><input type="text" name="opsi[]"/>  <input type="radio" name="isTrue" required="true" value="'+{{$count}}+'"/>  <a href="#" class="remove_field_edit"><i class="fa fa-times" aria-hidden="true"></i></a><br><br></div>'); //add input box
+            
+        }
+        
+        
+    });
+    
+    $('#input_fields_wrapper_edit').on("click",".remove_field_edit", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+       
+       
+    });
+});
+</script>
+		
