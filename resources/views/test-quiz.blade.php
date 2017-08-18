@@ -193,7 +193,7 @@
                   <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
                 @endif
               @else
-                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
+                <button type="button" class="btn btn-success btn-lg" data-keyboard="false" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
                   Mulai Test
                 </button>
               @endif
@@ -571,6 +571,11 @@ SFS dark red = #9f2026; */
     App.init();
        
     });
+
+     window.onbeforeunload = confirmExit;
+     function confirmExit() {
+         return "Apakah Anda yakin keluar dari halaman ini? Jika Anda keluar, maka test Anda akan ter-submit secara otomatis.";
+     }
 </script>
 
 
