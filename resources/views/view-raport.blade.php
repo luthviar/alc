@@ -341,11 +341,6 @@
                 
             </div>
             
-            
-            
-            
-            
-            
             <div class="clearfix"></div>
         </div>
         
@@ -388,11 +383,8 @@
         }
        , 300);
     });
-
-
-    jQuery(document).ready(function() {
-   // initiate layout and plugins
-    App.init();
-       
-    });
 </script>
+
+
+</body>
+</html>

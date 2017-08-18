@@ -106,41 +106,41 @@
     </div>
   <div class="clearfix"></div>
   
-	<div class="page-container" id="wrapper">
+  <div class="page-container" id="wrapper">
        <div class="page-content-wrapper"> 
-	   <div class="page-sidebar navbar-collapse collapse">
+     <div class="page-sidebar navbar-collapse collapse">
              
-			 <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
-				<li class="">
-					<a href="/">
-						 Home
-					</a>
-				</li>
-				<li class=""><a href="/news-board">News</a></li>
-				@if(Auth::user())
-				<li class=""><a href="{{url('/forum')}}">Forum</a></li>
-				<li class="classic-menu-dropdown active">
-					<a>
-						My Modules <i class="arrow fa fa-angle-down"></i> <span class="selected">
-						</span>
-					</a>
-					<ul class="sub-menu">
-						@foreach ($module as $modul)
-							<li>
-								<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
-							</li>
-						@endforeach
-					</ul>
-				 
-				</li>
-					
-				 
-				<li class=""><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
-				@endif
-			</ul>
+       <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+        <li class="">
+          <a href="/">
+             Home
+          </a>
+        </li>
+        <li class=""><a href="/news-board">News</a></li>
+        @if(Auth::user())
+        <li class=""><a href="{{url('/forum')}}">Forum</a></li>
+        <li class="classic-menu-dropdown active">
+          <a>
+            My Modules <i class="arrow fa fa-angle-down"></i> <span class="selected">
+            </span>
+          </a>
+          <ul class="sub-menu">
+            @foreach ($module as $modul)
+              <li>
+                <a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+              </li>
+            @endforeach
+          </ul>
+         
+        </li>
+          
+         
+        <li class=""><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+        @endif
+      </ul>
 
         </div>
-        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
+        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">   
       <div class="container">
         <div class="row">
         <h2>Training</h2>
@@ -174,7 +174,7 @@
             <h2>
             </h2><br>
               <h4>
-                @if(empty($questions[0]))
+                @if(empty($test) or empty($questions[0]))
                   
                     Tidak ada Test pada Training ini
 
@@ -186,14 +186,14 @@
                 @endif
               </h4>
               <!-- Button modal fullscreen -->
-              @if(empty($questions[0]))
+              @if(empty($test) or empty($questions[0]))
                 @if($type->id == 3)
                   <a href="/" class="btn btn-warning btn-flat" >Finish Test</a>
                 @else
                   <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
                 @endif
               @else
-                <button type="button" class="btn btn-success btn-lg" data-keyboard="false" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
                   Mulai Test
                 </button>
               @endif
@@ -260,13 +260,7 @@
 </html>
 
 <style type="text/css">
-
-
-
-
-
 /* .modal-fullscreen */
-
 .modal-fullscreen {
   background: white;
 }
@@ -283,9 +277,7 @@
   opacity: .97;
   filter: alpha(opacity=97);
 }
-
 /* .modal-fullscreen size: we use Bootstrap media query breakpoints */
-
 .modal-fullscreen .modal-dialog {
   margin: 0;
   margin-right: auto;
@@ -307,7 +299,6 @@
      width: 1170px;
   }
 }
-
 /* centering styles for jsbin */
 html,
 body {
@@ -329,7 +320,6 @@ body > .btn {
 
 <script type="text/javascript">
   // .modal-backdrop classes
-
 $(".modal-transparent").on('show.bs.modal', function () {
   setTimeout( function() {
     $(".modal-backdrop").addClass("modal-backdrop-transparent");
@@ -338,7 +328,6 @@ $(".modal-transparent").on('show.bs.modal', function () {
 $(".modal-transparent").on('hidden.bs.modal', function () {
   $(".modal-backdrop").addClass("modal-backdrop-transparent");
 });
-
 $(".modal-fullscreen").on('show.bs.modal', function () {
   setTimeout( function() {
     $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
@@ -348,8 +337,6 @@ $(".modal-fullscreen").on('hidden.bs.modal', function () {
   $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
 });
   
-
-
 </script>
 
 
@@ -363,7 +350,6 @@ p.question {
   margin-bottom:0px;
   margin-top:0px;
 }
-
 h2.quizHeader {
   width: 100%;
   font-family: Arial, sans-serif;
@@ -375,48 +361,39 @@ h2.quizHeader {
   border-bottom: 1px solid #a2a2a2;
   color : white;
 }
-
 div.quizBottomStuff {
   width: 583px;
-
 }
-
 div.questionDiv {
   width : auto;
   border : 1px solid green;
   padding : 2%;
   display: block !important;
 }
-
 h2.quizScore{
   width: 483px;
   font-family: Arial, sans-serif;
   font-size:25px;
   margin: 6px 0 6px 0;
 }
-
 div.quizAnswers{
   font-family: Arial, sans-serif;
   font-size:16px;
   color: #424242;
 }
-
 .addPadding {
   padding: 4px 0 4px 0;
 }
-
 label {
   font-family: Arial, sans-serif;
   font-size:14px;
   color: #424242;
   vertical-align:top;
 }
-
 input.answer[type="radio"] {
   margin-bottom: 10px;
   opacity: 1;
 }
-
 input.quizSubmit[type="submit"] {
   -webkit-background-clip: border-box;
   -webkit-background-origin: padding-box;
@@ -438,14 +415,12 @@ input.quizSubmit[type="submit"] {
   border-radius:5px;
   
  }
-
 input.quizSubmit[type="submit"]:hover {
   color: #ffffff;
   background: #680f11;
   text-decoration: none;
   
 }
-
 table.quizTable {
   background-color: #F2F2F2;
   border:1px solid #BDBDBD;
@@ -454,34 +429,24 @@ table.quizTable {
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.498039) 0px 0px 1px 0px;
 }
-
 th {
-
 }
-
 tr {
-
 }
-
 td {
-
 }
-
 ul {
   *border: 1px solid green;
   margin-bottom: 5px;
   margin-top: 10px;
 }
-
 .submitter {
     width:85px;
     float:left;
 }
-
 .hide {
     display:none;
 }
-
 .shareButton {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 9px;
@@ -492,7 +457,6 @@ ul {
   *height: 15px;
   margin: 4px;
 }
-
 div.timerC{
   float : right;
   color : white;
@@ -500,16 +464,12 @@ div.timerC{
   padding : 1%;
   border-radius : 10px;
 }
-
-
 /*SFS light red = #c30b0a;
 SFS dark red = #9f2026; */
-
 </style>
 
 <!-- Quiz script-->
 <script>
-
   function startTimer(duration, display) {
     var start = Date.now(),
         diff,
@@ -519,16 +479,12 @@ SFS dark red = #9f2026; */
         // get the number of seconds that have elapsed since 
         // startTimer() was called
         diff = duration - (((Date.now() - start) / 1000) | 0);
-
         // does the same job as parseInt truncates the float
         minutes = (diff / 60) | 0;
         seconds = (diff % 60) | 0;
-
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
-
         display.textContent = minutes + ":" + seconds; 
-
         if (diff <= 0) {
             // add one second so that the count down starts at the full duration
             // example 05:00 not 04:59
@@ -542,17 +498,14 @@ SFS dark red = #9f2026; */
     timer();
     setInterval(timer, 1000);
 }
-
 //minute
  function start_timer() {
     var fiveMinutes = 60 * {{$test->time}},
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };
-
 </script>
 <script>
-
      $(window).load(function(){
     
        setTimeout(function() {    
@@ -564,19 +517,9 @@ SFS dark red = #9f2026; */
         }
        , 300);
     });
-
-
     jQuery(document).ready(function() {
    // initiate layout and plugins
     App.init();
        
     });
-
-     window.onbeforeunload = confirmExit;
-     function confirmExit() {
-         return "Apakah Anda yakin keluar dari halaman ini? Jika Anda keluar, maka test Anda akan ter-submit secara otomatis.";
-     }
 </script>
-
-
-

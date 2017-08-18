@@ -78,15 +78,22 @@ class SectionTrainingController extends Controller
         $check_user = UserTest::where('id_user',$user)->where('id_training',$section->id_training)->first();
         if(empty($check_user) or  empty($check_user->id_post_test) or $type->id ==2){
             if ($type->id == 1) {
+                
                 $test = Test::where('id_section_training',$section->id)->first();
-                $questions = Question::where('id_test',$test->id)->get();
-                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
-                foreach ($questions as $key => $value) {
-                    $opsi = OpsiJawaban::where('id_question',$value->id)->get();
-                    $value['opsi'] = $opsi;
-
+                $questions = null;
+                if ($test == null) {
+                    $questions = null;
+                }else{
+                    $questions = Question::where('id_test',$test->id)->get();
+                    
+                    foreach ($questions as $key => $value) {
+                        $opsi = OpsiJawaban::where('id_question',$value->id)->get();
+                        $value['opsi'] = $opsi;
+                    }
                 }
-                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
+
+                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
+                
                 return view('test-quiz')
                     ->with('section',$section)
                     ->with('type',$type)
@@ -95,6 +102,7 @@ class SectionTrainingController extends Controller
                     ->with('questions',$questions)
                     ->with('next_section',$next_section)
                     ->with('all_section',$all_section);
+
             }elseif($type->id == 2){
                 $module = Module::all();
                 $content = ContentLearning::where('id_section',$id)->get();
