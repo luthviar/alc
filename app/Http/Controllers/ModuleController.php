@@ -77,6 +77,9 @@ class ModuleController extends Controller
     {
         $module             = Module::all();
         $modul              = Module::find($id);
+        if (empty($modul)) {
+            return view('404');
+        }
         $department         = Department::all();
         $training           = Training::where('id_module',$id)->where('is_publish', 1)->get();
 

@@ -19,41 +19,63 @@ $columns = array(
 );
 
 // getting total number records without any search
-$sql = "SELECT concat(fname,' ', lname) as name, p.id as id_personnel, s.file_name as score, s.url_file_pdf as url, s.created_at as created_at ";
-$sql.=" FROM employees e join personnels p on e.id_personnel = p.id join users u on p.id_user = u.id left outer join score_summaries s on s.id_user = u.id ";
-$query=mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
-$totalData = mysqli_num_rows($query);
-$totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
+$sql = "SELECT 	concat(fname,' ', lname) 		as name, 
+				p.id 							as id_personnel,
+				u.id 							as id_user
+				 ";
+$sql.=" FROM 	employees 						e 
+				join 			personnels 		p 	on 	e.id_personnel 	= p.id 
+				join 			users 			u 	on 	p.id_user 		= u.id 
+				 ";
+
+$query 				=	mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
+$totalData 			= 	mysqli_num_rows($query);
+$totalFiltered 		= 	$totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT concat(fname,' ',lname) as name , p.id as id_personnel, s.file_name as score, s.url_file_pdf as url, s.created_at as created_at ";
-$sql.=" FROM  employees e join personnels p on e.id_personnel = p.id join users u on p.id_user = u.id left outer join score_summaries s on s.id_user = u.id WHERE 1=1 ";
+$sql = "SELECT 	concat(fname,' ', lname) 		as name, 
+				p.id 							as id_personnel,
+				u.id 							as id_user
+				 ";
+$sql.=" FROM 	employees 						e 
+				join 			personnels 		p 	on 	e.id_personnel 	= p.id 
+				join 			users 			u 	on 	p.id_user 		= u.id 
+				WHERE 1=1 ";
+
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-	$sql.=" AND ( 	fname 		LIKE '%".$requestData['search']['value']."%' 	";    
-	$sql.=" OR 		lname 		LIKE '%".$requestData['search']['value']."%' 	";
-	$sql.=" OR 		file_name 	LIKE '%".$requestData['search']['value']."%' )	";
+	$sql.=" AND ( 	concat(fname,' ',lname) 	LIKE '%".$requestData['search']['value']."%' 	";    
+	$sql.=" OR 		lname 						LIKE '%".$requestData['search']['value']."%' )	";
+	
 	
 }
-$query=mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
-$totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
+
+$query 			=	mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
+$totalFiltered 	=	mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
+
 $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */	
-$query=mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
+$query 			=	mysqli_query($conn, $sql) or die("list_score_summary.php: get employees");
 
-$data = array();
-while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-	$nestedData=array(); 
+$data 			= 	array();
+while( $row 	=	mysqli_fetch_array($query) ) {  // preparing an array
+	$nestedData	=	array(); 
 
 	
 	$nestedData[] = "<strong><a href='/personnel/".$row['id_personnel']."'>".$row['name']."</a></strong>";
-	if(empty($row['score'])){
-	  $nestedData[] = "-";
+
+	//get score summary
+	$newsql 		= 	"SELECT * FROM score_summaries WHERE id_user = ".$row['id_user']." ORDER BY id DESC LIMIT 1";
+	$newquery 		=	mysqli_query($conn, $newsql);
+
+	if(empty($newquery)){
+	  	$nestedData[] 	= "-";
+	  	$nestedData[] 	= "-";
 	}else{
-	  $nestedData[]="<a href='".$row['url']."'>".$row['score']."</a>";
+		$score_data 	= 	mysqli_fetch_array($newquery);
+	  	$nestedData[]	=	"<a href='".$score_data['url_file_pdf']."'>".$score_data['file_name']."</a>";
+	  	$nestedData[]	= 	$score_data['created_at'];
 	}
-	
-	$nestedData[] = $row['created_at'];
-	$nestedData[] = "<input type='button' class='btn btn-default btn-flat' value='Edit' onclick='msg(".$row['id_personnel'].")'>";
+	$nestedData[] = "<input type='button' class='btn btn-default btn-flat' value='Edit' onclick='msg(".$row['id_user'].")'>";
 	
 	
 	$data[] = $nestedData;

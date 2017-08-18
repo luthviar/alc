@@ -12,14 +12,17 @@
 */
 
 //DocumentViewer Library
+Route::get('/', 'HomeController@index')->name('home');
+
+ Auth::routes();
+
+
+
     Route::any('ViewerJS/{all?}', function(){
 
         return View::make('ViewerJS.index');
     });
-
-    Auth::routes();
-
-    Route::get('/', 'HomeController@index')->name('home');
+ 
 
     Route::resource('module', 'ModuleController');
 

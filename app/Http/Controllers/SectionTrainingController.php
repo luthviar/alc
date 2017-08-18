@@ -63,6 +63,9 @@ class SectionTrainingController extends Controller
     {
         $module  = Module::all();
         $section = SectionTraining::find($id);
+        if (empty($section)) {
+            return view('404');
+        }
         $type = SectionTrainingType::find($section->id_type);
 
         //get all section training

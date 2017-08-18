@@ -158,6 +158,9 @@ class ForumController extends Controller
     public function show($id_forum)
     {
         $forum = Forum::find($id_forum);
+        if (empty($forum)) {
+            return view('404');
+        }
         $forum['personnel'] = Personnel::where('id_user',$forum->id_user)->first();
         $forum['replie'] = Replie::where('id_forum',$id_forum)->get();
         foreach ($forum['replie'] as $key => $value) {

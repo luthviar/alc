@@ -133,6 +133,9 @@ class PersonnelController extends Controller
     public function show($id_personnel)
     {
         $personnel = Personnel::find($id_personnel);
+        if (empty($personnel)) {
+            return view('404');
+        }
         $user = User::find($personnel->id_user);
         $personnel['user'] = $user;
         $employee = Employee::where('id_personnel',$id_personnel)->first();
