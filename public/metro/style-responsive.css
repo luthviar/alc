@@ -878,7 +878,7 @@ The Most Extra Small Devices Landscape Mode Only
 
 	.header.navbar .navbar-nav {
 		display: block;
-		clear: both;
+		/*clear: both;*/
 		margin-top: 2px;
 		margin-right: 0;
 	}
