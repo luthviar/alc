@@ -94,19 +94,19 @@
 	<div class="page-sidebar navbar-collapse collapse">
              
 			 <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
-				<li class="active">
+				<li class="">
 					<a href="/">
 						 Home
-						<span class="selected">
-						</span>
 					</a>
 				</li>
 				<li class=""><a href="/news-board">News</a></li>
 				@if(Auth::user())
 				<li class=""><a href="{{url('/forum')}}">Forum</a></li>
-				<li class="classic-menu-dropdown">
+				<li class="classic-menu-dropdown active">
 					<a>
 						My Modules <i class="arrow fa fa-angle-down"></i>
+						<span class="selected">
+						</span>
 					</a>
 					<ul class="sub-menu">
 						@foreach ($module as $modul)

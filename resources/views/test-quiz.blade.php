@@ -1,7 +1,5 @@
 @include('layouts.head')
 
-
-
 <body class="page-header-fixed page-full-width">
   <!-- Header -->
   <div class="header navbar navbar-fixed-top mega-menu">
@@ -97,6 +95,38 @@
   
 	<div class="page-container" id="wrapper">
        <div class="page-content-wrapper"> 
+	   <div class="page-sidebar navbar-collapse collapse">
+             
+			 <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+				<li class="">
+					<a href="/">
+						 Home
+					</a>
+				</li>
+				<li class=""><a href="/news-board">News</a></li>
+				@if(Auth::user())
+				<li class=""><a href="{{url('/forum')}}">Forum</a></li>
+				<li class="classic-menu-dropdown active">
+					<a>
+						My Modules <i class="arrow fa fa-angle-down"></i> <span class="selected">
+						</span>
+					</a>
+					<ul class="sub-menu">
+						@foreach ($module as $modul)
+							<li>
+								<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+							</li>
+						@endforeach
+					</ul>
+				 
+				</li>
+					
+				 
+				<li class=""><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+				@endif
+			</ul>
+
+        </div>
         <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
       <div class="container">
         <div class="row">
