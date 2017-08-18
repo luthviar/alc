@@ -1,7 +1,19 @@
 @include('layouts.head')
 
-<body class="page-header-fixed page-full-width">
-	<!-- Header -->
+<body class="page-header-fixed page-full-width" style="overflow:hidden">
+    <!-- loading preloader -->
+    <div id="loading"> 
+        <div id="loading-container" class="fullwidth">
+            <div class="spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <p id='loading-text'>Loading...</p>
+        </div>
+    </div>	<!-- Header -->
 	<div class="header navbar navbar-fixed-top mega-menu">
         <!-- BEGIN TOP NAVIGATION BAR -->
         <div class="header-inner">
@@ -253,3 +265,25 @@
 	@include('layouts.script')
 </body>
 </html>
+<script>
+
+     $(window).load(function(){
+    
+       setTimeout(function() {    
+        $("#loading").fadeOut(function(){
+          
+           $(this).remove();
+               $('body').removeAttr('style');
+            }) 
+        }
+       , 300);
+    });
+
+
+    jQuery(document).ready(function() {
+   // initiate layout and plugins
+    App.init();
+       
+    });
+</script>
+
