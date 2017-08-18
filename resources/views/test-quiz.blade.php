@@ -161,14 +161,29 @@
             <h2>
             </h2><br>
               <h4>
-                Quiz Duration = {{$test->time}} Minutes<br><br>
-                Total Question = {{$test->jumlah_soal}} Question<br><br>
-                
+                @if(empty($questions[0]))
+                  
+                    Tidak ada Test pada Training ini
+
+                @else
+                    
+                    Quiz Duration = {{$test->time}} Minutes<br><br>
+                    Total Question = {{$test->jumlah_soal}} Question<br><br>
+
+                @endif
               </h4>
               <!-- Button modal fullscreen -->
-              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
-                Mulai Test
-              </button>
+              @if(empty($questions[0]))
+                @if($type->id == 3)
+                  <a href="/" class="btn btn-warning btn-flat" >Finish Test</a>
+                @else
+                  <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
+                @endif
+              @else
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
+                  Mulai Test
+                </button>
+              @endif
 
               <!-- Modal fullscreen -->
               <div class="modal modal-fullscreen fade" id="modal-fullscreen" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">

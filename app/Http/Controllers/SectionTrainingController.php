@@ -80,6 +80,7 @@ class SectionTrainingController extends Controller
             if ($type->id == 1) {
                 $test = Test::where('id_section_training',$section->id)->first();
                 $questions = Question::where('id_test',$test->id)->get();
+                $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
                 foreach ($questions as $key => $value) {
                     $opsi = OpsiJawaban::where('id_question',$value->id)->get();
                     $value['opsi'] = $opsi;
