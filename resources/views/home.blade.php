@@ -106,7 +106,7 @@
 				<li class=""><a href="/news-board">News</a></li>
 				@if(Auth::user())
 				<li class=""><a href="{{url('/forum')}}">Forum</a></li>
-				<li class="">
+				<li class="classic-menu-dropdown">
 					<a>
 						My Modules <i class="arrow fa fa-angle-down"></i>
 					</a>

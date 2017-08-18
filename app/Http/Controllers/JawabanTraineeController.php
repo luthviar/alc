@@ -85,6 +85,9 @@ class JawabanTraineeController extends Controller
             $user_test->pre_test_score = $skor;
             $user_test->save();
 
+            $user_test_db  = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
+            $skor          = $user_test_db->pre_test_score; 
+
             //sent to view
             $module = Module::all();
             $training = Training::find($section->id_training);
@@ -96,6 +99,9 @@ class JawabanTraineeController extends Controller
             $user_test->id_post_test = $request->id_test;
             $user_test->post_test_score = $skor;
             $user_test->save();
+
+            $user_test_db  = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
+            $skor          = $user_test_db->post_test_score; 
 
             //sent to view
             $module = Module::all();

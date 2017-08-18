@@ -138,6 +138,9 @@ class BeritaController extends Controller
     public function show($id_berita)
     {
         $berita = Berita::find($id_berita);
+        if (empty($berita)) {
+            return view('404');
+        }
         $berita['user'] = Personnel::where('id_user',$berita->id_user)->first();
         $replies = null;
         if ($berita->can_reply == 1) {

@@ -44,12 +44,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {    
+
+          // flash your message
+
+            \Session::flash('flash_message_important', 'Sorry, your session seems to have expired. Please try again.'); 
+
+            return redirect('login');
+        }
+        
         if($this->isHttpException($e))
         {
+            
+            return redirect()->guest('404');
+
             switch ($e->getStatusCode()) 
                 {
                 // not found
-                case 404:
+                case '404':
                 return redirect()->guest('404');
                 break;
 
@@ -58,13 +70,17 @@ class Handler extends ExceptionHandler
                 return redirect()->guest('404');
                 break;
 
+                
+                case '23000':
+                return redirect()->guest('404');
+                break;
+
                 default:
                     return $this->renderHttpException($e);
                 break;
             }
-        }
-        else
-        {
+
+        }else{
                 return parent::render($request, $e);
         }
 

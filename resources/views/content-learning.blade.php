@@ -69,12 +69,11 @@
 					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
 					@if(Auth::user())
 					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
-					<li class="classic-menu-dropdown active">
-						<li class="classic-menu-dropdown active"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+					<li class="classic-menu-dropdown active"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
 							My Modules <i class="fa fa-angle-down"></i>
 							<span class="selected">
 							</span>
-						</a></li>
+						</a><
 						<ul class="dropdown-menu">
 							@foreach ($module as $modul)
 								<li>
@@ -92,6 +91,40 @@
     </div>
 	<div class="clearfix"></div>
 	<div class="page-container" id="wrapper">
+	<div class="page-sidebar navbar-collapse collapse">
+             
+			 <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+				<li class="active">
+					<a href="/">
+						 Home
+						<span class="selected">
+						</span>
+					</a>
+				</li>
+				<li class=""><a href="/news-board">News</a></li>
+				@if(Auth::user())
+				<li class=""><a href="{{url('/forum')}}">Forum</a></li>
+				<li class="classic-menu-dropdown">
+					<a>
+						My Modules <i class="arrow fa fa-angle-down"></i>
+					</a>
+					<ul class="sub-menu">
+						@foreach ($module as $modul)
+							<li>
+								<a href="/module/{{$modul->id}}">{{$modul->nama}}</a>
+							</li>
+						@endforeach
+					</ul>
+				 
+				</li>
+					
+				 
+				<li class=""><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+				@endif
+			</ul>
+
+        </div>
+        </div>
        <div class="page-content-wrapper"> 
 			@if(empty($logout))
             

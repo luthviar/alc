@@ -108,6 +108,9 @@ class TrainingController extends Controller
     {
         $module = Module::all();
         $training = Training::find($id);
+        if (empty($training)) {
+            return view('404');
+        }
 
         $section = SectionTraining::where('id_training',$id)->where('id_type','1')->first();
 
@@ -224,6 +227,9 @@ class TrainingController extends Controller
     public function view( $id_training ){
 
         $training = Training::find($id_training);
+        if (empty($training)) {
+            return view('404');
+        }
         $training['module'] = Module::find($training->id_module);
         if (!empty($training->id_department)) {
             $training['department'] = Department::where('id_department',$training->id_department)->first();

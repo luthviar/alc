@@ -57,7 +57,7 @@ class ScoreSummaryController extends Controller
      */
     public function store(Request $request)
     {
-        
+    
 
         $file = $request->file('score');
         $destinationPath = 'raports';
@@ -82,6 +82,9 @@ class ScoreSummaryController extends Controller
     public function show($id_user)
     {
         $personnel = Personnel::where('id_user',$id_user)->first();
+        if (empty($personnel)) {
+            return view('404');
+        }
         $id_personnel = $personnel->id;
         $user = User::find($personnel->id_user);
         $personnel['user'] = $user;
