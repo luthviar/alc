@@ -87,8 +87,22 @@ class TrainingController extends Controller
             ));
         }
 
+        $section_pre_test               = new SectionTraining;
+        $section_pre_test->id_training  = $id_training;
+        $section_pre_test->id_type      = 1;
+        $section_pre_test->save();
+
+        $section_materi                 = new SectionTraining;
+        $section_materi->id_training    = $id_training;
+        $section_materi->id_type        = 2;
+        $section_materi->save();
+
+        $section_post_test              = new SectionTraining;
+        $section_post_test->id_training = $id_training;
+        $section_post_test->id_type     = 3;
+        $section_post_test->save();
+
         
-        //return view('add-question')->with('id_training',$id_training)->with('time',0)->with('questions',null);
         return redirect('/training/view/'.$id_training);
     }
 
@@ -238,17 +252,29 @@ class TrainingController extends Controller
         foreach ($section as $key => $value) {
             if ($value->id_type == 1) {
                 $training['pretest'] = Test::where('id_section_training', $value->id)->first();
-                $training['pretest-question'] = Question::where('id_test', $training['pretest']->id)->get();
-                foreach ($training['pretest-question'] as $key => $ques) {
-                    $ques['opsi'] = OpsiJawaban::where('id_question', $ques->id)->get();
+                if (empty($training['pretest'])) {
+                    $training['pretest-question'] = null;
+                }else{
+                    $training['pretest-question'] = Question::where('id_test', $training['pretest']->id)->get();
+                    if (!empty($training['pretest-question'][0])) {
+                        foreach ($training['pretest-question'] as $key => $ques) {
+                            $ques['opsi'] = OpsiJawaban::where('id_question', $ques->id)->get();
+                        }        
+                    }
                 }
             }elseif ($value->id_type == 2) {
                 $training['content'] = ContentLearning::where('id_section', $value->id)->get();
             }elseif ($value->id_type == 3) {
                 $training['posttest'] = Test::where('id_section_training', $value->id)->first();
-                $training['posttest-question'] = Question::where('id_test', $training['posttest']->id)->get();
-                foreach ($training['posttest-question'] as $key => $ques) {
-                    $ques['opsi'] = OpsiJawaban::where('id_question', $ques->id)->get();
+                if (empty($training['posttest'])) {
+                    $training['posttest-question'] = null;
+                }else{
+                    $training['posttest-question'] = Question::where('id_test', $training['posttest']->id)->get();
+                    if (!empty($training['posttest-question'][0])) {
+                        foreach ($training['posttest-question'] as $key => $ques) {
+                            $ques['opsi'] = OpsiJawaban::where('id_question', $ques->id)->get();
+                        }
+                    }
                 }
             }
         }

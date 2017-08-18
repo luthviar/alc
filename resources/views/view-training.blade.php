@@ -416,7 +416,7 @@
                         <label for="question" class="col-md-5 control-label">Test Time (minutes) </label>
                 
                         <div class="col-md-4">
-                               <input class="form-control" type="number" name="time" value="{{$training['pretest']->time or null}}" placeholder="in minutes" min=0 >
+                               <input class="form-control" type="number" name="time" value="{{$training['pretest']->time or null}}" placeholder="in minutes" min=1  required="true">
                         </div>
                     </div>
                     
@@ -461,7 +461,7 @@
                         <label for="question" class="col-md-5 control-label">Test Time (minutes) </label>
                 
                         <div class="col-md-4">
-                               <input class="form-control" type="number" name="time" value="{{$training['posttest']->time or null}}" placeholder="in minutes" min=0 >
+                               <input class="form-control" type="number" name="time" value="{{$training['posttest']->time or null}}" placeholder="in minutes" min=1 required="true" >
                         </div>
                     </div>
                     
@@ -498,7 +498,7 @@
                 <div class="form-group">
                     <label for="file_name" class="col-md-2 control-label">Content Title</label>
                     <div class="col-md-8">
-                        <input id="file_name" type="text" class="form-control" placeholder="Content Learning Title" name="file_name"  required autofocus>
+                        <input id="file_name" type="text" class="form-control" placeholder="Content Learning Title" name="file_name"  required="true">
                     </div>
                 </div>
 
