@@ -351,34 +351,9 @@
         
         <!-- Footer -->
         @include('layouts.footer')
+		
     </div>
-	<script type="text/javascript" src="{{URL::asset('Elegantic/js/jquery.bxslider.min.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('Elegantic/js/jquery.placeholder.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('Elegantic/js/jquery.uniform.min.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('Elegantic/js/fancySelect.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('Elegantic/js/main.js')}}"></script>
-</body>
-</html>
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#table_training').DataTable({
-        	"order": [[ 3, "desc" ]],
-        });
-    });
-
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#table_raport').DataTable({
-        	"order": [[ 1, "desc" ]],
-        });
-    });
-    
-</script>
-
+	 @include('layouts.script')
 <script>
 
      $(window).load(function(){
@@ -400,3 +375,23 @@
        
     });
 </script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_training').DataTable({
+        	"order": [[ 3, "desc" ]],
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_raport').DataTable({
+        	"order": [[ 1, "desc" ]],
+        });
+    });
+    
+</script>
+</body>
+</html>
