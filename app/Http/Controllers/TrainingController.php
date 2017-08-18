@@ -87,21 +87,36 @@ class TrainingController extends Controller
             ));
         }
 
-        $section_pre_test               = new SectionTraining;
-        $section_pre_test->id_training  = $id_training;
-        $section_pre_test->id_type      = 1;
-        $section_pre_test->save();
+        $id_section_pre_test = DB::table('section_trainings')-> insertGetId(array(
+            'id_training' => $id_training,
+            'id_type' => 1
+        ));
+
+        $test                       = new Test;
+        $test->id_section_training  = $id_section_pre_test;
+        $test->time                 = 0;
+        $test->jumlah_soal          = 0;
+        $test->attemp               = 1;
+        $test->publised             = 1;
+        $test->save();
 
         $section_materi                 = new SectionTraining;
         $section_materi->id_training    = $id_training;
         $section_materi->id_type        = 2;
         $section_materi->save();
 
-        $section_post_test              = new SectionTraining;
-        $section_post_test->id_training = $id_training;
-        $section_post_test->id_type     = 3;
-        $section_post_test->save();
+        $id_section_post_test = DB::table('section_trainings')-> insertGetId(array(
+            'id_training' => $id_training,
+            'id_type' => 3
+        ));
 
+        $test                       = new Test;
+        $test->id_section_training  = $id_section_post_test;
+        $test->time                 = 0;
+        $test->jumlah_soal          = 0;
+        $test->attemp               = 1;
+        $test->publised             = 1;
+        $test->save();
         
         return redirect('/training/view/'.$id_training);
     }
