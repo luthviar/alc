@@ -1,26 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script type="text/javascript" language="javascript" >
-            $(document).ready(function() {
-                var dataTable = $('#detailTable').DataTable( {
-                	"order": [[ 3, "desc" ]],
-                    "processing": true,
-                    "serverSide": true,
-                    "ajax":{
-                        url :"ajax_datatables/lis_news.php", // json datasource
-                        type: "post",  // method  , by default get
-                        error: function(){  // error handling
-                            $("#detailTable").html("");
-                            
-                        }
-                    }
-                } );
-            } );
-        </script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-
 <div class="col-md-12 ">
 	<div class="panel panel-success">
 	    <div class="panel-heading"> 
@@ -50,7 +30,25 @@
 		</div>
 	</div>
 </div>
-		
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" >
+            $(document).ready(function() {
+                var dataTable = $('#detailTable').DataTable( {
+                	"order": [[ 3, "desc" ]],
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax":{
+                        url :"ajax_datatables/lis_news.php", // json datasource
+                        type: "post",  // method  , by default get
+                        error: function(){  // error handling
+                            $("#detailTable").html("");
+                            
+                        }
+                    }
+                } );
+            } );
+        </script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>		
 
 
 @endsection
