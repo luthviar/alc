@@ -300,7 +300,7 @@
     </div>
 
     @include('layouts.script')
-	<script>
+<script>
         updateList = function() {
             var input = document.getElementById('file');
             var output = document.getElementById('fileList');
@@ -333,10 +333,9 @@
             nav.removeClass('sticky');
         } 
     });
-	</script>
+</script>
 
 <script>
-
      $(window).load(function(){
     
        setTimeout(function() {    
