@@ -1,11 +1,4 @@
 @include('layouts.head')
-
-<style>
-p.big {
-    line-height: 300%;
-	font-size : 15px;
-}
-</style>
 <body class="page-header-fixed page-full-width">
          <!-- Header -->
     <div class="header navbar navbar-fixed-top mega-menu">
@@ -93,6 +86,7 @@ p.big {
                     <li class="classic-menu-dropdown "><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
                     @endif
                 </ul>
+
             </div>
         </div>
         <!-- END TOP NAVIGATION BAR -->
@@ -287,5 +281,12 @@ p.big {
             output.innerHTML += '</ul>';
         }
 	</script>
+	
+<style>
+p.big {
+    line-height: 300%;
+	font-size : 15px;
+}
+</style>
 </body>
 </html>

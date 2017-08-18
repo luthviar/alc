@@ -1,22 +1,4 @@
 @include('layouts.head')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#table_training').DataTable({
-        	"order": [[ 3, "desc" ]],
-        });
-    });
-
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#table_raport').DataTable({
-        	"order": [[ 1, "desc" ]],
-        });
-    });
-    
-</script>
 <body class="page-header-fixed page-full-width">
 
 	<!-- Header -->
@@ -88,9 +70,11 @@
 					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
 					@if(Auth::user())
 					<li class="classic-menu-dropdown"><a href="{{url('/forum')}}">Forum</a></li>
+
 					<li class="classic-menu-dropdown"><a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
 							My Modules <i class="fa fa-angle-down"></i>
 						</a>
+
 						<ul class="dropdown-menu">
 							@foreach ($module as $modul)
 								<li>
@@ -99,10 +83,7 @@
 							@endforeach
 						</ul>
 					</li>
-					<li class="classic-menu-dropdown active"><a href="/raport/{{Auth::user()->id}}">My Profile
-						<span class="selected">
-							</span>
-					</a></li>
+					<li class="classic-menu-dropdown active"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
 					@endif
 				</ul>
             </div>
@@ -332,3 +313,21 @@
 </body>
 </html>
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_training').DataTable({
+        	"order": [[ 3, "desc" ]],
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_raport').DataTable({
+        	"order": [[ 1, "desc" ]],
+        });
+    });
+    
+</script>

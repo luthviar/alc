@@ -2,27 +2,7 @@
 @extends('Admin.Template')
 @section('section')
 <!--User Prfoile-->
-<link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
-<script type="text/javascript" src="js/EditProfile.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#table_training').DataTable({
-          "order": [[ 3, "desc" ]],
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#raport_table').DataTable({
-          "order": [[ 1, "desc" ]],
-        });
-    });
-</script>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <div class="col-md-12">
-
-
   <div class="panel panel-success">
     <div class="panel-heading">User Profile</div>
       <div class="panel-body">
@@ -176,4 +156,22 @@
     
   </div>
 
+  <link rel="stylesheet" href="{{ URL::asset('css/EditProfile.css')}}" />
+<script type="text/javascript" src="js/EditProfile.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_training').DataTable({
+          "order": [[ 3, "desc" ]],
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#raport_table').DataTable({
+          "order": [[ 1, "desc" ]],
+        });
+    });
+</script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 @endsection

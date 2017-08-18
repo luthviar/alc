@@ -1,19 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<script>
-$(function() {
-    $('#Optionals').hide(); 
-    $('#MySelect').change(function(){
-        if($('#MySelect').val() == '3') {
-            $('#Optionals').show(); 
-        } else {
-            $('#Optionals').hide(); 
-        } 
-    });
-});
-</script>
-
     <div class="col-md-12">
 	       <div class="panel panel-default">
                 <div class="panel-heading">Trainning Description</div>
@@ -76,3 +63,15 @@ $(function() {
 </div>
 
 @endsection
+<script>
+$(function() {
+    $('#Optionals').hide(); 
+    $('#MySelect').change(function(){
+        if($('#MySelect').val() == '3') {
+            $('#Optionals').show(); 
+        } else {
+            $('#Optionals').hide(); 
+        } 
+    });
+});
+</script>

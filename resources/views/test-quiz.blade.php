@@ -88,6 +88,7 @@
           <li class="classic-menu-dropdown"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
           @endif
         </ul>
+
             </div>
         </div>
         <!-- END TOP NAVIGATION BAR -->

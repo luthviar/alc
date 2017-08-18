@@ -1,33 +1,6 @@
 @include('Admin.AdminHead')
 @extends('Admin.Template')
 @section('section')
-<?php require_once "cuteeditor_files/include_CuteEditor.php" ?>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script>
-$(document).ready(function(){
-    $('#Optionals').hide(); 
-    var last_module = $('#last_module_id').val();
-    var last_module = JSON.parse(last_module);
-    if (last_module == 3) {
-        $('#Optionals').show();  
-    }
-});
-
-$(function() {
-    
-
-    
-    $('#MySelect').change(function(){
-        if($('#MySelect').val() == '3') {
-            $('#Optionals').show(); 
-        } else {
-            $('#Optionals').hide(); 
-        } 
-    });
-
-});
-</script>
-	
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-success">
@@ -44,7 +17,7 @@ $(function() {
                     <div class="form-group">
                         <label for="module" class="col-md-4 control-label">Module</label>                                     
                         <div class="col-md-6">
-							<select name="module" id="MySelect" onchange="changeFunc();" class="selectpicker" >
+							<select name="module" id="MySelect" onchange="changeFunc();" class="form-control" >
 								@foreach($module as $modul)
                                     @if($training->id_module == $modul->id)
                                         <option value="{{$modul->id}}" selected="true">{{$modul->nama}}</option>
@@ -52,7 +25,7 @@ $(function() {
                                         <option value="{{$modul->id}}">{{$modul->nama}}</option>
                                     @endif
                                 @endforeach
-							</select><br>
+							</select>
                         </div>
 
                     </div>
@@ -78,7 +51,7 @@ $(function() {
                     <div id="Optionals" class="form-group">
                         <label for="department" class="col-md-4 control-label">Select Departement</label>
 						<div class="col-md-6">
-							<select name="department" class="selectpicker" data-live-search="true">
+							<select name="department" class="form-control" data-live-search="true">
                             @if($training->id_module == 3)
                                 @foreach($department as $dept)
                                     @if($training->id_department == $dept->id_department)
@@ -109,6 +82,30 @@ $(function() {
     </div>
 </div>
 
+<script>
+$(document).ready(function(){
+    $('#Optionals').hide(); 
+    var last_module = $('#last_module_id').val();
+    var last_module = JSON.parse(last_module);
+    if (last_module == 3) {
+        $('#Optionals').show();  
+    }
+});
 
+$(function() {
+    
+
+    
+    $('#MySelect').change(function(){
+        if($('#MySelect').val() == '3') {
+            $('#Optionals').show(); 
+        } else {
+            $('#Optionals').hide(); 
+        } 
+    });
+
+});
+</script>
+	
 
 @endsection

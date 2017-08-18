@@ -1,7 +1,5 @@
 @include('Admin.AdminHead')
-
 @extends('Admin.Template')
-
 @section('section')
 
 <div class="col-md-12 ">
