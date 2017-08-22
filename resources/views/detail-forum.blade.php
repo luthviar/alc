@@ -243,7 +243,7 @@
 					
 				</div>
 				
-				<div class="col-lg-4  col-md-4 col-sm-12">
+				<div class="col-lg-4  col-md-4 col-sm-12 hidden-sm hidden-xs">
 				<div id="navWrap">
 					<nav>
 				  <div class ="fixedpositiion">	
@@ -300,7 +300,7 @@
     </div>
 
     @include('layouts.script')
-	<script>
+<script>
         updateList = function() {
             var input = document.getElementById('file');
             var output = document.getElementById('fileList');
@@ -333,10 +333,9 @@
             nav.removeClass('sticky');
         } 
     });
-	</script>
+</script>
 
 <script>
-
      $(window).load(function(){
     
        setTimeout(function() {    

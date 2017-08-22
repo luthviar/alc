@@ -346,9 +346,10 @@
         
         <!-- Footer -->
         @include('layouts.footer')
-		
     </div>
-@include('layouts.script')
+	@include('layouts.script')
+</body>
+</html>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
@@ -369,28 +370,21 @@
     
 </script>
 
-
 <script>
 
-    $(window).load(function(){
-    	setTimeout(function() {    
-        	$("#loading").fadeOut(function(){
+     $(window).load(function(){
+    
+       setTimeout(function() {    
+        $("#loading").fadeOut(function(){
           
-           	$(this).remove();
+           $(this).remove();
                $('body').removeAttr('style');
             }) 
         }
-       	, 300);
-    });
-
-
-    jQuery(document).ready(function() {
-   // initiate layout and plugins
-    App.init();
-       
+       , 300);
     });
 </script>
 
+
 </body>
 </html>
-

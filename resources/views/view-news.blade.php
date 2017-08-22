@@ -261,8 +261,10 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4  col-md-4 col-sm-12">
-				 <div class ="fixedpositiion">
+				<div class="col-lg-4  col-md-4 col-sm-12 hidden-sm hidden-xs">
+				<div id="navWrap">
+					<nav>
+				  <div class ="fixedpositiion">	
 					<div class="well">
 						<h4>Recent News</h4>
 						<hr class="style14">
@@ -271,7 +273,7 @@
 						@endforeach
 						<br>
 					</div>
-					<!--links-->
+					<!--Links -->
 					<p class="border-panel-title-wrap"> 
                                 <span class="panel-title-text">Links</span>    
                             </p>
@@ -303,17 +305,20 @@
                                     </a>
                                 </div>
                             </div>
+                     </div>
 				</div>
-            </div>
+			</div>
+			
         </div>
 		
         <!-- Footer -->
         @include('layouts.footer')
+		
+		<div id="stopHere"></div>
     </div>
 
     @include('layouts.script')
-
-	<script>
+<script>
         updateList = function() {
             var input = document.getElementById('file');
             var output = document.getElementById('fileList');
@@ -325,17 +330,30 @@
             }
             output.innerHTML += '</ul>';
         }
-	</script>
-	
-<style>
-p.big {
-    line-height: 300%;
-	font-size : 15px;
-}
-</style>
+		
+		var navWrap = $('#navWrap'),
+        nav = $('nav'),
+        startPosition = navWrap.offset().top,
+        stopPosition = $('#stopHere').offset().top - nav.outerHeight();
+    
+    $(document).scroll(function () {
+        //stick nav to top of page
+        var y = $(this).scrollTop()
+        
+        if (y > startPosition) {
+            nav.addClass('sticky');
+            if (y > stopPosition) {
+                nav.css('top', stopPosition - y);
+            } else {
+                nav.css('top', 80);
+            }
+        } else {
+            nav.removeClass('sticky');
+        } 
+    });
+</script>
 
 <script>
-
      $(window).load(function(){
     
        setTimeout(function() {    
@@ -355,6 +373,16 @@ p.big {
        
     });
 </script>
-
+	
+<style>
+.sticky {
+    position: fixed;
+    top:200px;
+}
+p.big {
+    line-height: 300%;
+	font-size : 15px;
+}
+</style>
 </body>
 </html>
