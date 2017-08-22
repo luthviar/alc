@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\ContentSlider;
 use DB;
+use App\FileSlider;
 use App\Module;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ContentSliderController extends Controller
@@ -54,22 +56,67 @@ class ContentSliderController extends Controller
             'content' => 'required',
         ]);
         if (empty($file = $request->file('image'))) {
-            $slider = new ContentSlider;
-            $slider->is_activ = 0;
-            $slider->title = $request->title;
-            $slider->content = $request->content;
-            $slider->save();
+
+            //add slider to database
+            $id_slider = DB::table('content_sliders')-> insertGetId(array(
+                'is_activ'      => 0,
+                'title'         => $request->title,
+                'content'       => $request->content,
+                'created_at'    => Carbon::now('Asia/Jakarta'),
+                'updated_at'    => Carbon::now('Asia/Jakarta')
+            ));
+
+            //get attachment of slider
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath    = 'Uploads';
+                    $movea              = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file           = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung             = new FileSlider;
+                    $new_file_pendukung->id_slider  = $id_slider;
+                    $new_file_pendukung->name       = $file->getClientOriginalName();
+                    $new_file_pendukung->url        = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
+
         }else{
-            $file = $request->file('image');
-            $destinationPath = 'uploads';
-            $movea = $file->move($destinationPath,$file->getClientOriginalName());
-            $url = "uploads/{$file->getClientOriginalName()}";
-            $slider = new ContentSlider;
-            $slider->is_activ = 0;
-            $slider->title = $request->title;
-            $slider->content = $request->content;
-            $slider->image = $url;
-            $slider->save();
+            //upload image to server
+            $file               = $request->file('image');
+            $destinationPath    = 'uploads';
+            $movea              = $file->move($destinationPath,$file->getClientOriginalName());
+            $url                = "uploads/{$file->getClientOriginalName()}";
+
+            //add slider to database
+            $id_slider = DB::table('content_sliders')-> insertGetId(array(
+                'is_activ'      => 0,
+                'title'         => $request->title,
+                'content'       => $request->content,
+                'image'         => $url,
+                'created_at'    => Carbon::now('Asia/Jakarta'),
+                'updated_at'    => Carbon::now('Asia/Jakarta')
+            ));
+
+            //get attachment of slider
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath    = 'Uploads';
+                    $movea              = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file           = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung             = new FileSlider;
+                    $new_file_pendukung->id_slider  = $id_slider;
+                    $new_file_pendukung->name       = $file->getClientOriginalName();
+                    $new_file_pendukung->url        = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
+
         }
 
         return redirect('slider');
@@ -84,6 +131,10 @@ class ContentSliderController extends Controller
     public function show($id_contentSlider)
     {
         $slider = ContentSlider::find($id_contentSlider);
+        if (empty($slider)) {
+            return view('404');
+        }
+        $slider['file_pendukung'] = FileSlider::where('id_slider', $id_contentSlider)->get();
         $module = Module::all();
         return view('view-slider')->with('slider', $slider)->with('module',$module);
     }
@@ -97,6 +148,10 @@ class ContentSliderController extends Controller
     public function edit($id)
     {
         $slider = ContentSlider::find($id);
+        if (empty($slider)) {
+            return view('404');
+        }
+        $slider['file_pendukung'] = FileSlider::where('id_slider',$id)->get();
         return view('edit-slider')->with('slider',$slider);
     }
 
@@ -121,6 +176,23 @@ class ContentSliderController extends Controller
             $slider->title = $request->title;
             $slider->content = $request->content;
             $slider->save();    
+
+            //get attachment of slider
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath    = 'Uploads';
+                    $movea              = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file           = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung             = new FileSlider;
+                    $new_file_pendukung->id_slider  = $request->id_slider;
+                    $new_file_pendukung->name       = $file->getClientOriginalName();
+                    $new_file_pendukung->url        = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
         }else{
             $destinationPath = 'uploads';
             $movea = $file->move($destinationPath,$file->getClientOriginalName());
@@ -132,6 +204,23 @@ class ContentSliderController extends Controller
             $slider->content = $request->content;
             $slider->image = $url;
             $slider->save();    
+
+            //get attachment of slider
+            $file_pendukung = $request->file('file_pendukung');
+            if (!empty($file_pendukung)) {
+
+                foreach ($file_pendukung as $key => $file) {
+                    $destinationPath    = 'Uploads';
+                    $movea              = $file->move($destinationPath,$file->getClientOriginalName());
+                    $url_file           = "Uploads/{$file->getClientOriginalName()}";
+
+                    $new_file_pendukung             = new FileSlider;
+                    $new_file_pendukung->id_slider  = $request->id_slider;
+                    $new_file_pendukung->name       = $file->getClientOriginalName();
+                    $new_file_pendukung->url        = $url_file;
+                    $new_file_pendukung->save();
+                }
+            }
         }
         
 
@@ -189,5 +278,12 @@ class ContentSliderController extends Controller
         }
         
         return response()->json(['data'=>$data]);
+    }
+
+    public function delete_attachment($id){
+        $news_attachment = FileSlider::find($id);
+        $news_attachment->delete();
+
+        return back();
     }
 }

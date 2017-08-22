@@ -77,6 +77,8 @@
                     <li class="classic-menu-dropdown active">
 						<a href="/">
 							 Home
+                              <span class="selected">
+                        </span>
 						</a>
 					</li>
 					<li class="classic-menu-dropdown"><a href="/news-board">News</a></li>
@@ -152,6 +154,17 @@
 							{!! html_entity_decode($slider['content']) !!}
 
 						</p>
+                        <div class ="pull-right">
+
+                            @if(!empty($slider['file_pendukung'][0]))
+                                Attachments : <br>
+                                @foreach($slider['file_pendukung'] as $file)
+                                 <a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{$file->name}}</a><br>
+                                @endforeach
+                            @endif
+
+                        </div>
+
 						<!--
 						<div class='pull-right'>
 							@if(!empty($news['file_pendukung'][0]))

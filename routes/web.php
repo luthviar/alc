@@ -133,6 +133,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/forum/list', 'ForumController@list_forum');
 
+    Route::get('/slider_attachment_delete/{id}', 'ContentSliderController@delete_attachment');
+
     Route::post('/get-forum', 'ForumController@get_forum');
 
     Route::post('/delete-forum', 'ForumController@delete_forum');

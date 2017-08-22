@@ -2,7 +2,7 @@
 @extends('Admin.Template')
 @section('section')
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">Add New Slider</div>
                 <div class="panel-body">
 
@@ -51,16 +51,16 @@
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image"/>
+                                        Browse… <input type="file" id="file" name="file_pendukung[]" onchange="javascript:updateList()" multiple="true" />
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div></br>
                             <div class='file-uploaded'>
-								1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
-								2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
-								3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
-							</div>
+                                <p>
+                                    <div id="fileList"></div>
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -91,47 +91,17 @@ $(document).ready(function(){
     });
 });
 </script>
+
 <script>
-$(document).ready(function() {
-    $('#datePicker')
-        .datepicker({
-            format: 'yyyy-mm-dd'
-        })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#eventForm').formValidation('revalidateField', 'date');
-        });
+    updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
 
-    $('#eventForm').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'The name is required'
-                    }
-                }
-            },
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'The date is required'
-                    },
-                    date: {
-                        format: 'YYYY-MM-DD',
-                        message: 'The date is not a valid'
-                    }
-                }
-            }
+        output.innerHTML = 'Selected file(s) <br><ul>';
+        for (var i = 0; i < input.files.length; ++i) {
+            output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
         }
-    });
-
-
-    
-});
+        output.innerHTML += '</ul>';
+    }
 </script>
