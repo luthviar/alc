@@ -1041,6 +1041,9 @@ hr.style2 {
 .social .pinterest {
 	background: url(../images/ico_pinterest.png) no-repeat 50% 0;
 }
+.social .instagram {
+	background: url(../images/ico_instagram.png) no-repeat 50% 0;
+}
 .footer-bottom {
 	width: 100%;
 	background: #12AC8D;

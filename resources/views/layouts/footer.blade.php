@@ -32,7 +32,7 @@
                             <li class="facebook"><a href="https://www.facebook.com/AerofoodIndonesiaPT/">Facebook</a></li>
                             <li class="google"><a href="#">Google+</a></li>
                             <li class="twitter"><a href="#">Twitter</a></li>
-                            <li class="pinterest"><a href="#">Pinterest</a></li>
+                            <li class="instagram"><a href="#">Instagram</a></li>
                         </ul>
                     </div>
                 </div>
