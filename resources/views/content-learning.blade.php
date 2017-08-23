@@ -147,7 +147,7 @@
        <div class="page-content-wrapper"> 
 	@if(empty($logout))
             
-        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
+        <div class="page-content" style="">	
             <div class="container">
 				<div class="row">
 				
@@ -214,18 +214,7 @@
         	
 	@else
 		
-		<div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
-            <div class="container">
-				<div class="row">
-					<div class="btn-group btn-breadcrumb">
-						<a  class="btn btn-default">Introduction</a>
-						<a  class="btn btn-default">Pre-Test</a>
-						<a  class="btn btn-success">Modul</a>
-						<a  class="btn btn-default">Post-Test</a>
-					</div>
-				</div>
-	   		</div>
-			<br>
+		
 			<div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
             <div class="container">
 				<div class="row">
@@ -319,6 +308,14 @@
 
 </body>
 </html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+  });
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('iframe').ready(function() {
