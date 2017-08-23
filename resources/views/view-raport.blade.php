@@ -96,7 +96,8 @@
 							@endforeach
 						</ul>
 					</li>
-					<li class="classic-menu-dropdown active"><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
+					<li class="classic-menu-dropdown active"><a href="/raport/{{Auth::user()->id}}">My Profile<span class="selected">
+						</span></a></li>
 					@endif
 				</ul>
             </div>
@@ -166,7 +167,7 @@
 								  <div class="panel-body">
 									<h3 class="panel-title"><strong>{{$personnel->fname}} {{$personnel->lname}}</strong></h3>
 									<span class="pull-right">
-										<a href="/reset-password">reset_password</a>
+										<a class="btn btn-flat btn-info" href="/reset-password">reset_password</a>
 									</span>
 								  </div>
 								<div class="panel-body">
@@ -186,7 +187,7 @@
                         
                         change profile :<input type="file" name="photo" accept="image/gif, image/jpeg, image/png">
                         <br>
-                        <input type="submit" class="btn btn-flat">
+                        <button type="submit" class="btn btn-success btn-flat">change photo</button>
                       </form>
                     </div>
                     <div class="col-lg-9 col-md-9">

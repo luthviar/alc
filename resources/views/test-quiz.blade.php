@@ -258,7 +258,14 @@
   @include('layouts.script')
 </body>
 </html>
-
+<script type="text/javascript">
+  $(document).ready(function(){
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+  });
+</script>
 <style type="text/css">
 /* .modal-fullscreen */
 .modal-fullscreen {

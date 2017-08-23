@@ -164,9 +164,9 @@
 								<h1 class="brand-name">{{ $training['title'] }}</h1>
 								<hr class="tagline-divider">
 								<h4 align="justify" style="text-align: center;">
-									<strong>
+									
 										{!! html_entity_decode($training['description']) !!}
-									</strong>	
+									
 								</h4><br>
 								<h6>
 									@if($training['open']==1)

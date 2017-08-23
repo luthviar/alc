@@ -80,6 +80,14 @@ class SectionTrainingController extends Controller
             if ($type->id == 1) {
                 
                 $test = Test::where('id_section_training',$section->id)->first();
+                
+                $user_training              = new UserTest;
+                $user_training->id_training = $section->id_training;
+                $user_training->id_user     = $user;
+                $user_training->id_pre_test = $test->id;
+                $user_training->save();
+
+                
                 $questions = null;
                 if ($test == null) {
                     $questions = null;
