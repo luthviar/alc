@@ -188,12 +188,12 @@
               <!-- Button modal fullscreen -->
               @if(empty($test) or empty($questions[0]))
                 @if($type->id == 3)
-                  <a href="/" class="btn btn-warning btn-flat" >Finish Test</a>
+                  {{--<a href="/training/{{ $ }}" class="btn btn-warning btn-flat" >Finish Test</a>--}}
                 @else
                   <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
                 @endif
               @else
-                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer()">
+                <button type="button" class="btn btn-success btn-lg" data-keyboard="false" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer(); start_safe();">
                   Mulai Test
                 </button>
               @endif
@@ -236,12 +236,85 @@
                     <div class="modal-footer">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   
-                      <input type="submit"  value="submit">
+                      <input type="submit" value="submit">
                     </div> <colgroup></colgroup>
+
+                      <script>
+                          //        window.confirm("Apakah Anda yakin keluar dari halaman ini? Jika Anda keluar, maka test Anda akan ter-submit secara otomatis.");
+
+                          //     first time ini
+                          //     window.onbeforeunload = confirmExit;
+                          //     function confirmExit() {
+                          //      return   confirm("Apakah Anda yakin keluar dari halaman ini? Jika Anda keluar, maka test Anda akan ter-submit secara otomatis.");
+                          //     }
+
+
+
+                          //     $(window).blur(function confirmExit() {
+                          ////         confirm("Apakah Anda yakin keluar dari halaman ini? Jika Anda keluar, maka test Anda akan ter-submit secara otomatis.");
+                          //          return confirm("Apakah Anda yakin keluar dari halaman ini? Jika Anda keluar, maka test Anda akan ter-submit secara otomatis.");
+                          //     });
+
+                          function close_window() {
+                              if (confirm("Close Window?")) {
+                                  window.close();
+                              }
+                          }
+
+                          function start_safe() {
+
+                              window.onbeforeunload = function (e) {
+                                  e = e || window.event;
+
+                                  // For IE and Firefox prior to version 4
+                                  if (e) {
+                                      e.returnValue = 'Sure?';
+                                  }
+
+                                  // For Safari
+                                  return 'Sure?';
+                              };
+
+//                              setTimeout($(window).blur(function() {
+//                                  var valz = confirm("Notice about leaving the page?" +
+//                                      " " +
+//                                      " " +
+//                                      "Jika Anda belum keluar, maka tahan tombol esc pada keyboard dan klik terus menerus mouse Anda pada pertanyaan test');");
+//                                  if(valz == false) {
+//                                      if (!document.hasFocus()) {
+////             if(!document.hasFocus()) {
+////             if(!document.mouseenter()) {
+////                 console.log("user left the page");
+////             }
+//                                      } else {
+//                                          window.onbeforeunload = function (e) {
+//                                              e = e || window.event;
+//
+//                                              // For IE and Firefox prior to version 4
+//                                              if (e) {
+//                                                  e.returnValue = 'Sure?';
+//                                              }
+//
+//                                              // For Safari
+//                                              return 'Sure?';
+//                                          };
+//                                      }
+//                                  }}),3000);
+                          }
+
+                          //     setTimeout(function(){ alert("Hello"); }, 3000);
+
+
+
+
+                      </script>
+
+                  </form>
                   </div>
-                  </form>   
+
                 </div>
               </div>
+              {{--end of modal full screen--}}
 
           </div>
         </div>
@@ -500,17 +573,17 @@ SFS dark red = #9f2026; */
         if (minutes < 1 && seconds < 1) {
           document.getElementById('myquiz').submit();
         }
-    };
+    }
     // we don't want to wait a full second before the timer starts
     timer();
     setInterval(timer, 1000);
 }
 //minute
  function start_timer() {
-    var fiveMinutes = 60 * {{$test->time}},
+    var fiveMinutes = 60 *{{$test->time}},
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
-};
+}
 </script>
 <script>
      $(window).load(function(){
@@ -529,4 +602,6 @@ SFS dark red = #9f2026; */
     App.init();
        
     });
+
+
 </script>
