@@ -148,7 +148,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="btn-group btn-breadcrumb">
-						<a href="#" class="btn btn-success">Introduction</a>
+						<a href="#" class="btn btn-default">Introduction</a>
 						<a class="btn btn-default">Pre-Test</a>
 						<a class="btn btn-default">Modul</a>
 						<a class="btn btn-success">Post-Test</a>
@@ -276,6 +276,14 @@
 	@include('layouts.script')
 </body>
 </html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+  });
+</script>
 <script>
 
      $(window).load(function(){

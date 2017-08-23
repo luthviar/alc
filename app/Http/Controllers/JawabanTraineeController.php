@@ -80,12 +80,6 @@ class JawabanTraineeController extends Controller
         if ($section->id_type == 1) {
 
             $user_test = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
-            if (empty($user_test)) {
-                $user_test = new UserTest;
-                $user_test->id_user = $request->id_user;
-                $user_test->id_training = $section->id_training;
-                $user_test->id_pre_test = $request->id_test;
-            }
             $user_test->pre_test_score = $skor;
             $user_test->save();
 
