@@ -255,8 +255,8 @@
 											</div>
 										</div>
 									</form>
-								</div>	
 							@endif
+							</div>	
 						@endif
 					</div>
 				</div>

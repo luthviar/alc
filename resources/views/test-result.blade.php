@@ -141,10 +141,11 @@
 				@endif
 			</ul>
 
+		<div class="page-content-wrapper"> 
         </div>
 	   	@if(empty($next_section))
 			{{--kalau true berarti sedang post test--}}
-        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
+        <div class="page-content" style="">		
 			<div class="container">
 				<div class="row">
 					<div class="btn-group btn-breadcrumb">
@@ -262,6 +263,7 @@
 						
 					</div>
 				</div>
+		</div>		
 		</div>		
 		
 	@endif
