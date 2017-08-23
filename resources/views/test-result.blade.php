@@ -143,14 +143,20 @@
 
         </div>
 	   	@if(empty($next_section))
+			{{--kalau true berarti sedang post test--}}
         <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">		
 			<div class="container">
 				<div class="row">
-				
 					<div class="btn-group btn-breadcrumb">
-						<a class="btn btn-default">Training</a>
-						<a class="btn btn-danger">Test Result</a>
+						<a href="#" class="btn btn-success">Introduction</a>
+						<a class="btn btn-default">Pre-Test</a>
+						<a class="btn btn-default">Modul</a>
+						<a class="btn btn-success">Post-Test</a>
 					</div>
+					{{--<div class="btn-group btn-breadcrumb">--}}
+						{{--<a class="btn btn-default">Training</a>--}}
+						{{--<a class="btn btn-danger">Test Result</a>--}}
+					{{--</div>--}}
 				</div>
 	   
 			</div>
@@ -198,15 +204,20 @@
 		</div>
 
 	@else
-		
+		{{--kalau false berarti pre-test--}}
         <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
 			<div class="container">
 				<div class="row">
-				
 					<div class="btn-group btn-breadcrumb">
-						<a class="btn btn-default">Training</a>
-						<a class="btn btn-danger">Test Result</a>
+						<a href="#" class="btn btn-default">Introduction</a>
+						<a class="btn btn-success">Pre-Test</a>
+						<a class="btn btn-default">Modul</a>
+						<a  class="btn btn-default">Post-Test</a>
 					</div>
+					{{--<div class="btn-group btn-breadcrumb">--}}
+						{{--<a class="btn btn-default">Training</a>--}}
+						{{--<a class="btn btn-danger">Test Result</a>--}}
+					{{--</div>--}}
 				</div>
 	   
 			</div>

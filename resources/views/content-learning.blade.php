@@ -162,35 +162,54 @@
 			</div>
 			<br>
 			<div class="block-advice">
-				<div class = "text-center">
+					<div class="text-center">
 					<h2 class="brand-before">
-						<small>{{$training->title}}</small>
-					</h2>
-					<h1 class="brand-name">Materi Training</h1>
-
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						@foreach($content as $materi)
-						<div class="panel panel-default">
-						    <div class="panel-heading" role="tab" id="headingOne">
-						      	<h4 class="panel-title">
-						      		{{$materi->file_name}}<br>
-						      	</h4>
-						    </div>
-						    <div>
-						      	<p>{!! html_entity_decode($materi->description) !!}</p>
-						      	<div class="row">
-						      		<a href="{{URL::asset($materi->url)}}">File_Materi</a>
-						      	</div>
-						    </div>  
-						</div>  
-						@endforeach
+							<small>{{$training->title}}</small>
+						</h2>
+						<h1 class="brand-name">Materi Training</h1>
 					</div>
-					<br>
-					<h6>
-						<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
-					</h6>
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						@foreach($content as $materi)
+						  <div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="headingOne">
+						      <h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{$materi->id}}" aria-expanded="false" aria-controls="collapseOne">
+						          {{$materi->file_name}}
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseOne{{$materi->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+						      <div class="panel-body">
+						      	<div>{!! html_entity_decode($materi->description) !!}</div>
+						      	<hr>
+						        <iframe id="viewer"
+										src = "{{URL::to($materi->url)}}"
+										width='100%'
+										height='600'
+										allowfullscreen webkitallowfullscreen>
+								</iframe>
+
+						      </div>
+						    </div>
+						  </div>
+						  @endforeach
+						</div>
+							
+						
+						<br>
+						<div class="text-center">
+						<h6>
+							
+							
+							<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">Next</a>
+							
+							
+						</h6>
+						</div>
+						
+					
 				</div>
-			</div>
         </div>
         	
 	@else
@@ -207,37 +226,70 @@
 				</div>
 	   		</div>
 			<br>
-			<div class="block-advice">
-				<div class = "text-center">
-					<h2 class="brand-before">
-						<small>{{$training->title}}</small>
-					</h2>
-					<h1 class="brand-name">Materi Training</h1>
-
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						@foreach($content as $materi)
-						<div class="panel panel-default">
-						    <div class="panel-heading" role="tab" id="headingOne">
-						      	<h4 class="panel-title">
-						      		{{$materi->file_name}}<br>
-						      	</h4>
-						    </div>
-						    <div>
-						      	<p>{!! html_entity_decode($materi->description) !!}</p>
-						      	<div class="row">
-						      		<a href="{{URL::asset($materi->url)}}">File_Materi</a>
-						      	</div>
-						    </div>  
-						</div>  
-						@endforeach
-					</div>				
-					<br>
-					<h6>
-						<a class="btn btn-warning" href="/module/{{$training->id_module}}">Back</a>
-						<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">See Result</a>
-					</h6>
+			<div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
+            <div class="container">
+				<div class="row">
+				
+					<div class="btn-group btn-breadcrumb">
+						<a  class="btn btn-default">Introduction</a>
+						<a  class="btn btn-default">Pre-Test</a>
+						<a  class="btn btn-success">Modul</a>
+						<a  class="btn btn-default">Post-Test</a>
+					</div>
 				</div>
+	   
 			</div>
+			<br>
+			<div class="block-advice">
+					<div class="text-center">
+					<h2 class="brand-before">
+							<small>{{$training->title}}</small>
+						</h2>
+						<h1 class="brand-name">Materi Training</h1>
+					</div>
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						@foreach($content as $materi)
+						  <div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="headingOne">
+						      <h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{$materi->id}}" aria-expanded="false" aria-controls="collapseOne">
+						          {{$materi->file_name}}
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseOne{{$materi->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+						      <div class="panel-body">
+						      	<div>{!! html_entity_decode($materi->description) !!}</div>
+						      	<hr>
+						        <iframe id="viewer"
+										src = "{{URL::to($materi->url)}}"
+										width='100%'
+										height='600'
+										allowfullscreen webkitallowfullscreen>
+								</iframe>
+
+						      </div>
+						    </div>
+						  </div>
+						  @endforeach
+						</div>
+							
+						
+						<br>
+						<div class="text-center">
+						<h6>
+							
+							<a class="btn btn-warning" href="/module/{{$training->id_module}}">Back</a>
+							<a class="btn darkgreen" href="/section-training/{{$next_section->id}}">See Result</a>
+							
+							
+						</h6>
+						</div>
+						
+					
+				</div>
+        </div>
         </div>
 		@endif
 	</div>
@@ -246,15 +298,126 @@
     </div>
 
     @include('layouts.script')
+
+<!-- Modal fullscreen -->
+<div class="modal modal-fullscreen fade" id="modal_content" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog">
+  		<div class="modal-content">	
+			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Aerofood Learning Center</h4>
+			</div>
+			<div class="modal-body">
+  				<div id="file">
+  					<!-- content learning here -->
+  				</div>
+			</div>
+  		</div>
+	</div>
+
+</div>
+
+
 </body>
 </html>
 <script type="text/javascript">
-$('iframe').ready(function() {
-   setTimeout(function() {
-      $('iframe').contents().find('#download').remove();
-   }, 100);
+$(document).ready(function() {
+	$('iframe').ready(function() {
+	   setTimeout(function() {
+	      $('iframe').contents().find('#download').remove();
+	   }, 100);
+	});
 });
 </script>
+
+<style type="text/css">
+/* .modal-fullscreen */
+.modal-fullscreen {
+  background: white;
+}
+.modal-fullscreen .modal-content {
+  background: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.modal-backdrop.modal-backdrop-fullscreen {
+  background: #ffffff;
+}
+.modal-backdrop.modal-backdrop-fullscreen.in {
+  opacity: .97;
+  filter: alpha(opacity=97);
+}
+/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
+.modal-fullscreen .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .modal-fullscreen .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-fullscreen .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+     width: 1170px;
+  }
+}
+/* centering styles for jsbin */
+html,
+body {
+  width:100%;
+  height:100%;
+}
+html {
+  display:table;
+}
+body {
+  display:table-cell;
+  vertical-align:middle;
+}
+body > .btn {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
+<script type="text/javascript">
+  // .modal-backdrop classes
+$(".modal-transparent").on('show.bs.modal', function () {
+  setTimeout( function() {
+    $(".modal-backdrop").addClass("modal-backdrop-transparent");
+  }, 0);
+});
+$(".modal-transparent").on('hidden.bs.modal', function () {
+  $(".modal-backdrop").addClass("modal-backdrop-transparent");
+});
+$(".modal-fullscreen").on('show.bs.modal', function () {
+  setTimeout( function() {
+    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+  }, 0);
+});
+$(".modal-fullscreen").on('hidden.bs.modal', function () {
+  $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+});
+  
+</script>
+<script type="text/javascript">
+
+ function see_content($url){
+ 	var html = '<iframe src="'+$url+'"></iframe>';
+ 	$('#file').html(html);
+ 	$('#modal_content').modal("show");
+ }
+</script>
+
+
 <script>
 
      $(window).load(function(){

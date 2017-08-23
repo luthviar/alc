@@ -162,7 +162,7 @@ table {
 }
 
 a.Logo{
-	font-family:';'novecento_sans_widedemibold';
+	font-family:'novecento_sans_widedemibold';
 	
 }
 
@@ -195,7 +195,6 @@ label {
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'novecento_sans_widemedium', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
 	line-height: 1.2em;
 }
 input[type=text], input[type=email], input[type=reset], input[type=button], input[type=submit], button{
