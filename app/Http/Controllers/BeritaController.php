@@ -169,6 +169,9 @@ class BeritaController extends Controller
     public function edit($id_berita)
     {
         $berita = Berita::find($id_berita);
+        if (empty($berita)) {
+            return view('404');
+        }
         $berita['file_pendukung'] = FileBerita::where('id_berita', $id_berita)->get();
         return view('edit-news')->with('news',$berita);
     }

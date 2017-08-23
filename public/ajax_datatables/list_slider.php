@@ -50,7 +50,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	if ($row['is_activ'] == 1) {
 		$nestedData[] = "active <span><a class='btn btn-danger' href='/slider/".$row['id']."/nonactive'>Deactive</a></span>";
 	}else{
-		if ($totalData2) {
+		if ($totalData2 <= 5) {
 			$nestedData[] = "<span style='opacity: 0.5;''>not active </span>
 					  <span><a class='btn btn-warning' href='/slider/".$row["id"]."/active'>Activicate</a></span>";
 		}else{

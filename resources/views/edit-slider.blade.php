@@ -54,7 +54,7 @@
                         <label for="content" class="col-md-4 control-label">Content</label>
 
                         <div class="col-md-6">
-							<textarea id="summernote" name ="content"></textarea>
+							<textarea id="summernote" name ="content">{{$slider->content}}</textarea>
                         </div>
                     </div>
 
@@ -65,15 +65,18 @@
                              <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="image"/>
+                                        Browse… <input type="file" id="file" name="file_pendukung[]" multiple="true" name="image"/>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div></br>
                             <div class='file-uploaded'>
-								1. <i class="fa fa-paperclip" aria-hidden="true"></i>  Nama File.pdf <br>
-								2. <i class="fa fa-paperclip" aria-hidden="true"></i>  Attachment.jpg <br>
-								3. <i class="fa fa-paperclip" aria-hidden="true"></i>  File.pdf <br>
+								<p>
+                                    <div id="fileList"></div>
+                                </p>
+                                @foreach($slider['file_pendukung'] as $file)
+                                <a href="{{URL::asset($file->url)}}"><i class="fa fa-paperclip" aria-hidden="true"></i>  {{$file->name}}</a>       <span><a href="/slider_attachment_delete/{{$file->id}}" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i>delete</a></span><br>
+                                @endforeach
 							</div>
                         </div>
                     </div>
@@ -99,46 +102,15 @@
 <link rel="stylesheet" href="{{ URL::asset('css/Upload.css')}}" />
 <script type="text/javascript" src="{{ URL::asset('js/UpoladImg.js')}}"></script>
 <script>
-$(document).ready(function() {
-    $('#datePicker')
-        .datepicker({
-            format: 'yyyy-mm-dd'
-        })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#eventForm').formValidation('revalidateField', 'date');
-        });
+    updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
 
-    $('#eventForm').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'The name is required'
-                    }
-                }
-            },
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'The date is required'
-                    },
-                    date: {
-                        format: 'YYYY-MM-DD',
-                        message: 'The date is not a valid'
-                    }
-                }
-            }
+        output.innerHTML = 'Selected file(s) <br><ul>';
+        for (var i = 0; i < input.files.length; ++i) {
+            output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+
         }
-    });
-
-
-    
-});
+        output.innerHTML += '</ul>';
+    }
 </script>
