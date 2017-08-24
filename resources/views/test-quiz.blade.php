@@ -202,7 +202,7 @@
               <div class="modal modal-fullscreen fade" id="modal-fullscreen" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                  <form class="" action="{{ URL::action('JawabanTraineeController@store') }}" method="post" id="myquiz">
+                  <form class="" action="{{ URL::action('JawabanTraineeController@store') }}" method="post" id="myquiz" >
                     <input type="hidden" name="id_user" value="{{Auth::user()->id}}"><br>
                     <input type="hidden" name="id_test" value="{{$test->id}}"><br>
                     <div class="modal-header">
@@ -221,7 +221,7 @@
                               <div class="row" style="margin-left: 5%;">
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="{{$question->id}}" id="optionsRadios1" value="{{$opsi->id}}">
+                                    <input type="radio" name="{{$question->id}}" id="optionsRadios1" value="{{$opsi->id}}" required>
                                     {{$opsi->isi_opsi}}
                                   </label>
                                 </div>
@@ -236,7 +236,7 @@
                     <div class="modal-footer">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   
-                      <input type="submit" value="submit">
+                      <input type="submit" value="submit" onclick="submittest();" target="_blank">
                     </div> <colgroup></colgroup>
 
                       <script>
@@ -262,18 +262,21 @@
                           }
 
                           function start_safe() {
-
-                              window.onbeforeunload = function (e) {
-                                  e = e || window.event;
-
-                                  // For IE and Firefox prior to version 4
-                                  if (e) {
-                                      e.returnValue = 'Sure?';
-                                  }
-
-                                  // For Safari
-                                  return 'Sure?';
-                              };
+                              $(window).bind("beforeunload",function(event) {
+                                  return "You have some unsaved changes";
+                              });
+                              document.addEventListener('contextmenu', event => event.preventDefault());
+//                              window.onbeforeunload = function (e) {
+//                                  e = e || window.event;
+//
+//                                  // For IE and Firefox prior to version 4
+//                                  if (e) {
+//                                      e.returnValue = 'Sure?';
+//                                  }
+//
+//                                  // For Safari
+//                                  return 'Sure?';
+//                              };
 
 //                              setTimeout($(window).blur(function() {
 //                                  var valz = confirm("Notice about leaving the page?" +
@@ -585,6 +588,15 @@ SFS dark red = #9f2026; */
     startTimer(fiveMinutes, display);
 }
 </script>
+
+<script>
+    function submittest() {
+        $('#myquiz').on('submit',function(e) {
+//            open(location, '_self').close();
+        });
+    }
+</script>
+
 <script>
      $(window).load(function(){
     

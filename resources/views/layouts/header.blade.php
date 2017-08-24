@@ -24,7 +24,7 @@
                          
                         <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" src="assets/img/avatar1_small.jpg"/>
-                            <span class="username hidden-1024">{{Auth::user()->get_nama()}}</span>
+                            <span class="username hidden-1024">{{Auth::user()->4()}}</span>
                             <i class="fa fa-angle-down"></i>
                         </a>
 
