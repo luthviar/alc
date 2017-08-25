@@ -146,7 +146,7 @@
         </div>
        <div class="page-content-wrapper"> 
 	@if(empty($logout))
-            
+            {{--kalau true, masuk sini, artinya belum pernah dan post test--}}
         <div class="page-content" style="">	
             <div class="container">
 				<div class="row">
@@ -213,20 +213,32 @@
         </div>
         	
 	@else
-		
-		
-			<div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
+			   <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">
+				   <div class="container" style="margin-top: 30px;">
+					   <div class="row">
+						   <div class="btn-group btn-breadcrumb">
+							   <a  class="btn btn-default">Introduction</a>
+							   <a  class="btn btn-default">Pre-Test</a>
+							   <a  class="btn btn-success">Modul</a>
+							   <a  class="btn btn-default">Post-Test</a>
+						   </div>
+					   </div>
+				   </div>
+				   <br>
+
+
+				   <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">
             <div class="container">
 				<div class="row">
-				
-					<div class="btn-group btn-breadcrumb">
-						<a  class="btn btn-default">Introduction</a>
-						<a  class="btn btn-default">Pre-Test</a>
-						<a  class="btn btn-success">Modul</a>
-						<a  class="btn btn-default">Post-Test</a>
-					</div>
+
+					{{--<div class="btn-group btn-breadcrumb">--}}
+						{{--<a  class="btn btn-default">Introduction</a>--}}
+						{{--<a  class="btn btn-default">Pre-Test</a>--}}
+						{{--<a  class="btn btn-success">Modul</a>--}}
+						{{--<a  class="btn btn-default">Post-Test</a>--}}
+					{{--</div>--}}
 				</div>
-	   
+
 			</div>
 			<br>
 			<div class="block-advice">
