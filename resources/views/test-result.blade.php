@@ -139,13 +139,12 @@
 				 
 				<li class=""><a href="/raport/{{Auth::user()->id}}">My Profile</a></li>
 				@endif
-			</ul>
-
-		<div class="page-content-wrapper"> 
+			</ul> 
         </div>
 	   	@if(empty($next_section))
 			{{--kalau true berarti sedang post test--}}
         <div class="page-content" style="">		
+		<section id="main">
 			<div class="container">
 				<div class="row">
 					<div class="btn-group btn-breadcrumb">
@@ -169,7 +168,6 @@
 							<small>{{$training->title}}</small>
 						</h2>
 						<h1 class="brand-name">Hasil Test</h1>
-							
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
@@ -192,7 +190,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<br>
 						<h6>
 						
@@ -202,11 +199,13 @@
 						
 					</div>
 				</div>
+			</section>
 		</div>
 
 	@else
 		{{--kalau false berarti pre-test--}}
-        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">	
+        <div class="page-content" style="">	
+		<section id="main">
 			<div class="container">
 				<div class="row">
 					<div class="btn-group btn-breadcrumb">
@@ -263,13 +262,12 @@
 						
 					</div>
 				</div>
-		</div>		
-		</div>		
-		
+				</section>
+		</div>				
 	@endif
+			</div>	
 				
 
-	</div>
 	
 	<!-- Modul -->
 	@include('layouts.footer')

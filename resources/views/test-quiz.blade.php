@@ -140,7 +140,7 @@
       </ul>
 
         </div>
-        <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">   
+        <div class="page-content" style="">   
       <div class="container">
         <div class="row">
         <h2>Training</h2>
