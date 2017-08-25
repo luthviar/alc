@@ -46,6 +46,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('personnel', 'PersonnelController');
 
+    Route::get('trainee/{id}', 'TrainingController@see_trainee');
+
 //    Route::controller('personnel/datatables', 'PersonnelController', [
 //        'anyData'  => 'personnel.data',
 //        'getIndex' => 'personnel',

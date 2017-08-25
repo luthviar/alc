@@ -13,6 +13,7 @@ use App\Training;
 use App\ContentLearning;
 use App\Personnel;
 use App\Test;
+use App\UserTest;
 use App\Employee;
 use App\UserTrainingAuth;
 use App\StrukturOrganisasi;
@@ -320,5 +321,19 @@ class TrainingController extends Controller
         $training->is_publish = 0;
         $training->save();
         return redirect('/training');
+    }
+
+    public function see_trainee($id){
+        $training = Training::find($id);
+        if (empty($training)) {
+            return view('404');
+        }
+        $test_training = UserTest::where('id_training',$id)->get();
+        if (!empty($test_training[0])) {
+            foreach ($test_training as $key => $value) {
+                $value['personnel'] = Personnel::where('id_user',$value->id_user)->first();
+            }
+        }
+        return view('view-trainee')->with('test_training' , $test_training)->with('training',$training);
     }
 }

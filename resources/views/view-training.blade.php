@@ -20,6 +20,14 @@
                                 <td width="70%">{{$training->title}}</td>
                             </tr>
                             <tr>
+                                <td>Status</td>
+                                @if($training->is_publish == 1)
+                                    <td>published <a class="pull-right" href="/trainee/{{$training->id}}">see_trainee</a></td>
+                                @else
+                                    <td>not published</td>
+                                @endif
+                            </tr>
+                            <tr>
                                 <td >Modul</td>
                                 <td>{{$training['module']->nama}}</td>
                             </tr>
@@ -40,6 +48,7 @@
                                 <td>Description</td>
                                 <td>{!! html_entity_decode($training->description) !!}</td>
                             </tr>
+
                         </tbody>
                     </table>
                     <div style="text-align: center;">
