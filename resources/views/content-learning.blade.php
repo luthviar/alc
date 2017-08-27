@@ -148,7 +148,8 @@
 	@if(empty($logout))
             {{--kalau true, masuk sini, artinya belum pernah dan post test--}}
         <div class="page-content" style="">	
-            <div class="container">
+		<section id="main">
+            <div class="container" style="margin-top: 30px;">
 				<div class="row">
 				
 					<div class="btn-group btn-breadcrumb">
@@ -210,10 +211,12 @@
 						
 					
 				</div>
+				<section>
         </div>
         	
 	@else
-			   <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">
+			   <div class="page-content" style="">
+		   <section id="main">
 				   <div class="container" style="margin-top: 30px;">
 					   <div class="row">
 						   <div class="btn-group btn-breadcrumb">
@@ -225,9 +228,9 @@
 					   </div>
 				   </div>
 				   <br>
-
-
-				   <div class="page-content" style="background-color: rgb(243, 247, 248);opacity: 1;">
+				   
+				   <!--
+				   <div class="page-content" style="">
             <div class="container">
 				<div class="row">
 
@@ -240,7 +243,8 @@
 				</div>
 
 			</div>
-			<br>
+			<br>-->
+			
 			<div class="block-advice">
 					<div class="text-center">
 					<h2 class="brand-before">
@@ -290,7 +294,8 @@
 						
 					
 				</div>
-        </div>
+        <!--</div>-->
+		</section>
         </div>
 		@endif
 	</div>

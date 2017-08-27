@@ -2,12 +2,12 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a  class="logo" style="background-color: white;">
+    <a  class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LC</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="text-center">
-        <img src="{{URL::asset('Elegantic/images/ALS-logo.jpg')}}"  class="img-responsive"/>
+      <span class="text-left">
+         <span class="logo-lg"><b>ALC Admin Page</span>
       </span>
 
     </a>
