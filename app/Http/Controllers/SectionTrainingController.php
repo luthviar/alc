@@ -76,6 +76,7 @@ class SectionTrainingController extends Controller
         //check user jika pernah masuk training ini
         $user = Auth::user()->id;
         $check_user = UserTest::where('id_user',$user)->where('id_training',$section->id_training)->first();
+        $pernah_test = false;
         if(empty($check_user) or  empty($check_user->id_post_test) or $type->id ==2){
             if ($type->id == 1) {
                 
@@ -87,7 +88,7 @@ class SectionTrainingController extends Controller
                 $user_training->id_pre_test = $test->id;
                 $user_training->save();
 
-                $pernah_test = false;
+               
 
                 $questions = null;
                 if ($test == null) {
@@ -99,9 +100,12 @@ class SectionTrainingController extends Controller
                         $opsi = OpsiJawaban::where('id_question',$value->id)->get();
                         $value['opsi'] = $opsi;
                     }
-                    if ($check_user->close_pre_test == 1) {
-                        $pernah_test = true;
+                    if (!empty($check_user)) {
+                        if ($check_user->close_pre_test == 1) {
+                            $pernah_test = true;
+                        }
                     }
+                    
                 }
 
                 $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
@@ -155,7 +159,8 @@ class SectionTrainingController extends Controller
                     ->with('test',$test)
                     ->with('module',$module)
                     ->with('questions',$questions)
-                    ->with('all_section',$all_section);
+                    ->with('all_section',$all_section)
+                    ->with('pernah_test',$pernah_test);
             }
         }else{
             $module = Module::all();
