@@ -278,10 +278,18 @@
 </html>
 <script type="text/javascript">
   $(document).ready(function(){
+    //cant back
     history.pushState(null, null, document.URL);
     window.addEventListener('popstate', function () {
         history.pushState(null, null, document.URL);
     });
+
+    //cant right click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    //keyboard not run
+    document.onkeydown = function (e) {
+	        return false;
+	}
   });
 </script>
 <script>

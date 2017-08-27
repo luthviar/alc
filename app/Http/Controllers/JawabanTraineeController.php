@@ -81,6 +81,7 @@ class JawabanTraineeController extends Controller
 
             $user_test = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
             $user_test->pre_test_score = $skor;
+            $user_test->close_pre_test = 1;
             $user_test->save();
 
             $user_test_db  = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
@@ -91,7 +92,8 @@ class JawabanTraineeController extends Controller
             $training = Training::find($section->id_training);
             $modul_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',2)->first();
             $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$section->id_type +1)->first();
-            return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_pre_test',$skor)->with('next_section',$next_section);
+            // return view('test-result')->with('module',$module)->with('training',$training)->with('id_section',$section->id)->with('skor_pre_test',$skor)->with('next_section',$next_section);
+            return redirect('/section-training/'.$next_section->id);
         }elseif ($section->id_type ==3) {
             $user_test = UserTest::where('id_user',$request->id_user)->where('id_training',$section->id_training)->first();
             $user_test->id_post_test = $request->id_test;

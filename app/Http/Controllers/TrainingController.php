@@ -149,7 +149,7 @@ class TrainingController extends Controller
         $employee = Employee::where('id_personnel',$personnel->id)->first();
         $job_family_user = null;
         if (empty($employee)) {
-            
+            return view('404');
         }else{
             $struktur = StrukturOrganisasi::find($employee->struktur);
             $department_user = Department::where('id_department',$struktur->id_department)->first();

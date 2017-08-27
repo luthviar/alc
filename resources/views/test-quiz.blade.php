@@ -178,6 +178,10 @@
                   
                     Tidak ada Test pada Training ini
 
+                @elseif($pernah_test == true)
+
+                    Anda telah melakukan test ini
+
                 @else
                     
                     Quiz Duration = {{$test->time}} Minutes<br><br>
@@ -192,6 +196,11 @@
                 @else
                   <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
                 @endif
+
+              @elseif($pernah_test == true)
+
+                <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
+
               @else
                 <button type="button" class="btn btn-success btn-lg" data-keyboard="false" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer(); start_safe();">
                   Mulai Test
@@ -340,6 +349,11 @@
     window.addEventListener('popstate', function () {
         history.pushState(null, null, document.URL);
     });
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    //keyboard not run
+      document.onkeydown = function (e) {
+            return false;
+    }
   });
 </script>
 <style type="text/css">

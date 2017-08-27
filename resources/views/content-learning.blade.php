@@ -331,6 +331,12 @@
     window.addEventListener('popstate', function () {
         history.pushState(null, null, document.URL);
     });
+
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    //keyboard not run
+    document.onkeydown = function (e) {
+	        return false;
+	}
   });
 </script>
 <script type="text/javascript">

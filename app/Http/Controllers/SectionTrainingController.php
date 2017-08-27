@@ -87,7 +87,8 @@ class SectionTrainingController extends Controller
                 $user_training->id_pre_test = $test->id;
                 $user_training->save();
 
-                
+                $pernah_test = false;
+
                 $questions = null;
                 if ($test == null) {
                     $questions = null;
@@ -97,6 +98,9 @@ class SectionTrainingController extends Controller
                     foreach ($questions as $key => $value) {
                         $opsi = OpsiJawaban::where('id_question',$value->id)->get();
                         $value['opsi'] = $opsi;
+                    }
+                    if ($check_user->close_pre_test == 1) {
+                        $pernah_test = true;
                     }
                 }
 
@@ -109,7 +113,8 @@ class SectionTrainingController extends Controller
                     ->with('module',$module)
                     ->with('questions',$questions)
                     ->with('next_section',$next_section)
-                    ->with('all_section',$all_section);
+                    ->with('all_section',$all_section)
+                    ->with('pernah_test',$pernah_test);
 
             }elseif($type->id == 2){
                 $module = Module::all();
