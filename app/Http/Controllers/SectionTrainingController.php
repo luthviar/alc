@@ -117,6 +117,9 @@ class SectionTrainingController extends Controller
                 $section = SectionTraining::find($id);
                 $training = Training::find($section->id_training);
                 $next_section = SectionTraining::where('id_training',$section->id_training)->where('id_type',$type->id+1)->first();
+                //update count
+                $check_user->count += 1;
+                $check_user->save(); 
                 if (empty($check_user->id_post_test)) {
                     return view('content-learning')
                         ->with('module',$module)

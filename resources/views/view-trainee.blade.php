@@ -16,6 +16,7 @@
           <th>Pre-Test Score</th>
           <th>Post-Test Score</th>
           <th>Time</th>
+          <th>Count_see_training</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
             <td>{{$value->pre_test_score or '-'}}</td>
             <td>{{$value->post_test_score or '-'}}</td>
             <td>{{$value->created_at}}</td>
+            <td>{{$value->count}}</td>
           </tr>
           @endforeach
         </tbody>
