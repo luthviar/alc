@@ -202,7 +202,7 @@
                 <a href="/section-training/{{$next_section->id}}" class="btn btn-success btn-flat" >Next</a>
 
               @else
-                <button type="button" class="btn btn-success btn-lg" data-keyboard="false" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer(); start_safe();">
+                <button type="button" class="btn btn-success btn-lg" data-keyboard="false" data-toggle="modal" data-target="#modal-fullscreen" onclick="start_timer();">
                   Mulai Test
                 </button>
               @endif
@@ -245,7 +245,7 @@
                     <div class="modal-footer">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   
-                      <input type="submit" value="submit" onclick="submittest();" target="_blank">
+                      <input type="submit" value="submit" >
                     </div> <colgroup></colgroup>
 
                       <script>
@@ -601,18 +601,20 @@ SFS dark red = #9f2026; */
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 }
+
 </script>
 
-<script>
-    function submittest() {
-        $('#myquiz').on('submit',function(e) {
-//            open(location, '_self').close();
-        });
+<script type="text/javascript">
+    window.onbeforeunload = function() {
+        return "Dude, are you sure you want to leave? Think of the kittens!";
     }
 </script>
 
+
+
 <script>
      $(window).load(function(){
+
     
        setTimeout(function() {    
         $("#loading").fadeOut(function(){

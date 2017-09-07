@@ -152,8 +152,10 @@ class TrainingController extends Controller
             return view('404');
         }else{
             $struktur = StrukturOrganisasi::find($employee->struktur);
-            $department_user = Department::where('id_department',$struktur->id_department)->first();
-            $job_family_user = JobFamily::find($department_user->id_job_family);
+            if (!empty($struktur)) {
+                $department_user = Department::where('id_department',$struktur->id_department)->first();
+                $job_family_user = JobFamily::find($department_user->id_job_family);
+            }
         }
         
         if (empty($training->id_job_family)) {
@@ -188,7 +190,9 @@ class TrainingController extends Controller
             }
             
         }else {
-            if ($training->id_module ==3 and $training->id_job_family == $job_family_user->id) {
+            if ($employee->level_position == 11) {
+                $training['open'] = 1;
+            }elseif ($training->id_module ==3 and $training->id_job_family == $job_family_user->id) {
                 $training['open'] = 1;
             }elseif ($training->id_module ==3 and $training->id_job_family != $job_family_user->id) {
                 $user_auth = UserTrainingAuth::where('id_training',$training->id)->where('id_user',$id_user)->first();

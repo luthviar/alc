@@ -148,12 +148,16 @@
                             <li class="active">
                                 <a  href="#umum" data-toggle="tab">Forum Umum</a>
                             </li>
-                            <li>
-                                <a href="#jobfamily" data-toggle="tab">Forum Job Family</a>
-                            </li>
-                            <li>
-                                <a href="#dept" data-toggle="tab">Forum Department</a>
-                            </li>
+                            @if(!empty($job_family))
+                                <li>
+                                    <a href="#jobfamily" data-toggle="tab">Forum Job Family</a>
+                                </li>
+                            @endif
+                            @if(!empty($department))
+                                <li>
+                                    <a href="#dept" data-toggle="tab">Forum Department</a>
+                                </li>
+                            @endif
                         </ul>
 
                         <div class="tab-content">
@@ -208,7 +212,7 @@
 
                             </div>
 
-
+                            @if($forum_job_family != null)
                             <div class="tab-pane" id="jobfamily">
                                 <h1>Forum {{$job_family->name}}</h1>
                                 <p>forum ini ditujukan untuk karyawan {{$job_family->name}} PT Aerofood Indonesia</p>
@@ -256,9 +260,10 @@
                                 </table>
 
                             </div>
+                            @endif
 
 
-
+                            @if($forum_department != null)
                             <div class="tab-pane" id="dept">
                                 <h1>Forum {{$department->nama_departmen}}</h1>
                                 <p>forum ini ditujukan untuk karyawan {{$department->nama_departmen}} PT Aerofood Indonesia</p>
@@ -306,6 +311,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -508,7 +514,7 @@
             </div>
         </div>
 
-
+        @if($department != null)
         <!-- New Thread Department -->
         <div class="modal fade" id="modal_department" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -593,7 +599,9 @@
                 </div>
             </div>
         </div>
+        @endif
 
+        @if($job_family != null)
         <!-- New Thread Job Family -->
         <div class="modal fade" id="modal_job_family" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -678,6 +686,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
 
             {{--modal edit forum--}}
